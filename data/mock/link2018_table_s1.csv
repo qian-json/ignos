@@ -1,0 +1,9 @@
+# mock: true
+# Written with AI assistance (Claude Code). MOCK-DATA: fake values, never real.
+sample_id,rod_d_cm,o2_pct,step,flow_cm_s,dt_s,rate_x1e3,rate_unit_printed,table_half,page,checked_by,notes
+MOCK-B01,1.11,22.2,1,1.11,11,10,cm/s,left,99,MOCK-QA,MOCK: fake values
+MOCK-B01,1.11,22.2,2,2.22,22,20,cm/s,left,99,MOCK-QA,MOCK: fake values
+MOCK-B01,1.11,22.2,3,3.33,33,30,cm/s,left,99,MOCK-QA,MOCK: fake values
+MOCK-B02,2.22,33.3,1,5.55,44,50,mm/s,right,99,MOCK-QA,MOCK: fake values
+MOCK-C03,3.33,44.4,1,6.66,66,60,mm/s,right,99,MOCK-QA,MOCK: fake values
+MOCK-C03,3.33,44.4,2,7.77,77,70,mm/s,right,99,MOCK-QA,MOCK: fake values

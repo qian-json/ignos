@@ -1,0 +1,21 @@
+{
+  "_comment": "Written with AI assistance (Claude Code). Step data: Link et al. 2018 Sci Rep 8:120 Supplement Table S1 (p. 1), sample B12 (0.95 cm black rod, 17.5% O2) = PSI-25 test P12 (3/8 in. black rod, sample 199m, GMT 210, initial O2 17.5 in the PSI experimental table); rates = printed Vf x1e3 /100 -> mm/s. Photos: PSI-25_Raw Data_GMT2014_210_BASS_S199_TPP12_1.zip + _2.zip (270 NEF, iss040e082395-082664). First photo EXIF 2014-07-30 11:16:55.66. WINDOWS from the P12 video overlay only (PSI-25_Raw Data_BASS_GMT210_SAMPLE_199_TEST_P12.mp4, FAN display + clock, read at 1 s resolution): FAN 60 -> 52 at 11:19:23, 52 -> 48 at 11:21:36, 48 -> 44.5 (44/45 flicker) at 11:24:05, 44.5 -> 42 at 11:26:30, 42 -> 41.5 (41/42 flicker) at 11:29:23, 41.5 -> 41 at ~11:31:10, video ends (LOS) 11:32:48. The PSI table lists the same fan sequence (60 52 48 44.5 42 41.5 41). Which four fan steps are Table S1's four rows was decided from step ORDER and DURATIONS only, never from rates: rows = FAN 52, 48, 44.5, 42 gives Table S1 dt / fan-step length = 121/133, 134/149, 129/145, 158/173 (all 0.89-0.92, every dt fits inside its step); the alternative 'last four steps' (44.5, 42, 41.5, 41) would need 129 s inside a 107 s step. Same-day test P17 also lists fan 52 and 48 with Table S1 flows 1.01 and 0.82, consistent with this assignment. Clock check: video clock vs camera EXIF agree within ~0.5 s (cross-correlation of flame-brightness derivatives, video vs photos, peak at -0.5 s over +/-60 s; first photo after the 60->52 change shows the largest brightness jump). Axis: rod spans rows ~362-444 at 1/4 resolution (1447-1774 full res) -> axis 403. Direction +1: burning tip on the left, holder on the right, front moves to increasing column. Scale: frame 265 (iss040e082660.NEF, 1/500 s, lit after the test, crisp top highlight edge and bottom silhouette edge), crop cols 2600-2900 rows 1380-1840 of the unburnt rod next to the holder: calibrate.py gives 325.5 +/- 0.9 px (19 columns) = 34.18 px/mm; cols 2350-2600 give 323.6 px. Frames 262/264/267 (bright background above the rod, soft top edge) break calibrate.py's top-edge rule and were not used. half_band 70 and rel_threshold 0.3 as in B16/B19 (not tuned).",
+  "test_id": "B12", "psi_test": "P12", "nef_dir": "../../space-apps-2026/data/raw/psi25/P12",
+  "psi_files": [
+    {"file": "PSI-25_Raw Data_GMT2014_210_BASS_S199_TPP12_1.zip", "bytes": 1827999816, "role": "photos", "extract_to": "P12", "nef_count": 155, "nef_first": "iss040e082395.NEF", "nef_last": "iss040e082549.NEF"},
+    {"file": "PSI-25_Raw Data_GMT2014_210_BASS_S199_TPP12_2.zip", "bytes": 1266803024, "role": "photos", "extract_to": "P12", "nef_count": 115, "nef_first": "iss040e082550.NEF", "nef_last": "iss040e082664.NEF"},
+    {"file": "PSI-25_Raw Data_BASS_GMT210_SAMPLE_199_TEST_P12.mp4", "bytes": 108299394, "role": "video"}
+  ],
+  "rod_d_mm": 9.525, "o2_pct": 17.5,
+  "axis_row": 403, "half_band": 70, "direction": 1, "rel_threshold": 0.3, "min_area_frame": 3000,
+  "cache_rows": [250, 560],
+  "burn_window_s": [0, 986],
+  "calibration": {"frame_index": 265, "crop_full_res": [2600, 2900, 1380, 1840]},
+  "windows_s": [[147.3, 280.3], [280.3, 429.3], [429.3, 574.3], [574.3, 747.3]],
+  "steps": [
+    {"flow_cm_s": 1.01, "dt_s": 121, "nasa_rate_mm_s": 0.0308},
+    {"flow_cm_s": 0.82, "dt_s": 134, "nasa_rate_mm_s": 0.0345},
+    {"flow_cm_s": 0.60, "dt_s": 129, "nasa_rate_mm_s": 0.0365},
+    {"flow_cm_s": 0.48, "dt_s": 158, "nasa_rate_mm_s": 0.0237}
+  ]
+}

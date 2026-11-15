@@ -1,0 +1,8 @@
+# Written with AI assistance (Claude Code)
+numpy>=1.26
+scipy>=1.11
+rawpy>=0.21
+exifread>=3.0
+matplotlib>=3.8
+Pillow>=10.1
+pytest>=8

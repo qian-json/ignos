@@ -1,0 +1,46 @@
+/* Written with AI assistance (Claude Code) */
+/* The fact flame: a night block in the Method column, the one loud thing on its screen. */
+.fm { margin: 14px 0 8px; display: grid; gap: 14px; min-width: 0; }
+@media (min-width: 1001px) { .article > .fm { grid-column: 2 / 4; } }
+.fm-cap { font-size: var(--fs-ui); color: var(--mute); }
+.fm-count { font-family: var(--mono); color: var(--ink); }
+
+.fm-stage { background: var(--night); color: var(--on-night); border-radius: var(--radius); padding: clamp(14px, 2.4vw, 28px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(15rem, 19rem); gap: clamp(14px, 2.4vw, 28px); align-items: stretch; min-width: 0; }
+.fm-fig { position: relative; width: 100%; aspect-ratio: 2 / 1; min-width: 0; border-radius: 4px; touch-action: manipulation; }
+.fm-fig canvas { display: block; position: absolute; inset: 0; cursor: crosshair; }
+.fm-fig:focus-visible { outline: 2px solid var(--pay); outline-offset: 6px; }
+.fm-ring { position: absolute; pointer-events: none; border: 2px solid var(--accent); border-radius: 3px; box-shadow: 0 0 0 1px var(--night); }
+
+.fm-card { border-left: 1px solid #2c3550; padding-left: clamp(14px, 2vw, 22px); display: grid; align-content: start; gap: 10px; min-width: 0; font-size: var(--fs-ui); }
+.fm-card-g { display: flex; align-items: center; gap: 8px; font: 400 var(--fs-label)/1.4 var(--mono); color: var(--on-night-mute); }
+.fm-card-label { font-size: var(--fs-body); line-height: 1.4; overflow-wrap: anywhere; }
+.fm-card-src { display: grid; gap: 4px; font: 400 var(--fs-label)/1.5 var(--mono); color: var(--on-night); overflow-wrap: anywhere; }
+.fm-card-src .k { color: var(--on-night-mute); }
+.fm-card-src code { color: var(--on-night); word-break: break-all; }
+.fm-card-help { color: var(--on-night-mute); font-size: var(--fs-ui); }
+.fm i, .fm-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; flex: none; }
+
+.fm-legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: var(--fs-label); color: var(--mute); }
+.fm-legend li { display: inline-flex; align-items: baseline; gap: 7px; }
+.fm-legend li i { align-self: center; }
+.fm-legend .num { white-space: nowrap; }
+.fm-legend .num { color: var(--ink); }
+/* the paler swatches need an edge on the light ground */
+.fm-legend i { box-shadow: inset 0 0 0 1px rgba(16, 22, 36, 0.25); }
+
+.fm-list { border-top: 1px solid var(--hair); padding-top: 10px; font-size: var(--fs-ui); }
+.fm-list summary { cursor: pointer; color: var(--flame-ink); min-height: 44px; display: flex; align-items: center; gap: 8px; }
+.fm-list ol { margin: 8px 0 0; padding-left: 3.2em; display: grid; gap: 12px; }
+.fm-list li { display: grid; gap: 2px; min-width: 0; }
+.fm-li-label { overflow-wrap: anywhere; }
+.fm-li-g { font: 400 var(--fs-label)/1.4 var(--mono); color: var(--mute); }
+.fm-li-src { font: 400 var(--fs-label)/1.5 var(--mono); color: var(--mute); overflow-wrap: anywhere; }
+.fm-li-src code { word-break: break-all; }
+.fm-pager { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.fm-pager .num { font-size: var(--fs-label); color: var(--mute); }
+
+@media (max-width: 760px) {
+  .fm-stage { grid-template-columns: minmax(0, 1fr); }
+  .fm-fig { aspect-ratio: 4 / 3; }
+  .fm-card { border-left: 0; border-top: 1px solid #2c3550; padding: 12px 0 0; min-height: 9.5rem; }
+}

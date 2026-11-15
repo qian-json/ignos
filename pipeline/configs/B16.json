@@ -1,0 +1,70 @@
+{
+  "_comment": "Written with AI assistance (Claude Code). Published step data: Link et al. 2018 Sci Rep 8:120 Supplement Table S1 (p. 1), rates = printed Vf x 1e3 / 100 -> mm/s (header unit typo, see team memory). Replace with data/reference/link2018_table_s1.csv when it lands. Step windows (added 2026-11-14 ~4:25 PM, decided before seeing the result): read from the P16 video overlay FAN setting and GMT clock: 62 at 12:00:21, 44 at 12:02:21, 41.5 (41/42 flicker) at 12:04:49, 41 at 12:08:15, fan burst to 122 at 12:11:39; first photo EXIF 09:28:56.38. Clock sync checked on P19 (fan burst 13:04:04 vs tracker disturbance 13:04:07).",
+  "test_id": "B16",
+  "psi_test": "P16",
+  "nef_dir": "../../space-apps-2026/data/raw/psi25/P16",
+  "psi_files": [
+    {"file": "PSI-25_Raw Data_GMT2014_203_BASS_S191M_TPP16.zip", "bytes": 1663798886, "role": "photos", "extract_to": "P16", "nef_count": 140, "nef_first": "iss040e072584.NEF", "nef_last": "iss040e072723.NEF"},
+    {"file": "PSI-25_Raw Data_BASS_GMT203_SAMPLE_191_TEST_P16.mp4", "bytes": 87525194, "role": "video"}
+  ],
+  "rod_d_mm": 6.35,
+  "o2_pct": 18.2,
+  "axis_row": 378,
+  "half_band": 70,
+  "direction": 1,
+  "rel_threshold": 0.3,
+  "min_area_frame": 3000,
+  "burn_window_s": [
+    9000,
+    9765
+  ],
+  "calibration": {
+    "frame_index": 139,
+    "crop_full_res": [
+      2960,
+      3140,
+      1440,
+      1700
+    ]
+  },
+  "steps": [
+    {
+      "flow_cm_s": 7.55,
+      "dt_s": 72,
+      "nasa_rate_mm_s": 0.0678
+    },
+    {
+      "flow_cm_s": 1.67,
+      "dt_s": 139,
+      "nasa_rate_mm_s": 0.0762
+    },
+    {
+      "flow_cm_s": 0.83,
+      "dt_s": 198,
+      "nasa_rate_mm_s": 0.0699
+    },
+    {
+      "flow_cm_s": 0.72,
+      "dt_s": 170,
+      "nasa_rate_mm_s": 0.0568
+    }
+  ],
+  "windows_s": [
+    [
+      9084.62,
+      9204.62
+    ],
+    [
+      9204.62,
+      9352.62
+    ],
+    [
+      9352.62,
+      9558.62
+    ],
+    [
+      9558.62,
+      9762.62
+    ]
+  ]
+}

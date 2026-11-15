@@ -1,0 +1,78 @@
+{
+ "_note": "Written with AI assistance (Claude Code). Diagnostic only; no rate or data file changes. lead_mm = how far the blue-light front is ahead of the v1 edge, in the spread direction.",
+ "method": "pipeline/diagnostics/blue_front_v2.py",
+ "tests": {
+  "B16": {
+   "frames": 140,
+   "frames_with_front": 132,
+   "lead_mm_new": {
+    "median": 5.285,
+    "p10": 3.41,
+    "p90": 9.266
+   },
+   "lead_mm_old_dashed_line": {
+    "median": 0.002
+   }
+  },
+  "B19": {
+   "frames": 286,
+   "frames_with_front": 280,
+   "lead_mm_new": {
+    "median": 6.087,
+    "p10": 4.054,
+    "p90": 11.014
+   },
+   "lead_mm_old_dashed_line": {
+    "median": 0.002
+   }
+  },
+  "B12": {
+   "frames": 270,
+   "frames_with_front": 266,
+   "lead_mm_new": {
+    "median": 8.426,
+    "p10": 4.563,
+    "p90": 29.302
+   },
+   "lead_mm_old_dashed_line": {
+    "median": 1.274
+   }
+  },
+  "P17": {
+   "frames": 189,
+   "frames_with_front": 187,
+   "lead_mm_new": {
+    "median": 9.958,
+    "p10": 6.053,
+    "p90": 12.344
+   },
+   "lead_mm_old_dashed_line": {
+    "median": 0.001
+   }
+  },
+  "B13b": {
+   "frames": 81,
+   "frames_with_front": 78,
+   "lead_mm_new": {
+    "median": 8.163,
+    "p10": 5.806,
+    "p90": 9.211
+   },
+   "lead_mm_old_dashed_line": {
+    "median": 0.0
+   }
+  },
+  "B13a": {
+   "frames": 255,
+   "frames_with_front": 250,
+   "lead_mm_new": {
+    "median": 4.712,
+    "p10": 3.812,
+    "p90": 11.186
+   },
+   "lead_mm_old_dashed_line": {
+    "median": 0.0
+   }
+  }
+ }
+}

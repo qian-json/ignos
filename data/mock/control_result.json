@@ -1,0 +1,44 @@
+{
+  "contract": "control/1",
+  "mock": true,
+  "_note": "Written with AI assistance (Claude Code). MOCK-DATA: fake values, never real.",
+  "test_id": "MOCK-CTRL-1",
+  "clip": {
+    "fps": 33.3,
+    "recorded_at": "2000-01-01T00:00:00Z",
+    "camera": "MOCK-Camera",
+    "scale_px_per_mm": 11.1
+  },
+  "hand": {
+    "crossings": [
+      {
+        "mark_mm": 11.1,
+        "t_s": 0
+      },
+      {
+        "mark_mm": 22.2,
+        "t_s": 10
+      },
+      {
+        "mark_mm": 33.3,
+        "t_s": 20
+      },
+      {
+        "mark_mm": 44.4,
+        "t_s": 30
+      }
+    ],
+    "rate_mm_s": 1.11,
+    "ci95_mm_s": 0.01
+  },
+  "tracker": {
+    "rate_mm_s": 1.22,
+    "ci95_mm_s": 0.02,
+    "threshold_spread_mm_s": 0.03,
+    "n_frames": 31,
+    "t_start_s": 0,
+    "t_end_s": 30
+  },
+  "diff_pct": 9.91,
+  "notes": "MOCK: fake values"
+}

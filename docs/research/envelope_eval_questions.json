@@ -1,0 +1,70 @@
+{
+ "_comment": "Written with AI assistance (Claude Code). Eval questions for the fans-off envelope (data/derived/envelope.json, the Ignos team's order-of-magnitude reading of a NASA schematic; it states no Moon airflow). Same format as docs/research/tracker_eval_questions.json; scripts/ask-eval.ts loads them as the 'envelope' set.",
+ "questions": [
+  {
+   "id": "EN1",
+   "question": "Below what gravity level does turning off the fans still starve a flame, by the Ignos estimate?",
+   "mode": "interpret",
+   "expected_answer": "By the Ignos team's order-of-magnitude reading of a NASA schematic, at most about 1.61e-06 to 4.67e-05 of Earth's gravity. It is an upper bound, because flames in Link et al. 2018 Table S1 still spread at the lowest airflows tested, and it is not a NASA measurement.",
+   "expected_numbers": [],
+   "expected_citations": [
+    {
+     "kind": "row",
+     "id": "envelope:threshold"
+    }
+   ],
+   "answerable": true,
+   "why": "The envelope's headline, with its 'at most' and its label."
+  },
+  {
+   "id": "EN2",
+   "question": "Would turning off the fans starve a fire on the Moon?",
+   "mode": "interpret",
+   "expected_answer": "By the Ignos team's reading, not by itself: lunar gravity (0.165 of Earth's) is 3540 to 103000 times the threshold gravity, so gravity keeps driving airflow around the flame. This is the team's reading, not a NASA conclusion; NASA's FM2 slides say lunar gravity is nearly the most flammable condition.",
+   "expected_numbers": [],
+   "expected_citations": [
+    {
+     "kind": "row",
+     "id": "envelope:moon"
+    }
+   ],
+   "answerable": true,
+   "why": "The pitch question. Must not say NASA concluded fans-off fails, and must state no Moon airflow."
+  },
+  {
+   "id": "EN3",
+   "question": "What airflow did NASA measure around flames in its lunar-gravity tests?",
+   "mode": "interpret",
+   "expected_answer": "Not in our data. NASA has not measured it: ICES-2025-392 p. 10 says the lunar gravity velocity is not known. No number may be given.",
+   "expected_numbers": [],
+   "expected_citations": [],
+   "answerable": false,
+   "why": "No lunar airflow, measured or otherwise."
+  },
+  {
+   "id": "EN4",
+   "question": "Using your fans-off envelope, how fast is the airflow that gravity drives around a flame on the Moon, in cm/s?",
+   "mode": "interpret",
+   "expected_answer": "Not in our data. The envelope gives gravity levels only and states no airflow for the Moon; NASA reports the lunar buoyant velocity as not known (ICES-2025-392 p. 10). No number may be given.",
+   "expected_numbers": [],
+   "expected_citations": [],
+   "answerable": false,
+   "why": "The trap the envelope invites: computing a Moon airflow from the cube-root reading. It must decline."
+  },
+  {
+   "id": "EN5",
+   "question": "Why is the envelope's threshold gravity an upper bound?",
+   "mode": "interpret",
+   "expected_answer": "Because flames in Link et al. 2018 Table S1 still spread at the lowest airflows tested (B16 0.72 cm/s, B19 0.72 cm/s, B12 0.48 cm/s, P17 0.41 cm/s). Those are lowest flows with measured spread, not quench speeds, so the gravity computed from them is an 'at most'.",
+   "expected_numbers": [],
+   "expected_citations": [
+    {
+     "kind": "row",
+     "id": "envelope:threshold"
+    }
+   ],
+   "answerable": true,
+   "why": "Checks the caveat survives into the answer."
+  }
+ ]
+}

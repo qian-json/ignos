@@ -1,0 +1,1685 @@
+{
+  "schema_version": "1.4.0",
+  "input": {
+    "file": "ices2025_digitized.csv",
+    "sha256": "57741249ed63bcb6e1d84478c9cec4c7e9d6bee5cc793eb5b808400ea8419ea2"
+  },
+  "repeat_input": {
+    "file": "ices2025_digitized_repeat.csv",
+    "sha256": "f8390cac45109a8751af4bedf7ad12c29f707dc0a96b5ea4b9fe8a87cc25c71f"
+  },
+  "caveats": [
+    "Lunar-gravity tests were ~5 s drop-tower centrifuge runs at 8.2 psia.",
+    "Lunar airflow is unknown; the lunar limit is shown as a horizontal line, not a point at any flow.",
+    "The zero-flow value is an extrapolation far outside the 60-144 cm/s fit range.",
+    "The gap numbers are our analysis of NASA's figures. The direction is NASA's own finding: in Figs. 7-9 \"the lunar-g buoyant limit was found to be less than the extrapolated value (for any assumed buoyant velocity) from the WSTF testing. This result is contrary to expected behavior\" (ICES-2025-392 p. 9).",
+    "The images printed as Figs. 7-9 may be shifted by one material. Fitted to their points, Fig. 7 ('PMMA') matches Table 2's P 213 row, Fig. 8 ('P-213') its Beefy-T flaming row, and Fig. 9 repeats Fig. 10 (smolder). Fig. 7 also lacks the PMMA tests at 25 and 40 cm/s that p. 8 says are shown. We keep the captions' labels and flag this; we cannot confirm which material each image shows (ICES-2025-392 pp. 8, 11).",
+    "The 1-g fit is assumed linear; real flammability curves often bend at low flow."
+  ],
+  "warnings": [],
+  "paper": "Urban, Olson, Dietrich et al., ICES-2025-392",
+  "context_bands": {
+    "fans_off": {
+      "label": "Fans off",
+      "min_cm_s": 0.0,
+      "max_cm_s": 0.0,
+      "source": "Definition: no forced flow"
+    },
+    "bass_ii": {
+      "label": "BASS-II",
+      "min_cm_s": 0.4,
+      "max_cm_s": 8.0,
+      "source": "Link et al. 2018 SI, Table S1, p. 1 (Vg 0.41 to 7.55 cm/s)"
+    },
+    "wstf": {
+      "label": "WSTF forced flow",
+      "min_cm_s": 60.0,
+      "max_cm_s": 144.0,
+      "source": "ICES-2025-392 p. 8 (tests at 60, 80, 100 and 144 cm/s)"
+    },
+    "station_ventilation": {
+      "label": "Station ventilation",
+      "min_cm_s": 15.0,
+      "max_cm_s": 20.0,
+      "source": "Ruff, NASA Glenn, FISO seminar 2017, slide 6"
+    }
+  },
+  "reference_lines": {
+    "moon_base_o2": {
+      "label": "Planned Moon base: 30% O2 at 10.2 psi or less",
+      "o2_pct": 30.0,
+      "note": "Context only. The ICES-2025-392 lunar tests ran at 8.2 psia (56.5 kPa), which the paper calls the planned NASA lunar habitat pressure (p. 6), within the challenge page's \"10.2 psi or less\".",
+      "source": "Flame in Freefall challenge page, Space Apps 2026; ICES-2025-392 p. 6"
+    }
+  },
+  "excluded": [
+    {
+      "material": "cotton_flaming",
+      "reason": "Fig. 9 (flaming) repeats Fig. 10 (smolder) point for point, and its fitted slope matches the smolder Table 2 value, not the flaming one. Flaming data cannot be read from the figures. This fits a one-place shift of the images printed as Figs. 7-9 (see caveats)."
+    }
+  ],
+  "settings": {
+    "min_fit_flow_cm_s": 60.0,
+    "confidence": 0.95,
+    "ref_flow_cm_s": 35.0,
+    "slope_tolerance": 0.2,
+    "slope_reference_source": "ICES 2025 Table 2, p. 11 (checked against the PDF)"
+  },
+  "materials": {
+    "pmma": {
+      "material": "pmma",
+      "status": "ok",
+      "warnings": [],
+      "source_note": "Our slope matches the line drawn in Fig. 7 and Table 2's P 213 row, not its PMMA row. Fig. 7 also lacks the PMMA tests at 25 and 40 cm/s that p. 8 says are plotted. The image may show P-213 data; we keep the caption's label (ICES-2025-392 pp. 8, 11).",
+      "fit": {
+        "n": 4,
+        "slope_frac_per_cm_s": 0.00029715081891909626,
+        "slope_se": 3.42673972091022e-05,
+        "intercept_frac": 0.1359843931706181,
+        "intercept_se": 0.003456580485053014,
+        "r2": 0.9740917409243727,
+        "min_flow_cm_s": 60.0,
+        "flow_range_cm_s": [
+          59.98,
+          143.96
+        ],
+        "provenance": {
+          "rows": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "method": "OLS of O2 fraction vs flow, WSTF markers with flow >= 60 cm/s"
+        }
+      },
+      "slope_check": {
+        "reference_slope_frac_per_cm_s": 0.00022,
+        "reference_source": "ICES 2025 Table 2, p. 11 (checked against the PDF)",
+        "relative_difference": 0.3506855405413466,
+        "tolerance": 0.2,
+        "within_tolerance": false,
+        "passed": false,
+        "status": "documented_discrepancy"
+      },
+      "zero_flow": {
+        "intercept_pct": 13.59843931706181,
+        "ci95_pct": [
+          12.111192771100603,
+          15.085685863023018
+        ],
+        "provenance": {
+          "rows": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "method": "OLS intercept at 0 cm/s; 95% CI for the mean, t-distribution, n-2 df. Extrapolation outside the fitted flow range."
+        }
+      },
+      "curve": {
+        "flow_cm_s": [
+          0.0,
+          3.599,
+          7.198,
+          10.797,
+          14.396,
+          17.995,
+          21.594,
+          25.193,
+          28.792,
+          32.391000000000005,
+          35.99,
+          39.589,
+          43.188,
+          46.787000000000006,
+          50.386,
+          53.985,
+          57.584,
+          61.18300000000001,
+          64.78200000000001,
+          68.381,
+          71.98,
+          75.57900000000001,
+          79.178,
+          82.777,
+          86.376,
+          89.97500000000001,
+          93.57400000000001,
+          97.173,
+          100.772,
+          104.37100000000001,
+          107.97,
+          111.569,
+          115.168,
+          118.76700000000001,
+          122.36600000000001,
+          125.965,
+          129.56400000000002,
+          133.163,
+          136.762,
+          140.36100000000002,
+          143.96
+        ],
+        "o2_pct": [
+          13.59843931706181,
+          13.705383896790794,
+          13.812328476519777,
+          13.919273056248759,
+          14.026217635977742,
+          14.133162215706724,
+          14.24010679543571,
+          14.34705137516469,
+          14.453995954893673,
+          14.560940534622658,
+          14.66788511435164,
+          14.774829694080621,
+          14.881774273809603,
+          14.988718853538588,
+          15.09566343326757,
+          15.202608012996551,
+          15.309552592725534,
+          15.416497172454518,
+          15.523441752183501,
+          15.630386331912483,
+          15.737330911641468,
+          15.84427549137045,
+          15.951220071099431,
+          16.058164650828413,
+          16.1651092305574,
+          16.27205381028638,
+          16.37899839001536,
+          16.485942969744343,
+          16.59288754947333,
+          16.69983212920231,
+          16.80677670893129,
+          16.913721288660277,
+          17.02066586838926,
+          17.12761044811824,
+          17.234555027847225,
+          17.341499607576207,
+          17.44844418730519,
+          17.555388767034174,
+          17.662333346763155,
+          17.769277926492137,
+          17.876222506221122
+        ],
+        "lower_pct": [
+          12.111192771100605,
+          12.26852207680599,
+          12.425651495961224,
+          12.582558515100805,
+          12.739217232696436,
+          12.895597724861684,
+          13.051665270841717,
+          13.207379403419095,
+          13.362692740195692,
+          13.51754954028628,
+          13.671883916993522,
+          13.825617620495475,
+          13.978657286058144,
+          14.130891024708598,
+          14.282184219218722,
+          14.432374388121385,
+          14.581265012499427,
+          14.728618317161448,
+          14.874147214218283,
+          15.017507035535068,
+          15.158288405214575,
+          15.296013716307982,
+          15.430141112433274,
+          15.560081178146353,
+          15.685231571379681,
+          15.805031811638354,
+          15.919033082531243,
+          16.026967830568836,
+          16.128797224107842,
+          16.22471841729856,
+          16.31512865818307,
+          16.400560368680452,
+          16.481609274691518,
+          16.558873733945568,
+          16.632913567913405,
+          16.70422807989031,
+          16.773248577787925,
+          16.840339971742473,
+          16.905807071205402,
+          16.969902677316316,
+          17.032835803809363
+        ],
+        "upper_pct": [
+          15.085685863023018,
+          15.142245716775596,
+          15.199005457078332,
+          15.255987597396715,
+          15.313218039259047,
+          15.370726706551762,
+          15.4285483200297,
+          15.486723346910287,
+          15.545299169591653,
+          15.604331528959033,
+          15.663886311709756,
+          15.724041767665767,
+          15.784891261561063,
+          15.84654668236858,
+          15.909142647316418,
+          15.972841637871719,
+          16.03784017295164,
+          16.104376027747588,
+          16.172736290148716,
+          16.243265628289898,
+          16.31637341806836,
+          16.392537266432917,
+          16.472299029765587,
+          16.55624812351047,
+          16.644986889735115,
+          16.739075808934405,
+          16.83896369749948,
+          16.94491810891985,
+          17.056977874838815,
+          17.17494584110606,
+          17.298424759679516,
+          17.426882208640105,
+          17.559722462087002,
+          17.696347162290916,
+          17.83619648778105,
+          17.978771135262107,
+          18.123639796822456,
+          18.270437562325874,
+          18.418859622320905,
+          18.56865317566796,
+          18.71960920863288
+        ],
+        "provenance": {
+          "rows": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "method": "fit prediction and 95% mean-response band on 41 points from 0 to max fitted flow"
+        }
+      },
+      "wstf_points": {
+        "flow_cm_s": [
+          59.98,
+          79.96,
+          99.92,
+          143.96
+        ],
+        "o2_pct": [
+          15.192,
+          16.195,
+          16.607,
+          17.805
+        ],
+        "provenance": {
+          "rows": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "method": "digitized WSTF markers used in the fit"
+        }
+      },
+      "lunar": {
+        "limit_pct": 13.491,
+        "provenance": {
+          "rows": [
+            6,
+            7
+          ],
+          "method": "mean o2_pct of the lunar line ends; flow_cm_s ignored (airflow unknown)"
+        }
+      },
+      "gap": {
+        "gap_pct": 0.10743931706181087,
+        "ci95_pct": [
+          -1.3798079503700778,
+          1.5946865844936995
+        ],
+        "lunar_limit_treated_as_exact": false,
+        "reading_error_pct": 0.001464926646422171,
+        "verdict": "includes_zero",
+        "provenance": {
+          "rows": [
+            0,
+            1,
+            2,
+            3,
+            6,
+            7
+          ],
+          "method": "gap = zero-flow intercept (%) - mean of lunar line ends (%); interval = sqrt(intercept CI half-width^2 + reading_error^2), reading error = |gap(first reading) - gap(repeat reading)|, so it covers both the fit and the lunar line"
+        }
+      },
+      "gap_at_ref_flow": {
+        "flow_cm_s": 35.0,
+        "label": "Gap at the Earth (1 g) buoyant-flow reference",
+        "note": "35 cm/s is the paper's presumed buoyant velocity on Earth at 1 g (Takahashi; ICES-2025-392 p. 10). It is an Earth reference, not a Moon airflow.",
+        "earth_pct": 14.638467183278648,
+        "gap_pct": 1.147467183278648,
+        "ci95_pct": [
+          0.1384843459645353,
+          2.156450020592761
+        ],
+        "reading_error_pct": 0.0020817658918090842,
+        "provenance": {
+          "rows": [
+            0,
+            1,
+            2,
+            3,
+            6,
+            7
+          ],
+          "method": "fit value at 35 cm/s minus lunar limit; interval = 95% CI of the fitted mean at that flow, plus the reading error in quadrature when a repeat reading is given. Source of 35 cm/s: ICES-2025-392 p. 10: Takahashi 1-g buoyant velocity estimate, the paper's own reference for Table 2"
+        }
+      }
+    },
+    "p213": {
+      "material": "p213",
+      "status": "ok",
+      "warnings": [],
+      "source_note": "Our slope matches the line drawn in Fig. 8 and Table 2's Beefy-T (flaming) row, not its P 213 row. The image may show flaming cotton data; we keep the caption's label (ICES-2025-392 pp. 8, 11).",
+      "fit": {
+        "n": 4,
+        "slope_frac_per_cm_s": 0.00017329658102395744,
+        "slope_se": 2.0919434405399172e-05,
+        "intercept_frac": 0.157410161738795,
+        "intercept_se": 0.002111107839164715,
+        "r2": 0.9716812736785986,
+        "min_flow_cm_s": 60.0,
+        "flow_range_cm_s": [
+          60.02,
+          143.98
+        ],
+        "provenance": {
+          "rows": [
+            8,
+            9,
+            10,
+            11
+          ],
+          "method": "OLS of O2 fraction vs flow, WSTF markers with flow >= 60 cm/s"
+        }
+      },
+      "slope_check": {
+        "reference_slope_frac_per_cm_s": 0.0003,
+        "reference_source": "ICES 2025 Table 2, p. 11 (checked against the PDF)",
+        "relative_difference": 0.4223447299201418,
+        "tolerance": 0.2,
+        "within_tolerance": false,
+        "passed": false,
+        "status": "documented_discrepancy"
+      },
+      "zero_flow": {
+        "intercept_pct": 15.7410161738795,
+        "ci95_pct": [
+          14.832679783181744,
+          16.649352564577253
+        ],
+        "provenance": {
+          "rows": [
+            8,
+            9,
+            10,
+            11
+          ],
+          "method": "OLS intercept at 0 cm/s; 95% CI for the mean, t-distribution, n-2 df. Extrapolation outside the fitted flow range."
+        }
+      },
+      "curve": {
+        "flow_cm_s": [
+          0.0,
+          3.5995,
+          7.199,
+          10.7985,
+          14.398,
+          17.9975,
+          21.597,
+          25.1965,
+          28.796,
+          32.3955,
+          35.995,
+          39.5945,
+          43.194,
+          46.7935,
+          50.393,
+          53.9925,
+          57.592,
+          61.1915,
+          64.791,
+          68.3905,
+          71.99,
+          75.5895,
+          79.189,
+          82.7885,
+          86.388,
+          89.9875,
+          93.587,
+          97.1865,
+          100.786,
+          104.3855,
+          107.985,
+          111.58449999999999,
+          115.184,
+          118.7835,
+          122.383,
+          125.9825,
+          129.582,
+          133.1815,
+          136.781,
+          140.38049999999998,
+          143.98
+        ],
+        "o2_pct": [
+          15.7410161738795,
+          15.803394278219072,
+          15.865772382558646,
+          15.928150486898218,
+          15.990528591237792,
+          16.052906695577366,
+          16.11528479991694,
+          16.17766290425651,
+          16.240041008596087,
+          16.30241911293566,
+          16.364797217275235,
+          16.427175321614808,
+          16.48955342595438,
+          16.551931530293952,
+          16.61430963463353,
+          16.6766877389731,
+          16.739065843312677,
+          16.80144394765225,
+          16.86382205199182,
+          16.926200156331394,
+          16.98857826067097,
+          17.050956365010542,
+          17.113334469350118,
+          17.17571257368969,
+          17.238090678029263,
+          17.300468782368835,
+          17.36284688670841,
+          17.425224991047983,
+          17.487603095387556,
+          17.54998119972713,
+          17.612359304066704,
+          17.674737408406276,
+          17.73711551274585,
+          17.799493617085425,
+          17.861871721424997,
+          17.92424982576457,
+          17.98662793010414,
+          18.049006034443718,
+          18.11138413878329,
+          18.173762243122866,
+          18.236140347462438
+        ],
+        "lower_pct": [
+          14.832679783181742,
+          14.92582316131459,
+          15.01884470482924,
+          15.111730694816195,
+          15.204465348220811,
+          15.29703043145639,
+          15.389404788606134,
+          15.481563762970115,
+          15.57347848512306,
+          15.665114993681916,
+          15.756433146461685,
+          15.84738526959954,
+          15.93791448090528,
+          16.027952612307843,
+          16.11741764756502,
+          16.206210591120122,
+          16.294211703160148,
+          16.381276094419988,
+          16.467228805341364,
+          16.55185974813628,
+          16.634919330843648,
+          16.716116260474788,
+          16.795119900097838,
+          16.871570356818538,
+          16.945099511605818,
+          17.01536438282188,
+          17.08208974396779,
+          17.145110751355116,
+          17.20440217576063,
+          17.260083124541474,
+          17.312395328504397,
+          17.361663553231608,
+          17.408251634412117,
+          17.45252528759199,
+          17.494826829905968,
+          17.535461653839356,
+          17.574693599915854,
+          17.61274590371162,
+          17.64980503346646,
+          17.686025635122427,
+          17.72153556063817
+        ],
+        "upper_pct": [
+          16.649352564577256,
+          16.680965395123554,
+          16.712700060288054,
+          16.74457027898024,
+          16.776591834254777,
+          16.80878295969834,
+          16.841164811227745,
+          16.873762045542907,
+          16.906603532069113,
+          16.9397232321894,
+          16.973161288088782,
+          17.006965373630074,
+          17.041192371003483,
+          17.075910448280062,
+          17.111201621702037,
+          17.14716488682608,
+          17.183919983465206,
+          17.221611800884506,
+          17.260415298642283,
+          17.30054056452651,
+          17.34223719049829,
+          17.385796469546296,
+          17.431549038602395,
+          17.47985479056084,
+          17.531081844452707,
+          17.58557318191579,
+          17.643604029449033,
+          17.70533923074085,
+          17.77080401501448,
+          17.839879274912786,
+          17.912323279629014,
+          17.987811263580948,
+          18.06597939107958,
+          18.14646194657886,
+          18.228916612944023,
+          18.313037997689786,
+          18.398562260292433,
+          18.485266165175815,
+          18.572963244100123,
+          18.661498851123305,
+          18.750745134286703
+        ],
+        "provenance": {
+          "rows": [
+            8,
+            9,
+            10,
+            11
+          ],
+          "method": "fit prediction and 95% mean-response band on 41 points from 0 to max fitted flow"
+        }
+      },
+      "wstf_points": {
+        "flow_cm_s": [
+          60.02,
+          80.01,
+          100.01,
+          143.98
+        ],
+        "o2_pct": [
+          16.806,
+          17.005,
+          17.605,
+          18.203
+        ],
+        "provenance": {
+          "rows": [
+            8,
+            9,
+            10,
+            11
+          ],
+          "method": "digitized WSTF markers used in the fit"
+        }
+      },
+      "lunar": {
+        "limit_pct": 12.994,
+        "provenance": {
+          "rows": [
+            14,
+            15
+          ],
+          "method": "mean o2_pct of the lunar line ends; flow_cm_s ignored (airflow unknown)"
+        }
+      },
+      "gap": {
+        "gap_pct": 2.7470161738794996,
+        "ci95_pct": [
+          1.8386502401024596,
+          3.6553821076565396
+        ],
+        "lunar_limit_treated_as_exact": false,
+        "reading_error_pct": 0.0073260481031702795,
+        "verdict": "above_zero",
+        "provenance": {
+          "rows": [
+            8,
+            9,
+            10,
+            11,
+            14,
+            15
+          ],
+          "method": "gap = zero-flow intercept (%) - mean of lunar line ends (%); interval = sqrt(intercept CI half-width^2 + reading_error^2), reading error = |gap(first reading) - gap(repeat reading)|, so it covers both the fit and the lunar line"
+        }
+      },
+      "gap_at_ref_flow": {
+        "flow_cm_s": 35.0,
+        "label": "Gap at the Earth (1 g) buoyant-flow reference",
+        "note": "35 cm/s is the paper's presumed buoyant velocity on Earth at 1 g (Takahashi; ICES-2025-392 p. 10). It is an Earth reference, not a Moon airflow.",
+        "earth_pct": 16.34755420746335,
+        "gap_pct": 3.3535542074633504,
+        "ci95_pct": [
+          2.737193230057028,
+          3.9699151848696728
+        ],
+        "reading_error_pct": 0.006232480063721013,
+        "provenance": {
+          "rows": [
+            8,
+            9,
+            10,
+            11,
+            14,
+            15
+          ],
+          "method": "fit value at 35 cm/s minus lunar limit; interval = 95% CI of the fitted mean at that flow, plus the reading error in quadrature when a repeat reading is given. Source of 35 cm/s: ICES-2025-392 p. 10: Takahashi 1-g buoyant velocity estimate, the paper's own reference for Table 2"
+        }
+      }
+    },
+    "cotton_flaming": {
+      "material": "cotton_flaming",
+      "status": "excluded",
+      "warnings": [],
+      "reason": "Fig. 9 (flaming) repeats Fig. 10 (smolder) point for point, and its fitted slope matches the smolder Table 2 value, not the flaming one. Flaming data cannot be read from the figures. This fits a one-place shift of the images printed as Figs. 7-9 (see caveats)."
+    },
+    "cotton_smolder": {
+      "material": "cotton_smolder",
+      "status": "ok",
+      "warnings": [],
+      "fit": {
+        "n": 4,
+        "slope_frac_per_cm_s": 0.0003359660099903202,
+        "slope_se": 5.72210054720226e-05,
+        "intercept_frac": 0.08522474329585433,
+        "intercept_se": 0.005774725097626694,
+        "r2": 0.9451649921957119,
+        "min_flow_cm_s": 60.0,
+        "flow_range_cm_s": [
+          60.02,
+          143.99
+        ],
+        "provenance": {
+          "rows": [
+            24,
+            25,
+            26,
+            27
+          ],
+          "method": "OLS of O2 fraction vs flow, WSTF markers with flow >= 60 cm/s"
+        }
+      },
+      "slope_check": {
+        "reference_slope_frac_per_cm_s": 0.00034,
+        "reference_source": "ICES 2025 Table 2, p. 11 (checked against the PDF)",
+        "relative_difference": 0.011864676499058332,
+        "tolerance": 0.2,
+        "within_tolerance": true,
+        "passed": true,
+        "status": "matches_table2"
+      },
+      "zero_flow": {
+        "intercept_pct": 8.522474329585433,
+        "ci95_pct": [
+          6.0378106590998115,
+          11.007138000071055
+        ],
+        "provenance": {
+          "rows": [
+            24,
+            25,
+            26,
+            27
+          ],
+          "method": "OLS intercept at 0 cm/s; 95% CI for the mean, t-distribution, n-2 df. Extrapolation outside the fitted flow range."
+        }
+      },
+      "curve": {
+        "flow_cm_s": [
+          0.0,
+          3.5997500000000002,
+          7.1995000000000005,
+          10.79925,
+          14.399000000000001,
+          17.99875,
+          21.5985,
+          25.19825,
+          28.798000000000002,
+          32.39775,
+          35.9975,
+          39.59725,
+          43.197,
+          46.79675,
+          50.3965,
+          53.99625,
+          57.596000000000004,
+          61.195750000000004,
+          64.7955,
+          68.39525,
+          71.995,
+          75.59475,
+          79.1945,
+          82.79425,
+          86.394,
+          89.99375,
+          93.5935,
+          97.19325,
+          100.793,
+          104.39275,
+          107.9925,
+          111.59225,
+          115.19200000000001,
+          118.79175000000001,
+          122.39150000000001,
+          125.99125000000001,
+          129.591,
+          133.19075,
+          136.7905,
+          140.39025,
+          143.99
+        ],
+        "o2_pct": [
+          8.522474329585433,
+          8.643413694031699,
+          8.764353058477964,
+          8.885292422924229,
+          9.006231787370496,
+          9.12717115181676,
+          9.248110516263026,
+          9.369049880709293,
+          9.489989245155558,
+          9.610928609601824,
+          9.73186797404809,
+          9.852807338494355,
+          9.97374670294062,
+          10.094686067386885,
+          10.21562543183315,
+          10.336564796279415,
+          10.45750416072568,
+          10.578443525171947,
+          10.699382889618212,
+          10.820322254064479,
+          10.941261618510744,
+          11.062200982957009,
+          11.183140347403276,
+          11.30407971184954,
+          11.425019076295806,
+          11.545958440742071,
+          11.666897805188336,
+          11.787837169634601,
+          11.908776534080868,
+          12.029715898527133,
+          12.1506552629734,
+          12.271594627419665,
+          12.39253399186593,
+          12.513473356312197,
+          12.634412720758462,
+          12.755352085204727,
+          12.876291449650992,
+          12.997230814097257,
+          13.118170178543522,
+          13.239109542989787,
+          13.360048907436054
+        ],
+        "lower_pct": [
+          6.0378106590998115,
+          6.242907416771159,
+          6.447670825270565,
+          6.652063347592775,
+          6.8560417988094535,
+          7.05955628882465,
+          7.262548931426376,
+          7.464952261508119,
+          7.666687287039044,
+          7.867661083302191,
+          8.067763813610537,
+          8.26686503308861,
+          8.464809101142187,
+          8.661409497103914,
+          8.856441809772312,
+          9.049635170856906,
+          9.24066195490883,
+          9.429125728529215,
+          9.614547790509786,
+          9.796353339697019,
+          9.973859513034665,
+          10.146269391339152,
+          10.312678471085256,
+          10.472102292397578,
+          10.623534001208188,
+          10.766035639784276,
+          10.89885472301462,
+          11.021540799128164,
+          11.134025329123316,
+          11.236634514008237,
+          11.330029839218424,
+          11.4150997701607,
+          11.492839518355911,
+          11.564249356629675,
+          11.63026551629216,
+          11.691723218702371,
+          11.749344035690571,
+          11.803738487870367,
+          11.855416543645465,
+          11.90480114427177,
+          11.952241955440853
+        ],
+        "upper_pct": [
+          11.007138000071055,
+          11.043919971292237,
+          11.081035291685362,
+          11.118521498255683,
+          11.156421775931538,
+          11.194786014808871,
+          11.233672101099677,
+          11.273147499910465,
+          11.31329120327207,
+          11.354196135901457,
+          11.39597213448564,
+          11.438749643900097,
+          11.482684304739053,
+          11.527962637669855,
+          11.57480905389399,
+          11.623494421701924,
+          11.67434636654253,
+          11.72776132181468,
+          11.78421798872664,
+          11.844291168431937,
+          11.908663723986821,
+          11.978132574574865,
+          12.053602223721294,
+          12.136057131301502,
+          12.226504151383423,
+          12.325881241699866,
+          12.434940887362051,
+          12.554133540141041,
+          12.683527739038416,
+          12.822797283046029,
+          12.971280686728376,
+          13.128089484678629,
+          13.292228465375949,
+          13.462697355994715,
+          13.638559925224763,
+          13.818980951707083,
+          14.003238863611415,
+          14.190723140324149,
+          14.380923813441582,
+          14.573417941707806,
+          14.767855859431252
+        ],
+        "provenance": {
+          "rows": [
+            24,
+            25,
+            26,
+            27
+          ],
+          "method": "fit prediction and 95% mean-response band on 41 points from 0 to max fitted flow"
+        }
+      },
+      "wstf_points": {
+        "flow_cm_s": [
+          60.02,
+          80.01,
+          100.01,
+          143.99
+        ],
+        "o2_pct": [
+          10.794,
+          10.795,
+          12.0,
+          13.403
+        ],
+        "provenance": {
+          "rows": [
+            24,
+            25,
+            26,
+            27
+          ],
+          "method": "digitized WSTF markers used in the fit"
+        }
+      },
+      "lunar": {
+        "limit_pct": 10.997,
+        "provenance": {
+          "rows": [
+            30,
+            31
+          ],
+          "method": "mean o2_pct of the lunar line ends; flow_cm_s ignored (airflow unknown)"
+        }
+      },
+      "gap": {
+        "gap_pct": -2.4745256704145664,
+        "ci95_pct": [
+          -4.959189355542873,
+          0.010138014713739985
+        ],
+        "lunar_limit_treated_as_exact": false,
+        "reading_error_pct": 0.00026974857281913955,
+        "verdict": "includes_zero",
+        "provenance": {
+          "rows": [
+            24,
+            25,
+            26,
+            27,
+            30,
+            31
+          ],
+          "method": "gap = zero-flow intercept (%) - mean of lunar line ends (%); interval = sqrt(intercept CI half-width^2 + reading_error^2), reading error = |gap(first reading) - gap(repeat reading)|, so it covers both the fit and the lunar line"
+        }
+      },
+      "gap_at_ref_flow": {
+        "flow_cm_s": 35.0,
+        "label": "Gap at the Earth (1 g) buoyant-flow reference",
+        "note": "35 cm/s is the paper's presumed buoyant velocity on Earth at 1 g (Takahashi; ICES-2025-392 p. 10). It is an Earth reference, not a Moon airflow.",
+        "earth_pct": 9.698355364551555,
+        "gap_pct": -1.2986446354484453,
+        "ci95_pct": [
+          -2.984591133688816,
+          0.38730186279192536
+        ],
+        "reading_error_pct": 0.00099298547537785,
+        "provenance": {
+          "rows": [
+            24,
+            25,
+            26,
+            27,
+            30,
+            31
+          ],
+          "method": "fit value at 35 cm/s minus lunar limit; interval = 95% CI of the fitted mean at that flow, plus the reading error in quadrature when a repeat reading is given. Source of 35 cm/s: ICES-2025-392 p. 10: Takahashi 1-g buoyant velocity estimate, the paper's own reference for Table 2"
+        }
+      }
+    },
+    "polycarbonate": {
+      "material": "polycarbonate",
+      "status": "ok",
+      "warnings": [],
+      "fit": {
+        "n": 4,
+        "slope_frac_per_cm_s": 0.0004025577475640309,
+        "slope_se": 8.504685079333056e-05,
+        "intercept_frac": 0.1762621738406398,
+        "intercept_se": 0.008456755552289754,
+        "r2": 0.9180487064078884,
+        "min_flow_cm_s": 60.0,
+        "flow_range_cm_s": [
+          59.97,
+          139.94
+        ],
+        "provenance": {
+          "rows": [
+            32,
+            33,
+            34,
+            35
+          ],
+          "method": "OLS of O2 fraction vs flow, WSTF markers with flow >= 60 cm/s"
+        }
+      },
+      "slope_check": {
+        "reference_slope_frac_per_cm_s": 0.0004,
+        "reference_source": "ICES 2025 Table 2, p. 11 (checked against the PDF)",
+        "relative_difference": 0.006394368910077244,
+        "tolerance": 0.2,
+        "within_tolerance": true,
+        "passed": true,
+        "status": "matches_table2"
+      },
+      "zero_flow": {
+        "intercept_pct": 17.62621738406398,
+        "ci95_pct": [
+          13.98756914787564,
+          21.264865620252323
+        ],
+        "provenance": {
+          "rows": [
+            32,
+            33,
+            34,
+            35
+          ],
+          "method": "OLS intercept at 0 cm/s; 95% CI for the mean, t-distribution, n-2 df. Extrapolation outside the fitted flow range."
+        }
+      },
+      "curve": {
+        "flow_cm_s": [
+          0.0,
+          3.4985,
+          6.997,
+          10.4955,
+          13.994,
+          17.4925,
+          20.991,
+          24.4895,
+          27.988,
+          31.4865,
+          34.985,
+          38.4835,
+          41.982,
+          45.4805,
+          48.979,
+          52.4775,
+          55.976,
+          59.4745,
+          62.973,
+          66.47149999999999,
+          69.97,
+          73.4685,
+          76.967,
+          80.46549999999999,
+          83.964,
+          87.4625,
+          90.961,
+          94.45949999999999,
+          97.958,
+          101.4565,
+          104.955,
+          108.45349999999999,
+          111.952,
+          115.4505,
+          118.949,
+          122.44749999999999,
+          125.946,
+          129.4445,
+          132.94299999999998,
+          136.4415,
+          139.94
+        ],
+        "o2_pct": [
+          17.62621738406398,
+          17.767052212049254,
+          17.90788704003453,
+          18.04872186801981,
+          18.189556696005084,
+          18.33039152399036,
+          18.471226351975638,
+          18.612061179960914,
+          18.75289600794619,
+          18.893730835931464,
+          19.03456566391674,
+          19.175400491902018,
+          19.316235319887294,
+          19.45707014787257,
+          19.597904975857848,
+          19.73873980384312,
+          19.8795746318284,
+          20.020409459813678,
+          20.16124428779895,
+          20.302079115784228,
+          20.442913943769504,
+          20.58374877175478,
+          20.724583599740058,
+          20.86541842772533,
+          21.00625325571061,
+          21.147088083695888,
+          21.28792291168116,
+          21.428757739666437,
+          21.569592567651714,
+          21.71042739563699,
+          21.851262223622268,
+          21.992097051607544,
+          22.132931879592817,
+          22.273766707578098,
+          22.41460153556337,
+          22.555436363548647,
+          22.696271191533924,
+          22.837106019519197,
+          22.977940847504474,
+          23.118775675489754,
+          23.259610503475027
+        ],
+        "lower_pct": [
+          13.987569147875636,
+          14.25042530621935,
+          14.512839672108152,
+          14.774763026847918,
+          15.03613880671764,
+          15.296901734517629,
+          15.556976148448271,
+          15.816273952318221,
+          16.07469209052178,
+          16.33210942519731,
+          16.588382860420122,
+          16.84334251837729,
+          17.096785725234458,
+          17.348469511882957,
+          17.598101283353586,
+          17.84532727547581,
+          18.08971842973571,
+          18.330753437622242,
+          18.567799042410012,
+          18.800088418627887,
+          19.026699840534224,
+          19.246540207009712,
+          19.45834146941136,
+          19.660682129949798,
+          19.852048772396163,
+          20.030949893777102,
+          20.19608091017456,
+          20.346514014307203,
+          20.48186004838438,
+          20.602343187000017,
+          20.708757422338554,
+          20.80232318399707,
+          20.884499054524536,
+          20.956806112520717,
+          21.020699126236753,
+          21.07749161759704,
+          21.12832494085691,
+          21.174166379753228,
+          21.215823066661038,
+          21.25396256710839,
+          21.289134720222656
+        ],
+        "upper_pct": [
+          21.264865620252323,
+          21.28367911787916,
+          21.30293440796091,
+          21.3226807091917,
+          21.34297458529253,
+          21.363881313463093,
+          21.385476555503004,
+          21.40784840760361,
+          21.4310999253706,
+          21.455352246665623,
+          21.48074846741336,
+          21.507458465426744,
+          21.535684914540134,
+          21.565670783862185,
+          21.59770866836211,
+          21.632152332210435,
+          21.66943083392109,
+          21.71006548200511,
+          21.75468953318789,
+          21.80406981294057,
+          21.859128047004788,
+          21.92095733649985,
+          21.990825730068757,
+          22.070154725500863,
+          22.16045773902506,
+          22.263226273614674,
+          22.37976491318776,
+          22.51100146502567,
+          22.657325086919048,
+          22.818511604273965,
+          22.99376702490598,
+          23.181870919218014,
+          23.381364704661102,
+          23.59072730263548,
+          23.808503944889992,
+          24.033381109500255,
+          24.264217442210935,
+          24.50004565928517,
+          24.74005862834791,
+          24.983588783871117,
+          25.230086286727406
+        ],
+        "provenance": {
+          "rows": [
+            32,
+            33,
+            34,
+            35
+          ],
+          "method": "fit prediction and 95% mean-response band on 41 points from 0 to max fitted flow"
+        }
+      },
+      "wstf_points": {
+        "flow_cm_s": [
+          59.97,
+          79.93,
+          99.91,
+          139.94
+        ],
+        "o2_pct": [
+          19.601,
+          21.2,
+          21.992,
+          22.999
+        ],
+        "provenance": {
+          "rows": [
+            32,
+            33,
+            34,
+            35
+          ],
+          "method": "digitized WSTF markers used in the fit"
+        }
+      },
+      "lunar": {
+        "limit_pct": 20.999,
+        "provenance": {
+          "rows": [
+            38,
+            39
+          ],
+          "method": "mean o2_pct of the lunar line ends; flow_cm_s ignored (airflow unknown)"
+        }
+      },
+      "gap": {
+        "gap_pct": -3.3727826159360177,
+        "ci95_pct": [
+          -7.011443910197197,
+          0.2658786783251612
+        ],
+        "lunar_limit_treated_as_exact": false,
+        "reading_error_pct": 0.009748212036100767,
+        "verdict": "includes_zero",
+        "provenance": {
+          "rows": [
+            32,
+            33,
+            34,
+            35,
+            38,
+            39
+          ],
+          "method": "gap = zero-flow intercept (%) - mean of lunar line ends (%); interval = sqrt(intercept CI half-width^2 + reading_error^2), reading error = |gap(first reading) - gap(repeat reading)|, so it covers both the fit and the lunar line"
+        }
+      },
+      "gap_at_ref_flow": {
+        "flow_cm_s": 35.0,
+        "label": "Gap at the Earth (1 g) buoyant-flow reference",
+        "note": "35 cm/s is the paper's presumed buoyant velocity on Earth at 1 g (Takahashi; ICES-2025-392 p. 10). It is an Earth reference, not a Moon airflow.",
+        "earth_pct": 19.03516950053809,
+        "gap_pct": -1.9638304994619098,
+        "ci95_pct": [
+          -4.40953145982748,
+          0.48187046090366126
+        ],
+        "reading_error_pct": 0.007135623158404769,
+        "provenance": {
+          "rows": [
+            32,
+            33,
+            34,
+            35,
+            38,
+            39
+          ],
+          "method": "fit value at 35 cm/s minus lunar limit; interval = 95% CI of the fitted mean at that flow, plus the reading error in quadrature when a repeat reading is given. Source of 35 cm/s: ICES-2025-392 p. 10: Takahashi 1-g buoyant velocity estimate, the paper's own reference for Table 2"
+        }
+      }
+    },
+    "nomex_velcro": {
+      "material": "nomex_velcro",
+      "status": "ok",
+      "warnings": [],
+      "fit": {
+        "n": 4,
+        "slope_frac_per_cm_s": 1.5296482275874178e-05,
+        "slope_se": 2.5156460210438017e-05,
+        "intercept_frac": 0.21053192011357297,
+        "intercept_se": 0.0025383906377906738,
+        "r2": 0.15602180689997625,
+        "min_flow_cm_s": 60.0,
+        "flow_range_cm_s": [
+          59.9,
+          144.02
+        ],
+        "provenance": {
+          "rows": [
+            40,
+            41,
+            42,
+            43
+          ],
+          "method": "OLS of O2 fraction vs flow, WSTF markers with flow >= 60 cm/s"
+        }
+      },
+      "slope_check": {
+        "reference_slope_frac_per_cm_s": 1.6e-05,
+        "reference_source": "ICES 2025 Table 2, p. 11 (checked against the PDF)",
+        "relative_difference": 0.043969857757863835,
+        "tolerance": 0.2,
+        "within_tolerance": true,
+        "passed": true,
+        "status": "matches_table2"
+      },
+      "zero_flow": {
+        "intercept_pct": 21.053192011357297,
+        "ci95_pct": [
+          19.961010670671243,
+          22.14537335204335
+        ],
+        "provenance": {
+          "rows": [
+            40,
+            41,
+            42,
+            43
+          ],
+          "method": "OLS intercept at 0 cm/s; 95% CI for the mean, t-distribution, n-2 df. Extrapolation outside the fitted flow range."
+        }
+      },
+      "curve": {
+        "flow_cm_s": [
+          0.0,
+          3.6005000000000003,
+          7.2010000000000005,
+          10.8015,
+          14.402000000000001,
+          18.0025,
+          21.603,
+          25.203500000000002,
+          28.804000000000002,
+          32.4045,
+          36.005,
+          39.605500000000006,
+          43.206,
+          46.8065,
+          50.407000000000004,
+          54.00750000000001,
+          57.608000000000004,
+          61.2085,
+          64.809,
+          68.40950000000001,
+          72.01,
+          75.6105,
+          79.21100000000001,
+          82.81150000000001,
+          86.412,
+          90.0125,
+          93.613,
+          97.21350000000001,
+          100.81400000000001,
+          104.4145,
+          108.01500000000001,
+          111.61550000000001,
+          115.21600000000001,
+          118.8165,
+          122.417,
+          126.01750000000001,
+          129.618,
+          133.2185,
+          136.81900000000002,
+          140.4195,
+          144.02
+        ],
+        "o2_pct": [
+          21.053192011357297,
+          21.058699509800725,
+          21.064207008244153,
+          21.069714506687582,
+          21.07522200513101,
+          21.08072950357444,
+          21.086237002017867,
+          21.091744500461296,
+          21.097251998904724,
+          21.102759497348153,
+          21.108266995791585,
+          21.11377449423501,
+          21.119281992678438,
+          21.124789491121867,
+          21.130296989565295,
+          21.135804488008723,
+          21.141311986452152,
+          21.14681948489558,
+          21.15232698333901,
+          21.15783448178244,
+          21.163341980225866,
+          21.168849478669298,
+          21.174356977112723,
+          21.17986447555615,
+          21.18537197399958,
+          21.190879472443008,
+          21.196386970886437,
+          21.201894469329865,
+          21.207401967773297,
+          21.212909466216722,
+          21.218416964660154,
+          21.22392446310358,
+          21.22943196154701,
+          21.234939459990436,
+          21.240446958433864,
+          21.245954456877296,
+          21.25146195532072,
+          21.256969453764153,
+          21.262476952207578,
+          21.26798445065101,
+          21.273491949094435
+        ],
+        "lower_pct": [
+          19.961010670671246,
+          20.003517459502213,
+          20.045877093882584,
+          20.088073000547393,
+          20.13008611249293,
+          20.17189440224391,
+          20.21347231199528,
+          20.254790055003205,
+          20.295812755870067,
+          20.336499388989417,
+          20.376801464183984,
+          20.41666139646671,
+          20.456010483330786,
+          20.494766399460474,
+          20.53283010862299,
+          20.5700820927464,
+          20.60637782222086,
+          20.641542463347605,
+          20.675364978742174,
+          20.707592084805277,
+          20.7379230630107,
+          20.766007237717112,
+          20.79144698253396,
+          20.813810062000858,
+          20.832655118291797,
+          20.847571878877798,
+          20.858232266378636,
+          20.864441240801742,
+          20.866171348412397,
+          20.86356784742952,
+          20.856922324967694,
+          20.846625166366934,
+          20.833112997842736,
+          20.816824332845574,
+          20.798169472023837,
+          20.777514420901447,
+          20.75517540854859,
+          20.731420043536115,
+          20.70647191126178,
+          20.68051648947754,
+          20.653707162143707
+        ],
+        "upper_pct": [
+          22.14537335204335,
+          22.113881560099237,
+          22.082536922605723,
+          22.051356012827767,
+          22.020357897769095,
+          21.989564604904967,
+          21.95900169204046,
+          21.928698945919386,
+          21.89869124193938,
+          21.86901960570689,
+          21.839732527399182,
+          21.810887592003308,
+          21.78255350202609,
+          21.754812582783263,
+          21.727763870507598,
+          21.70152688327105,
+          21.676246150683447,
+          21.65209650644356,
+          21.629288987935844,
+          21.6080768787596,
+          21.58876089744103,
+          21.571691719621484,
+          21.557266971691487,
+          21.545918889111444,
+          21.538088829707366,
+          21.53418706600822,
+          21.53454167539424,
+          21.539347697857988,
+          21.548632587134193,
+          21.56225108500393,
+          21.57991160435261,
+          21.601223759840227,
+          21.625750925251282,
+          21.6530545871353,
+          21.682724444843892,
+          21.714394492853142,
+          21.747748502092854,
+          21.782518863992188,
+          21.818481993153377,
+          21.855452411824476,
+          21.893276736045163
+        ],
+        "provenance": {
+          "rows": [
+            40,
+            41,
+            42,
+            43
+          ],
+          "method": "fit prediction and 95% mean-response band on 41 points from 0 to max fitted flow"
+        }
+      },
+      "wstf_points": {
+        "flow_cm_s": [
+          59.9,
+          79.98,
+          100.0,
+          144.02
+        ],
+        "o2_pct": [
+          21.003,
+          21.298,
+          21.299,
+          21.2
+        ],
+        "provenance": {
+          "rows": [
+            40,
+            41,
+            42,
+            43
+          ],
+          "method": "digitized WSTF markers used in the fit"
+        }
+      },
+      "lunar": {
+        "limit_pct": 24.002,
+        "provenance": {
+          "rows": [
+            46,
+            47
+          ],
+          "method": "mean o2_pct of the lunar line ends; flow_cm_s ignored (airflow unknown)"
+        }
+      },
+      "gap": {
+        "gap_pct": -2.9488079886427023,
+        "ci95_pct": [
+          -4.04099993118424,
+          -1.8566160461011643
+        ],
+        "lunar_limit_treated_as_exact": false,
+        "reading_error_pct": 0.004812318555199369,
+        "verdict": "below_zero",
+        "provenance": {
+          "rows": [
+            40,
+            41,
+            42,
+            43,
+            46,
+            47
+          ],
+          "method": "gap = zero-flow intercept (%) - mean of lunar line ends (%); interval = sqrt(intercept CI half-width^2 + reading_error^2), reading error = |gap(first reading) - gap(repeat reading)|, so it covers both the fit and the lunar line"
+        }
+      },
+      "gap_at_ref_flow": {
+        "flow_cm_s": 35.0,
+        "label": "Gap at the Earth (1 g) buoyant-flow reference",
+        "note": "35 cm/s is the paper's presumed buoyant velocity on Earth at 1 g (Takahashi; ICES-2025-392 p. 10). It is an Earth reference, not a Moon airflow.",
+        "earth_pct": 21.106729699322855,
+        "gap_pct": -2.8952703006771436,
+        "ci95_pct": [
+          -3.6364120672277402,
+          -2.154128534126547
+        ],
+        "reading_error_pct": 0.002963315347198403,
+        "provenance": {
+          "rows": [
+            40,
+            41,
+            42,
+            43,
+            46,
+            47
+          ],
+          "method": "fit value at 35 cm/s minus lunar limit; interval = 95% CI of the fitted mean at that flow, plus the reading error in quadrature when a repeat reading is given. Source of 35 cm/s: ICES-2025-392 p. 10: Takahashi 1-g buoyant velocity estimate, the paper's own reference for Table 2"
+        }
+      }
+    }
+  },
+  "ranking": [
+    {
+      "rank": 1,
+      "material": "p213",
+      "gap_pct": 2.7470161738794996,
+      "ci95_pct": [
+        1.8386502401024596,
+        3.6553821076565396
+      ]
+    },
+    {
+      "rank": 2,
+      "material": "pmma",
+      "gap_pct": 0.10743931706181087,
+      "ci95_pct": [
+        -1.3798079503700778,
+        1.5946865844936995
+      ]
+    },
+    {
+      "rank": 3,
+      "material": "cotton_smolder",
+      "gap_pct": -2.4745256704145664,
+      "ci95_pct": [
+        -4.959189355542873,
+        0.010138014713739985
+      ]
+    },
+    {
+      "rank": 4,
+      "material": "nomex_velcro",
+      "gap_pct": -2.9488079886427023,
+      "ci95_pct": [
+        -4.04099993118424,
+        -1.8566160461011643
+      ]
+    },
+    {
+      "rank": 5,
+      "material": "polycarbonate",
+      "gap_pct": -3.3727826159360177,
+      "ci95_pct": [
+        -7.011443910197197,
+        0.2658786783251612
+      ]
+    }
+  ]
+}

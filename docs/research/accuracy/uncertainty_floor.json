@@ -1,0 +1,407 @@
+{
+ "_note": "Written with AI assistance (Claude Code). Analysis only; no reported rate changes. Label uncertainty applies to comparisons against a model or condition, NOT to our rate vs Table S1 (same flame). Correction of an earlier version that mixed the two.",
+ "sources": {
+  "psi_table": "NASA PSI-25 experimental table (CC0), columns 'Calibrated initial/final O2 % by vol'",
+  "o2_readings_before_after": "ICES-2015-196 (Olson, Ferkul et al., NTRS 20150019858) p. 5",
+  "o2_decreased_each_burn": "ICES-2015-196 p. 4",
+  "o2_uncertainty": "Link et al. 2018 Sci Rep 8:120, Fig. 7 caption: +/-0.3%",
+  "beta": "docs/research/orbit_model.json effects.loglinear_coefficients.o2_pct"
+ },
+ "beta_o2_per_point": 0.1796,
+ "beta_o2_ci95_cluster": [
+  0.1258,
+  0.3096
+ ],
+ "stated_o2_uncertainty_in_rate_terms_pct": {
+  "as_1sd": 5.5,
+  "as_95pct_bound_sd": 2.8,
+  "as_1sd_beta_ci": [
+   3.8,
+   9.7
+  ]
+ },
+ "tests": {
+  "B16": {
+   "psi_test": "P16",
+   "table_s1_o2": 18.2,
+   "psi_initial_o2": 18.2,
+   "psi_final_o2": 17.4,
+   "drop_points": 0.8,
+   "label_matches_initial": true,
+   "rate_effect_of_full_drop_pct": -13.4
+  },
+  "B19": {
+   "psi_test": "P19",
+   "table_s1_o2": 17.5,
+   "psi_initial_o2": 17.5,
+   "psi_final_o2": 16.7,
+   "drop_points": 0.8,
+   "label_matches_initial": true,
+   "rate_effect_of_full_drop_pct": -13.4
+  },
+  "B12": {
+   "psi_test": "P12",
+   "table_s1_o2": 17.5,
+   "psi_initial_o2": 17.5,
+   "psi_final_o2": 16.8,
+   "drop_points": 0.7,
+   "label_matches_initial": true,
+   "rate_effect_of_full_drop_pct": -11.8
+  },
+  "P17": {
+   "psi_test": "P17",
+   "table_s1_o2": 16.8,
+   "psi_initial_o2": 16.8,
+   "psi_final_o2": 16.5,
+   "drop_points": 0.3,
+   "label_matches_initial": true,
+   "rate_effect_of_full_drop_pct": -5.2
+  },
+  "B13b": {
+   "psi_test": "P13b",
+   "table_s1_o2": 20.6,
+   "psi_initial_o2": 20.6,
+   "psi_final_o2": 20.2,
+   "drop_points": 0.4,
+   "label_matches_initial": true,
+   "rate_effect_of_full_drop_pct": -6.9
+  },
+  "B13a": {
+   "psi_test": "P13a",
+   "table_s1_o2": 20.7,
+   "psi_initial_o2": 20.7,
+   "psi_final_o2": 19.1,
+   "drop_points": 1.6,
+   "label_matches_initial": true,
+   "rate_effect_of_full_drop_pct": -25.0
+  }
+ },
+ "steps": [
+  {
+   "test_id": "B16",
+   "flow_cm_s": 7.55,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.189,
+   "o2_label": 18.2,
+   "o2_linear_estimate": 18.05,
+   "o2_bounds": [
+    17.4,
+    18.2
+   ],
+   "label_minus_estimate_points": 0.15,
+   "expected_rate_shift_pct_linear": -2.7,
+   "expected_rate_shift_pct_worst": -13.4
+  },
+  {
+   "test_id": "B16",
+   "flow_cm_s": 1.67,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.364,
+   "o2_label": 18.2,
+   "o2_linear_estimate": 17.91,
+   "o2_bounds": [
+    17.4,
+    18.2
+   ],
+   "label_minus_estimate_points": 0.29,
+   "expected_rate_shift_pct_linear": -5.1,
+   "expected_rate_shift_pct_worst": -13.4
+  },
+  {
+   "test_id": "B16",
+   "flow_cm_s": 0.83,
+   "headline": true,
+   "frac_of_burn_at_mid": 0.596,
+   "o2_label": 18.2,
+   "o2_linear_estimate": 17.72,
+   "o2_bounds": [
+    17.4,
+    18.2
+   ],
+   "label_minus_estimate_points": 0.48,
+   "expected_rate_shift_pct_linear": -8.2,
+   "expected_rate_shift_pct_worst": -13.4
+  },
+  {
+   "test_id": "B16",
+   "flow_cm_s": 0.72,
+   "headline": true,
+   "frac_of_burn_at_mid": 0.864,
+   "o2_label": 18.2,
+   "o2_linear_estimate": 17.51,
+   "o2_bounds": [
+    17.4,
+    18.2
+   ],
+   "label_minus_estimate_points": 0.69,
+   "expected_rate_shift_pct_linear": -11.7,
+   "expected_rate_shift_pct_worst": -13.4
+  },
+  {
+   "test_id": "B19",
+   "flow_cm_s": 7.55,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.134,
+   "o2_label": 17.5,
+   "o2_linear_estimate": 17.39,
+   "o2_bounds": [
+    16.7,
+    17.5
+   ],
+   "label_minus_estimate_points": 0.11,
+   "expected_rate_shift_pct_linear": -1.9,
+   "expected_rate_shift_pct_worst": -13.4
+  },
+  {
+   "test_id": "B19",
+   "flow_cm_s": 1.67,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.248,
+   "o2_label": 17.5,
+   "o2_linear_estimate": 17.3,
+   "o2_bounds": [
+    16.7,
+    17.5
+   ],
+   "label_minus_estimate_points": 0.2,
+   "expected_rate_shift_pct_linear": -3.5,
+   "expected_rate_shift_pct_worst": -13.4
+  },
+  {
+   "test_id": "B19",
+   "flow_cm_s": 0.83,
+   "headline": true,
+   "frac_of_burn_at_mid": 0.389,
+   "o2_label": 17.5,
+   "o2_linear_estimate": 17.19,
+   "o2_bounds": [
+    16.7,
+    17.5
+   ],
+   "label_minus_estimate_points": 0.31,
+   "expected_rate_shift_pct_linear": -5.4,
+   "expected_rate_shift_pct_worst": -13.4
+  },
+  {
+   "test_id": "B19",
+   "flow_cm_s": 0.72,
+   "headline": true,
+   "frac_of_burn_at_mid": 0.575,
+   "o2_label": 17.5,
+   "o2_linear_estimate": 17.04,
+   "o2_bounds": [
+    16.7,
+    17.5
+   ],
+   "label_minus_estimate_points": 0.46,
+   "expected_rate_shift_pct_linear": -7.9,
+   "expected_rate_shift_pct_worst": -13.4
+  },
+  {
+   "test_id": "B12",
+   "flow_cm_s": 1.01,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.217,
+   "o2_label": 17.5,
+   "o2_linear_estimate": 17.35,
+   "o2_bounds": [
+    16.8,
+    17.5
+   ],
+   "label_minus_estimate_points": 0.15,
+   "expected_rate_shift_pct_linear": -2.7,
+   "expected_rate_shift_pct_worst": -11.8
+  },
+  {
+   "test_id": "B12",
+   "flow_cm_s": 0.82,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.36,
+   "o2_label": 17.5,
+   "o2_linear_estimate": 17.25,
+   "o2_bounds": [
+    16.8,
+    17.5
+   ],
+   "label_minus_estimate_points": 0.25,
+   "expected_rate_shift_pct_linear": -4.4,
+   "expected_rate_shift_pct_worst": -11.8
+  },
+  {
+   "test_id": "B12",
+   "flow_cm_s": 0.6,
+   "headline": true,
+   "frac_of_burn_at_mid": 0.509,
+   "o2_label": 17.5,
+   "o2_linear_estimate": 17.14,
+   "o2_bounds": [
+    16.8,
+    17.5
+   ],
+   "label_minus_estimate_points": 0.36,
+   "expected_rate_shift_pct_linear": -6.2,
+   "expected_rate_shift_pct_worst": -11.8
+  },
+  {
+   "test_id": "B12",
+   "flow_cm_s": 0.48,
+   "headline": true,
+   "frac_of_burn_at_mid": 0.67,
+   "o2_label": 17.5,
+   "o2_linear_estimate": 17.03,
+   "o2_bounds": [
+    16.8,
+    17.5
+   ],
+   "label_minus_estimate_points": 0.47,
+   "expected_rate_shift_pct_linear": -8.1,
+   "expected_rate_shift_pct_worst": -11.8
+  },
+  {
+   "test_id": "P17",
+   "flow_cm_s": 1.01,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.317,
+   "o2_label": 16.8,
+   "o2_linear_estimate": 16.7,
+   "o2_bounds": [
+    16.5,
+    16.8
+   ],
+   "label_minus_estimate_points": 0.1,
+   "expected_rate_shift_pct_linear": -1.7,
+   "expected_rate_shift_pct_worst": -5.2
+  },
+  {
+   "test_id": "P17",
+   "flow_cm_s": 0.82,
+   "headline": true,
+   "frac_of_burn_at_mid": 0.577,
+   "o2_label": 16.8,
+   "o2_linear_estimate": 16.63,
+   "o2_bounds": [
+    16.5,
+    16.8
+   ],
+   "label_minus_estimate_points": 0.17,
+   "expected_rate_shift_pct_linear": -3.1,
+   "expected_rate_shift_pct_worst": -5.2
+  },
+  {
+   "test_id": "P17",
+   "flow_cm_s": 0.41,
+   "headline": true,
+   "frac_of_burn_at_mid": 0.922,
+   "o2_label": 16.8,
+   "o2_linear_estimate": 16.52,
+   "o2_bounds": [
+    16.5,
+    16.8
+   ],
+   "label_minus_estimate_points": 0.28,
+   "expected_rate_shift_pct_linear": -4.8,
+   "expected_rate_shift_pct_worst": -5.2
+  },
+  {
+   "test_id": "B13b",
+   "flow_cm_s": 1.64,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.314,
+   "o2_label": 20.6,
+   "o2_linear_estimate": 20.47,
+   "o2_bounds": [
+    20.2,
+    20.6
+   ],
+   "label_minus_estimate_points": 0.13,
+   "expected_rate_shift_pct_linear": -2.2,
+   "expected_rate_shift_pct_worst": -6.9
+  },
+  {
+   "test_id": "B13b",
+   "flow_cm_s": 1.54,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.766,
+   "o2_label": 20.6,
+   "o2_linear_estimate": 20.29,
+   "o2_bounds": [
+    20.2,
+    20.6
+   ],
+   "label_minus_estimate_points": 0.31,
+   "expected_rate_shift_pct_linear": -5.4,
+   "expected_rate_shift_pct_worst": -6.9
+  },
+  {
+   "test_id": "B13a",
+   "flow_cm_s": 1.64,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.11,
+   "o2_label": 20.7,
+   "o2_linear_estimate": 20.52,
+   "o2_bounds": [
+    19.1,
+    20.7
+   ],
+   "label_minus_estimate_points": 0.18,
+   "expected_rate_shift_pct_linear": -3.1,
+   "expected_rate_shift_pct_worst": -25.0
+  },
+  {
+   "test_id": "B13a",
+   "flow_cm_s": 1.54,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.276,
+   "o2_label": 20.7,
+   "o2_linear_estimate": 20.26,
+   "o2_bounds": [
+    19.1,
+    20.7
+   ],
+   "label_minus_estimate_points": 0.44,
+   "expected_rate_shift_pct_linear": -7.6,
+   "expected_rate_shift_pct_worst": -25.0
+  },
+  {
+   "test_id": "B13a",
+   "flow_cm_s": 1.43,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.463,
+   "o2_label": 20.7,
+   "o2_linear_estimate": 19.96,
+   "o2_bounds": [
+    19.1,
+    20.7
+   ],
+   "label_minus_estimate_points": 0.74,
+   "expected_rate_shift_pct_linear": -12.5,
+   "expected_rate_shift_pct_worst": -25.0
+  },
+  {
+   "test_id": "B13a",
+   "flow_cm_s": 1.38,
+   "headline": false,
+   "frac_of_burn_at_mid": 0.648,
+   "o2_label": 20.7,
+   "o2_linear_estimate": 19.66,
+   "o2_bounds": [
+    19.1,
+    20.7
+   ],
+   "label_minus_estimate_points": 1.04,
+   "expected_rate_shift_pct_linear": -17.0,
+   "expected_rate_shift_pct_worst": -25.0
+  }
+ ],
+ "headline_steps_label_minus_estimate_points": [
+  0.48,
+  0.69,
+  0.31,
+  0.46,
+  0.36,
+  0.47,
+  0.17,
+  0.28
+ ],
+ "assumption": "O2 falls linearly in time over the burn window between NASA's before and after readings."
+}

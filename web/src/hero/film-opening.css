@@ -1,0 +1,55 @@
+/* Written with AI assistance (Claude Code) */
+/* The Home opening over the film: the headline in the display face with its glow, the chapters as big
+   display headings low on the left, the readout low on the right (top on a phone). */
+.film-open { background: var(--night); }
+.film-open .film-chapter .fo-open { display: grid; gap: 20px; justify-items: start; }
+.film-open .film-chapter h1.split {
+  font-family: var(--display); font-weight: 500; letter-spacing: -0.035em;
+  font-size: clamp(2.6rem, 1.1rem + 4.9vw, 6rem); line-height: 0.92; max-width: 11.5ch;
+}
+.film-open .film-chapter .hero3d-lede { margin: 0; max-width: 34ch; }
+.film-open .film-chapter .fo-ch { display: grid; gap: 0; }
+.film-open .film-chapter .fo-ch .t-meta { margin-bottom: 14px; color: var(--pay); }
+.film-open .film-chapter h2 { font-size: clamp(2.1rem, 1rem + 3.6vw, 4.4rem); line-height: 0.95; letter-spacing: -0.035em; max-width: 16ch; }
+.film-open .film-chapter .src { border-bottom-color: #4b5675; }
+.film-open .fo-actions { margin-top: 22px; }
+/* the shade under the chapters reaches a little higher, so the big type always sits on navy */
+.film-open .film-shade { height: 70%; }
+
+/* readout: low right on wide screens, under the tag at the top on a phone */
+.film-open .fo-readout { z-index: 2; }
+@media (max-width: 760px) {
+  .film-open .film-stage .fo-readout {
+    top: calc(var(--bar) + 50px); bottom: auto; left: var(--gutter); right: var(--gutter);
+    background: color-mix(in srgb, var(--night) 72%, transparent);
+  }
+  .film-open .film-chapters { bottom: max(6svh, 40px); }
+}
+@media (max-width: 1100px) and (min-width: 761px) { .film-open .film-chapters { max-width: min(36rem, calc(100% - 20rem)); } }
+
+/* held still (reduced motion, Pause): poster, readout, then the chapters as a list */
+.film-open .film-still .fo-readout { position: static; max-width: 1240px; margin: 28px auto 0; min-width: 0; }
+.film-open .film-still-lead .split, .film-open .film-still-list .split { font-family: var(--display); font-weight: 500; letter-spacing: -0.035em; font-size: clamp(2.4rem, 1.1rem + 4.4vw, 5rem); line-height: 0.95; max-width: 11.5ch; }
+.film-open .film-still-lead .fo-open, .film-open .film-still-list .fo-open, .film-open .film-still-list .fo-ch { display: grid; gap: 14px; justify-items: start; }
+.film-open .film-still-list .t-meta { color: var(--pay); margin: 0; }
+.film-open .film-still-lead .hero3d-lede, .film-open .film-still-list .hero3d-lede, .film-open .film-still-list p { margin: 0; color: var(--on-night-mute); }
+.film-open .film-still-lead { padding-top: clamp(16px, 6vh, 64px); }
+
+/* the headline in perspective: each line swings back from its left edge toward a vanishing point off to
+   the right, like a title receding into the duct. --fo-tilt runs from 1 (at the top) to 0 (flat) as the
+   film scrolls in; held still it stays at a gentle fixed tilt. */
+.film-open { --fo-tilt: 1; }
+.film-open .film-still { --fo-tilt: .45; }
+.film-open .fo-open h1.split { perspective: 1000px; perspective-origin: 130% 40%; padding-bottom: .08em; }
+.film-open .fo-open h1.split > span { transform-style: preserve-3d; }
+.film-open .fo-open h1.split .ln {
+  transform-origin: 0 100%;
+  transform:
+    rotateY(calc(var(--fo-tilt) * (-16deg - var(--i) * 2deg)))
+    rotateX(calc(var(--fo-tilt) * 10deg));
+  backface-visibility: hidden;
+}
+@media (max-width: 760px) {
+  .film-open .fo-open h1.split { perspective: 700px; perspective-origin: 120% 40%; }
+}
+@media (forced-colors: active), print { .film-open .fo-open h1.split .ln { transform: none; } }

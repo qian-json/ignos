@@ -1,0 +1,115 @@
+/* Written with AI assistance (Claude Code) */
+/* The Method page's opening proof chain: six opaque layers in a slightly tilted stack. Pointing at it or
+   focusing it pulls the layers apart; the layers above the picked one lift away. Layer --i counts from
+   the base (the verdict) up to the top (the sentence). Reduced motion and Pause: apart, no travel. */
+.pl {
+  --pl-w: 330px; --pl-h: 196px;
+  --pl-gap-rest: 12px; --pl-gap: 40px;
+  --pl-rx-rest: 50deg; --pl-rz-rest: -30deg; --pl-rx: 56deg; --pl-rz: -36deg;
+  --pl-in: 700ms; --pl-out: 420ms; --pl-stagger: 35ms;
+  --pl-ease: cubic-bezier(.2, .85, .2, 1);
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px 40px; align-items: center;
+  padding: 40px 0 36px; border-bottom: 1px solid var(--rule);
+}
+.pl-text { min-width: 0; display: grid; gap: 22px; }
+.pl-text h1 { max-width: 12ch; }
+.pl-lede { margin: 0; font: 600 var(--fs-prose)/1.35 var(--font); color: var(--ink); max-width: 34rem; text-wrap: pretty; }
+.pl-readout { min-height: 5.4em; max-width: 34rem; border-left: 2px solid var(--flame); padding: 2px 0 2px 14px; }
+.pl-readout .t-meta { margin: 0 0 8px; color: var(--flame-ink); }
+.pl-readout p { margin: 0; font: 400 var(--fs-body)/1.45 var(--font); color: var(--ink); overflow-wrap: anywhere; }
+.pl-readout code { font: 400 .875em/1.4 var(--mono); }
+.pl-hash-inline { word-break: break-all; }
+
+/* the stage: a flat box (focus ring, hit area) with the perspective on an inner view */
+.pl-stage {
+  position: relative; height: 470px; min-width: 0; border-radius: 14px; outline: none; cursor: pointer;
+  touch-action: manipulation;
+}
+.pl-stage:focus-visible { outline: 2px solid var(--flame); outline-offset: 4px; }
+.pl-view { position: absolute; inset: 0; perspective: 1100px; display: grid; place-items: center; }
+.pl-rig {
+  list-style: none; margin: 0; padding: 0; position: relative; width: var(--pl-w); height: var(--pl-h);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--pl-rx-rest)) rotateZ(var(--pl-rz-rest)) translateZ(calc((var(--pl-n) - 1) * var(--pl-gap-rest) / -2));
+  transition: transform var(--pl-out) var(--pl-ease) calc(var(--pl-stagger) * 2);
+}
+.pl-layer {
+  position: absolute; inset: 0; border-radius: 12px; padding: 14px 16px 16px;
+  display: flex; flex-direction: column; gap: 10px; overflow: hidden;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--rule);
+  transform: translateZ(calc(var(--i) * var(--pl-gap-rest)));
+  transition: transform var(--pl-out) var(--pl-ease), opacity 220ms ease-out, border-color .2s;
+  transition-delay: calc((var(--pl-n) - 1 - var(--i)) * var(--pl-stagger) * .6);
+}
+.pl-layer:first-child { box-shadow: none; }
+.pl-layer:last-child { box-shadow: 0 0 0 0 rgba(16, 22, 36, 0); transition-property: transform, opacity, border-color, box-shadow; }
+.pl-layer.tone-ink { background: var(--night); color: var(--on-night); border-color: var(--night-2); }
+.pl-layer.tone-ok { background: var(--verified-bg); color: var(--verified); border-color: var(--verified); }
+.pl-layer.tone-warn { background: var(--unverified-bg); color: var(--unverified); border-color: var(--unverified); }
+
+.pl-tag { font: 400 var(--d-meta)/1 var(--mono); letter-spacing: .02em; color: var(--mute); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pl-layer.tone-ink .pl-tag { color: var(--on-night-mute); }
+.pl-layer.tone-ok .pl-tag, .pl-layer.tone-warn .pl-tag { color: inherit; }
+.pl-face { min-width: 0; flex: 1; display: flex; align-items: flex-start; }
+.pl-face p { margin: 0; }
+.pl-sentence { font: 500 .95rem/1.35 var(--font); }
+.pl-sentence mark { background: var(--flame-soft); color: var(--flame-ink); border-radius: 3px; padding: 0 2px; }
+.pl-big { font: 500 3.4rem/1 var(--display); letter-spacing: -.01em; }
+.pl-layer .src { color: inherit; }
+.pl-code { font: 400 .9rem/1.4 var(--mono); overflow-wrap: anywhere; }
+.pl-cells { display: grid; gap: 8px; font: 400 .85rem/1.4 var(--mono); }
+.pl-k { color: var(--mute); }
+.pl-hash { font: 400 .82rem/1.45 var(--mono); word-break: break-all; color: var(--on-night); }
+.pl-verdict { display: flex; align-items: center; gap: 10px; font: 600 1.5rem/1 var(--font); }
+
+/* apart: pointing at it, focus inside it, pinned, or the still state */
+.pl-stage:is(:focus-within, .is-pinned) .pl-rig,
+.pl[data-still] .pl-rig {
+  transform: rotateX(var(--pl-rx)) rotateZ(var(--pl-rz)) translateZ(calc((var(--pl-n) - 1) * var(--pl-gap) / -2));
+  transition: transform var(--pl-in) var(--pl-ease);
+}
+.pl-stage:is(:focus-within, .is-pinned) .pl-layer,
+.pl[data-still] .pl-layer {
+  transform: translateZ(calc(var(--i) * var(--pl-gap)));
+  transition-duration: var(--pl-in); transition-delay: calc(var(--i) * var(--pl-stagger));
+}
+.pl-stage:is(:focus-within, .is-pinned) .pl-layer:last-child,
+.pl[data-still] .pl-layer:last-child { box-shadow: 0 30px 40px -22px rgba(16, 22, 36, .45); }
+@media (hover: hover) and (pointer: fine) {
+  .pl-stage:hover .pl-rig {
+    transform: rotateX(var(--pl-rx)) rotateZ(var(--pl-rz)) translateZ(calc((var(--pl-n) - 1) * var(--pl-gap) / -2));
+    transition: transform var(--pl-in) var(--pl-ease);
+  }
+  .pl-stage:hover .pl-layer { transform: translateZ(calc(var(--i) * var(--pl-gap))); transition-duration: var(--pl-in); transition-delay: calc(var(--i) * var(--pl-stagger)); }
+  .pl-stage:hover .pl-layer:last-child { box-shadow: 0 30px 40px -22px rgba(16, 22, 36, .45); }
+}
+
+/* exploring: the layers above the picked one lift away (fully, so nothing shows through), the rest stay */
+.pl-stage[data-active] .pl-layer { transition-delay: 0s; }
+.pl-stage[data-active] .pl-layer.is-above { opacity: 0; pointer-events: none; }
+.pl-stage[data-active] .pl-layer.is-active { border-color: var(--flame); }
+.pl-stage[data-active] .pl-layer.is-active.tone-ok { border-color: var(--verified); }
+
+/* still: the same apart state, no travel */
+.pl[data-still] :is(.pl-rig, .pl-layer) { transition: none !important; }
+@media (prefers-reduced-motion: reduce) { .pl :is(.pl-rig, .pl-layer) { transition: none !important; } }
+
+@media (max-width: 1024px) {
+  .pl { --pl-w: 290px; --pl-h: 176px; --pl-gap: 34px; }
+  .pl-stage { height: 420px; }
+}
+@media (max-width: 760px) {
+  .pl { grid-template-columns: minmax(0, 1fr); padding-top: 28px; gap: 8px; }
+  .pl-text { gap: 18px; }
+  .pl-stage { height: 360px; }
+}
+@media (max-width: 640px) {
+  .pl { --pl-w: 236px; --pl-h: 150px; --pl-gap-rest: 9px; --pl-gap: 28px; }
+  .pl-stage { height: 330px; }
+  .pl-layer { padding: 10px 12px 12px; gap: 6px; }
+  .pl-sentence { font-size: .78rem; }
+  .pl-big { font-size: 2.6rem; }
+  .pl-code, .pl-cells { font-size: .74rem; }
+  .pl-hash { font-size: .7rem; }
+  .pl-verdict { font-size: 1.2rem; }
+}

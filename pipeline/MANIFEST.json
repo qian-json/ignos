@@ -1,0 +1,88 @@
+{
+  "_comment": "Written with AI assistance (Claude Code). Reproducibility manifest of the Still Air tracker, written by `python -m stillair_tracker.run_all`; regenerate it, never hand-edit. sha256 is over each file's bytes as written (data/** is stored byte-exact in git, see .gitattributes). Paths are relative to the repo root.",
+  "manifest_version": 1,
+  "date": "2026-11-15",
+  "run": {
+    "command": "python -m stillair_tracker.run_all --overlays",
+    "overlays_rendered": true
+  },
+  "code": {
+    "git_commit": "43cfce8cc6f4f3e7531ba2adc747143af045217b",
+    "uncommitted_pipeline_files": [
+      "pipeline/diagnostics/flame_features.py",
+      "pipeline/diagnostics/orbit_model.py",
+      "pipeline/diagnostics/phase_model.py",
+      "pipeline/tests/test_flame_features.py",
+      "pipeline/tests/test_orbit_model.py",
+      "pipeline/tests/test_phase_model.py"
+    ]
+  },
+  "environment": {
+    "python": "3.12.10",
+    "python_implementation": "CPython",
+    "libraries": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "rawpy": "0.28.0",
+      "ExifRead": "3.5.1",
+      "matplotlib": "3.11.0",
+      "Pillow": "12.1.1"
+    },
+    "ffmpeg": "ffmpeg version 8.1.2-essentials_build-www.gyan.dev"
+  },
+  "configs": {
+    "pipeline/configs/B12.json": {
+      "sha256": "6094701e7c50ac41126a3490714aa11755c37d40982561aa23ab92f805200866",
+      "test_id": "B12",
+      "psi_test": "P12",
+      "cache": "present"
+    },
+    "pipeline/configs/B13a.json": {
+      "sha256": "a639ccba1cb59da5f2a3923c23fdca71fe49b8cf3cea5d5f67e166769d5fee5a",
+      "test_id": "B13a",
+      "psi_test": "P13a",
+      "cache": "present"
+    },
+    "pipeline/configs/B13b.json": {
+      "sha256": "249631443ad708d162fdefc986f0b8e5779beb1a0aaf7f827e7f70d6ccc838dc",
+      "test_id": "B13b",
+      "psi_test": "P13b",
+      "cache": "present"
+    },
+    "pipeline/configs/B16.json": {
+      "sha256": "2bf28161510bc66dffb0cb4f45e2d79dde4cdb8e2d38e5e667a5b88208fdca3c",
+      "test_id": "B16",
+      "psi_test": "P16",
+      "cache": "present"
+    },
+    "pipeline/configs/B19.json": {
+      "sha256": "79ef44ff9d694f603734048477ceac444b53b5c388fbd60afe383e07f9bb611e",
+      "test_id": "B19",
+      "psi_test": "P19",
+      "cache": "present"
+    },
+    "pipeline/configs/P17.json": {
+      "sha256": "978132d8c90cd3092a7725a05f6e9f6ad90e68f448d6afbbbab99a9d7d231afd",
+      "test_id": "P17",
+      "psi_test": "P17",
+      "cache": "present"
+    }
+  },
+  "outputs": {
+    "data/derived/spread_rates.csv": "de171ad45705fccb5725c4800dfc09517283b7044bb7f7c9bfa4a071ce7ec051",
+    "data/derived/edges/B12.csv": "137ef0aff438270c9bd533a219be7e88538c1e6d2132da574aca0dd4c0c93f3a",
+    "data/derived/edges/B13a.csv": "d53090c6fb6040bcb4aec113ff17fe71c359884f88c57997f1cb5841c9a75274",
+    "data/derived/edges/B13b.csv": "e52c2da1699b171233fa03b5d7f45a6c161197dd7b038a572471c7dffd57c826",
+    "data/derived/edges/B16.csv": "58bd30bb5b785189892dfed0e93b34ba748491f0689694831c3db9709aaee3b0",
+    "data/derived/edges/B19.csv": "2341b11606aa8c85f572c9b9c733a8804d9d2aef5504baa430dfee5aefc88fc2",
+    "data/derived/edges/P17.csv": "707f583673ed5f0f934bafd42cc2c3d9a3ea3f0061ab4f1ba6853fea39d3609c",
+    "web/public/overlays/B12.mp4": "74cdeef65f0c96c8214fad9497d3afeacb1c00dfde0064c7ad95b546833792d6",
+    "web/public/overlays/B13a.mp4": "0c66428aec3bac3dc967821ddb12421a241df494d879a2b150f1488fd81f3d62",
+    "web/public/overlays/B13b.mp4": "8e0f98b6059643eded197a20d3ce35c448d875334745dee6d101f1f45755894f",
+    "web/public/overlays/B16.mp4": "d359344bf460c65887487708ba3528f41f2f82bd62f8b478b87e5029d5c121f3",
+    "web/public/overlays/B19.mp4": "cae4bb909cf7051c8f0f28b38102bb84509e40ebff157a8c8b3a416590367d05",
+    "web/public/overlays/P17.mp4": "03bd5b997050e2efb433438c1e95f9731758b8a9bce56e40999078f7c2ea6a1b",
+    "docs/figures/parity_spread_rates.png": "94d9043c94e1ee7ae306724ec9319812a351160a77c9081b30f25b09f9274c01",
+    "docs/figures/parity_spread_rates.svg": "f9de206c154739fdcc55bab8b19aa06569c047f9060f7dc43ec74c59aa320350"
+  }
+}

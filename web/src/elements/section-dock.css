@@ -1,0 +1,87 @@
+/* Written with AI assistance (Claude Code) */
+/* The phone's section bar and its full-screen menu. Absent above 760 px. */
+.sbar { display: none; }
+.smenu:not([open]) { display: none; }
+
+@media (max-width: 760px) {
+  .sbar {
+    --sbar-gap: max(12px, env(safe-area-inset-bottom));
+    display: block; position: fixed; z-index: 25; left: 50%; bottom: var(--sbar-gap); translate: -50% 0;
+    width: min(440px, calc(100vw - 24px)); padding: 5px; border-radius: 999px;
+    background: var(--ink); color: var(--ground);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--ground) 18%, transparent), 0 10px 30px -12px color-mix(in srgb, var(--ink) 55%, transparent);
+    transition: transform 320ms cubic-bezier(.22, 1, .36, 1), opacity 240ms ease;
+  }
+  /* slid below the edge, quicker going than coming */
+  .sbar[data-state="hidden"] { transform: translateY(calc(100% + var(--sbar-gap) + 8px)); transition-duration: 240ms; transition-timing-function: cubic-bezier(.32, 0, .67, 0); }
+  /* over the opening screen: out of sight until you scroll on (the scene and the headline have it) */
+  .sbar[data-opening] { opacity: 0; visibility: hidden; transition: opacity 240ms ease, visibility 0s linear 240ms; }
+  /* the on-screen keyboard is up: step aside at once */
+  .sbar[data-kbd] { visibility: hidden; transform: translateY(calc(100% + var(--sbar-gap) + 8px)); transition: none; }
+  .sbar ul { display: flex; gap: 2px; margin: 0; padding: 0; list-style: none; }
+  .sbar li { flex: 1 1 auto; display: flex; }
+  .sbar-item {
+    flex: 1; min-height: 46px; min-width: 44px; padding: 0 8px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    border: 0; border-radius: 999px; background: none; color: inherit; font: 500 var(--fs-ui)/1 var(--font); letter-spacing: .005em;
+    text-decoration: none; white-space: nowrap; cursor: pointer; -webkit-tap-highlight-color: transparent;
+    transition: background-color .2s, color .2s;
+  }
+  .sbar-item:active { transform: scale(.97); }
+  .sbar-item:focus-visible { outline: 2px solid var(--flame-glow); outline-offset: 2px; }
+  /* where you are: a filled shape, not colour alone */
+  .sbar-item[aria-current] { background: var(--flame); color: var(--surface); }
+  .sbar-more i, .smenu-close i { width: 14px; height: 8px; position: relative; display: block; flex: none; }
+  .sbar-more i::before, .sbar-more i::after, .smenu-close i::before, .smenu-close i::after { content: ""; position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor; }
+  .sbar-more i::before { top: 0; }
+  .sbar-more i::after { bottom: 0; }
+  .smenu-close i::before, .smenu-close i::after { top: 3.25px; }
+  .smenu-close i::before { transform: rotate(45deg); }
+  .smenu-close i::after { transform: rotate(-45deg); }
+
+  /* one nav at a time: the bar carries the links, the header keeps the mark and the Pause switch */
+  html.sbar-on .top .nav { display: none; }
+  html.sbar-on .top .brand { margin-right: auto; }
+  /* nothing ends under it: the footer pays its height back, and a focused element scrolls clear */
+  html.sbar-on { scroll-padding-bottom: var(--sbar-space, 84px); }
+  html.sbar-on .foot { padding-bottom: var(--sbar-space, 84px); }
+  /* the habitat picker's sticky bar stacks above it */
+  html.sbar-on .hab-bar { bottom: var(--sbar-space, 84px); }
+}
+
+/* ---- the menu: a modal dialog over the whole screen ---- */
+.smenu {
+  position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0;
+  background: transparent; color: var(--ground); overflow: hidden;
+}
+.smenu::backdrop { background: transparent; }
+.smenu-dim { position: absolute; inset: 0; background: color-mix(in srgb, var(--night) 40%, transparent); }
+.smenu-panel { position: absolute; inset: 0; background: var(--night); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+.smenu-content { min-height: 100%; display: grid; align-content: end; padding: calc(var(--bar) + 16px) var(--gutter) calc(var(--sbar-space, 84px) + 20px); }
+.smenu-list { list-style: none; margin: 0; padding: 0; }
+.smenu-link { display: flex; align-items: center; gap: .4em; min-height: 56px; color: inherit; text-decoration: none; }
+.smenu-line { display: block; overflow: hidden; padding: 0 .04em .14em; margin: 0 -.04em -.12em; }
+.smenu-word { display: block; font: 300 clamp(2.2rem, 10.5vw, 3.6rem)/1 var(--font); letter-spacing: -.035em; white-space: nowrap; }
+.smenu-link[aria-current]::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--flame-glow); flex: none; }
+.smenu-link:focus-visible { outline: 2px solid var(--flame-glow); outline-offset: 2px; border-radius: 4px; }
+/* the menu's own bar, laid over the section bar's exact place: "More" becomes "Close" under the thumb */
+.smenu-bar {
+  position: fixed; left: 12px; width: calc(100vw - 24px); bottom: 12px;
+  display: flex; align-items: center; justify-content: space-between; padding: 5px 5px 5px 18px; border-radius: 999px;
+  background: var(--ink); color: var(--ground); box-shadow: 0 0 0 1px color-mix(in srgb, var(--ground) 18%, transparent);
+}
+.smenu-top { color: inherit; font: 600 var(--fs-ui)/1 var(--font); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.smenu-close {
+  min-height: 46px; padding: 0 18px; display: inline-flex; align-items: center; gap: 10px; border: 0; border-radius: 999px;
+  background: var(--surface); color: var(--ink); font: 500 var(--fs-ui)/1 var(--font); cursor: pointer;
+}
+.smenu-top:focus-visible, .smenu-close:focus-visible { outline: 2px solid var(--flame-glow); outline-offset: 2px; }
+html.smenu-locked { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sbar, .sbar[data-state="hidden"] { transition: none; transform: none; }
+  .sbar-item { transition: none; }
+}
+html[data-motion="paused"] .sbar[data-state="hidden"] { transform: none; }
+html[data-motion="paused"] .sbar { transition: none; }
+@media (forced-colors: active) { .sbar, .smenu-bar { border: 1px solid CanvasText; } .sbar-item[aria-current] { outline: 2px solid Highlight; } }
+@media print { .sbar, .smenu { display: none !important; } }

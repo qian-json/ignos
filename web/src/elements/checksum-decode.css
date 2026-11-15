@@ -1,0 +1,6 @@
+/* Written with AI assistance (Claude Code) */
+/* The real hash keeps its place (only its ink is hidden while the copy flickers over it), so the line
+   never reflows: same monospace, same number of characters, same wrap points. */
+.ckd { position: relative; display: inline-block; max-width: 100%; vertical-align: top; overflow-wrap: anywhere; word-break: break-all; font-variant-numeric: tabular-nums slashed-zero; }
+.ckd.is-running .ckd-real { color: transparent; }
+.ckd-flicker { position: absolute; inset: 0; color: var(--mute); pointer-events: none; user-select: none; }

@@ -1,0 +1,704 @@
+{
+ "_note": "Written with AI assistance (Claude Code). Exploratory flame phase model, written by pipeline/diagnostics/phase_model.py; regenerate it, never hand-edit. Designed after the tracker's errors were known. It changes no reported rate and not the headline. Small sample; steps within a test are not independent. B13b and B13a were held-out for tracker v2 but are in-sample here. The mixture is fitted on photo features only. pct_error is our rate against Link et al. 2018, Sci Rep 8:120, Supplement Table S1, p. 1. Photos: NASA PSI-25 BASS-II archive, CC0, DOI 10.60555/4qc4-de67.",
+ "schema": "flame_phase_model/1",
+ "inputs": {
+  "spread_rates": {
+   "path": "data/derived/spread_rates.csv",
+   "sha256": "de171ad45705fccb5725c4800dfc09517283b7044bb7f7c9bfa4a071ce7ec051"
+  },
+  "features": {
+   "B16": {
+    "path": "docs/research/flame_features/B16.csv",
+    "sha256": "9bca3bc6ebaf787d6598e77246b614f16b334321f33cb22021333d01b4d9c4b4"
+   },
+   "B19": {
+    "path": "docs/research/flame_features/B19.csv",
+    "sha256": "9583a8cad90ceef78f118b7b05ba98a52284843bb1a88c93267e6171a8936819"
+   },
+   "B12": {
+    "path": "docs/research/flame_features/B12.csv",
+    "sha256": "80a0c50b4013b68a983d5abd35185b8d1d5bdb668c01fa8b36bf781fec08b753"
+   },
+   "P17": {
+    "path": "docs/research/flame_features/P17.csv",
+    "sha256": "cdc00f0996d2effaadfc88573c0db7d3ca1a43a253cc8717bcc2401c92e00150"
+   },
+   "B13b": {
+    "path": "docs/research/flame_features/B13b.csv",
+    "sha256": "20e4017dec10e367940d4846f95849903a0792fa33855d18e19f8bc2ea7c9bd4"
+   },
+   "B13a": {
+    "path": "docs/research/flame_features/B13a.csv",
+    "sha256": "8c76112abb61a384dd4d51ca99cb0bec305fcc839c84b963c105cbb8b4458b33"
+   }
+  }
+ },
+ "model": {
+  "type": "2-component Gaussian mixture, full covariance, on standardized features",
+  "features": [
+   "log10(brightness_p999)",
+   "b_share"
+  ],
+  "library": "scikit-learn 1.9.0",
+  "random_state": 0,
+  "n_init": 10,
+  "scaler_mean": [
+   0.29343460270261423,
+   0.37863371989295297
+  ],
+  "scaler_scale": [
+   0.9453559198967931,
+   0.25016642215485824
+  ],
+  "weights": [
+   0.6854561060379345,
+   0.31454389396206545
+  ],
+  "means": [
+   [
+    -0.5729025309604009,
+    0.5966740698848998
+   ],
+   [
+    1.2484729335065534,
+    -1.3002760262338338
+   ]
+  ],
+  "covariances": [
+   [
+    [
+     0.03980182970502214,
+     -0.09563112727458713
+    ],
+    [
+     -0.09563112727458713,
+     0.3191433992402332
+    ]
+   ],
+   [
+    [
+     0.8185353278127839,
+     -0.0936568140029549
+    ],
+    [
+     -0.0936568140029549,
+     0.017171593046481262
+    ]
+   ]
+  ],
+  "bright_component": 1,
+  "component_names": [
+   "dim-blue",
+   "bright"
+  ],
+  "parameter_space": "means and covariances are in standardized units: z = (x - scaler_mean) / scaler_scale",
+  "fit": {
+   "n_photos": 1121,
+   "converged": true,
+   "n_iter": 4,
+   "mean_log_likelihood": -0.6933095927172831
+  },
+  "photos_per_test": {
+   "B16": {
+    "photos": 140,
+    "flame_photos": 127,
+    "bright_photos": 66
+   },
+   "B19": {
+    "photos": 286,
+    "flame_photos": 241,
+    "bright_photos": 89
+   },
+   "B12": {
+    "photos": 270,
+    "flame_photos": 262,
+    "bright_photos": 81
+   },
+   "P17": {
+    "photos": 189,
+    "flame_photos": 182,
+    "bright_photos": 82
+   },
+   "B13b": {
+    "photos": 81,
+    "flame_photos": 72,
+    "bright_photos": 12
+   },
+   "B13a": {
+    "photos": 255,
+    "flame_photos": 237,
+    "bright_photos": 25
+   }
+  }
+ },
+ "rule": {
+  "bright_share_threshold": 0.5,
+  "tuned": false,
+  "text": "a step is predicted unreliable if bright_share >= 0.5",
+  "photos": "photos in 25-90% of the step window that have a v1 edge (run.py steady_fit); if none has a v1 edge, all flame photos in that range"
+ },
+ "outcome": {
+  "bad": "no usable rate, or |pct_error| > 15",
+  "error_band_pct": 15.0,
+  "reference": "Link et al. 2018, Sci Rep 8:120, Supplement Table S1, p. 1",
+  "rows": "rows of data/derived/spread_rates.csv that have a NASA rate"
+ },
+ "current_rule": "flow_cm_s >= 1, or LOW CONFIDENCE in notes",
+ "steps": [
+  {
+   "test_id": "B16",
+   "step": 1,
+   "flow_cm_s": 7.55,
+   "usable_rate": true,
+   "pct_error": -20.5,
+   "abs_pct_error": 20.5,
+   "bad": true,
+   "n_photos": 18,
+   "n_bright": 18,
+   "photo_set": "fit photos",
+   "bright_share": 1.0,
+   "predicted_unreliable": true,
+   "current_rule_flag": true,
+   "low_confidence_note": false,
+   "loto_bright_share": 1.0,
+   "loto_predicted_unreliable": true,
+   "range_bright_share": 1.0
+  },
+  {
+   "test_id": "B16",
+   "step": 2,
+   "flow_cm_s": 1.67,
+   "usable_rate": true,
+   "pct_error": -15.6,
+   "abs_pct_error": 15.6,
+   "bad": true,
+   "n_photos": 17,
+   "n_bright": 17,
+   "photo_set": "fit photos",
+   "bright_share": 1.0,
+   "predicted_unreliable": true,
+   "current_rule_flag": true,
+   "low_confidence_note": true,
+   "loto_bright_share": 1.0,
+   "loto_predicted_unreliable": true,
+   "range_bright_share": 1.0
+  },
+  {
+   "test_id": "B16",
+   "step": 3,
+   "flow_cm_s": 0.83,
+   "usable_rate": true,
+   "pct_error": 9.6,
+   "abs_pct_error": 9.6,
+   "bad": false,
+   "n_photos": 23,
+   "n_bright": 3,
+   "photo_set": "fit photos",
+   "bright_share": 0.1304,
+   "predicted_unreliable": false,
+   "current_rule_flag": false,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.1304,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.1304
+  },
+  {
+   "test_id": "B16",
+   "step": 4,
+   "flow_cm_s": 0.72,
+   "usable_rate": true,
+   "pct_error": 1.4,
+   "abs_pct_error": 1.4,
+   "bad": false,
+   "n_photos": 20,
+   "n_bright": 0,
+   "photo_set": "fit photos",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": false,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  },
+  {
+   "test_id": "B19",
+   "step": 1,
+   "flow_cm_s": 7.55,
+   "usable_rate": true,
+   "pct_error": -49.7,
+   "abs_pct_error": 49.7,
+   "bad": true,
+   "n_photos": 14,
+   "n_bright": 14,
+   "photo_set": "fit photos",
+   "bright_share": 1.0,
+   "predicted_unreliable": true,
+   "current_rule_flag": true,
+   "low_confidence_note": true,
+   "loto_bright_share": 1.0,
+   "loto_predicted_unreliable": true,
+   "range_bright_share": 1.0
+  },
+  {
+   "test_id": "B19",
+   "step": 2,
+   "flow_cm_s": 1.67,
+   "usable_rate": true,
+   "pct_error": -26.8,
+   "abs_pct_error": 26.8,
+   "bad": true,
+   "n_photos": 15,
+   "n_bright": 15,
+   "photo_set": "fit photos",
+   "bright_share": 1.0,
+   "predicted_unreliable": true,
+   "current_rule_flag": true,
+   "low_confidence_note": true,
+   "loto_bright_share": 1.0,
+   "loto_predicted_unreliable": true,
+   "range_bright_share": 1.0
+  },
+  {
+   "test_id": "B19",
+   "step": 3,
+   "flow_cm_s": 0.83,
+   "usable_rate": true,
+   "pct_error": -1.3,
+   "abs_pct_error": 1.3,
+   "bad": false,
+   "n_photos": 19,
+   "n_bright": 0,
+   "photo_set": "fit photos",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": false,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  },
+  {
+   "test_id": "B19",
+   "step": 4,
+   "flow_cm_s": 0.72,
+   "usable_rate": true,
+   "pct_error": -2.8,
+   "abs_pct_error": 2.8,
+   "bad": false,
+   "n_photos": 23,
+   "n_bright": 0,
+   "photo_set": "fit photos",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": false,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  },
+  {
+   "test_id": "B12",
+   "step": 1,
+   "flow_cm_s": 1.01,
+   "usable_rate": true,
+   "pct_error": -66.9,
+   "abs_pct_error": 66.9,
+   "bad": true,
+   "n_photos": 18,
+   "n_bright": 18,
+   "photo_set": "fit photos",
+   "bright_share": 1.0,
+   "predicted_unreliable": true,
+   "current_rule_flag": true,
+   "low_confidence_note": true,
+   "loto_bright_share": 1.0,
+   "loto_predicted_unreliable": true,
+   "range_bright_share": 1.0
+  },
+  {
+   "test_id": "B12",
+   "step": 2,
+   "flow_cm_s": 0.82,
+   "usable_rate": true,
+   "pct_error": 93.3,
+   "abs_pct_error": 93.3,
+   "bad": true,
+   "n_photos": 21,
+   "n_bright": 21,
+   "photo_set": "fit photos",
+   "bright_share": 1.0,
+   "predicted_unreliable": true,
+   "current_rule_flag": true,
+   "low_confidence_note": true,
+   "loto_bright_share": 0.7143,
+   "loto_predicted_unreliable": true,
+   "range_bright_share": 1.0
+  },
+  {
+   "test_id": "B12",
+   "step": 3,
+   "flow_cm_s": 0.6,
+   "usable_rate": true,
+   "pct_error": -13.2,
+   "abs_pct_error": 13.2,
+   "bad": false,
+   "n_photos": 21,
+   "n_bright": 0,
+   "photo_set": "fit photos",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": false,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  },
+  {
+   "test_id": "B12",
+   "step": 4,
+   "flow_cm_s": 0.48,
+   "usable_rate": true,
+   "pct_error": 14.8,
+   "abs_pct_error": 14.8,
+   "bad": false,
+   "n_photos": 13,
+   "n_bright": 0,
+   "photo_set": "fit photos",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": false,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  },
+  {
+   "test_id": "P17",
+   "step": 1,
+   "flow_cm_s": 1.01,
+   "usable_rate": true,
+   "pct_error": -23.1,
+   "abs_pct_error": 23.1,
+   "bad": true,
+   "n_photos": 20,
+   "n_bright": 20,
+   "photo_set": "fit photos",
+   "bright_share": 1.0,
+   "predicted_unreliable": true,
+   "current_rule_flag": true,
+   "low_confidence_note": false,
+   "loto_bright_share": 1.0,
+   "loto_predicted_unreliable": true,
+   "range_bright_share": 1.0
+  },
+  {
+   "test_id": "P17",
+   "step": 2,
+   "flow_cm_s": 0.82,
+   "usable_rate": true,
+   "pct_error": -6.5,
+   "abs_pct_error": 6.5,
+   "bad": false,
+   "n_photos": 29,
+   "n_bright": 0,
+   "photo_set": "fit photos",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": false,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  },
+  {
+   "test_id": "P17",
+   "step": 3,
+   "flow_cm_s": 0.41,
+   "usable_rate": true,
+   "pct_error": 7.1,
+   "abs_pct_error": 7.1,
+   "bad": false,
+   "n_photos": 15,
+   "n_bright": 0,
+   "photo_set": "fit photos",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": false,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  },
+  {
+   "test_id": "B13b",
+   "step": 1,
+   "flow_cm_s": 1.64,
+   "usable_rate": true,
+   "pct_error": 5.8,
+   "abs_pct_error": 5.8,
+   "bad": false,
+   "n_photos": 18,
+   "n_bright": 0,
+   "photo_set": "fit photos",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": true,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  },
+  {
+   "test_id": "B13b",
+   "step": 2,
+   "flow_cm_s": 1.54,
+   "usable_rate": false,
+   "pct_error": null,
+   "abs_pct_error": null,
+   "bad": true,
+   "n_photos": 22,
+   "n_bright": 0,
+   "photo_set": "fallback: all flame photos in the fit range (none has a v1 edge)",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": true,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  },
+  {
+   "test_id": "B13a",
+   "step": 1,
+   "flow_cm_s": 1.64,
+   "usable_rate": false,
+   "pct_error": null,
+   "abs_pct_error": null,
+   "bad": true,
+   "n_photos": 15,
+   "n_bright": 15,
+   "photo_set": "fit photos",
+   "bright_share": 1.0,
+   "predicted_unreliable": true,
+   "current_rule_flag": true,
+   "low_confidence_note": false,
+   "loto_bright_share": 1.0,
+   "loto_predicted_unreliable": true,
+   "range_bright_share": 1.0
+  },
+  {
+   "test_id": "B13a",
+   "step": 2,
+   "flow_cm_s": 1.54,
+   "usable_rate": true,
+   "pct_error": 8.7,
+   "abs_pct_error": 8.7,
+   "bad": false,
+   "n_photos": 6,
+   "n_bright": 0,
+   "photo_set": "fit photos",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": true,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  },
+  {
+   "test_id": "B13a",
+   "step": 3,
+   "flow_cm_s": 1.43,
+   "usable_rate": false,
+   "pct_error": null,
+   "abs_pct_error": null,
+   "bad": true,
+   "n_photos": 26,
+   "n_bright": 0,
+   "photo_set": "fallback: all flame photos in the fit range (none has a v1 edge)",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": true,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  },
+  {
+   "test_id": "B13a",
+   "step": 4,
+   "flow_cm_s": 1.38,
+   "usable_rate": false,
+   "pct_error": null,
+   "abs_pct_error": null,
+   "bad": true,
+   "n_photos": 20,
+   "n_bright": 0,
+   "photo_set": "fallback: all flame photos in the fit range (none has a v1 edge)",
+   "bright_share": 0.0,
+   "predicted_unreliable": false,
+   "current_rule_flag": true,
+   "low_confidence_note": false,
+   "loto_bright_share": 0.0,
+   "loto_predicted_unreliable": false,
+   "range_bright_share": 0.0
+  }
+ ],
+ "metrics": {
+  "rows_scored": 21,
+  "rows_bad": 11,
+  "groups": {
+   "bright": {
+    "photos": 355,
+    "log10_brightness_min": -1.61,
+    "log10_brightness_max": 3.225,
+    "b_share_min": 0.023,
+    "b_share_max": 0.222
+   },
+   "dim-blue": {
+    "photos": 766,
+    "log10_brightness_min": -0.654,
+    "log10_brightness_max": 0.526,
+    "b_share_min": 0.142,
+    "b_share_max": 0.667
+   }
+  },
+  "phase_rule": {
+   "n": 21,
+   "tp": 8,
+   "fp": 0,
+   "fn": 3,
+   "tn": 10,
+   "sensitivity": 0.7273,
+   "specificity": 1.0,
+   "correct": 18
+  },
+  "current_rule": {
+   "n": 21,
+   "tp": 11,
+   "fp": 2,
+   "fn": 0,
+   "tn": 8,
+   "sensitivity": 1.0,
+   "specificity": 0.8,
+   "correct": 19
+  },
+  "paired_comparison": {
+   "only_photo_rule_right": [
+    "B13b 1.64 cm/s",
+    "B13a 1.54 cm/s"
+   ],
+   "only_current_rule_right": [
+    "B13b 1.54 cm/s",
+    "B13a 1.43 cm/s",
+    "B13a 1.38 cm/s"
+   ],
+   "mcnemar_exact_p": 1.0
+  },
+  "rated_steps_only": {
+   "note": "secondary view: only the steps that have a rate",
+   "phase_rule": {
+    "n": 17,
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "tn": 10,
+    "sensitivity": 1.0,
+    "specificity": 1.0,
+    "correct": 17
+   },
+   "current_rule": {
+    "n": 17,
+    "tp": 7,
+    "fp": 2,
+    "fn": 0,
+    "tn": 8,
+    "sensitivity": 1.0,
+    "specificity": 0.8,
+    "correct": 15
+   }
+  },
+  "bright_share_values": {
+   "zero_or_one": 20,
+   "steps": 21
+  },
+  "threshold_sensitivity_check": {
+   "0.25": {
+    "n": 21,
+    "tp": 8,
+    "fp": 0,
+    "fn": 3,
+    "tn": 10,
+    "sensitivity": 0.7273,
+    "specificity": 1.0,
+    "correct": 18
+   },
+   "0.75": {
+    "n": 21,
+    "tp": 8,
+    "fp": 0,
+    "fn": 3,
+    "tn": 10,
+    "sensitivity": 0.7273,
+    "specificity": 1.0,
+    "correct": 18
+   }
+  },
+  "spearman": {
+   "rho": 0.8579,
+   "n": 17,
+   "p_permutation": 0.0001,
+   "shuffles_at_or_above": 0,
+   "n_permutations": 10000,
+   "seed": 20261115,
+   "two_sided": true,
+   "p_permutation_within_test": 0.0009,
+   "shuffles_at_or_above_within_test": 8
+  },
+  "leave_one_test_out": {
+   "n_steps": 21,
+   "n_predictions_changed": 0,
+   "changed_steps": [],
+   "photo_labels_same": 1113,
+   "photo_labels_total": 1121,
+   "confusion": {
+    "n": 21,
+    "tp": 8,
+    "fp": 0,
+    "fn": 3,
+    "tn": 10,
+    "sensitivity": 0.7273,
+    "specificity": 1.0,
+    "correct": 18
+   }
+  },
+  "photo_set_check": {
+   "n_predictions_changed": 0,
+   "confusion": {
+    "n": 21,
+    "tp": 8,
+    "fp": 0,
+    "fn": 3,
+    "tn": 10,
+    "sensitivity": 0.7273,
+    "specificity": 1.0,
+    "correct": 18
+   }
+  },
+  "band_brightness_check": {
+   "n_predictions_changed": 0,
+   "changed_steps": [],
+   "confusion": {
+    "n": 21,
+    "tp": 8,
+    "fp": 0,
+    "fn": 3,
+    "tn": 10,
+    "sensitivity": 0.7273,
+    "specificity": 1.0,
+    "correct": 18
+   }
+  }
+ }
+}

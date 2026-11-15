@@ -1,0 +1,52 @@
+{
+  "contract": "flame_model/1",
+  "mock": true,
+  "_note": "Written with AI assistance (Claude Code). MOCK-DATA: fake values, never real.",
+  "label": "MOCK: fake values. A model, not a NASA measurement.",
+  "scope": "MOCK scope",
+  "model": {
+    "equations": [
+      "MOCK"
+    ],
+    "gravity_note": "MOCK",
+    "fit": "MOCK",
+    "parameters": {
+      "k": {
+        "value": 0.5,
+        "ci95": [
+          0.4,
+          0.6
+        ],
+        "unit": null
+      }
+    }
+  },
+  "validation": {
+    "fit_all": {},
+    "leave_one_group_out": {
+      "median_abs_error_pct": 11.1,
+      "rows_with_rate_scored": 2,
+      "always_burns_baseline_correct": 2,
+      "how": "MOCK-LOGO"
+    },
+    "cross_domain": {
+      "orbit_only_to_earth": {
+        "passed": false
+      },
+      "earth_only_to_orbit": {
+        "passed": false
+      }
+    },
+    "bootstrap": {},
+    "remeasurement_cross_check": {}
+  },
+  "caveats": [
+    "MOCK: fake values"
+  ],
+  "derived_from": [
+    {
+      "file": "MOCK",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+}

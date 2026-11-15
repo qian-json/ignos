@@ -1,0 +1,26 @@
+/* Written with AI assistance (Claude Code) */
+/* The Research opener: a full-screen stage, the flow on a canvas behind, the page's heading over it. */
+[data-element="burn-flow"] {
+  --bf-ground: var(--ground);
+  position: relative; isolation: isolate; overflow: hidden;
+  height: 100svh; min-height: 560px; max-height: 1100px;
+  background: var(--bf-ground); color: var(--ink);
+}
+[data-element="burn-flow"] .bf-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+[data-element="burn-flow"] .bf-over {
+  position: relative; height: 100%; max-width: 1240px; margin: 0 auto;   /* no z-index: the headings must blend with the canvas */
+  padding: calc(var(--bar, 60px) + 7vh) var(--gutter, 16px) 0; pointer-events: none;
+}
+/* Headings are drawn in the ground colour in difference blend: near-black on the ground, light over a dark photo. */
+[data-element="burn-flow"] .bf-over :is(h1, h2) { color: var(--bf-ground); mix-blend-mode: difference; }
+[data-element="burn-flow"] .bf-over a, [data-element="burn-flow"] .bf-over button { pointer-events: auto; }
+[data-element="burn-flow"] .bf-chip {
+  position: absolute; z-index: 1; right: var(--gutter, 16px); bottom: 18px; margin: 0; max-width: calc(100% - 32px);
+  display: inline-flex; gap: 8px; align-items: center; padding: 4px 10px 4px 4px; border-radius: 999px;
+  font: 400 12px/1.6 var(--mono); color: var(--mute); background: var(--surface); border: 1px solid var(--hair);
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  [data-element="burn-flow"] { min-height: 520px; }
+  [data-element="burn-flow"] .bf-chip { left: var(--gutter, 16px); right: auto; }
+}

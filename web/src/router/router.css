@@ -1,0 +1,33 @@
+/* Written with AI assistance (Claude Code) */
+/* The sheet that crosses between pages, and the room every page leaves for the fixed top bar. */
+.pg-sheet { display: none; }
+.pg-sheet[data-state="on"] {
+  display: block; position: fixed; inset: 0; z-index: 60; pointer-events: none;
+  background: var(--night);
+  /* the leading edge: a hairline of flame blue */
+  box-shadow: inset 0 2px 0 var(--flame-glow), inset 0 -2px 0 var(--flame-glow);
+  transform: translateY(100%);
+}
+
+/* Pages other than home open straight onto the light sheet, under the bar. */
+.page { padding-top: var(--bar); min-height: 100svh; }
+.page-home { padding-top: 0; }
+.page .sheet { padding-bottom: 96px; }
+
+/* An address that isn't a page. */
+.missing-page { max-width: 1240px; margin: 0 auto; padding: 96px var(--gutter); display: grid; gap: 18px; justify-items: start; }
+.missing-page h1 { font-size: clamp(2.2rem, 1.4rem + 3vw, 4rem); font-weight: 300; letter-spacing: -0.035em; line-height: 1; }
+.missing-page p { color: var(--mute); }
+
+/* The research page opens on the burn-photo flow, which leaves its own room for the bar. */
+.page-research, .page-model { padding-top: 0; }
+/* the lede blends like the heading, so it reads over a dark photo as well as the light ground */
+.bf-over .bf-lede { position: relative; z-index: 2; margin-top: 22px; display: inline-block; max-width: 34ch; padding: 10px 14px; border-radius: 10px; color: var(--ink); background: color-mix(in srgb, var(--ground) 88%, transparent); box-shadow: 0 0 0 1px var(--hair); text-indent: 0; text-align: left; }
+
+/* A page's opening heading: big display type over the light sheet, its label above it. */
+.pg-head { padding: clamp(48px, 12vh, 140px) 0 clamp(8px, 3vh, 32px); }
+.pg-head .t-display-xl { color: var(--ink); }
+.missing-page h1 { font-family: var(--display); font-weight: 500; }
+
+/* The glide moves the page itself; a CSS smooth scroll on top would fight it. */
+html.glide-on { scroll-behavior: auto; }

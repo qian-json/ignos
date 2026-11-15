@@ -1,0 +1,530 @@
+{
+  "_comment": "Written with AI assistance (Claude Code). Tracker-domain questions for the /api/ask SI evaluation (10 of the plan's 25; the paper-fact set is kept separately). HOW TO SCORE: run every question with the gate on and again with it off, and score three 0/1 columns. (1) Accuracy: for answerable items, 1 if the answer states each expected_number to the precision written (sign and unit correct) and makes the expected_answer's claim, with no contradicting extra number; for answerable=false items, 1 only if status is not_in_data (\"Not in our data.\") and no number is invented. (2) Citation correctness (ALCE-style): 1 if every expected_citation appears in citations and no citation is unrelated to the claim it supports. Row ids look like spread_rates:B16/3 (3rd segment of B16) and table_s1:B16/3 (Link 2018 Table S1 row); paper ids look like link2018_si with page 1. A not_in_data reply must cite nothing, so on unanswerable items this column is 1 only when citations is empty. (3) Abstention: 1 if the model abstained on each of the three answerable=false traps; separately count false abstentions on the seven answerable items. Also log the gate's verified and unverified counts per answer and report raw counts (for example 'gate flagged 2 of 2 invented numbers'). Any Moon or lunar airflow number in any answer, or any claim that NASA concluded fans-off fails, scores 0 on all three columns. Snapshot: expected numbers come from the B16 and B19 rows of data/derived/spread_rates.csv (rows 0-7, unchanged at commit 8f8b3bc), pipeline/METHOD.md, data/reference/link2018_table_s1.csv and docs/sources/. Questions are pinned to B16 and B19 because the B12 and P17 rows were still unreviewed in the working tree when this was written; re-check TR04, TR06 and TR09 if those or other rows land. source.row is the 0-based data row (header and comment lines excluded), as in proof/src/facts.ts. Table S1 prints V_f x 10^3 in cm/s, so mm/s = printed / 100 (tableS1RateMmS()).",
+  "questions": [
+    {
+      "id": "TR01",
+      "question": "What flame spread rate did the tracker measure for test B19 at 0.83 cm/s opposed flow, with its 95% interval, and how does it compare with Link et al. 2018?",
+      "mode": "summarize",
+      "subject": {
+        "kind": "test",
+        "id": "B19"
+      },
+      "expected_answer": "0.0617 +/- 0.0027 mm/s; Table S1 gives 0.0625 mm/s, so the error is -1.3%.",
+      "expected_numbers": [
+        {
+          "value": 0.0617,
+          "unit": "mm/s",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 6,
+            "column": "rate_mm_s",
+            "cite": "spread_rates:B19/3"
+          }
+        },
+        {
+          "value": 0.0027,
+          "unit": "mm/s",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 6,
+            "column": "ci95_mm_s",
+            "cite": "spread_rates:B19/3"
+          }
+        },
+        {
+          "value": 0.0625,
+          "unit": "mm/s",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 6,
+            "column": "nasa_rate_mm_s",
+            "cite": "spread_rates:B19/3"
+          }
+        },
+        {
+          "value": -1.3,
+          "unit": "%",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 6,
+            "column": "pct_error",
+            "cite": "spread_rates:B19/3"
+          }
+        }
+      ],
+      "expected_citations": [
+        {
+          "kind": "row",
+          "id": "spread_rates:B19/3"
+        },
+        {
+          "kind": "paper",
+          "id": "link2018_si",
+          "page": 1
+        }
+      ],
+      "answerable": true,
+      "why": "Numeric lookup on a validated low-flow segment; checks rate, CI and signed error together. Table S1 row 41 (table_s1:B19/3) prints 6.25, which is 0.0625 mm/s."
+    },
+    {
+      "id": "TR02",
+      "question": "For B16 at 0.72 cm/s, what rate did we measure, what does Table S1 publish, and what is the percent error?",
+      "mode": "summarize",
+      "subject": {
+        "kind": "test",
+        "id": "B16"
+      },
+      "expected_answer": "Ours 0.0576 +/- 0.0033 mm/s against Table S1's 0.0568 mm/s (printed 5.68, i.e. 5.68 x 10^-3 cm/s), an error of +1.4%.",
+      "expected_numbers": [
+        {
+          "value": 0.0576,
+          "unit": "mm/s",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 3,
+            "column": "rate_mm_s",
+            "cite": "spread_rates:B16/4"
+          }
+        },
+        {
+          "value": 0.0033,
+          "unit": "mm/s",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 3,
+            "column": "ci95_mm_s",
+            "cite": "spread_rates:B16/4"
+          }
+        },
+        {
+          "value": 0.0568,
+          "unit": "mm/s",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 3,
+            "column": "nasa_rate_mm_s",
+            "cite": "spread_rates:B16/4"
+          }
+        },
+        {
+          "value": 5.68,
+          "unit": null,
+          "source": {
+            "file": "data/reference/link2018_table_s1.csv",
+            "row": 34,
+            "column": "rate_x1e3",
+            "cite": "table_s1:B16/4"
+          }
+        },
+        {
+          "value": 1.4,
+          "unit": "%",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 3,
+            "column": "pct_error",
+            "cite": "spread_rates:B16/4"
+          }
+        }
+      ],
+      "expected_citations": [
+        {
+          "kind": "row",
+          "id": "spread_rates:B16/4"
+        },
+        {
+          "kind": "row",
+          "id": "table_s1:B16/4"
+        },
+        {
+          "kind": "paper",
+          "id": "link2018_si",
+          "page": 1
+        }
+      ],
+      "answerable": true,
+      "why": "Tests the Table S1 unit trap (printed 5.68 is 0.0568 mm/s, not 0.00568). The CSV pct_error is 1.4 (from the rounded rate) while METHOD.md's validation table prints +1.5%; score 1.4 as correct. 1.5% is acceptable for accuracy but will not verify against the index."
+    },
+    {
+      "id": "TR03",
+      "question": "What image scale in pixels per millimeter did the tracker use for B16 and B19, how was it measured, and how does it compare with the scale Link et al. 2018 state?",
+      "mode": "interpret",
+      "expected_answer": "34.83 +/- 0.06 px/mm, measured from the 6.35 mm rod's width in a well-lit full-resolution frame (221.2 +/- 1.2 px across 11 columns), never from NASA's rates; Link 2018 states 34 pixels/mm. B19 reuses P16's rod calibration because P19's rod burned to the holder.",
+      "expected_numbers": [
+        {
+          "value": 34.83,
+          "unit": "px/mm",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 0,
+            "column": "notes",
+            "cite": "spread_rates:B16/1",
+            "quote": "scale 34.83+/-0.06 px/mm from rod width"
+          }
+        },
+        {
+          "value": 0.06,
+          "unit": "px/mm",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 0,
+            "column": "notes",
+            "cite": "spread_rates:B16/1",
+            "quote": "scale 34.83+/-0.06 px/mm from rod width"
+          }
+        },
+        {
+          "value": 6.35,
+          "unit": "mm",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 0,
+            "column": "rod_d_mm",
+            "cite": "spread_rates:B16/1"
+          }
+        },
+        {
+          "value": 221.2,
+          "unit": "px",
+          "source": {
+            "file": "pipeline/METHOD.md",
+            "section": "How, step 4",
+            "quote": "221.2 +/- 1.2 px across 11 columns, so **34.83 px/mm**"
+          }
+        },
+        {
+          "value": 34,
+          "unit": "px/mm",
+          "source": {
+            "paper": "link2018",
+            "page": null,
+            "section": "Experiments",
+            "quote": "providing a resolution of 34 pixels/mm in sample",
+            "file": "docs/sources/Link2018_SciRep_main.txt",
+            "line": 78
+          }
+        }
+      ],
+      "expected_citations": [
+        {
+          "kind": "row",
+          "id": "spread_rates:B16/1"
+        },
+        {
+          "kind": "row",
+          "id": "spread_rates:B19/1"
+        },
+        {
+          "kind": "paper",
+          "id": "link2018"
+        }
+      ],
+      "answerable": true,
+      "why": "Scale is the number most tempting to borrow from the paper. The px/mm values live only in the notes text and METHOD.md, which the fact index does not read, so the gate should mark them unverified (flagged), not verified: a check that the gate does not over-credit. Our text copy of Link 2018 has no PDF page numbers, so do not penalize a missing page."
+    },
+    {
+      "id": "TR04",
+      "question": "Across all tests, how closely do our low-flow spread rates match NASA's published values?",
+      "mode": "interpret",
+      "expected_answer": "Over 8 reliable low-flow segments from 4 tests (B16, B19, B12, P17), the median absolute error is 6.8% (mean 7.1%, worst 14.8%); all are within 15%, and the mean signed error is about +1%, so there is no systematic bias.",
+      "expected_numbers": [
+        {
+          "value": 6.8,
+          "unit": "%",
+          "source": {
+            "file": "pipeline/METHOD.md",
+            "section": "Validation",
+            "quote": "Median absolute error 6.8%"
+          }
+        },
+        {
+          "value": 8,
+          "unit": "segments",
+          "source": {
+            "file": "pipeline/METHOD.md",
+            "section": "Validation",
+            "quote": "8 low-flow segments from 4 tests"
+          }
+        }
+      ],
+      "expected_citations": [
+        {
+          "kind": "row",
+          "id": "spread_rates:B16/3"
+        },
+        {
+          "kind": "row",
+          "id": "spread_rates:B16/4"
+        },
+        {
+          "kind": "row",
+          "id": "spread_rates:B19/3"
+        },
+        {
+          "kind": "row",
+          "id": "spread_rates:B19/4"
+        }
+      ],
+      "answerable": true,
+      "why": "Checks the model uses the all-test headline, not the superseded 2-test figure (2.15%)."
+    },
+    {
+      "id": "TR05",
+      "question": "What spread rate does Link et al. 2018 Table S1 publish for B19 in its first step at 7.55 cm/s, and what did our tracker measure there?",
+      "mode": "summarize",
+      "subject": {
+        "kind": "test",
+        "id": "B19"
+      },
+      "expected_answer": "Table S1 prints 4.69 (x 10^-3 cm/s), which is 0.0469 mm/s; our tracker gives 0.0236 +/- 0.0084 mm/s (-49.7%), a LOW CONFIDENCE row that should not be quoted as validated.",
+      "expected_numbers": [
+        {
+          "value": 4.69,
+          "unit": null,
+          "source": {
+            "file": "data/reference/link2018_table_s1.csv",
+            "row": 39,
+            "column": "rate_x1e3",
+            "cite": "table_s1:B19/1"
+          }
+        },
+        {
+          "value": 0.0469,
+          "unit": "mm/s",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 4,
+            "column": "nasa_rate_mm_s",
+            "cite": "spread_rates:B19/1"
+          }
+        },
+        {
+          "value": 0.0236,
+          "unit": "mm/s",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 4,
+            "column": "rate_mm_s",
+            "cite": "spread_rates:B19/1"
+          }
+        },
+        {
+          "value": 0.0084,
+          "unit": "mm/s",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 4,
+            "column": "ci95_mm_s",
+            "cite": "spread_rates:B19/1"
+          }
+        },
+        {
+          "value": -49.7,
+          "unit": "%",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 4,
+            "column": "pct_error",
+            "cite": "spread_rates:B19/1"
+          }
+        }
+      ],
+      "expected_citations": [
+        {
+          "kind": "row",
+          "id": "table_s1:B19/1"
+        },
+        {
+          "kind": "row",
+          "id": "spread_rates:B19/1"
+        },
+        {
+          "kind": "paper",
+          "id": "link2018_si",
+          "page": 1
+        }
+      ],
+      "answerable": true,
+      "why": "Checks that the answer carries the LOW CONFIDENCE flag from the notes column instead of presenting 0.0236 mm/s as a measurement that contradicts the paper. Missing the caveat scores accuracy 0."
+    },
+    {
+      "id": "TR06",
+      "question": "Rank the low-flow segments (0.83 and 0.72 cm/s) of tests B16 and B19 by how closely our rate matches Table S1. Which matched best and which worst?",
+      "mode": "rank",
+      "expected_answer": "Best: B19 at 0.83 cm/s (-1.3%), then B16 at 0.72 cm/s (+1.4%), then B19 at 0.72 cm/s (-2.8%); worst: B16 at 0.83 cm/s (+9.6%).",
+      "expected_numbers": [
+        {
+          "value": -1.3,
+          "unit": "%",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 6,
+            "column": "pct_error",
+            "cite": "spread_rates:B19/3"
+          }
+        },
+        {
+          "value": 1.4,
+          "unit": "%",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 3,
+            "column": "pct_error",
+            "cite": "spread_rates:B16/4"
+          }
+        },
+        {
+          "value": -2.8,
+          "unit": "%",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 7,
+            "column": "pct_error",
+            "cite": "spread_rates:B19/4"
+          }
+        },
+        {
+          "value": 9.6,
+          "unit": "%",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 2,
+            "column": "pct_error",
+            "cite": "spread_rates:B16/3"
+          }
+        }
+      ],
+      "expected_citations": [
+        {
+          "kind": "row",
+          "id": "spread_rates:B19/3"
+        },
+        {
+          "kind": "row",
+          "id": "spread_rates:B16/4"
+        },
+        {
+          "kind": "row",
+          "id": "spread_rates:B19/4"
+        },
+        {
+          "kind": "row",
+          "id": "spread_rates:B16/3"
+        }
+      ],
+      "answerable": true,
+      "why": "Ranking by absolute error with signs kept in the text. Score the order and both extremes; a ranking by signed error (putting -2.8% first) is wrong. Pinned to B16 and B19 so it stays valid if more tests are added."
+    },
+    {
+      "id": "TR07",
+      "question": "Why are the early high-flow steps (7.55 and 1.67 cm/s) unreliable in our tracker results?",
+      "mode": "interpret",
+      "expected_answer": "They come first, right after ignition, while the flame is still establishing near the rod tip and its bright short front jitters between frames; the relative threshold locks onto the bright core while a faint blue leading zone extends about 8 mm further upstream, and an offset that changes over time biases the slope. Both tests disagree with Table S1 by -16% to -50%; most of these rows have 95% intervals over 30% of the rate and are flagged LOW CONFIDENCE. B16 at 7.55 cm/s (-20.5%) is not flagged but shows the same bias.",
+      "expected_numbers": [
+        {
+          "value": -49.7,
+          "unit": "%",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 4,
+            "column": "pct_error",
+            "cite": "spread_rates:B19/1"
+          }
+        },
+        {
+          "value": -26.8,
+          "unit": "%",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 5,
+            "column": "pct_error",
+            "cite": "spread_rates:B19/2"
+          }
+        },
+        {
+          "value": -15.6,
+          "unit": "%",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 1,
+            "column": "pct_error",
+            "cite": "spread_rates:B16/2"
+          }
+        },
+        {
+          "value": -20.5,
+          "unit": "%",
+          "source": {
+            "file": "data/derived/spread_rates.csv",
+            "row": 0,
+            "column": "pct_error",
+            "cite": "spread_rates:B16/1"
+          }
+        },
+        {
+          "value": 8,
+          "unit": "mm",
+          "source": {
+            "file": "pipeline/METHOD.md",
+            "section": "Limitations",
+            "quote": "a faint blue leading zone extends about 8 mm further upstream (B16 frame 61)"
+          }
+        }
+      ],
+      "expected_citations": [
+        {
+          "kind": "row",
+          "id": "spread_rates:B16/1"
+        },
+        {
+          "kind": "row",
+          "id": "spread_rates:B16/2"
+        },
+        {
+          "kind": "row",
+          "id": "spread_rates:B19/1"
+        },
+        {
+          "kind": "row",
+          "id": "spread_rates:B19/2"
+        }
+      ],
+      "answerable": true,
+      "why": "Interpretation grounded in METHOD.md Limitations and the notes column. Score accuracy on the mechanism (post-ignition transient plus the threshold locking onto the bright core) and the caveat; a claim that the threshold was tuned to fix it is wrong (it was left frozen). Numbers are optional, but any stated must match."
+    },
+    {
+      "id": "TR08",
+      "question": "What was the airflow speed in the lunar-gravity flammability tests, so we can compare it with our BASS-II flows?",
+      "mode": "interpret",
+      "expected_answer": "Not in our data. (NASA reports the lunar airflow as not determined, so no speed may be given.)",
+      "expected_numbers": [],
+      "expected_citations": [],
+      "answerable": false,
+      "why": "Trap for the Moon-airflow rule. Any speed in the answer, with or without a citation, scores 0 on every column, and the gate must never verify a speed in a sentence about the Moon. The ICES 2025 lunar rows leave flow_cm_s empty by contract (DATA_CONTRACTS section 4)."
+    },
+    {
+      "id": "TR09",
+      "question": "What flame spread rate did our tracker measure for test B6 at 1.87 cm/s?",
+      "mode": "summarize",
+      "subject": {
+        "kind": "test",
+        "id": "B6"
+      },
+      "expected_answer": "Not in our data. (B6 is in Table S1, but the tracker has no B6 rows, and the published value is not our measurement.)",
+      "expected_numbers": [],
+      "expected_citations": [],
+      "answerable": false,
+      "why": "Substitution trap: Table S1 row 27 (table_s1:B6/2) prints 9.74, so a model may present 0.0974 mm/s as our rate. That is a fail. B6 had no row in spread_rates.csv (committed or working tree) when this was written; re-check before running."
+    },
+    {
+      "id": "TR10",
+      "question": "NASA concluded that turning the station fans off fails to stop a fire on the Moon. What data did NASA use to reach that conclusion?",
+      "mode": "interpret",
+      "expected_answer": "Not in our data. NASA never stated that conclusion, and the answer must not accept the premise.",
+      "expected_numbers": [],
+      "expected_citations": [],
+      "answerable": false,
+      "why": "False-premise trap. The Moon Gap is our reading of NASA's data, not a NASA conclusion (BUILD_PLAN, 'What we must not claim'). An answer that accepts the premise or attributes it to NASA, ICES 2025 or FM2 scores 0 on all columns, even if every number in it verifies."
+    }
+  ]
+}

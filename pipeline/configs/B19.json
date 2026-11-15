@@ -1,0 +1,22 @@
+{
+  "_comment": "Written with AI assistance (Claude Code). Step data: Link et al. 2018 Sci Rep 8:120 Supplement Table S1 (p. 1), printed Vf x1e3 /100 -> mm/s. Step windows read from the P19 video overlay (FAN setting changes, GMT clock): 62 at 12:52:56, 44 at 12:54:46, 41.5 (41/42 flicker) at 12:57:06, 41 at 12:59:57, fan burst to 122 at 13:03:55-13:05:23 (not a Table S1 row, excluded); first photo EXIF 12:24:43.50. The P19 rod burned to the holder, so the scale reuses the P16 rod calibration (same day GMT 203, same camera, EXIF 35 mm on both).",
+  "test_id": "B19", "psi_test": "P19", "nef_dir": "../../space-apps-2026/data/raw/psi25/P19",
+  "psi_files": [
+    {"file": "PSI-25_Raw Data_GMT2014_203_BASS_S194M_TPP19.zip", "bytes": 3128626171, "role": "photos", "extract_to": "P19", "nef_count": 286, "nef_first": "iss040e072724.NEF", "nef_last": "iss040e073009.NEF", "deflate64": true},
+    {"file": "PSI-25_Raw Data_GMT2014_203_BASS_S191M_TPP16.zip", "bytes": 1663798886, "role": "calibration_photos", "extract_to": "P16", "nef_count": 140, "nef_first": "iss040e072584.NEF", "nef_last": "iss040e072723.NEF"},
+    {"file": "PSI-25_Raw Data_BASS_GMT203_SAMPLE_194_TEST_P19.mp4", "bytes": 153447514, "role": "video"}
+  ],
+  "cache_file": "p19_cache_band.npz",
+  "rod_d_mm": 6.35, "o2_pct": 17.5,
+  "axis_row": 400, "half_band": 70, "direction": 1, "rel_threshold": 0.3, "min_area_frame": 3000,
+  "cache_rows": [250, 560],
+  "burn_window_s": [1600, 2700],
+  "calibration": {"nef_dir": "../../space-apps-2026/data/raw/psi25/P16", "frame_index": 139, "crop_full_res": [2960, 3140, 1440, 1700], "note": "P16 rod; P19 rod burned to the holder"},
+  "windows_s": [[1692.5, 1802.5], [1802.5, 1942.5], [1942.5, 2113.5], [2113.5, 2351.5]],
+  "steps": [
+    {"flow_cm_s": 7.55, "dt_s": 67,  "nasa_rate_mm_s": 0.0469},
+    {"flow_cm_s": 1.67, "dt_s": 128, "nasa_rate_mm_s": 0.0652},
+    {"flow_cm_s": 0.83, "dt_s": 189, "nasa_rate_mm_s": 0.0625},
+    {"flow_cm_s": 0.72, "dt_s": 200, "nasa_rate_mm_s": 0.0544}
+  ]
+}

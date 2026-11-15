@@ -1,0 +1,26 @@
+/* Written with AI assistance (Claude Code) */
+/* The header's link labels roll on hover and focus: two faces of one box, the twin hinged underneath.
+   In 650 ms with a soft overshoot, back in 390 ms. */
+.roll { --roll-h: 1.3em; display: inline-block; height: var(--roll-h); line-height: var(--roll-h); vertical-align: top; perspective: 420px; }
+.roll-box {
+  position: relative; display: block; height: 100%; transform-style: preserve-3d;
+  transform: translateZ(calc(var(--roll-h) / -2)) rotateX(0deg);
+  transition: transform 390ms cubic-bezier(.2, .85, .2, 1);
+}
+.roll-face { display: block; white-space: nowrap; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(calc(var(--roll-h) / 2)); }
+.roll-twin { position: absolute; inset: 0; color: var(--ink); transform: rotateX(-90deg) translateZ(calc(var(--roll-h) / 2)); }
+.top[data-tone="dark"] .roll-twin { color: var(--ground); }
+a:focus-visible > .roll > .roll-box { transform: translateZ(calc(var(--roll-h) / -2)) rotateX(90deg); transition: transform 650ms cubic-bezier(.34, 1.42, .5, 1); }
+@media (hover: hover) and (pointer: fine) {
+  a:hover > .roll > .roll-box { transform: translateZ(calc(var(--roll-h) / -2)) rotateX(90deg); transition: transform 650ms cubic-bezier(.34, 1.42, .5, 1); }
+}
+/* reduced motion or Pause: the word stays put */
+@media (prefers-reduced-motion: reduce) {
+  .roll-box, a:is(:hover, :focus-visible) > .roll > .roll-box { transform: none !important; transition: none !important; transform-style: flat; }
+  .roll-face { transform: none; }
+  .roll-twin { display: none; }
+}
+html[data-motion="paused"] .roll-box, html[data-motion="paused"] a:is(:hover, :focus-visible) > .roll > .roll-box { transform: none !important; transition: none !important; transform-style: flat; }
+html[data-motion="paused"] .roll-face { transform: none; }
+html[data-motion="paused"] .roll-twin { display: none; }
+@media print { .roll-twin { display: none; } .roll-box, .roll-face { transform: none; } }

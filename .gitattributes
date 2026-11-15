@@ -1,0 +1,12 @@
+# Written with AI assistance (Claude Code)
+# LF in the repo and in working copies (later lines override earlier ones).
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary
+*.mp4 binary
+*.NEF binary
+# Data files are byte-exact: their sha256 is recorded in provenance, and the validators and
+# tests read them byte for byte. Never convert their line endings on any machine (Windows
+# checkouts with autocrlf turned the mocks into CRLF and broke two contract tests).
+data/** -text

@@ -1,0 +1,86 @@
+{
+  "contract": "envelope/1",
+  "mock": true,
+  "_note": "Written with AI assistance (Claude Code). MOCK-DATA: fake values, never real.",
+  "estimate_note": "MOCK: fake values, not a NASA measurement.",
+  "model": {
+    "law": "MOCK law",
+    "exponent": 0.5,
+    "source": "MOCK source"
+  },
+  "anchors": {
+    "low": {
+      "flow_1g_cm_s": 11.1,
+      "provenance": {
+        "derived": "MOCK formula"
+      }
+    },
+    "high": {
+      "flow_1g_cm_s": 22.2,
+      "provenance": {
+        "derived": "MOCK formula"
+      }
+    }
+  },
+  "sustaining_flow": [
+    {
+      "sample_id": "MOCK-B01",
+      "o2_pct": 11.1,
+      "rod_d_cm": 1.11,
+      "lowest_flow_with_spread_cm_s": 1.11,
+      "provenance": {
+        "file": "MOCK",
+        "row": 0,
+        "column": "flow_cm_s",
+        "derived": "MOCK"
+      }
+    }
+  ],
+  "threshold": {
+    "flow_low_cm_s": 1.11,
+    "flow_high_cm_s": 1.11,
+    "g_low": 0.001,
+    "g_high": 0.002,
+    "bound": "at most",
+    "provenance": {
+      "derived": "MOCK formula"
+    }
+  },
+  "worlds": [
+    {
+      "id": "mock_world",
+      "label": "MOCK world",
+      "estimate": true,
+      "g_earth": 0.5,
+      "times_threshold_at_least": 250,
+      "times_threshold_at_most": 500,
+      "provenance": {
+        "g_earth": {
+          "derived": "MOCK formula"
+        },
+        "times_threshold_at_least": {
+          "derived": "MOCK formula"
+        },
+        "times_threshold_at_most": {
+          "derived": "MOCK formula"
+        }
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "mock-check",
+      "what": "MOCK",
+      "result": "MOCK: fake values"
+    }
+  ],
+  "caveats": [
+    "MOCK: fake values"
+  ],
+  "derived_from": [
+    {
+      "file": "MOCK",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+/* Written with AI assistance (Claude Code) */
+/* Raw photo against the tracker's overlay, split by a draggable line. */
+.twipe { margin-top: 36px; display: grid; gap: 16px 28px; grid-template-columns: minmax(0, 1fr); align-items: start; min-width: 0; }
+@media (min-width: 960px) { .twipe { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); } }
+.twipe-text { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.twipe-text h3 { font-size: var(--fs-h3); letter-spacing: -0.01em; }
+.twipe-text .seg { justify-self: start; }
+.twipe-facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; margin: 0; font-size: var(--fs-ui); }
+.twipe-facts > div { display: contents; }
+.twipe-facts dt { color: var(--mute); }
+.twipe-facts dd { margin: 0; font-variant-numeric: tabular-nums; }
+
+.twipe-fig { margin: 0; display: grid; gap: 8px; min-width: 0; }
+.twipe-fig code { font-family: var(--mono); font-size: 0.95em; white-space: nowrap; }
+.twipe-stage {
+  --x: 50%;
+  position: relative; overflow: hidden; border-radius: var(--radius); background: var(--night);
+  aspect-ratio: 900 / 598; touch-action: pan-y; cursor: ew-resize; user-select: none; -webkit-user-select: none;
+}
+.twipe-stage img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; -webkit-user-drag: none; }
+.twipe-top { clip-path: inset(0 calc(100% - var(--x)) 0 0); }
+
+.twipe-tag {
+  position: absolute; bottom: 10px; padding: 3px 8px; border-radius: var(--radius-ctl);
+  font: 400 var(--fs-label)/1.3 var(--mono); color: var(--on-night); background: rgb(14 20 40 / 0.78); pointer-events: none;
+}
+.twipe-tag.l { left: 10px; }
+.twipe-tag.r { right: 10px; }
+
+/* the line and its grip; the button is the slider (44px wide target, 2px line) */
+.twipe-handle {
+  position: absolute; top: 0; bottom: 0; left: var(--x); width: 44px; margin-left: -22px; padding: 0;
+  border: 0; background: none; cursor: ew-resize; touch-action: none;
+}
+.twipe-handle::before { content: ""; position: absolute; top: 0; bottom: 0; left: 21px; width: 2px; background: var(--surface); box-shadow: 0 0 0 1px rgb(14 20 40 / 0.35); }
+.twipe-handle > span {
+  position: absolute; top: 50%; left: 50%; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%;
+  background: var(--surface); box-shadow: 0 1px 4px rgb(14 20 40 / 0.4);
+}
+.twipe-handle > span::before, .twipe-handle > span::after {
+  content: ""; position: absolute; top: 50%; margin-top: -4px; border: 4px solid transparent;
+}
+.twipe-handle > span::before { left: 4px; border-right: 6px solid var(--ink); border-left: 0; }
+.twipe-handle > span::after { right: 4px; border-left: 6px solid var(--ink); border-right: 0; }
+.twipe-handle:focus-visible { outline: none; }
+.twipe-handle:focus-visible > span { outline: 2px solid var(--flame-glow); outline-offset: 3px; }
+.twipe-handle:focus-visible::before { background: var(--flame-glow); }

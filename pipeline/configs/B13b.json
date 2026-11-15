@@ -1,0 +1,72 @@
+{
+  "_comment": "Written with AI assistance (Claude Code). Step data: Link et al. 2018 Sci Rep 8:120 Supplement Table S1 (p. 1), sample B13b (1.27 cm black rod, 20.6% O2) = PSI-25 test P13b (0.5 in. black rod, sample 203m, GMT 195, initial O2 20.6 in the PSI experimental table; fan pot 1.3 (5 cm/s), 0.4, 0.36, 0.32, ext). Sample 203m was burned first in P13a the same day, so this is a RE-BURN of an already heated rod (bubbled surface everywhere). Rates = printed Vf x1e3 /100 -> mm/s (matches data/reference/link2018_table_s1.csv). Photos: PSI-25_Raw Data_GMT2014_195_BASS_S203M_TPP13b.zip (Deflate64, 81 NEF, iss040e062239-062319, same list as the proof sheet; the experimental table says 94 shot). First photo EXIF 2014-07-15 16:02:25.13 (overlay date also reads 07/15/14; GMT 195 = 07-14, the known one-day offset, times agree). Frame 0 is a pre-test shot, frame 1 (16:04:59) shows ignition, frame 72 (16:11:40, t=555.4) is the last flame photo, frames 73-74 are dark, 75-80 are lit post-test shots. WINDOWS from the P13b video overlay only (PSI-25_Raw Data_BASS_GMT195_SAMPLE_203_TEST_P13b.mp4, FAN display + GMT clock, crops read every 2 s and every 0.5 s, by eye and by template matching of the FAN digits): FAN 51 until 16:04:54, 50 from 16:04:55 (RAD falls 1.30 -> 0.41 at 16:04:55-57: igniter off), 50 -> 49 at 16:05:34 starting a ramp to 42 (16:05:52) = pot 1.3 -> 0.4; then 41/42 flicker (about 33% of 0.5-s samples read 42 in every 20-s bin) until the last 42 at 16:08:33; then steady 41 (0-3% 42) from 16:08:34; RAD collapses 1.14 -> 0.46 at 16:11:44-48 (extinction, consistent with the last flame photo 16:11:40 and the dark photo 16:11:53); FAN 40 appears only after that (16:11:53, 16:11:57), purge ramp 48 -> 122 from 16:12:10. The pot 0.4/0.36/0.32 steps are below the display's resolution, so the 0.4 -> 0.36 change is read from the change in flicker statistics (41/42 -> steady 41), not from a new number; this is weaker evidence than a distinct FAN value. Matching Table S1's two rows to phases used ORDER and DURATIONS only, never rates: phase A 16:05:34-16:08:34 (180 s), phase B 16:08:34-16:11:46 (192 s); Table S1 dt 159 and 179 s are 0.88 and 0.93 of them (B12: 0.89-0.92) and each fits inside its phase. No other split works: phase A cannot hold 159+179 s, and phase B (192 s) cannot hold both rows. Clock: overlay events agree with photo EXIF within the photo spacing (igniter-off RAD drop 16:04:55-57 vs ignition photo 16:04:59; extinction RAD drop 16:11:44-48 between photos 16:11:40 and 16:11:53). Axis: rod spans full-res rows ~1375-1765 at the upstream part (1/4 res ~344-441) -> axis 395. Direction +1 (burning tip on the left, holder on the right). SCALE: calibrate.py was run on frames 77-80 (lit, 1/2500-1/13 s) with crops next to the holder (cols 2400-3050, rows 1250-1900) and was NOT consistent (per-column sd 18-75 px, frame means 388-555 px = 30.5-43.7 px/mm), because this re-burned rod has no clean top highlight and the bubble glints break its peak rule (the B9 failure mode). So px_per_mm_full was measured outside calibrate.py, from the same rod: gradient extrema per column (top = strongest bg -> dark fall in rows 1320-1440, bottom = strongest dark -> bg rise in rows 1720-1860, 13-column means), frame 79 (iss040e062318.NEF, 1/100 s), cols 2750-3050: top edge flat at 1377-1385, bottom 1785 -> 1810, width 416.9 +/- 8.0 px (sd, 20 columns) = 32.83 +/- 0.14 px/mm for 12.7 mm. Bottom edges agree in all four lit frames. SYSTEMATIC: the rod's apparent width grows linearly from ~380 px (col 2400) to ~429 px (col 3035) because of the P13a burn and the re-burn swelling, so the true scale is uncertain by about +/-3% (31.8-33.8 px/mm) on top of the quoted error. The ruler (numbers 100..50, ~295 px per 10 units) is out of focus, so it is at another depth and was not used. No spread rate was used for any of this. half_band 70 and rel_threshold 0.3 as in B16/B19 (not tuned). extinction_s: first dark photo at 16:11:53 GMT (RAD collapses 16:11:44-48 on the video overlay; last flame photo 16:11:40); the frozen area gate (3000 px) loses the dim late flame from ~376 s, so the tracker's own extinction would be wrong.",
+  "test_id": "B13b",
+  "psi_test": "P13b",
+  "nef_dir": "../../space-apps-2026/data/raw/psi25/P13b",
+  "psi_files": [
+    {
+      "file": "PSI-25_Raw Data_GMT2014_195_BASS_S203M_TPP13b.zip",
+      "bytes": 903202840,
+      "role": "photos",
+      "extract_to": "P13b",
+      "nef_count": 81,
+      "nef_first": "iss040e062239.NEF",
+      "nef_last": "iss040e062319.NEF"
+    },
+    {
+      "file": "PSI-25_Raw Data_BASS_GMT195_SAMPLE_203_TEST_P13b.mp4",
+      "bytes": 56412853,
+      "role": "video"
+    }
+  ],
+  "rod_d_mm": 12.7,
+  "o2_pct": 20.6,
+  "axis_row": 395,
+  "half_band": 70,
+  "direction": 1,
+  "rel_threshold": 0.3,
+  "min_area_frame": 3000,
+  "cache_rows": [
+    250,
+    560
+  ],
+  "burn_window_s": [
+    150,
+    561
+  ],
+  "calibration": {
+    "frame_index": 79,
+    "crop_full_res": [
+      2750,
+      3050,
+      1250,
+      1950
+    ],
+    "px_per_mm_full": 32.83,
+    "px_per_mm_sem": 0.14,
+    "note": "rod gradient edges, frame 79; calibrate.py rule failed on the bubbled re-burned rod; taper gives +/-3% systematic"
+  },
+  "windows_s": [
+    [
+      188.9,
+      368.9
+    ],
+    [
+      368.9,
+      560.9
+    ]
+  ],
+  "steps": [
+    {
+      "flow_cm_s": 1.64,
+      "dt_s": 159,
+      "nasa_rate_mm_s": 0.0709
+    },
+    {
+      "flow_cm_s": 1.54,
+      "dt_s": 179,
+      "nasa_rate_mm_s": 0.0491
+    }
+  ],
+  "extinction_s": 567.87
+}

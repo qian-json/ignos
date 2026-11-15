@@ -1,0 +1,5985 @@
+{
+  "_comment": "Written with AI assistance (Claude Code and Codex)",
+  "scope": [
+    "pipeline/METHOD.md",
+    "docs/research/pitch_qa.md",
+    "docs/submission/pitch_script.md",
+    "docs/submission/project_page.md",
+    "docs/submission/README_proposed.md",
+    "docs/submission/slides_outline.md"
+  ],
+  "counts": {
+    "metadata_or_paper_manual": 227,
+    "numeric_candidate_match_only": 205,
+    "unverified": 419
+  },
+  "semantic_checks": {
+    "headline_steps_8": true,
+    "tests_4": true,
+    "ninth_flagged": true,
+    "median_rounds_6_8": true,
+    "all_within_15": true,
+    "six_within_10": true,
+    "mean_signed_rounds_plus_1_1": true,
+    "p213_gap_rounds_2_7": true
+  },
+  "claims": [
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 7,
+      "token": "2014,",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 7,
+      "token": "25,",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 7,
+      "token": "10.60555",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 7,
+      "token": "2018",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 10,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 10,
+      "token": "2.0",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.fit.provenance.rows[2]"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 10,
+      "token": "1000",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 10,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 10,
+      "token": "8000",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 10,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 10,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 11,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 11,
+      "token": "0.3",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:8:blue_frac"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 11,
+      "token": "99",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 11,
+      "token": "431",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 11,
+      "token": "20160012298",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 12,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 12,
+      "token": "1%",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 13,
+      "token": "4",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 13,
+      "token": "6.35",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:rod_d_mm"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 13,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 13,
+      "token": "4",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 13,
+      "token": "221.2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 13,
+      "token": "1.2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 13,
+      "token": "11",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 13,
+      "token": "34.83",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 13,
+      "token": "2018",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 13,
+      "token": "34",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "13",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "04",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "04",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "13",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "04",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "07",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "0.72",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:5:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "+4.4%",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "0.83",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:4:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "+7.3%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.cotton_smolder.curve.lower_pct[6]"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "21",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "54",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "60",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "12",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "110",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 14,
+      "token": "260",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "6",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "25",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "90%",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "75%",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "95%",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "0.975",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "0",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "2026",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "11",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 15,
+      "token": "15",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 17,
+      "token": "2018,",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 17,
+      "token": "8",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 17,
+      "token": "120,",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 17,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 18,
+      "token": "10",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 18,
+      "token": "3",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 18,
+      "token": "100",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 22,
+      "token": "6.35",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:rod_d_mm"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 22,
+      "token": "18.2",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 22,
+      "token": "0.83",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:4:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 22,
+      "token": "0.0766",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:4:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 22,
+      "token": "0.0044",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:4:ci95_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 22,
+      "token": "0.0699",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:4:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 22,
+      "token": "+9.6%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:4:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 23,
+      "token": "6.35",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:rod_d_mm"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 23,
+      "token": "18.2",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 23,
+      "token": "0.72",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:5:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 23,
+      "token": "0.0576",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:5:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 23,
+      "token": "0.0033",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:5:ci95_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 23,
+      "token": "0.0568",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:5:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 23,
+      "token": "+1.4%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:5:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 24,
+      "token": "6.35",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:rod_d_mm"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 24,
+      "token": "17.5",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:6:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 24,
+      "token": "0.83",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:4:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 24,
+      "token": "0.0617",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:8:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 24,
+      "token": "0.0027",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:8:ci95_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 24,
+      "token": "0.0625",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:8:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 24,
+      "token": "-1.3%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:8:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 25,
+      "token": "6.35",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:rod_d_mm"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 25,
+      "token": "17.5",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:6:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 25,
+      "token": "0.72",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:5:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 25,
+      "token": "0.0529",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:9:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 25,
+      "token": "0.0019",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:9:ci95_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 25,
+      "token": "0.0544",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:9:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 25,
+      "token": "-2.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:9:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 26,
+      "token": "9.525",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:10:rod_d_mm"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 26,
+      "token": "17.5",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:6:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 26,
+      "token": "0.60",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:12:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 26,
+      "token": "0.0317",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:12:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 26,
+      "token": "0.0021",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:12:ci95_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 26,
+      "token": "0.0365",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:12:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 26,
+      "token": "-13.2%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:12:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 27,
+      "token": "9.525",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:10:rod_d_mm"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 27,
+      "token": "17.5",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:6:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 27,
+      "token": "0.48",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:13:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 27,
+      "token": "0.0272",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:13:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 27,
+      "token": "0.0024",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:13:ci95_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 27,
+      "token": "0.0237",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:13:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 27,
+      "token": "+14.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:13:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 28,
+      "token": "6.35",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:rod_d_mm"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 28,
+      "token": "16.8",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:14:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 28,
+      "token": "0.82",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:11:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 28,
+      "token": "0.0447",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:15:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 28,
+      "token": "0.0022",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:threshold_spread_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 28,
+      "token": "0.0478",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:15:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 28,
+      "token": "-6.5%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:15:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 29,
+      "token": "6.35",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:rod_d_mm"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 29,
+      "token": "16.8",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:14:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 29,
+      "token": "0.41",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:16:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 29,
+      "token": "0.0242",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:16:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 29,
+      "token": "0.0036",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:16:ci95_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 29,
+      "token": "0.0226",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:16:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 29,
+      "token": "+7.1%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:16:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "16.8",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:14:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "18.2%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "-15%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "-10%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "+1.1%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.gap_at_ref_flow.gap_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 31,
+      "token": "2.15%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "20,000",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "20261114",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "95%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "13%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "2.1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "13.2%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.curve.lower_pct[7]"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "95%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "-4.6%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "+7.0%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.lunar.provenance.rows[1]"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "95%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 33,
+      "token": "13%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "2017,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "2019",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "2.4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "3.3%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "0.83",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:4:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "9.6%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:4:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "41",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "0.72",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:5:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "203",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "0.41",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:16:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 35,
+      "token": "210",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 38,
+      "token": "7.55",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 38,
+      "token": "1.67",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:3:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 38,
+      "token": "-16%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 38,
+      "token": "-50%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 38,
+      "token": "95%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 38,
+      "token": "30",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 38,
+      "token": "50%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 38,
+      "token": "7.55",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 38,
+      "token": "-20%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 38,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 38,
+      "token": "61",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 39,
+      "token": "1.01",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:10:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 39,
+      "token": "0.82",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:11:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 39,
+      "token": "-67%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 39,
+      "token": "+93%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 39,
+      "token": "1.01",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:10:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 39,
+      "token": "-23%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 39,
+      "token": "-48%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 39,
+      "token": "9",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 39,
+      "token": "79",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 39,
+      "token": "80",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "12.7",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:17:rod_d_mm"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "20.6%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:17:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "1.64",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:17:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "+5.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:17:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "0.0750",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:17:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "0.0709",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:17:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "1.54",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:18:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "3000",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "12.7",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:17:rod_d_mm"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "1,400",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "1,900",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "1000",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "-4.1%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "32.83",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "-3%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 40,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "20.7%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:19:o2_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "1.64",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:17:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "1.54",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:18:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "1.43",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:21:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "1.38",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:22:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "1.54",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:18:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "0.0573",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:20:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "0.0059",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:20:ci95_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "0.0527",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:20:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "+8.7%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:20:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "75%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "-15.6%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:3:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "1.64",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:17:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "-0.0127",
+      "status": "numeric_candidate_match_only",
+      "source": "docs\\research\\v2_eval_heldout.json:rows[2].v1.rate"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "3000",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "32.00",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.polycarbonate.fit.provenance.rows[0]"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "-3.5%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs\\research\\blue_edge_diagnostic.json:[6].blue_err"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 41,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 42,
+      "token": "34.18",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 42,
+      "token": "33.70",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 42,
+      "token": "1.27",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 42,
+      "token": "41",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 42,
+      "token": "720",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "15",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "100791,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "2021",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "3.0",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.fit.provenance.rows[3]"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "0.0606",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "0.0535",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "0.0617",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:8:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "0.0529",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:9:rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "-1.8%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "+1.1%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.gap_at_ref_flow.gap_pct"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "0.0625",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:8:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "0.0544",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:9:nasa_rate_mm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "0.996",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 43,
+      "token": "0.993",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 46,
+      "token": "431",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 46,
+      "token": "25",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 46,
+      "token": "90%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 47,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 47,
+      "token": "1.01",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:10:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 47,
+      "token": "-66.9%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:10:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 47,
+      "token": "+10.3%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.cotton_smolder.curve.o2_pct[15]"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 47,
+      "token": "0.82",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:11:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 47,
+      "token": "+93.3%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:11:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 47,
+      "token": "-0.4%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs\\research\\blue_edge_diagnostic.json:[9].blue_err"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 47,
+      "token": "1.01",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:10:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 47,
+      "token": "-23.1%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:14:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 47,
+      "token": "+9.0%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.fit.provenance.rows[1]"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 48,
+      "token": "7.55",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 48,
+      "token": "1.67",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:3:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 48,
+      "token": "-39%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 48,
+      "token": "-100%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 49,
+      "token": "0.72",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:5:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 49,
+      "token": "+1.4%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:5:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 49,
+      "token": "+0.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:4:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 49,
+      "token": "0.72",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:5:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 49,
+      "token": "-2.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:9:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 49,
+      "token": "-2.4%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs\\research\\blue_edge_diagnostic.json:[7].blue_err"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 49,
+      "token": "0.41",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:16:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 49,
+      "token": "+7.1%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:16:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 49,
+      "token": "+7.1%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:16:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 53,
+      "token": "2026",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 53,
+      "token": "11",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 53,
+      "token": "14",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 53,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 54,
+      "token": "8.7%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:20:pct_error"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 54,
+      "token": "11.0%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.fit.provenance.rows[3]"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 54,
+      "token": "3",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 54,
+      "token": "1.64",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:17:flow_cm_s"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 54,
+      "token": "7.3%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.cotton_smolder.curve.lower_pct[6]"
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 54,
+      "token": "8.2%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 54,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 55,
+      "token": "4",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 55,
+      "token": "6",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 59,
+      "token": "25",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 59,
+      "token": "2026",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 59,
+      "token": "11",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 59,
+      "token": "14",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 62,
+      "token": "2018",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 62,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 62,
+      "token": "120",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 62,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 62,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 63,
+      "token": "25",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 63,
+      "token": "10.60555",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 64,
+      "token": "2017",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 64,
+      "token": "10.1016",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 64,
+      "token": "2019",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 65,
+      "token": "20160012298",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 66,
+      "token": "2021",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 66,
+      "token": "15",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 66,
+      "token": "100791,",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "pipeline/METHOD.md",
+      "line": 66,
+      "token": "10.1016",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 2,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 2,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 6,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 7,
+      "token": "25",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 8,
+      "token": "34.83",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 8,
+      "token": "34",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "15%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "+1.1%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.gap_at_ref_flow.gap_pct"
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "95%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "13%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "2018,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "120,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 9,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 10,
+      "token": "2%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 11,
+      "token": "10%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 11,
+      "token": "6%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 12,
+      "token": "1%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 12,
+      "token": "3",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 14,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 15,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 15,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 15,
+      "token": "2023",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 15,
+      "token": "12",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 15,
+      "token": "008",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "392,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "9",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "2.7",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.gap_pct"
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "95%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "1.8",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.ci95_pct[0]"
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "3.7",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.ci95_pct[1]"
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "7",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "9",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "2,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 17,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 18,
+      "token": "5",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 19,
+      "token": "2018",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 19,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 19,
+      "token": "120,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 19,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 20,
+      "token": "0.6",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:12:flow_cm_s"
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 20,
+      "token": "0.64",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 20,
+      "token": "18.2%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:o2_pct"
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 20,
+      "token": "17.5%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:6:o2_pct"
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 24,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 30,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 30,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 30,
+      "token": "0.82",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:11:flow_cm_s"
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 30,
+      "token": "93%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 31,
+      "token": "11.0%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.fit.provenance.rows[3]"
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 31,
+      "token": "8.7%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:20:pct_error"
+    },
+    {
+      "file": "docs/research/pitch_qa.md",
+      "line": 31,
+      "token": "3",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 2,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 2,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "10",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "11",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "30",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "3,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "5",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "30",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "60",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "90",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "60",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "45",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "15",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 4,
+      "token": "140",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 6,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 8,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 8,
+      "token": "30",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 8,
+      "token": "70",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 8,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 10,
+      "token": "66",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 12,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 12,
+      "token": "60",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 12,
+      "token": "140",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 12,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 17,
+      "token": "30%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 18,
+      "token": "139",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 20,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 20,
+      "token": "90",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 20,
+      "token": "210",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 20,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 20,
+      "token": "4",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 25,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 25,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 25,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 25,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 25,
+      "token": "15%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 25,
+      "token": "2%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 28,
+      "token": "204",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 30,
+      "token": "4",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 30,
+      "token": "60",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 30,
+      "token": "140",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 30,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 33,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 33,
+      "token": "2.7",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.gap_pct"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 38,
+      "token": "139",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 40,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 40,
+      "token": "45",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 40,
+      "token": "100",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 40,
+      "token": "6,",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 42,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 43,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 43,
+      "token": "213",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 44,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 44,
+      "token": "213",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 45,
+      "token": "4",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 47,
+      "token": "6",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 47,
+      "token": "15",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 47,
+      "token": "35",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 47,
+      "token": "7",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 49,
+      "token": "33",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 51,
+      "token": "30",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 55,
+      "token": "30%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 55,
+      "token": "10.2",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.cotton_smolder.curve.o2_pct[14]"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 55,
+      "token": "21%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 55,
+      "token": "2018,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 55,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 55,
+      "token": "20.9%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.polycarbonate.curve.o2_pct[23]"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 56,
+      "token": "8.2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 56,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 56,
+      "token": "392",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 56,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 57,
+      "token": "30%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 57,
+      "token": "11.0",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.fit.provenance.rows[3]"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 57,
+      "token": "24.0%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.cotton_smolder.fit.provenance.rows[0]"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 57,
+      "token": "10.8",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.curve.flow_cm_s[3]"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 57,
+      "token": "23.0%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:4:n_frames"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 57,
+      "token": "60",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 57,
+      "token": "144",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 57,
+      "token": "7",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 57,
+      "token": "12",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 58,
+      "token": "9",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 58,
+      "token": "2026,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 58,
+      "token": "17",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 58,
+      "token": "18",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 59,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 59,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 59,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 59,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 59,
+      "token": "13",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 60,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 60,
+      "token": "+2.7",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.gap_pct"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 60,
+      "token": "95%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 60,
+      "token": "+1.8",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.ci95_pct[0]"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 60,
+      "token": "+3.7",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.ci95_pct[1]"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 60,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 60,
+      "token": "7",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 60,
+      "token": "9",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 61,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 61,
+      "token": "3",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 62,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 62,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 62,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 62,
+      "token": "15%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 62,
+      "token": "2%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 66,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 67,
+      "token": "11",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/pitch_script.md",
+      "line": 67,
+      "token": "30",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 4,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 4,
+      "token": "11",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 4,
+      "token": "15,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 4,
+      "token": "10",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 6,
+      "token": "218",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 6,
+      "token": "226",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 6,
+      "token": "405",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 6,
+      "token": "407",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 6,
+      "token": "150",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 10,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 13,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 16,
+      "token": "213,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 16,
+      "token": "7",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 16,
+      "token": "9",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 19,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 19,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 19,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 19,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 19,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 19,
+      "token": "+2.7",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.gap_pct"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 19,
+      "token": "95%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 19,
+      "token": "+1.8",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.ci95_pct[0]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 19,
+      "token": "+3.7",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.ci95_pct[1]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 19,
+      "token": "30%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 22,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 22,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 22,
+      "token": "2018",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 22,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 22,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 22,
+      "token": "15%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 22,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 24,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 25,
+      "token": "30",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 28,
+      "token": "4",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 31,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 31,
+      "token": "3",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 31,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 31,
+      "token": "392,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 31,
+      "token": "9",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 31,
+      "token": "2026,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 31,
+      "token": "17",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 33,
+      "token": "6001",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 33,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 33,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 33,
+      "token": "392,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 33,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 33,
+      "token": "30%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 33,
+      "token": "10.2",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.cotton_smolder.curve.o2_pct[14]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 33,
+      "token": "8.2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 33,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 33,
+      "token": "30%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 39,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 39,
+      "token": "25",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 39,
+      "token": "34.83",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "2025",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "392",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "95%",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "213",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "+2.7",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.gap_pct"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "+1.8",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.ci95_pct[0]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "+3.7",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.ci95_pct[1]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "7",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "9",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "+0.1",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:rate_mm_s"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 40,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 41,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 42,
+      "token": "4",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 42,
+      "token": "24",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 46,
+      "token": "10",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "15%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "10%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "+1.1%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.gap_at_ref_flow.gap_pct"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "95%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "13%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 50,
+      "token": "20,000",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 51,
+      "token": "2021",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 51,
+      "token": "0.0606",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 51,
+      "token": "0.0535",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 51,
+      "token": "0.0617",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:8:rate_mm_s"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 51,
+      "token": "0.0529",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:9:rate_mm_s"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 51,
+      "token": "0.996",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 51,
+      "token": "0.993",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 52,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 52,
+      "token": "11",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 52,
+      "token": "14",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 53,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 53,
+      "token": "7.55",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:flow_cm_s"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 53,
+      "token": "1.67",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:3:flow_cm_s"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 53,
+      "token": "-16%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 53,
+      "token": "-50%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 54,
+      "token": "11.0%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.fit.provenance.rows[3]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 54,
+      "token": "8.7%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:20:pct_error"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 54,
+      "token": "3",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 57,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 60,
+      "token": "5",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 60,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 72,
+      "token": "24",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 72,
+      "token": "18.3.1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 72,
+      "token": "5.4.21",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 72,
+      "token": "2.35.2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 72,
+      "token": "0.185.1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 73,
+      "token": "2.1.8",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 73,
+      "token": "3.3.0",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 74,
+      "token": "3.5",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.polycarbonate.curve.flow_cm_s[1]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 76,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 77,
+      "token": "25,",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 77,
+      "token": "10.60555",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 77,
+      "token": "10.60555",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 78,
+      "token": "24",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 78,
+      "token": "200",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 79,
+      "token": "2025",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 79,
+      "token": "392",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 79,
+      "token": "20250002114,",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 79,
+      "token": "20250002114",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 79,
+      "token": "392",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 79,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 79,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 80,
+      "token": "2026",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 80,
+      "token": "20260001966",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 81,
+      "token": "3001",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 81,
+      "token": "2023",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 81,
+      "token": "12",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 81,
+      "token": "008",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 82,
+      "token": "2017",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 82,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 82,
+      "token": "15",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 82,
+      "token": "20",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 83,
+      "token": "30%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 83,
+      "token": "10.2",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.cotton_smolder.curve.o2_pct[14]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 85,
+      "token": "6",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 87,
+      "token": "2018",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 87,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 87,
+      "token": "120",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 87,
+      "token": "4.0",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.fit.n"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 87,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 87,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 88,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 88,
+      "token": "392",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 89,
+      "token": "2017",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 89,
+      "token": "10.1016",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 89,
+      "token": "2019",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 90,
+      "token": "20160012298",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 91,
+      "token": "2021",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 91,
+      "token": "15",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 91,
+      "token": "100791,",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 91,
+      "token": "10.1016",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 91,
+      "token": "3.0",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.fit.provenance.rows[3]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 94,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 94,
+      "token": "392",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 95,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 97,
+      "token": "2026",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 97,
+      "token": "000807",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 97,
+      "token": "30",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 99,
+      "token": "7",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 101,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 104,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 105,
+      "token": "1,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 113,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 115,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 115,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 115,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 115,
+      "token": "13%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 115,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 116,
+      "token": "25",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 116,
+      "token": "10.60555",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 116,
+      "token": "24",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 117,
+      "token": "30",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 117,
+      "token": "18",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 122,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 122,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 122,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 122,
+      "token": "15%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 122,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 122,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 122,
+      "token": "10%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 122,
+      "token": "+1.1%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.gap_at_ref_flow.gap_pct"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 122,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 122,
+      "token": "13%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 123,
+      "token": "34.83",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 123,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 124,
+      "token": "2018",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 124,
+      "token": "1,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 124,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 125,
+      "token": "0.0606",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 125,
+      "token": "0.0535",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 125,
+      "token": "0.0617",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:8:rate_mm_s"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 125,
+      "token": "0.0529",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:9:rate_mm_s"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 125,
+      "token": "0.996",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 125,
+      "token": "0.993",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 126,
+      "token": "11.0%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.fit.provenance.rows[3]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 126,
+      "token": "8.7%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:20:pct_error"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 126,
+      "token": "3",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 127,
+      "token": "-16%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 127,
+      "token": "-50%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 128,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 128,
+      "token": "+2.7",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.gap_pct"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 128,
+      "token": "1.8",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.ci95_pct[0]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 128,
+      "token": "3.7",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.gap.ci95_pct[1]"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 128,
+      "token": "+0.1",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:2:rate_mm_s"
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 128,
+      "token": "5",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 129,
+      "token": "24",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 129,
+      "token": "24",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 131,
+      "token": "413",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 132,
+      "token": "3001",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 132,
+      "token": "413",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 136,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 137,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 137,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 137,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 137,
+      "token": "230",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 137,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 138,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 139,
+      "token": "4",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 140,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 141,
+      "token": "6",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 142,
+      "token": "7",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 142,
+      "token": "621",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 142,
+      "token": "313",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 143,
+      "token": "8",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/project_page.md",
+      "line": 144,
+      "token": "9",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 5,
+      "token": "2026,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 5,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 5,
+      "token": "11",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 5,
+      "token": "15",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 7,
+      "token": "25,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 7,
+      "token": "2018",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 16,
+      "token": "2018",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 16,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 29,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 29,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 29,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 29,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 29,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 29,
+      "token": "15%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 29,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 29,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 29,
+      "token": "10%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 29,
+      "token": "+1.1%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.gap_at_ref_flow.gap_pct"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 30,
+      "token": "95%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 30,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 30,
+      "token": "13%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 30,
+      "token": "20,000",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 30,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 31,
+      "token": "2021",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 31,
+      "token": "0.0606",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 31,
+      "token": "0.0535",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 31,
+      "token": "0.0617",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:8:rate_mm_s"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 31,
+      "token": "0.0529",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:9:rate_mm_s"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 31,
+      "token": "0.0625",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:8:nasa_rate_mm_s"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 31,
+      "token": "0.0544",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:9:nasa_rate_mm_s"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 31,
+      "token": "0.996",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 31,
+      "token": "0.993",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 32,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 32,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 33,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 33,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 33,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 39,
+      "token": "3.11",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 39,
+      "token": "10",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 44,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 44,
+      "token": "11",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 44,
+      "token": "15",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 55,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 60,
+      "token": "24",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 70,
+      "token": "503",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 76,
+      "token": "25",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 76,
+      "token": "10.60555",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 77,
+      "token": "2018",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 77,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 77,
+      "token": "120,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 77,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 77,
+      "token": "4.0",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.fit.n"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 78,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 78,
+      "token": "392",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 78,
+      "token": "7",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 78,
+      "token": "12,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 78,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 79,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 81,
+      "token": "10",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 81,
+      "token": "3",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 81,
+      "token": "100",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 85,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 85,
+      "token": "11",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 85,
+      "token": "14",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 85,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 87,
+      "token": "3",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 87,
+      "token": "8.7%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:20:pct_error"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 87,
+      "token": "11.0%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.fit.provenance.rows[3]"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 93,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 93,
+      "token": "392",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 97,
+      "token": "2018",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 97,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 97,
+      "token": "120",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 97,
+      "token": "1",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 97,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 98,
+      "token": "25",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 98,
+      "token": "10.60555",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 99,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 99,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 99,
+      "token": "392",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 100,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 100,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 101,
+      "token": "2021",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 101,
+      "token": "15",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 101,
+      "token": "100791,",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 101,
+      "token": "10.1016",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 102,
+      "token": "2017",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 102,
+      "token": "10.1016",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 102,
+      "token": "2019",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 103,
+      "token": "20160012298",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 109,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 109,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 109,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 110,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 110,
+      "token": "15%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 110,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 110,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 110,
+      "token": "10%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 110,
+      "token": "+1.1%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.gap_at_ref_flow.gap_pct"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 111,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 111,
+      "token": "13%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 111,
+      "token": "20,000",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 112,
+      "token": "0.996",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 112,
+      "token": "0.993",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 113,
+      "token": "8.7%",
+      "status": "numeric_candidate_match_only",
+      "source": "data\\derived\\spread_rates.csv:20:pct_error"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 113,
+      "token": "11.0%",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.p213.fit.provenance.rows[3]"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 113,
+      "token": "3,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 114,
+      "token": "10",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 114,
+      "token": "3.11",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 115,
+      "token": "24,",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 122,
+      "token": "3.0",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.pmma.fit.provenance.rows[3]"
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 123,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 123,
+      "token": "11",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 123,
+      "token": "15",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 123,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/README_proposed.md",
+      "line": 123,
+      "token": "3",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 2,
+      "token": "7",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 2,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 4,
+      "token": "7",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 4,
+      "token": "25",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 4,
+      "token": "2018",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 4,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 4,
+      "token": "392",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 4,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 6,
+      "token": "1",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 7,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 8,
+      "token": "25",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 11,
+      "token": "2",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 12,
+      "token": "2026",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 12,
+      "token": "30%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 14,
+      "token": "2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 14,
+      "token": "30%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 16,
+      "token": "3",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 18,
+      "token": "121,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 19,
+      "token": "3,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 21,
+      "token": "4",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 22,
+      "token": "8",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 22,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 22,
+      "token": "6.8%",
+      "status": "numeric_candidate_match_only",
+      "source": "docs/research/accuracy/analysis.json:headline.median_abs_pct_error"
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 22,
+      "token": "15%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 22,
+      "token": "2%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 24,
+      "token": "3,",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 26,
+      "token": "5",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 27,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 27,
+      "token": "213",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 27,
+      "token": "7",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 27,
+      "token": "9",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 27,
+      "token": "2025",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 27,
+      "token": "392",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 27,
+      "token": "9",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 29,
+      "token": "4",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 29,
+      "token": "30%",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 29,
+      "token": "8.2",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 29,
+      "token": "10.2",
+      "status": "numeric_candidate_match_only",
+      "source": "web\\src\\data\\moongap.json:materials.cotton_smolder.curve.o2_pct[14]"
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 31,
+      "token": "6",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 36,
+      "token": "7",
+      "status": "metadata_or_paper_manual",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 45,
+      "token": "5",
+      "status": "unverified",
+      "source": ""
+    },
+    {
+      "file": "docs/submission/slides_outline.md",
+      "line": 46,
+      "token": "6",
+      "status": "unverified",
+      "source": ""
+    }
+  ]
+}

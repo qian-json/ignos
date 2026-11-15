@@ -1,0 +1,6 @@
+# Tests run locally / in CI, never as serverless functions.
+api/**/*.test.ts
+.env*
+!.env.example
+# Team relay, memory and shared files are not part of the site build.
+team/

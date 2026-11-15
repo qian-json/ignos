@@ -1,0 +1,24 @@
+{
+ "_note": "Written with AI assistance (Claude Code). Analysis only.",
+ "n_rows": 46,
+ "n_with_value": 37,
+ "transcriptions_disagreeing_rows": 0,
+ "repeat_spread_pct": {
+  "n": 37,
+  "median": 1.1,
+  "min": 0.2,
+  "max": 8.0
+ },
+ "lowest_o2_with_value_by_diameter": {
+  "0.32": 17.5,
+  "0.64": 18.0,
+  "0.95": 18.5,
+  "1.27": 18.5
+ },
+ "highest_o2_without_value_by_diameter": {
+  "0.32": 17.7,
+  "0.64": 18.2,
+  "0.95": 18.5,
+  "1.27": 18.3
+ }
+}

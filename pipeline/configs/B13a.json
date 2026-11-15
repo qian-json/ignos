@@ -1,0 +1,90 @@
+{
+  "_comment": "Written with AI assistance (Claude Code). HELD-OUT test for the v1/v2 comparison (pipeline/PREREGISTRATION.md); run with the frozen v1 pipeline only. Step data: Link et al. 2018 Sci Rep 8:120 Supplement Table S1 (p. 1), sample B13a (1.27 cm black rod, 20.7% O2) = PSI-25 test P13a (0.5 in. black rod, sample 203m, GMT 195, initial O2 20.7 in the PSI experimental table; fan pot 1.1 (5 cm/s), 0.4, 0.36, 0.32, 0.3, 0.28, 0.26, 0 ext; 255 frames shot). Sample 203m is the same rod that P13b (B13b) re-burned later the same day; this is its FIRST burn. Rates = printed Vf x1e3 /100 -> mm/s (matches data/reference/link2018_table_s1.csv). Photos: PSI-25_Raw Data_GMT2014_195_BASS_S203M_TPP13a.zip (255 NEF, iss040e061138-061392). Frame 0 (EXIF 2014-07-15 14:27:21.72) is a dark pre-test shot; frame 1 (14:30:29.24, t=187.5, 1/2000 s) shows only the glowing igniter; frame 2 (14:30:36.71, t=195.0) is the first flame photo; frame 242 (14:53:05.25, t=1543.5) is the last flame photo, with the flame at the holder end of the rod; frames 243-247 are dark; 248-254 are lit post-test shots. Exposure: 1/13-1/50 s (bright phase) from frame 6 to 32 (t=227.8-437.9), 1/3-1/6 s (dim phase) before and after. WINDOWS from the P13a video overlay only (PSI-25_Raw Data_BASS_GMT195_SAMPLE_203_TEST_P13a.mp4, 1432 s, FAN display + GMT clock; crop 570x60 at x=150,y=25, FAN digits at crop cols 320-420, classified at 2 and 10 samples/s by nearest-template matching against by-eye-labelled patches, then checked by eye): FAN 49 (to ~14:30:30, igniter on: RAD 0.05 -> 1.94 from 14:29:53 to 14:30:24, falls to 0.45 by 14:30:28 = igniter off), then 47/48 flicker; 47 -> 46 at 14:31:18 starts a ramp 46, 45, 44, 43 to 42 (14:31:32) = pot 1.1 -> 0.4; then 41/42 flicker (42 in 45% of 0.1-s samples) until the last dense 42 at 14:34:44 (two-segment Bernoulli change point 295.1 s video time; 42 drops to 1.6%); then 41 with rare 42 and rarely 40 (40 in 0.4% of samples) to 14:38:47; then 41 with 40 in 5.1% (event rate 0.02 -> 0.23 per s; 42 never appears again) to 14:43:10; then 41 with 40 in 11.5% (event rate 0.24 -> 0.51 per s, a step in 20-s bins, not a drift) to 14:47:09; then 40/41 flicker with 40 in 71% to 14:52:24; then steady 40 (98%); purge ramp 46 -> 122 from ~14:53:13. Change points are from two-segment Bernoulli fits on the 10-samples/s FAN series (frame level) and agree with Poisson fits on flicker events within 3 s; the clock was read by eye at each change point (1-s display resolution, video and clock agree within 2 s over the whole video). There are five statistically distinct phases after the 41/42 flicker and five pot settings after 0.4 (0.36, 0.32, 0.3, 0.28, 0.26), each change lowering the display. Like B13b, these pot steps are below the display's resolution, so every change after 14:34:44 is read from flicker statistics, not from a new number. This is weaker evidence than a distinct FAN value. The 41/42 -> 41 and 41 -> 40/41 changes are large; the 0.4% -> 5% and 5% -> 11% changes in the 40 rate are smaller but sharp. INDEPENDENT SUPPORT from the photos: the crew shot rapid bursts (about 1.3 s spacing) at 14:38:43, 14:42:57, 14:47:06 and 14:52:23, which is 3-13 s before or at four of the FAN-statistics change points (14:38:47, 14:43:10, 14:47:09, 14:52:24). Phase lengths: B 14:31:18-14:34:44 (206 s), C -14:38:47 (243 s), D -14:43:10 (263 s), E -14:47:09 (239 s), F -14:52:24 (315 s), G -14:53:13 (~49 s). Matching Table S1's four rows (dt 184, 232, 239, 238 s) used ORDER and DURATIONS only, never rates: row 3 (239 s) fits only D (263) or F (315), and F would leave row 4 only G (49 s), so row 3 = D, which forces row 2 = C (B is 206 s < 232) and row 1 = B (A, the 47/48 phase, is only ~48 s after igniter off). Row 4 (238 s) fits E (239 s, dt/phase 1.00) or F (315 s, 0.75); E was chosen BEFORE any rate was computed, because pot 0.30 follows 0.32 directly and 1.00 is closer than 0.75 to the dt/phase ratios of B12 (0.89-0.92) and B13b (0.88, 0.93). Row 4's placement is therefore the weakest link: E fits only within the ~1-2 s change-point reading error. Ratios: 184/206 = 0.89, 232/243 = 0.95, 239/263 = 0.91, 238/239 = 1.00. Same-day B13b (same rod) independently paired pot 0.4 with 1.64 cm/s (41/42 flicker) and 0.36 with 1.54 cm/s (steady 41), the same flows and display behaviour as rows 1-2 here. Windows in photo time (t = GMT - 14:27:21.72): B 236.3-442.3, C 442.3-685.3, D 685.3-948.3, E 948.3-1187.3. Clock: overlay events agree with photo EXIF within the photo spacing (igniter-off RAD drop 14:30:25-28 vs the glowing-igniter photo 14:30:29.24 and first flame photo 14:30:36.71; extinction RAD collapse 0.58 -> 0.38 at 14:53:01-05 vs last flame photo 14:53:05.25 and first dark photo 14:53:06.60; photo bursts within 13 s of the FAN changes). Axis: lit post-test frame 250, rod top edge row ~1400 and bottom ~1800-1823 at full resolution -> axis 1606/4 = 400 at 1/4 resolution. Direction +1 (flame starts at the left tip and spreads right toward the holder). SCALE: calibrate.py on lit frames 248-254 (crops cols 1800-2400, 2400-2700, 2700-3050, rows 1250-1950) was NOT consistent (per-column sd 7-106 px, 30.9-51.4 px/mm), because the burned, bubbled rod has no clean top highlight (the B9/B13b failure mode). So px_per_mm_full was measured outside calibrate.py with B13b's gradient rule: per column (13-column mean, Gaussian sigma 1.5), top = strongest fall in rows 1340-1460, bottom = strongest rise in rows 1740-1880, every 15 columns over cols 2000-3050 of frame 250 (iss040e061388.NEF, 1/800 s, the only lit frame with consistent edges; frames 248, 251, 253 give sd 17-58 px). Rule fixed before computing: keep columns whose top edge is in the flat band 1388-1416 (62 of 71 columns; 9 near the holder broken by bubble glints). Width 406.4 +/- 15.2 px (sd) = 32.00 +/- 0.15 px/mm (sem) for 12.7 mm. SYSTEMATIC: the apparent width grows from ~384 px (col 2000) to ~424 px (col 2840), the same taper/swelling as B13b, so section means are 31.03 (cols 2000-2300), 31.40 (2300-2600) and 33.19 px/mm (2600-2850): about +/-3.5% on top of the quoted error. No spread rate was used for any of this. half_band 70, rel_threshold 0.3 and min_area_frame 3000 as in all other tests (not tuned). burn_window_s starts at 190 so the igniter-only frame 1 is not the zero reference; it ends at 1544 (last flame photo 1543.5).",
+  "test_id": "B13a",
+  "psi_test": "P13a",
+  "nef_dir": "../../space-apps-2026/data/raw/psi25/P13a",
+  "psi_files": [
+    {
+      "file": "PSI-25_Raw Data_GMT2014_195_BASS_S203M_TPP13a.zip",
+      "bytes": 2769319261,
+      "role": "photos",
+      "extract_to": "P13a",
+      "nef_count": 255,
+      "nef_first": "iss040e061138.NEF",
+      "nef_last": "iss040e061392.NEF"
+    },
+    {
+      "file": "PSI-25_Raw Data_BASS_GMT195_SAMPLE_203_TEST_P13a.mp4",
+      "bytes": 177851046,
+      "role": "video"
+    }
+  ],
+  "rod_d_mm": 12.7,
+  "o2_pct": 20.7,
+  "axis_row": 400,
+  "half_band": 70,
+  "direction": 1,
+  "rel_threshold": 0.3,
+  "min_area_frame": 3000,
+  "cache_rows": [
+    250,
+    560
+  ],
+  "cache_file": "b13a_cache.npz",
+  "burn_window_s": [
+    190,
+    1544
+  ],
+  "calibration": {
+    "frame_index": 250,
+    "crop_full_res": [
+      2000,
+      3050,
+      1200,
+      2000
+    ],
+    "px_per_mm_full": 32.0,
+    "px_per_mm_sem": 0.15,
+    "note": "rod gradient edges, frame 250; calibrate.py rule failed on the bubbled burned rod; taper gives +/-3.5% systematic"
+  },
+  "windows_s": [
+    [
+      236.3,
+      442.3
+    ],
+    [
+      442.3,
+      685.3
+    ],
+    [
+      685.3,
+      948.3
+    ],
+    [
+      948.3,
+      1187.3
+    ]
+  ],
+  "steps": [
+    {
+      "flow_cm_s": 1.64,
+      "dt_s": 184,
+      "nasa_rate_mm_s": 0.0523
+    },
+    {
+      "flow_cm_s": 1.54,
+      "dt_s": 232,
+      "nasa_rate_mm_s": 0.0527
+    },
+    {
+      "flow_cm_s": 1.43,
+      "dt_s": 239,
+      "nasa_rate_mm_s": 0.0463
+    },
+    {
+      "flow_cm_s": 1.38,
+      "dt_s": 238,
+      "nasa_rate_mm_s": 0.0469
+    }
+  ]
+}

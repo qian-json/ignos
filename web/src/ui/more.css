@@ -1,0 +1,6 @@
+/* Written with AI assistance (Claude Code) */
+details.more { border-top: 1px solid var(--hair); margin-top: 14px; }
+details.more > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; min-height: 44px; font: 500 var(--fs-ui, .95rem)/1.2 var(--font); color: var(--ink); }
+details.more > summary:focus-visible { outline: 2px solid var(--flame); outline-offset: 2px; border-radius: 4px; }
+details.more > .more-body { padding: 4px 0 12px; }
+.moonband details.more > summary { color: inherit; }

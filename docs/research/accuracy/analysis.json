@@ -1,0 +1,273 @@
+{
+  "_comment": "Written with AI assistance (Claude Code and Codex)",
+  "source": "data/derived/spread_rates.csv; Link et al. 2018 Supplement Table S1 p. 1",
+  "headline": {
+    "n": 8,
+    "median_abs_pct_error": 6.782500833117348,
+    "bias_mm_s": 0.00029999999999999905,
+    "limits_95_mm_s": [
+      -0.006926604181771684,
+      0.007526604181771682
+    ],
+    "deming_slope": 1.0520632808117556,
+    "deming_intercept_mm_s": -0.002135259959969875,
+    "lin_ccc": 0.9789724857643354,
+    "deming_slope_ci95": [
+      0.752481243961975,
+      1.4959662524136539
+    ],
+    "deming_intercept_ci95_mm_s": [
+      -0.028286903431198246,
+      0.007381487384641509
+    ],
+    "median_abs_pct_error_ci95": [
+      2.0999999999999996,
+      13.2
+    ],
+    "bias_ci95_mm_s": [
+      -0.0010249999999999986,
+      0.0026249999999999967
+    ],
+    "n_resamples": 20000,
+    "seed": 20261115,
+    "within_1_provisional_sd": 3,
+    "within_2_provisional_sd": 6
+  },
+  "all_nine_low_flow_including_flagged": {
+    "n": 9,
+    "median_abs_pct_error": 7.079646017699119,
+    "bias_mm_s": 0.0038444444444444437,
+    "limits_95_mm_s": [
+      -0.018065758820498372,
+      0.025754647709387263
+    ],
+    "deming_slope": 1.1136670924497767,
+    "deming_intercept_mm_s": -0.0013173045204693049,
+    "lin_ccc": 0.7828967860926834,
+    "within_1_provisional_sd": 4,
+    "within_2_provisional_sd": 7
+  },
+  "per_test": {
+    "B12": {
+      "n": 2,
+      "median_abs_pct_error": 13.959308710479162,
+      "bias_mm_s": -0.0006499999999999995,
+      "limits_95_mm_s": [
+        -0.012153213116342751,
+        0.010853213116342752
+      ],
+      "deming_slope": 0.35156250000000006,
+      "deming_intercept_mm_s": 0.01886796875,
+      "lin_ccc": 0.6229215670370672
+    },
+    "B16": {
+      "n": 2,
+      "median_abs_pct_error": 5.496786153257161,
+      "bias_mm_s": 0.0037499999999999964,
+      "limits_95_mm_s": [
+        -0.004426982817641242,
+        0.011926982817641235
+      ],
+      "deming_slope": 1.4503816793893132,
+      "deming_intercept_mm_s": -0.024781679389313,
+      "lin_ccc": 0.8877633819897102
+    },
+    "B19": {
+      "n": 2,
+      "median_abs_pct_error": 2.0186764705882316,
+      "bias_mm_s": -0.0011499999999999982,
+      "limits_95_mm_s": [
+        -0.0021201505037879305,
+        -0.00017984949621206584
+      ],
+      "deming_slope": 1.086419753086419,
+      "deming_intercept_mm_s": -0.006201234567901184,
+      "lin_ccc": 0.9784824462061157
+    },
+    "P17": {
+      "n": 2,
+      "median_abs_pct_error": 6.782500833117348,
+      "bias_mm_s": -0.0007500000000000024,
+      "limits_95_mm_s": [
+        -0.0072638676682904866,
+        0.005763867668290482
+      ],
+      "deming_slope": 0.8134920634920634,
+      "deming_intercept_mm_s": 0.005815079365079363,
+      "lin_ccc": 0.9780247345976723
+    }
+  },
+  "budget": [
+    {
+      "test_id": "B16",
+      "flow_cm_s": 0.83,
+      "ours_mm_s": 0.0766,
+      "nasa_mm_s": 0.0699,
+      "edge_csv_refit_mm_s": 0.0766383735264883,
+      "fit_sd_mm_s": 0.0021157774127899243,
+      "threshold_half_range_mm_s": 0.0057,
+      "window_max_abs_shift_mm_s": 0.0016621111332579264,
+      "window_valid_refits": 24,
+      "scale_sem_px_per_mm": 0.06,
+      "scale_systematic_half_range_mm_s": 0.00041560696385819996,
+      "combined_provisional_sd_mm_s": 0.00403761981379597,
+      "z_if_nasa_sd_zero": 1.6593934815524372,
+      "frame_theory_fraction_heuristic": 0.055713113738680424,
+      "photo_cadence_median_s": 5.704999999999927,
+      "fit_span_s": 129.3099999999995,
+      "threshold_one_sided": false
+    },
+    {
+      "test_id": "B16",
+      "flow_cm_s": 0.72,
+      "ours_mm_s": 0.0576,
+      "nasa_mm_s": 0.0568,
+      "edge_csv_refit_mm_s": 0.05762346860629987,
+      "fit_sd_mm_s": 0.001570738912149979,
+      "threshold_half_range_mm_s": 0.0008,
+      "window_max_abs_shift_mm_s": 0.0023706452191590843,
+      "window_valid_refits": 24,
+      "scale_sem_px_per_mm": 0.06,
+      "scale_systematic_half_range_mm_s": 0.00031251907465055243,
+      "combined_provisional_sd_mm_s": 0.0021438925504842637,
+      "z_if_nasa_sd_zero": 0.3731530294367088,
+      "frame_theory_fraction_heuristic": 0.06440368578419221,
+      "photo_cadence_median_s": 6.170000000000073,
+      "fit_span_s": 126.76000000000022,
+      "threshold_one_sided": false
+    },
+    {
+      "test_id": "B19",
+      "flow_cm_s": 0.83,
+      "ours_mm_s": 0.0617,
+      "nasa_mm_s": 0.0625,
+      "edge_csv_refit_mm_s": 0.06169093233139881,
+      "fit_sd_mm_s": 0.0012797327066723764,
+      "threshold_half_range_mm_s": 0.0006,
+      "window_max_abs_shift_mm_s": 0.0010734787974402138,
+      "window_valid_refits": 24,
+      "scale_sem_px_per_mm": 0.06,
+      "scale_systematic_half_range_mm_s": 0.00033476435600588686,
+      "combined_provisional_sd_mm_s": 0.0014800295626416376,
+      "z_if_nasa_sd_zero": -0.5405297435897959,
+      "frame_theory_fraction_heuristic": 0.07216476966279833,
+      "photo_cadence_median_s": 5.759999999999991,
+      "fit_span_s": 105.61000000000013,
+      "threshold_one_sided": false
+    },
+    {
+      "test_id": "B19",
+      "flow_cm_s": 0.72,
+      "ours_mm_s": 0.0529,
+      "nasa_mm_s": 0.0544,
+      "edge_csv_refit_mm_s": 0.05286172547125633,
+      "fit_sd_mm_s": 0.0009136311555229217,
+      "threshold_half_range_mm_s": 0.0007,
+      "window_max_abs_shift_mm_s": 0.0009957862140257331,
+      "window_valid_refits": 24,
+      "scale_sem_px_per_mm": 0.06,
+      "scale_systematic_half_range_mm_s": 0.000287018386267608,
+      "combined_provisional_sd_mm_s": 0.0011680537266308833,
+      "z_if_nasa_sd_zero": -1.284187504222577,
+      "frame_theory_fraction_heuristic": 0.05846915960910381,
+      "photo_cadence_median_s": 6.454999999999927,
+      "fit_span_s": 147.5300000000002,
+      "threshold_one_sided": true
+    },
+    {
+      "test_id": "B12",
+      "flow_cm_s": 0.82,
+      "ours_mm_s": 0.0667,
+      "nasa_mm_s": 0.0345,
+      "edge_csv_refit_mm_s": 0.06672012581973831,
+      "fit_sd_mm_s": 0.029144433324368,
+      "threshold_half_range_mm_s": 0.0236,
+      "window_max_abs_shift_mm_s": 0.024233132168571203,
+      "window_valid_refits": 24,
+      "scale_sem_px_per_mm": 0.02,
+      "scale_systematic_half_range_mm_s": null,
+      "combined_provisional_sd_mm_s": 0.03508277471830817,
+      "z_if_nasa_sd_zero": 0.9178293409955461,
+      "frame_theory_fraction_heuristic": 0.06882965045328483,
+      "photo_cadence_median_s": 4.595000000000027,
+      "fit_span_s": 92.25,
+      "threshold_one_sided": false
+    },
+    {
+      "test_id": "B12",
+      "flow_cm_s": 0.6,
+      "ours_mm_s": 0.0317,
+      "nasa_mm_s": 0.0365,
+      "edge_csv_refit_mm_s": 0.031702128922767615,
+      "fit_sd_mm_s": 0.0010033329505110295,
+      "threshold_half_range_mm_s": 0.0006,
+      "window_max_abs_shift_mm_s": 0.002091528899305306,
+      "window_valid_refits": 24,
+      "scale_sem_px_per_mm": 0.02,
+      "scale_systematic_half_range_mm_s": null,
+      "combined_provisional_sd_mm_s": 0.0016078511898266947,
+      "z_if_nasa_sd_zero": -2.9853509021051727,
+      "frame_theory_fraction_heuristic": 0.09019664640095698,
+      "photo_cadence_median_s": 4.664999999999964,
+      "fit_span_s": 92.64999999999998,
+      "threshold_one_sided": false
+    },
+    {
+      "test_id": "B12",
+      "flow_cm_s": 0.48,
+      "ours_mm_s": 0.0272,
+      "nasa_mm_s": 0.0237,
+      "edge_csv_refit_mm_s": 0.02716281090291463,
+      "fit_sd_mm_s": 0.0010904208004335434,
+      "threshold_half_range_mm_s": 0.0006,
+      "window_max_abs_shift_mm_s": 0.0017832345941367136,
+      "window_valid_refits": 24,
+      "scale_sem_px_per_mm": 0.02,
+      "scale_systematic_half_range_mm_s": null,
+      "combined_provisional_sd_mm_s": 0.0015392355371134248,
+      "z_if_nasa_sd_zero": 2.2738560250263298,
+      "frame_theory_fraction_heuristic": 0.10489873083359882,
+      "photo_cadence_median_s": 6.800000000000011,
+      "fit_span_s": 105.83999999999992,
+      "threshold_one_sided": true
+    },
+    {
+      "test_id": "P17",
+      "flow_cm_s": 0.82,
+      "ours_mm_s": 0.0447,
+      "nasa_mm_s": 0.0478,
+      "edge_csv_refit_mm_s": 0.04475203466947318,
+      "fit_sd_mm_s": 0.0010722133150519115,
+      "threshold_half_range_mm_s": 0.0041,
+      "window_max_abs_shift_mm_s": 0.0012680098328376535,
+      "window_valid_refits": 24,
+      "scale_sem_px_per_mm": 0.03,
+      "scale_systematic_half_range_mm_s": null,
+      "combined_provisional_sd_mm_s": 0.002700094034961344,
+      "z_if_nasa_sd_zero": -1.148108162108653,
+      "frame_theory_fraction_heuristic": 0.055296225001812985,
+      "photo_cadence_median_s": 4.4950000000000045,
+      "fit_span_s": 129.31,
+      "threshold_one_sided": false
+    },
+    {
+      "test_id": "P17",
+      "flow_cm_s": 0.41,
+      "ours_mm_s": 0.0242,
+      "nasa_mm_s": 0.0226,
+      "edge_csv_refit_mm_s": 0.0241975794133412,
+      "fit_sd_mm_s": 0.0016663822580620595,
+      "threshold_half_range_mm_s": 0.0002,
+      "window_max_abs_shift_mm_s": 0.007415835425384369,
+      "window_valid_refits": 24,
+      "scale_sem_px_per_mm": 0.03,
+      "scale_systematic_half_range_mm_s": null,
+      "combined_provisional_sd_mm_s": 0.004595885727196184,
+      "z_if_nasa_sd_zero": 0.348137463586614,
+      "frame_theory_fraction_heuristic": 0.1480630564715567,
+      "photo_cadence_median_s": 4.595000000000027,
+      "fit_span_s": 64.15999999999997,
+      "threshold_one_sided": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+/* Written with AI assistance (Claude Code) */
+/* Counter wheels for the overview figures: each digit is a column 0-9 plus a trailing 0, seen through
+   a one-digit window. Mono digits keep every wheel the same width, so nothing shifts as they turn. */
+.odo { display: inline-block; white-space: nowrap; }
+.odo-face { display: inline-flex; align-items: flex-start; line-height: 1.1; }
+.odo-wheel { display: inline-block; height: 1.1em; overflow: hidden; transition: opacity 240ms var(--ease); }
+.odo-wheel > span { display: flex; flex-direction: column; will-change: transform; }
+.odo-wheel > span > span, .odo-fixed { display: block; height: 1.1em; line-height: 1.1; }
+@media (prefers-reduced-motion: reduce) { .odo-wheel { transition: none; } }

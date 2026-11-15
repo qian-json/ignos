@@ -1,0 +1,5 @@
+/* Written with AI assistance (Claude Code) */
+/* Each sheet turns about its left edge, so the leading edge lands first. Clipped sideways so a sheet
+   still coming in from the right never widens the page on a phone. */
+.settle { overflow-x: clip; overflow-y: visible; }
+.settle > li { transform-origin: 0 50%; backface-visibility: hidden; }

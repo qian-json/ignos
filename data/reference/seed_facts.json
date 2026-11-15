@@ -1,0 +1,428 @@
+{
+  "_note": "Written with AI assistance (Claude Code). Published numbers quoted verbatim from docs/sources; each quote is checked on its page by scripts/seed-facts/verify_seed.py. No lunar or Moon airflow numbers.",
+  "facts": [
+    {
+      "id": "ices2025-table2-pmma-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "PMMA 0.00022 0.00056 1.9",
+      "value": 0.00022,
+      "unit": "s/cm",
+      "label": "PMMA best-fit extinction-limit slope (O2 vs flow), Table 2"
+    },
+    {
+      "id": "ices2025-table2-pmma-ci95-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "PMMA 0.00022 0.00056 1.9",
+      "value": 0.00056,
+      "unit": "s/cm",
+      "label": "PMMA 95% confidence interval slope, Table 2"
+    },
+    {
+      "id": "ices2025-table2-pmma-delta-o2",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "PMMA 0.00022 0.00056 1.9",
+      "value": 1.9,
+      "unit": "%",
+      "label": "PMMA delta O2% (at 35 cm/s) for 95% confidence interval, Table 2"
+    },
+    {
+      "id": "ices2025-table2-polycarbonate-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Polycarbonate 0.00040 0.00065 2.3",
+      "value": 0.0004,
+      "unit": "s/cm",
+      "label": "Polycarbonate best-fit extinction-limit slope (O2 vs flow), Table 2"
+    },
+    {
+      "id": "ices2025-table2-polycarbonate-ci95-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Polycarbonate 0.00040 0.00065 2.3",
+      "value": 0.00065,
+      "unit": "s/cm",
+      "label": "Polycarbonate 95% confidence interval slope, Table 2"
+    },
+    {
+      "id": "ices2025-table2-polycarbonate-delta-o2",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Polycarbonate 0.00040 0.00065 2.3",
+      "value": 2.3,
+      "unit": "%",
+      "label": "Polycarbonate delta O2% (at 35 cm/s) for 95% confidence interval, Table 2"
+    },
+    {
+      "id": "ices2025-table2-nomex-velcro-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Nomex Velcro 0.000016 0.000090 0.32",
+      "value": 1.6e-05,
+      "unit": "s/cm",
+      "label": "Nomex Velcro best-fit extinction-limit slope (O2 vs flow), Table 2"
+    },
+    {
+      "id": "ices2025-table2-nomex-velcro-ci95-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Nomex Velcro 0.000016 0.000090 0.32",
+      "value": 9e-05,
+      "unit": "s/cm",
+      "label": "Nomex Velcro 95% confidence interval slope, Table 2"
+    },
+    {
+      "id": "ices2025-table2-nomex-velcro-delta-o2",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Nomex Velcro 0.000016 0.000090 0.32",
+      "value": 0.32,
+      "unit": "%",
+      "label": "Nomex Velcro delta O2% (at 35 cm/s) for 95% confidence interval, Table 2"
+    },
+    {
+      "id": "ices2025-table2-p213-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "P 213 0.00030 0.00040 1.4",
+      "value": 0.0003,
+      "unit": "s/cm",
+      "label": "P 213 tape best-fit extinction-limit slope (O2 vs flow), Table 2"
+    },
+    {
+      "id": "ices2025-table2-p213-ci95-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "P 213 0.00030 0.00040 1.4",
+      "value": 0.0004,
+      "unit": "s/cm",
+      "label": "P 213 tape 95% confidence interval slope, Table 2"
+    },
+    {
+      "id": "ices2025-table2-p213-delta-o2",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "P 213 0.00030 0.00040 1.4",
+      "value": 1.4,
+      "unit": "%",
+      "label": "P 213 tape delta O2% (at 35 cm/s) for 95% confidence interval, Table 2"
+    },
+    {
+      "id": "ices2025-table2-beefyt-flaming-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Beefy-T (flaming) 0.00017 0.00023 0.82",
+      "value": 0.00017,
+      "unit": "s/cm",
+      "label": "Beefy-T (flaming) best-fit extinction-limit slope (O2 vs flow), Table 2"
+    },
+    {
+      "id": "ices2025-table2-beefyt-flaming-ci95-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Beefy-T (flaming) 0.00017 0.00023 0.82",
+      "value": 0.00023,
+      "unit": "s/cm",
+      "label": "Beefy-T (flaming) 95% confidence interval slope, Table 2"
+    },
+    {
+      "id": "ices2025-table2-beefyt-flaming-delta-o2",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Beefy-T (flaming) 0.00017 0.00023 0.82",
+      "value": 0.82,
+      "unit": "%",
+      "label": "Beefy-T (flaming) delta O2% (at 35 cm/s) for 95% confidence interval, Table 2"
+    },
+    {
+      "id": "ices2025-table2-beefyt-smolder-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Beefy-T (smolder) 0.00034 0.00050 1.8",
+      "value": 0.00034,
+      "unit": "s/cm",
+      "label": "Beefy-T (smolder) best-fit extinction-limit slope (O2 vs flow), Table 2"
+    },
+    {
+      "id": "ices2025-table2-beefyt-smolder-ci95-slope",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Beefy-T (smolder) 0.00034 0.00050 1.8",
+      "value": 0.0005,
+      "unit": "s/cm",
+      "label": "Beefy-T (smolder) 95% confidence interval slope, Table 2"
+    },
+    {
+      "id": "ices2025-table2-beefyt-smolder-delta-o2",
+      "paper": "ices2025",
+      "page": 11,
+      "quote": "Beefy-T (smolder) 0.00034 0.00050 1.8",
+      "value": 1.8,
+      "unit": "%",
+      "label": "Beefy-T (smolder) delta O2% (at 35 cm/s) for 95% confidence interval, Table 2"
+    },
+    {
+      "id": "ices2025-earth-1g-buoyant-velocity",
+      "paper": "ices2025",
+      "page": 10,
+      "quote": "The 1-g buoyant velocity was estimated by Takahashi16 to be 35 cm/s,",
+      "value": 35,
+      "unit": "cm/s",
+      "label": "Earth 1-g buoyant velocity estimate (Takahashi), used as the extrapolation start point"
+    },
+    {
+      "id": "ices2025-worst-case-delta",
+      "paper": "ices2025",
+      "page": 10,
+      "quote": "The worst-case delta for these materials can be seen to be 2.3%.",
+      "value": 2.3,
+      "unit": "%",
+      "label": "Worst-case conservative 1-g to lunar-g flammability delta across tested materials"
+    },
+    {
+      "id": "ices2025-wstf-flow-60",
+      "paper": "ices2025",
+      "page": 8,
+      "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s)",
+      "value": 60,
+      "unit": "cm/s",
+      "label": "WSTF 1-g forced test flow rate 60 cm/s (one of at least 4 tested for all materials)"
+    },
+    {
+      "id": "ices2025-wstf-flow-80",
+      "paper": "ices2025",
+      "page": 8,
+      "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s)",
+      "value": 80,
+      "unit": "cm/s",
+      "label": "WSTF 1-g forced test flow rate 80 cm/s (one of at least 4 tested for all materials)"
+    },
+    {
+      "id": "ices2025-wstf-flow-100",
+      "paper": "ices2025",
+      "page": 8,
+      "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s)",
+      "value": 100,
+      "unit": "cm/s",
+      "label": "WSTF 1-g forced test flow rate 100 cm/s (one of at least 4 tested for all materials)"
+    },
+    {
+      "id": "ices2025-wstf-flow-144",
+      "paper": "ices2025",
+      "page": 8,
+      "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s)",
+      "value": 144,
+      "unit": "cm/s",
+      "label": "WSTF 1-g forced test flow rate 144 cm/s (one of at least 4 tested for all materials)"
+    },
+    {
+      "id": "ices2025-test-pressure-psia",
+      "paper": "ices2025",
+      "page": 6,
+      "quote": "the planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia)",
+      "value": 8.2,
+      "unit": "psia",
+      "label": "Test pressure = planned NASA lunar habitat pressure, psia"
+    },
+    {
+      "id": "ices2025-test-pressure-kpa",
+      "paper": "ices2025",
+      "page": 6,
+      "quote": "the planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia)",
+      "value": 56.5,
+      "unit": "kPa",
+      "label": "Test pressure = planned NASA lunar habitat pressure, kPa"
+    },
+    {
+      "id": "ices2025-drop-duration",
+      "paper": "ices2025",
+      "page": 6,
+      "quote": "the short test time provided by the ZGF (5.2 seconds)",
+      "value": 5.2,
+      "unit": "s",
+      "label": "Drop tower (ZGF) test time available"
+    },
+    {
+      "id": "ices2025-extinction-criterion",
+      "paper": "ices2025",
+      "page": 6,
+      "quote": "This 5.2 second limitation required the testing to be based on a 5 second extinction limit",
+      "value": 5,
+      "unit": "s",
+      "label": "Extinction criterion: flame must go out within 5 seconds"
+    },
+    {
+      "id": "link2018_si-tableS1-b16-row1-vf",
+      "paper": "link2018_si",
+      "page": 1,
+      "quote": "18.2 B16 7.55 72 6.78",
+      "value": 6.78,
+      "unit": null,
+      "label": "Table S1 sample B16 (18.2% O2, 0.64 cm rod, ISS microgravity) row 1, Vg = 7.55 cm/s: flame spread rate Vf as printed, x10^3 (column header prints '(mm/s)')"
+    },
+    {
+      "id": "link2018_si-tableS1-b16-row2-vf",
+      "paper": "link2018_si",
+      "page": 1,
+      "quote": "1.67 139 7.62",
+      "value": 7.62,
+      "unit": null,
+      "label": "Table S1 sample B16 (18.2% O2, 0.64 cm rod, ISS microgravity) row 2, Vg = 1.67 cm/s: flame spread rate Vf as printed, x10^3 (column header prints '(mm/s)')"
+    },
+    {
+      "id": "link2018_si-tableS1-b16-row3-vf",
+      "paper": "link2018_si",
+      "page": 1,
+      "quote": "0.83 198 6.99",
+      "value": 6.99,
+      "unit": null,
+      "label": "Table S1 sample B16 (18.2% O2, 0.64 cm rod, ISS microgravity) row 3, Vg = 0.83 cm/s: flame spread rate Vf as printed, x10^3 (column header prints '(mm/s)')"
+    },
+    {
+      "id": "link2018_si-tableS1-b16-row4-vf",
+      "paper": "link2018_si",
+      "page": 1,
+      "quote": "0.72 170 5.68",
+      "value": 5.68,
+      "unit": null,
+      "label": "Table S1 sample B16 (18.2% O2, 0.64 cm rod, ISS microgravity) row 4, Vg = 0.72 cm/s: flame spread rate Vf as printed, x10^3 (column header prints '(mm/s)')"
+    },
+    {
+      "id": "link2018_si-tableS1-b19-row1-vf",
+      "paper": "link2018_si",
+      "page": 1,
+      "quote": "17.5 B19 7.55 67 4.69",
+      "value": 4.69,
+      "unit": null,
+      "label": "Table S1 sample B19 (17.5% O2, 0.64 cm rod, ISS microgravity) row 1, Vg = 7.55 cm/s: flame spread rate Vf as printed, x10^3 (column header prints '(mm/s)')"
+    },
+    {
+      "id": "link2018_si-tableS1-b19-row2-vf",
+      "paper": "link2018_si",
+      "page": 1,
+      "quote": "1.67 128 6.52",
+      "value": 6.52,
+      "unit": null,
+      "label": "Table S1 sample B19 (17.5% O2, 0.64 cm rod, ISS microgravity) row 2, Vg = 1.67 cm/s: flame spread rate Vf as printed, x10^3 (column header prints '(mm/s)')"
+    },
+    {
+      "id": "link2018_si-tableS1-b19-row3-vf",
+      "paper": "link2018_si",
+      "page": 1,
+      "quote": "0.83 189 6.25",
+      "value": 6.25,
+      "unit": null,
+      "label": "Table S1 sample B19 (17.5% O2, 0.64 cm rod, ISS microgravity) row 3, Vg = 0.83 cm/s: flame spread rate Vf as printed, x10^3 (column header prints '(mm/s)')"
+    },
+    {
+      "id": "link2018_si-tableS1-b19-row4-vf",
+      "paper": "link2018_si",
+      "page": 1,
+      "quote": "0.72 200 5.44",
+      "value": 5.44,
+      "unit": null,
+      "label": "Table S1 sample B19 (17.5% O2, 0.64 cm rod, ISS microgravity) row 4, Vg = 0.72 cm/s: flame spread rate Vf as printed, x10^3 (column header prints '(mm/s)')"
+    },
+    {
+      "id": "link2018_si-figS1-b16-o2",
+      "paper": "link2018_si",
+      "page": 2,
+      "quote": "18.2% (Sample B16)",
+      "value": 18.2,
+      "unit": "%",
+      "label": "Oxygen concentration of sample B16 (Fig. S1 caption)"
+    },
+    {
+      "id": "link2018_si-figS1-b19-o2",
+      "paper": "link2018_si",
+      "page": 2,
+      "quote": "17.5% (Sample B19)",
+      "value": 17.5,
+      "unit": "%",
+      "label": "Oxygen concentration of sample B19 (Fig. S1 caption)"
+    },
+    {
+      "id": "fm2_2026-expected-lunar-loc-low",
+      "paper": "fm2_2026",
+      "page": 5,
+      "quote": "Test a material with an expected Lunar LOC of 24-26%",
+      "value": 24,
+      "unit": "%",
+      "label": "FM2 test material expected lunar limiting oxygen concentration, lower bound"
+    },
+    {
+      "id": "fm2_2026-expected-lunar-loc-high",
+      "paper": "fm2_2026",
+      "page": 5,
+      "quote": "Test a material with an expected Lunar LOC of 24-26%",
+      "value": 26,
+      "unit": "%",
+      "label": "FM2 test material expected lunar limiting oxygen concentration, upper bound"
+    },
+    {
+      "id": "fm2_2026-cabin-pressure",
+      "paper": "fm2_2026",
+      "page": 25,
+      "quote": "HLS, Lunar habitat and pressurized rover will nominally use 8.2 psia / 34% O2, 66% N2",
+      "value": 8.2,
+      "unit": "psia",
+      "label": "Nominal HLS / lunar habitat / pressurized rover cabin pressure"
+    },
+    {
+      "id": "fm2_2026-cabin-o2",
+      "paper": "fm2_2026",
+      "page": 25,
+      "quote": "HLS, Lunar habitat and pressurized rover will nominally use 8.2 psia / 34% O2, 66% N2",
+      "value": 34,
+      "unit": "%",
+      "label": "Nominal HLS / lunar habitat / pressurized rover cabin O2 concentration"
+    },
+    {
+      "id": "fm2_2026-control-band-max-o2",
+      "paper": "fm2_2026",
+      "page": 25,
+      "quote": "Control bands are expected to allow up to 37% O2",
+      "value": 37,
+      "unit": "%",
+      "label": "Cabin O2 control band expected upper limit"
+    },
+    {
+      "id": "fm2_2026-axis-flow-1g",
+      "paper": "fm2_2026",
+      "page": 17,
+      "quote": "1 4 20",
+      "value": 20,
+      "unit": "cm/s",
+      "label": "Characteristic flow speed at 1 g on the flammability-map axis that pairs gravity level with flow speed (T'ien 1986)"
+    },
+    {
+      "id": "fm2_2026-axis-flow-1e-2g",
+      "paper": "fm2_2026",
+      "page": 17,
+      "quote": "1 4 20",
+      "value": 4,
+      "unit": "cm/s",
+      "label": "Characteristic flow speed at 10^-2 g on the same axis (T'ien 1986)"
+    },
+    {
+      "id": "fm2_2026-axis-flow-1e-4g",
+      "paper": "fm2_2026",
+      "page": 17,
+      "quote": "1 4 20",
+      "value": 1,
+      "unit": "cm/s",
+      "label": "Characteristic flow speed at 10^-4 g on the same axis (T'ien 1986)"
+    },
+    {
+      "id": "fm2_2026-lunar-g",
+      "paper": "fm2_2026",
+      "page": 13,
+      "quote": "Lunar-g = 0.165 gE",
+      "value": 0.165,
+      "unit": null,
+      "label": "Lunar gravity as a fraction of Earth gravity"
+    }
+  ]
+}

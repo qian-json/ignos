@@ -1,0 +1,37 @@
+{
+  "name": "still-air",
+  "private": true,
+  "description": "Still Air: NASA Space Apps project. Flames in still air, from orbit to the Moon.",
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "workspaces": [
+    "proof",
+    "web"
+  ],
+  "scripts": {
+    "build-info": "node scripts/build-info.mjs",
+    "build": "npm run build-info && npm run build -w proof && npm run build-envelope && npm run build-psi-conditions && npm run build-facts && npm run build-ask-index && npm run build-eval-summary && tsc -p api --noEmit && npm run build -w web && node scripts/check-no-mock.mjs",
+    "test": "npm run build-info && npm run build -w proof && npm run build-envelope && npm run build-facts && npm run build-ask-index && npm run build-eval-summary && vitest run",
+    "dev": "npm run dev -w web",
+    "validate": "npm run build -w proof --silent && node scripts/validate-data.mjs",
+    "make-mocks": "node scripts/make-mocks.mjs",
+    "build-facts": "node scripts/build-facts.mjs",
+    "build-envelope": "node scripts/build-envelope.mjs",
+    "build-psi-conditions": "node scripts/build-psi-conditions.mjs",
+    "build-ask-index": "node scripts/build-ask-index.mjs",
+    "embed-ask-index": "node scripts/build-ask-index.mjs --embed",
+    "eval-ask": "vite-node scripts/ask-eval.ts",
+    "build-eval-summary": "node scripts/regate-eval.mjs docs/eval/ask_eval_2026-11-15.json --out web/src/generated/ask_eval.json",
+    "build-investigations": "npm run build -w proof --silent && node scripts/build-investigations.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "5.6.3",
+    "vitest": "2.1.8"
+  },
+  "dependencies": {
+    "@google/genai": "3.3.0"
+  }
+}

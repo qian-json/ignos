@@ -1,0 +1,32 @@
+/* Written with AI assistance (Claude Code) */
+/* The scrubbed burn in Measure's details. Scroll mode: a tall track whose sticky stage holds the photo
+   while the page scrolls past it. Pick mode (reduced motion, Pause): the same stage, no track. */
+.bscrub { margin-top: 28px; min-width: 0; }
+.bscrub-h { font-size: var(--fs-h3); letter-spacing: -0.01em; }
+.bscrub-track { position: relative; min-width: 0; }
+.bscrub-run { height: 100vh; }
+.bscrub-stage {
+  display: grid; gap: 8px; min-width: 0; padding: 12px 0 10px;
+  background: var(--ground); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair);
+}
+.bscrub[data-mode="scroll"] .bscrub-stage { position: sticky; top: calc(var(--bar) + 12px); z-index: 1; }
+.bscrub-frame { position: relative; width: 100%; max-width: 760px; aspect-ratio: var(--aspect); background: var(--night); border-radius: 3px; overflow: hidden; }
+.bscrub-frame canvas { display: block; width: 100%; height: 100%; }
+/* the CSV's leading edge: a line through the photo with a small cap above it */
+.bscrub-edge { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--flame-glow); box-shadow: 0 0 0 1px rgb(14 20 40 / 0.35); pointer-events: none; }
+.bscrub-edge::before { content: ""; position: absolute; top: 0; left: -4px; border: 5px solid transparent; border-top: 6px solid var(--surface); border-bottom: 0; }
+
+.bscrub-trace { display: block; width: 100%; max-width: 760px; height: 34px; overflow: visible; }
+.bscrub-trace path { fill: none; stroke: var(--flame); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.bscrub-trace line { stroke: var(--ink); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.bscrub-trace circle { fill: var(--surface); stroke: var(--flame); stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+.bscrub-read { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; max-width: 760px; }
+.bscrub-read input[type="range"] { width: 100%; margin: 0; accent-color: var(--flame); min-height: 32px; }
+.bscrub-read input[type="range"]:focus-visible { outline: var(--focus); outline-offset: 3px; }
+.bscrub-read p { display: flex; flex-wrap: wrap; gap: 2px 18px; align-items: baseline; margin: 0; font-size: var(--fs-ui); font-variant-numeric: tabular-nums; }
+.bscrub-count { font-family: var(--mono); font-size: var(--fs-label); color: var(--mute); }
+
+@media (max-width: 640px) {
+  .bscrub-run { height: 85vh; }
+}

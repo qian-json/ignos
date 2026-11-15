@@ -1,0 +1,46 @@
+/* Written with AI assistance (Claude Code) */
+/* Burn photos on three concentric rings over an electric-blue field, turning slowly in alternate
+   directions. Reduced motion and the Pause switch show the rings at rest. */
+.mrg {
+  --r: 220px; --cw: 76px; --ch: 102px; --gap: 168px;
+  position: relative; z-index: 0; overflow: hidden; pointer-events: none;
+  background: radial-gradient(circle, rgb(20 24 38 / 0.07) 1px, transparent 1.3px) 0 0 / 18px 18px, radial-gradient(110% 85% at 50% 42%, #ffffff 0%, #f4f4f1 55%, #e6e6e1 100%);
+  height: 400px; width: 100%;
+}
+@media (min-width: 900px) {
+  .mrg { position: absolute; top: 0; right: 0; bottom: 0; width: 44%; height: auto; }
+  .mdl-head:has(> .mrg) .mdl-head-in > * { max-width: min(560px, 50vw); }
+  .mdl-head:has(> .mrg) .mdl-title { font-size: clamp(3.5rem, 1rem + 5.4vw, 7rem); }
+}
+@media (max-width: 520px) { .mrg { --r: 135px; --cw: 48px; --ch: 64px; --gap: 104px; height: 340px; } }
+
+.mrg-stage { position: absolute; inset: 0; perspective: 1100px; perspective-origin: 50% 40%; display: grid; place-items: center; }
+.mrg-tilt { position: relative; width: 0; height: 0; transform-style: preserve-3d; transform: rotateX(-12deg) rotateZ(-7deg); }
+.mrg-ring { position: absolute; left: 0; top: 0; transform-style: preserve-3d; --a: calc(360deg / var(--n)); }
+.mrg-ring-0 { --rr: calc(var(--r) * 0.8); transform: translateY(calc(var(--gap) * -1)) rotateY(10deg); }
+.mrg-ring-1 { --rr: var(--r); transform: rotateY(-20deg); }
+.mrg-ring-2 { --rr: calc(var(--r) * 0.8); transform: translateY(var(--gap)) rotateY(35deg); }
+
+.mrg-line {
+  position: absolute; left: calc(var(--rr) * -1); top: calc(var(--rr) * -1); width: calc(var(--rr) * 2); height: calc(var(--rr) * 2);
+  border-radius: 50%; border: 1px solid rgb(20 24 38 / 0.14); transform: translateY(calc(var(--ch) / 2 + 8px)) rotateX(90deg);
+}
+.mrg-card {
+  position: absolute; left: calc(var(--cw) / -2); top: calc(var(--ch) / -2); width: var(--cw); height: var(--ch);
+  transform: rotateY(calc(var(--a) * var(--i))) translateZ(var(--rr));
+  background: var(--night); overflow: hidden; border-radius: 2px;
+  box-shadow: 0 0 0 1px rgb(20 24 38 / 0.08), 0 10px 24px -12px rgb(20 24 38 / 0.35);
+}
+.mrg-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mrg-card img[src$="sheet.jpg"] { transform: scale(2.4); }
+
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-motion="paused"]) .mrg-ring-0 { animation: mrg-a 70s linear infinite; }
+  :root:not([data-motion="paused"]) .mrg-ring-1 { animation: mrg-b 90s linear infinite; }
+  :root:not([data-motion="paused"]) .mrg-ring-2 { animation: mrg-c 80s linear infinite; }
+  :root:not([data-motion="paused"]) .mrg { animation: mrg-in 1200ms var(--ease) both; }
+}
+@keyframes mrg-a { from { transform: translateY(calc(var(--gap) * -1)) rotateY(10deg); } to { transform: translateY(calc(var(--gap) * -1)) rotateY(370deg); } }
+@keyframes mrg-b { from { transform: rotateY(-20deg); } to { transform: rotateY(-380deg); } }
+@keyframes mrg-c { from { transform: translateY(var(--gap)) rotateY(35deg); } to { transform: translateY(var(--gap)) rotateY(395deg); } }
+@keyframes mrg-in { from { opacity: 0; } to { opacity: 1; } }

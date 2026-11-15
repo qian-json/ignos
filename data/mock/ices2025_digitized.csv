@@ -1,0 +1,51 @@
+# mock: true
+# Written with AI assistance (Claude Code). MOCK-DATA: fake values, never real.
+material,source,flow_cm_s,o2_pct,point_kind,extraction,page,notes
+pmma,wstf,66.6,11.833,marker,mock,99,MOCK point
+pmma,wstf,77.7,11.955,marker,mock,99,MOCK point
+pmma,wstf,88.8,12.077,marker,mock,99,MOCK point
+pmma,wstf,99.9,12.199,marker,mock,99,MOCK point
+pmma,wstf,70,11.87,fit_end,mock,99,MOCK drawn line end
+pmma,wstf,95,12.145,fit_end,mock,99,MOCK drawn line end
+pmma,lunar,,10,line_end,mock,99,MOCK lunar line end
+pmma,lunar,,10,line_end,mock,99,MOCK lunar line end
+p213,wstf,66.6,13.665,marker,mock,99,MOCK point
+p213,wstf,77.7,13.909,marker,mock,99,MOCK point
+p213,wstf,88.8,14.154,marker,mock,99,MOCK point
+p213,wstf,99.9,14.398,marker,mock,99,MOCK point
+p213,wstf,70,13.74,fit_end,mock,99,MOCK drawn line end
+p213,wstf,95,14.29,fit_end,mock,99,MOCK drawn line end
+p213,lunar,,10.5,line_end,mock,99,MOCK lunar line end
+p213,lunar,,10.5,line_end,mock,99,MOCK lunar line end
+cotton_flaming,wstf,66.6,15.498,marker,mock,99,MOCK point
+cotton_flaming,wstf,77.7,15.864,marker,mock,99,MOCK point
+cotton_flaming,wstf,88.8,16.23,marker,mock,99,MOCK point
+cotton_flaming,wstf,99.9,16.597,marker,mock,99,MOCK point
+cotton_flaming,wstf,70,15.61,fit_end,mock,99,MOCK drawn line end
+cotton_flaming,wstf,95,16.435,fit_end,mock,99,MOCK drawn line end
+cotton_flaming,lunar,,11,line_end,mock,99,MOCK lunar line end
+cotton_flaming,lunar,,11,line_end,mock,99,MOCK lunar line end
+cotton_smolder,wstf,66.6,17.33,marker,mock,99,MOCK point
+cotton_smolder,wstf,77.7,17.819,marker,mock,99,MOCK point
+cotton_smolder,wstf,88.8,18.307,marker,mock,99,MOCK point
+cotton_smolder,wstf,99.9,18.796,marker,mock,99,MOCK point
+cotton_smolder,wstf,70,17.48,fit_end,mock,99,MOCK drawn line end
+cotton_smolder,wstf,95,18.58,fit_end,mock,99,MOCK drawn line end
+cotton_smolder,lunar,,11.5,line_end,mock,99,MOCK lunar line end
+cotton_smolder,lunar,,11.5,line_end,mock,99,MOCK lunar line end
+polycarbonate,wstf,66.6,19.163,marker,mock,99,MOCK point
+polycarbonate,wstf,77.7,19.774,marker,mock,99,MOCK point
+polycarbonate,wstf,88.8,20.384,marker,mock,99,MOCK point
+polycarbonate,wstf,99.9,20.995,marker,mock,99,MOCK point
+polycarbonate,wstf,70,19.35,fit_end,mock,99,MOCK drawn line end
+polycarbonate,wstf,95,20.725,fit_end,mock,99,MOCK drawn line end
+polycarbonate,lunar,,12,line_end,mock,99,MOCK lunar line end
+polycarbonate,lunar,,12,line_end,mock,99,MOCK lunar line end
+nomex_velcro,wstf,66.6,20.996,marker,mock,99,MOCK point
+nomex_velcro,wstf,77.7,21.728,marker,mock,99,MOCK point
+nomex_velcro,wstf,88.8,22.461,marker,mock,99,MOCK point
+nomex_velcro,wstf,99.9,23.193,marker,mock,99,MOCK point
+nomex_velcro,wstf,70,21.22,fit_end,mock,99,MOCK drawn line end
+nomex_velcro,wstf,95,22.87,fit_end,mock,99,MOCK drawn line end
+nomex_velcro,lunar,,12.5,line_end,mock,99,MOCK lunar line end
+nomex_velcro,lunar,,12.5,line_end,mock,99,MOCK lunar line end

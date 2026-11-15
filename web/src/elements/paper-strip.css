@@ -1,0 +1,21 @@
+/* Written with AI assistance (Claude Code) */
+/* A band of burn frames that bends in depth. Each slice shows its own part of one frame from the sheet. */
+[data-element="paper-strip"] {
+  --h: clamp(48px, 6.5vw, 92px);
+  --w: calc(var(--h) * var(--a, 5.4));
+  position: relative; width: 100%; height: var(--h);
+  margin-block: clamp(24px, 4vw, 56px);
+  overflow: clip; perspective: 900px; perspective-origin: 50% 50%;
+  background: var(--night);
+}
+[data-element="paper-strip"] .pps-track { position: absolute; inset: 0; transform-style: preserve-3d; }
+[data-element="paper-strip"] .pps-slice {
+  position: absolute; top: 0; left: 0; height: var(--h);
+  width: calc(var(--w) / var(--n));
+  background-repeat: no-repeat;
+  background-size: calc(var(--w) * var(--cols)) calc(var(--h) * var(--rows));
+  background-position:
+    calc(-1 * (var(--c) * var(--w) + var(--j) * var(--w) / var(--n))) calc(-1 * var(--r) * var(--h));
+  backface-visibility: hidden;
+  will-change: transform;
+}

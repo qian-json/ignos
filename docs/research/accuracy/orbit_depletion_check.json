@@ -1,0 +1,189 @@
+{
+ "_note": "Written with AI assistance (Claude Code). Analysis only; nothing reported changes. Our steps are scored by the forest refitted without their own Table S1 sample; band rule as in orbit_model.py.",
+ "n_steps": 9,
+ "flagged": [
+  "B12 0.82"
+ ],
+ "conventions": {
+  "label (starting O2)": {
+   "table_heldout_median_ape_pct": 13.93,
+   "band_q": 0.7175,
+   "steps": [
+    {
+     "test_id": "B16",
+     "flow_cm_s": 0.83,
+     "o2_used": 18.2,
+     "ours_mm_s": 0.0766,
+     "model_mm_s": 0.05308,
+     "inside95": true,
+     "ours_vs_model_pct": 44.3
+    },
+    {
+     "test_id": "B16",
+     "flow_cm_s": 0.72,
+     "o2_used": 18.2,
+     "ours_mm_s": 0.0576,
+     "model_mm_s": 0.05215,
+     "inside95": true,
+     "ours_vs_model_pct": 10.5
+    },
+    {
+     "test_id": "B19",
+     "flow_cm_s": 0.83,
+     "o2_used": 17.5,
+     "ours_mm_s": 0.0617,
+     "model_mm_s": 0.04614,
+     "inside95": true,
+     "ours_vs_model_pct": 33.7
+    },
+    {
+     "test_id": "B19",
+     "flow_cm_s": 0.72,
+     "o2_used": 17.5,
+     "ours_mm_s": 0.0529,
+     "model_mm_s": 0.04587,
+     "inside95": true,
+     "ours_vs_model_pct": 15.3
+    },
+    {
+     "test_id": "B12",
+     "flow_cm_s": 0.82,
+     "o2_used": 17.5,
+     "ours_mm_s": 0.0667,
+     "model_mm_s": 0.03274,
+     "inside95": true,
+     "ours_vs_model_pct": 103.7
+    },
+    {
+     "test_id": "B12",
+     "flow_cm_s": 0.6,
+     "o2_used": 17.5,
+     "ours_mm_s": 0.0317,
+     "model_mm_s": 0.03235,
+     "inside95": true,
+     "ours_vs_model_pct": -2.0
+    },
+    {
+     "test_id": "B12",
+     "flow_cm_s": 0.48,
+     "o2_used": 17.5,
+     "ours_mm_s": 0.0272,
+     "model_mm_s": 0.03235,
+     "inside95": true,
+     "ours_vs_model_pct": -15.9
+    },
+    {
+     "test_id": "P17",
+     "flow_cm_s": 0.82,
+     "o2_used": 16.8,
+     "ours_mm_s": 0.0447,
+     "model_mm_s": 0.05204,
+     "inside95": true,
+     "ours_vs_model_pct": -14.1
+    },
+    {
+     "test_id": "P17",
+     "flow_cm_s": 0.41,
+     "o2_used": 16.8,
+     "ours_mm_s": 0.0242,
+     "model_mm_s": 0.05125,
+     "inside95": false,
+     "ours_vs_model_pct": -52.8
+    }
+   ],
+   "n_inside95": 8,
+   "n": 9,
+   "median_abs_ours_vs_model_pct": 15.9
+  },
+  "in-burn estimate": {
+   "table_heldout_median_ape_pct": 18.06,
+   "band_q": 0.7194,
+   "steps": [
+    {
+     "test_id": "B16",
+     "flow_cm_s": 0.83,
+     "o2_used": 17.72,
+     "ours_mm_s": 0.0766,
+     "model_mm_s": 0.05479,
+     "inside95": true,
+     "ours_vs_model_pct": 39.8
+    },
+    {
+     "test_id": "B16",
+     "flow_cm_s": 0.72,
+     "o2_used": 17.51,
+     "ours_mm_s": 0.0576,
+     "model_mm_s": 0.051,
+     "inside95": true,
+     "ours_vs_model_pct": 12.9
+    },
+    {
+     "test_id": "B19",
+     "flow_cm_s": 0.83,
+     "o2_used": 17.19,
+     "ours_mm_s": 0.0617,
+     "model_mm_s": 0.04312,
+     "inside95": true,
+     "ours_vs_model_pct": 43.1
+    },
+    {
+     "test_id": "B19",
+     "flow_cm_s": 0.72,
+     "o2_used": 17.04,
+     "ours_mm_s": 0.0529,
+     "model_mm_s": 0.04309,
+     "inside95": true,
+     "ours_vs_model_pct": 22.8
+    },
+    {
+     "test_id": "B12",
+     "flow_cm_s": 0.82,
+     "o2_used": 17.25,
+     "ours_mm_s": 0.0667,
+     "model_mm_s": 0.03049,
+     "inside95": false,
+     "ours_vs_model_pct": 118.7
+    },
+    {
+     "test_id": "B12",
+     "flow_cm_s": 0.6,
+     "o2_used": 17.14,
+     "ours_mm_s": 0.0317,
+     "model_mm_s": 0.03055,
+     "inside95": true,
+     "ours_vs_model_pct": 3.7
+    },
+    {
+     "test_id": "B12",
+     "flow_cm_s": 0.48,
+     "o2_used": 17.03,
+     "ours_mm_s": 0.0272,
+     "model_mm_s": 0.03123,
+     "inside95": true,
+     "ours_vs_model_pct": -12.9
+    },
+    {
+     "test_id": "P17",
+     "flow_cm_s": 0.82,
+     "o2_used": 16.63,
+     "ours_mm_s": 0.0447,
+     "model_mm_s": 0.05051,
+     "inside95": true,
+     "ours_vs_model_pct": -11.5
+    },
+    {
+     "test_id": "P17",
+     "flow_cm_s": 0.41,
+     "o2_used": 16.52,
+     "ours_mm_s": 0.0242,
+     "model_mm_s": 0.05003,
+     "inside95": false,
+     "ours_vs_model_pct": -51.6
+    }
+   ],
+   "n_inside95": 7,
+   "n": 9,
+   "median_abs_ours_vs_model_pct": 22.8
+  }
+ }
+}

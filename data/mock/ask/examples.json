@@ -1,0 +1,189 @@
+{
+  "mock": true,
+  "_note": "Written with AI assistance (Claude Code). MOCK-DATA: fake values, never real.",
+  "examples": [
+    {
+      "request": {
+        "question": "MOCK: summarize test MOCK-B01",
+        "mode": "summarize",
+        "subject": {
+          "kind": "test",
+          "id": "MOCK-B01"
+        }
+      },
+      "response": {
+        "contract": "ask/1",
+        "mock": true,
+        "mode": "summarize",
+        "status": "answered",
+        "answer": "MOCK: test MOCK-B01 spread at 0.111 mm/s in its first flow step.",
+        "citations": [
+          {
+            "kind": "row",
+            "id": "spread_rates:MOCK-B01/1"
+          }
+        ],
+        "gate": {
+          "action": "passed",
+          "checked": 1,
+          "verified": 1,
+          "unverified": 0,
+          "numbers": [
+            {
+              "text": "0.111 mm/s",
+              "start": 30,
+              "end": 40,
+              "value": 0.111,
+              "unit": "mm/s",
+              "status": "verified",
+              "source": {
+                "file": "data/mock/spread_rates.csv",
+                "row": 1,
+                "column": "rate_mm_s",
+                "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "request": {
+        "question": "MOCK: rank the materials by Moon Gap",
+        "mode": "rank"
+      },
+      "response": {
+        "contract": "ask/1",
+        "mock": true,
+        "mode": "rank",
+        "status": "answered",
+        "answer": "MOCK: MOCK-Nomex Velcro ranks first, with a Moon Gap of 4.1 % O2.",
+        "citations": [
+          {
+            "kind": "row",
+            "id": "moongap:nomex_velcro"
+          },
+          {
+            "kind": "paper",
+            "id": "ices2025",
+            "page": 99
+          }
+        ],
+        "gate": {
+          "action": "passed",
+          "checked": 1,
+          "verified": 1,
+          "unverified": 0,
+          "numbers": [
+            {
+              "text": "4.1 % O2",
+              "start": 56,
+              "end": 64,
+              "value": 4.1,
+              "unit": "% O2",
+              "status": "verified",
+              "source": {
+                "paper": "ices2025",
+                "page": 99,
+                "quote": "MOCK quote"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "request": {
+        "question": "MOCK: how fast did MOCK-C03 spread?",
+        "mode": "interpret"
+      },
+      "response": {
+        "contract": "ask/1",
+        "mock": true,
+        "mode": "interpret",
+        "status": "answered",
+        "answer": "MOCK: test MOCK-C03 spread at 9.99 mm/s.",
+        "citations": [
+          {
+            "kind": "row",
+            "id": "spread_rates:MOCK-C03/1"
+          }
+        ],
+        "gate": {
+          "action": "flagged",
+          "checked": 1,
+          "verified": 0,
+          "unverified": 1,
+          "numbers": [
+            {
+              "text": "9.99 mm/s",
+              "start": 30,
+              "end": 39,
+              "value": 9.99,
+              "unit": "mm/s",
+              "status": "unverified",
+              "source": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "request": {
+        "question": "MOCK: how fast did MOCK-C03 spread, strictly?",
+        "mode": "interpret"
+      },
+      "response": {
+        "contract": "ask/1",
+        "mock": true,
+        "mode": "interpret",
+        "status": "answered",
+        "answer": "MOCK: test MOCK-C03 spread at [number removed: not in our data].",
+        "citations": [
+          {
+            "kind": "row",
+            "id": "spread_rates:MOCK-C03/1"
+          }
+        ],
+        "gate": {
+          "action": "removed",
+          "checked": 1,
+          "verified": 0,
+          "unverified": 1,
+          "numbers": [
+            {
+              "text": "8.88 mm/s",
+              "start": null,
+              "end": null,
+              "value": 8.88,
+              "unit": "mm/s",
+              "status": "unverified",
+              "source": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "request": {
+        "question": "MOCK: a question our sources do not answer",
+        "mode": "interpret"
+      },
+      "response": {
+        "contract": "ask/1",
+        "mock": true,
+        "mode": "interpret",
+        "status": "not_in_data",
+        "answer": "Not in our data.",
+        "citations": [],
+        "gate": {
+          "action": "passed",
+          "checked": 0,
+          "verified": 0,
+          "unverified": 0,
+          "numbers": []
+        }
+      }
+    }
+  ]
+}

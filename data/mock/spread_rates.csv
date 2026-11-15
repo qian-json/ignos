@@ -1,0 +1,10 @@
+# mock: true
+# Written with AI assistance (Claude Code). MOCK-DATA: fake values, never real.
+test_id,rod_d_mm,o2_pct,flow_cm_s,t_start_s,t_end_s,rate_mm_s,ci95_mm_s,threshold_spread_mm_s,nasa_rate_mm_s,pct_error,flame_len_mm,blue_frac,extinction_s,n_frames,notes
+MOCK-B01,11.1,22.2,1.11,0,11.1,0.111,0.011,0.022,0.1,11,1.11,0.111,,11,MOCK: fake values
+MOCK-B01,11.1,22.2,2.22,11.1,22.2,0.222,0.011,0.022,0.2,11,1.11,0.111,,11,MOCK: fake values
+MOCK-B01,11.1,22.2,3.33,22.2,33.3,0.333,0.011,0.022,0.3,11,1.11,0.111,33.3,11,MOCK: fake values
+MOCK-B02,22.2,33.3,4.44,0,44.4,0.444,0.011,0.022,,,1.11,0.111,,44,MOCK: fake values; no matching reference row
+MOCK-B02,22.2,33.3,5.55,44.4,55.5,,,,0.5,,,,,2,"MOCK: fake values; unusable segment, edge lost"
+MOCK-C03,33.3,44.4,6.66,0,66.6,0.666,0.011,0.022,0.6,11,1.11,0.111,,67,MOCK: fake values
+MOCK-C03,33.3,44.4,7.77,66.6,77.7,0.777,0.011,0.022,0.7,11,1.11,0.111,,11,MOCK: fake values

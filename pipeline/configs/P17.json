@@ -1,0 +1,19 @@
+{
+  "_comment": "Written with AI assistance (Claude Code). Step data: Link et al. 2018 Sci Rep 8:120 Supplement Table S1 (p. 1), sample P17 (0.64 cm rod, 16.8% O2; Table S1 itself names it P17) = PSI-25 test P17 (1/4 in. black rod, sample 192m, GMT 210, initial O2 16.8 in the PSI experimental table); rates = printed Vf x1e3 /100 -> mm/s (matches data/reference/link2018_table_s1.csv). Photos: PSI-25_Raw Data_GMT2014_210_BASS_S192_TPP17.zip (Deflate64, 189 NEF, iss040e082665-082853, taken right after P12's photos). First photo EXIF 2014-07-30 12:01:47.56. WINDOWS from the P17 video overlay only (PSI-25_Raw Data_BASS_GMT210_SAMPLE_192_TEST_P17.mp4, FAN display + clock, read at 1 s resolution): FAN 60 -> 52 at 12:04:08, 52 -> 48 at 12:06:27, 48 -> fan burst (52, 122, 101; the PSI table's '233 (pot 10)' step) at 12:09:52, back to 48 by ~12:10:25, 48 -> 41 starting 12:11:03 (41 reached 12:11:08), 41 -> 44 at 12:12:53, 122 from 12:13:00; last flame photo 12:12:49. Matching Table S1's three rows to fan steps used ORDER and DURATIONS only, never rates: 1.01 cm/s (dt 123) = FAN 52 step (139 s), 0.82 cm/s (dt 187) = FAN 48 step before the burst (205 s), 0.41 cm/s (dt 65) = FAN 41 step (110 s); the 48 step after the burst lasts only ~38 s, shorter than any row. Same-day test B12 gives the same fan -> flow pairs (52 -> 1.01, 48 -> 0.82) from its own durations. The camera EXIF and the video clock were checked on same-day P12 (agree within ~0.5 s); the first P17 photo after the burst starts (12:09:52.42, t=484.9) is already at 1/400 s, consistent with the bright burst flame. Axis: rod spans rows ~385-440 at 1/4 resolution -> axis 412. Direction +1 (burning tip on the left, holder on the right). Scale: frame 186 (iss040e082851.NEF, 1/13 s, lit after the test), crop cols 2600-2900 rows 1440-1840 of the unburnt rod next to the holder: calibrate.py gives 214.0 +/- 0.9 px (19 columns) = 33.70 px/mm; frame 187 gives 215.6 px, cols 2350-2600 give 212.2-213.4 px. Frame 188 (bright light at the right edge) fails calibrate.py's rule and was not used. half_band 70 and rel_threshold 0.3 as in B16/B19 (not tuned).",
+  "test_id": "P17", "psi_test": "P17", "nef_dir": "../../space-apps-2026/data/raw/psi25/P17",
+  "psi_files": [
+    {"file": "PSI-25_Raw Data_GMT2014_210_BASS_S192_TPP17.zip", "bytes": 2152496543, "role": "photos", "extract_to": "P17", "nef_count": 189, "nef_first": "iss040e082665.NEF", "nef_last": "iss040e082853.NEF", "deflate64": true},
+    {"file": "PSI-25_Raw Data_BASS_GMT210_SAMPLE_192_TEST_P17.mp4", "bytes": 104648639, "role": "video"}
+  ],
+  "rod_d_mm": 6.35, "o2_pct": 16.8,
+  "axis_row": 412, "half_band": 70, "direction": 1, "rel_threshold": 0.3, "min_area_frame": 3000,
+  "cache_rows": [250, 560],
+  "burn_window_s": [0, 662],
+  "calibration": {"frame_index": 186, "crop_full_res": [2600, 2900, 1440, 1840]},
+  "windows_s": [[140.4, 279.4], [279.4, 484.4], [555.4, 665.4]],
+  "steps": [
+    {"flow_cm_s": 1.01, "dt_s": 123, "nasa_rate_mm_s": 0.0412},
+    {"flow_cm_s": 0.82, "dt_s": 187, "nasa_rate_mm_s": 0.0478},
+    {"flow_cm_s": 0.41, "dt_s": 65,  "nasa_rate_mm_s": 0.0226}
+  ]
+}

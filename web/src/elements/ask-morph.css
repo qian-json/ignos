@@ -1,0 +1,25 @@
+/* Written with AI assistance (Claude Code) */
+/* The Ask request shape: one rounded box whose width, corners and tone the script springs between steps. */
+.amx { position: relative; height: 48px; max-width: 100%; }
+.amx[hidden] { display: none; }
+.amx-shape { position: relative; height: 48px; width: 48px; max-width: 100%; border-radius: 24px; overflow: hidden; background: var(--ink); }
+.amx-layer { position: absolute; inset: 0 auto 0 0; display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 18px; white-space: nowrap;
+  font: 500 var(--fs-ui)/1 var(--font); color: var(--ink); background: none; border: 0; border-radius: inherit; text-align: left; transform-origin: 24px 50%; }
+.amx-layer[data-tone="ink"] { color: var(--surface); font-weight: 400; }
+.amx-layer[data-tone="ok"] { color: var(--verified); }
+.amx-layer[data-tone="flag"] { color: var(--unverified); }
+.amx-layer[data-tone="quiet"] { color: var(--mute); }
+.amx-layer[data-tone="flame"] { color: #fff; }
+.amx-t { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.amx-ic { flex: none; width: 18px; height: 18px; }
+.amx-spin { animation: amx-turn 0.9s linear infinite; }
+@keyframes amx-turn { to { transform: rotate(360deg); } }
+.amx[data-live="0"] .amx-spin, html[data-motion="paused"] .amx-spin { animation-play-state: paused; }
+.amx-dots { display: inline-flex; gap: 5px; flex: none; }
+.amx-dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--verified); }
+.amx-dots i[data-st="unverified"] { background: var(--unverified); }
+button.amx-layer { cursor: pointer; }
+button.amx-layer:focus-visible { outline: 2px solid var(--surface); outline-offset: -5px; }
+.amx:has(button.amx-layer:focus-visible) .amx-shape { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--flame) !important; overflow: visible; }
+@media (hover: hover) and (pointer: fine) { button.amx-layer:hover .amx-t { text-decoration: underline; text-underline-offset: 0.2em; } }
+@media (prefers-reduced-motion: reduce) { .amx-spin { animation: none; } }

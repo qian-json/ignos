@@ -1,0 +1,48 @@
+/* Written with AI assistance (Claude Code) */
+/* Dots like a record sleeve's credits: every row of the list is one line tall, the dots are a background repeated per
+   row, and each word sits on a patch of the ground, so the dots run between words and stop at them.
+   Set the face with longhands only: a later `font:` shorthand resets the row height and the dots drift. */
+.fl {
+  --fl-row: 2em;           /* one line; 28 px at 14 px, a comfortable tap row for the counts */
+  --fl-pitch: .5em;        /* dot spacing */
+  --fl-dot: .07em;         /* a period, not a rule */
+  --fl-drop: .34em;        /* dots on the baseline */
+  --fl-ground: var(--ground);
+  line-height: var(--fl-row);
+  background-image: radial-gradient(circle at 50% 50%, var(--mute) var(--fl-dot), transparent calc(var(--fl-dot) + .6px));
+  background-size: var(--fl-pitch) var(--fl-row);
+  background-position: 0 var(--fl-drop);
+  background-repeat: repeat;
+}
+.fl .fl-w { background: var(--fl-ground); padding-inline: .4em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.fl-row { display: flex; flex-wrap: wrap; align-items: baseline; min-width: 0; }
+.fl-row > :first-child { margin-left: -.4em; }
+.fl-row > :last-child { margin-left: auto; margin-right: -.4em; text-align: right; }
+
+.fl {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: var(--fs-ui);
+  font-variant-numeric: tabular-nums slashed-zero;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--hair);
+}
+.fl .fl-dir { color: var(--mute); padding-right: 0; }
+.fl .fl-dir + .fl-name { padding-left: 0; }
+.fl .fl-name { min-width: 0; overflow-wrap: anywhere; }
+.fl .fl-n { white-space: nowrap; }
+.fl .fl-n .src { border-bottom: 1px solid var(--rule); line-height: 1.25; }  /* solid, so it never reads as part of the leader dots */
+.fl .src:focus-visible { outline: var(--focus); outline-offset: 2px; border-radius: 2px; }
+.fl .fl-total .fl-name { font-family: var(--font); font-weight: 600; }
+.fl .fl-total { font-weight: 600; }
+
+/* phones: the folder on its own row (a full-width patch, so no dots), the name and its count below */
+@media (max-width: 560px) {
+  .fl .fl-dir { flex: 1 0 100%; padding-right: .4em; margin-right: -.4em; }
+  .fl .fl-dir + .fl-name { padding-left: .4em; margin-left: -.4em; }
+}
+
+@media (forced-colors: active) { .fl { background-image: none; } .fl .fl-w { background: none; } }
+@media print { .fl { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }

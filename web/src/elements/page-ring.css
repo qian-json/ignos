@@ -1,0 +1,40 @@
+/* Written with AI assistance (Claude Code) */
+/* The end of Home: the other pages as a row of picture cards, dealt into a ring the first time it is seen. */
+[data-element="page-ring"] {
+  display: block; max-width: 1240px; margin: 0 auto; padding: 12vh var(--gutter, 16px); color: var(--ink);
+}
+[data-element="page-ring"] h2 { margin: 0 0 40px; }
+[data-element="page-ring"] .pr-row {
+  position: relative; list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px;
+  perspective: 1400px; perspective-origin: 50% 50%;
+}
+[data-element="page-ring"] .pr-card { position: relative; min-width: 0; transform-origin: 50% 50%; }
+[data-element="page-ring"].is-dealing .pr-card { will-change: transform, opacity; backface-visibility: visible; }
+[data-element="page-ring"] .pr-link {
+  display: flex; flex-direction: column; height: 100%; color: inherit; text-decoration: none;
+  background: var(--surface); border: 1px solid var(--hair); border-radius: 10px; overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+[data-element="page-ring"].is-dealt .pr-link:hover { border-color: var(--ink); transform: translateY(-3px); }
+[data-element="page-ring"] .pr-link:focus-visible { outline: var(--focus); outline-offset: 3px; }
+[data-element="page-ring"] .pr-pic { display: block; aspect-ratio: 4 / 3; background: var(--night); overflow: hidden; }
+[data-element="page-ring"] .pr-pic img { display: block; width: 100%; height: 100%; object-fit: cover; }
+[data-element="page-ring"] .pr-text { display: flex; flex-direction: column; gap: 8px; padding: 14px 14px 18px; }
+[data-element="page-ring"] .pr-name { font: var(--d-weight, 500) var(--d-m)/1 var(--display); letter-spacing: -0.02em; }
+[data-element="page-ring"] .pr-purpose { font: 400 0.875rem/1.35 var(--font); color: var(--mute); text-wrap: pretty; }
+@media (max-width: 1024px) {
+  [data-element="page-ring"] .pr-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  [data-element="page-ring"] { padding-block: 8vh; }
+  [data-element="page-ring"] h2 { margin-bottom: 24px; }
+  [data-element="page-ring"] .pr-row { grid-template-columns: 1fr; gap: 10px; }
+  [data-element="page-ring"] .pr-link { flex-direction: row; align-items: stretch; }
+  [data-element="page-ring"] .pr-pic { flex: 0 0 34%; aspect-ratio: auto; min-height: 96px; }
+  [data-element="page-ring"] .pr-text { padding: 12px; gap: 6px; }
+  [data-element="page-ring"] .pr-name { font-size: 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-element="page-ring"] .pr-link { transition: none; }
+}

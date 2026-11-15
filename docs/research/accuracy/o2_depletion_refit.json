@@ -1,0 +1,88 @@
+{
+ "_note": "Written with AI assistance (Claude Code). Analysis only. Step timing within a burn is assumed from Table S1's listed step durations (contiguous, in order); O2 assumed to fall linearly in time between NASA's before/after readings. Final-O2 fit is a bound, not an estimate.",
+ "sources": {
+  "table_s1": "data/reference/link2018_table_s1.csv (Link et al. 2018 Sci Rep 8:120, SI Table S1 p. 1)",
+  "o2_before_after": "NASA PSI-25 experimental table, calibrated initial/final O2 (CC0)",
+  "o2_fell": "ICES-2015-196 (NTRS 20150019858) pp. 4-5"
+ },
+ "n_rows": 52,
+ "n_rows_with_before_after_o2": 48,
+ "n_samples_with_before_after_o2": 19,
+ "excluded_implausible_drop": [
+  {
+   "sample": "B22",
+   "drop_points": 20.2
+  }
+ ],
+ "max_drop_rule_points": 3.0,
+ "n_rows_fitted": 48,
+ "label_not_equal_initial": [
+  {
+   "sample": "B15",
+   "psi_test": "P15",
+   "label": 18.4,
+   "initial": 18.0
+  }
+ ],
+ "fits": {
+  "label (Table S1, = initial)": {
+   "o2_coef_all_samples_incl_excluded": 0.1796,
+   "o2_coef_per_point": 0.1945,
+   "o2_coef_ci95_cluster": [
+    0.121,
+    0.3523
+   ],
+   "rate_ratio_per_point": 1.215,
+   "flow_exponent": 0.1533,
+   "diameter_exponent": -1.126
+  },
+  "estimated at step midpoint": {
+   "o2_coef_all_samples_incl_excluded": 0.0218,
+   "o2_coef_per_point": 0.2119,
+   "o2_coef_ci95_cluster": [
+    0.1339,
+    0.3553
+   ],
+   "rate_ratio_per_point": 1.236,
+   "flow_exponent": 0.1185,
+   "diameter_exponent": -1.0972
+  },
+  "final reading (bound)": {
+   "o2_coef_all_samples_incl_excluded": -0.0059,
+   "o2_coef_per_point": 0.2136,
+   "o2_coef_ci95_cluster": [
+    0.1312,
+    0.3454
+   ],
+   "rate_ratio_per_point": 1.238,
+   "flow_exponent": 0.1555,
+   "diameter_exponent": -1.003
+  }
+ },
+ "o2_drop_points_by_sample": {
+  "B13a": 1.6,
+  "B13b": 0.4,
+  "B5": 1.7,
+  "B9": 0.5,
+  "C25": 0.7,
+  "B22": 20.2,
+  "B4": 1.4,
+  "B12": 0.7,
+  "B6": 0.4,
+  "B15": 0.5,
+  "B14": 0.4,
+  "B16": 0.8,
+  "B1": 0.2,
+  "C3a": 0.3,
+  "B19": 0.8,
+  "B2": 0.2,
+  "C3b": 0.6,
+  "B10": 0.6,
+  "P17": 0.3
+ },
+ "bootstrap": {
+  "resamples": 4000,
+  "seed": 20261115,
+  "unit": "whole Table S1 sample"
+ }
+}

@@ -1,0 +1,59 @@
+/* Written with AI assistance (Claude Code) */
+/* Display type for page headings (h1, the big h2s) only. Body copy stays Host Grotesk and every figure stays
+   Fragment Mono. The display face is Inter Tight (SIL OFL 1.1, The Inter Project Authors; licence text at
+   /fonts/OFL.txt), self-hosted: the latin cut as a variable font, plus a tiny cut that carries the arrows,
+   which the latin cut leaves out.
+   Sizes step down twice: desktop, tablet (<= 1024 px) and phone (<= 640 px). Leading is tight (.9) because the
+   face is already narrow; tracking stays at the face's own spacing. */
+@font-face {
+  font-family: "Inter Tight"; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url("/fonts/display.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter Tight"; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url("/fonts/display-arrows.ttf") format("truetype"); unicode-range: U+2190-2193;
+}
+/* Stand-ins sized to the display face, so the swap does not shift the layout. */
+@font-face { font-family: "Display Fallback"; src: local("Helvetica Neue"), local("HelveticaNeue");
+  size-adjust: 95.4861%; ascent-override: 101.455%; descent-override: 25.2614%; line-gap-override: 0%; }
+@font-face { font-family: "Display Fallback"; src: local("Arial");
+  size-adjust: 96.3855%; ascent-override: 100.508%; descent-override: 25.0256%; line-gap-override: 0%; }
+
+:root {
+  --display: "Inter Tight", "Display Fallback", var(--font, system-ui), sans-serif;
+  --d-xl: 6.25rem;   /* page h1 */
+  --d-l: 3.25rem;    /* section h2 */
+  --d-m: 2.25rem;    /* small display, card titles */
+  --d-lead: 0.9;
+  --d-weight: 500;
+  --d-meta: 0.75rem;
+  --d-indent: 7rem;  /* first-line indent of the short lede under a display heading */
+}
+@media (max-width: 1024px) { :root { --d-xl: 5rem; --d-l: 2.75rem; --d-m: 1.875rem; } }
+@media (max-width: 640px) { :root { --d-xl: 3.5rem; --d-l: 2rem; --d-m: 1.5rem; --d-indent: 3rem; } }
+
+.t-display-xl, .t-display-l, .t-display-m {
+  font-family: var(--display); font-weight: var(--d-weight); line-height: var(--d-lead);
+  letter-spacing: normal; text-wrap: balance; margin: 0; overflow-wrap: break-word;
+}
+.t-display-xl { font-size: var(--d-xl); }
+.t-display-l { font-size: var(--d-l); }
+.t-display-m { font-size: var(--d-m); }
+/* The rising letters sit on their own boxes; give the descenders room so the stretch is not clipped. */
+.t-display-xl [data-element="heading-rise"], [data-element="heading-rise"].t-display-xl,
+[data-element="heading-rise"].t-display-l { padding-bottom: 0.06em; }
+
+/* The small label above a display heading: mono, muted, one line. */
+.t-meta {
+  display: block; font: 400 var(--d-meta)/1 var(--mono); letter-spacing: 0.02em; color: var(--mute);
+  margin: 0 0 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
+}
+.on-night .t-meta, .t-meta.on-night { color: var(--on-night-mute); }
+
+/* The short lede under a display heading: body face, semibold, tight, its first line pushed in. */
+.t-lede { font: 600 1rem/1.1 var(--font); max-width: 24rem; text-indent: var(--d-indent); text-wrap: pretty; margin: 0; }
+
+/* Section headings on the pages pick up the display face over their older panel styles. */
+.page h2.t-display-l { font-family: var(--display); font-size: var(--d-l); font-weight: var(--d-weight); line-height: 0.95; letter-spacing: -0.02em; }
+.page .t-display-xl { letter-spacing: -0.03em; }

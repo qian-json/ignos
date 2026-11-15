@@ -1,0 +1,12 @@
+/* Written with AI assistance (Claude Code) */
+.start-here { background: var(--ground); padding: clamp(56px, 9vw, 112px) 0 clamp(40px, 6vw, 72px); }
+.start-in { width: min(1208px, calc(100% - 32px)); margin: 0 auto; }
+.start-meta { margin: 0 0 8px; color: var(--mute); }
+.start-h { margin: 0 0 28px; }
+.start-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.start-step { display: flex; flex-direction: column; gap: 10px; padding: 22px; border: 1px solid var(--hair); border-radius: var(--radius, 12px); background: var(--surface); }
+.start-step h3 { margin: 0; font-size: 1.25rem; line-height: 1.2; }
+.start-step p { margin: 0; color: var(--mute); line-height: 1.5; flex: 1; }
+.start-step .btn { align-self: flex-start; }
+.start-n { font: 500 .8rem/1 var(--mono); color: var(--flame); }
+@media (max-width: 760px) { .start-steps { grid-template-columns: minmax(0, 1fr); } }

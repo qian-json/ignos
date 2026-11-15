@@ -1,0 +1,39 @@
+/* Written with AI assistance (Claude Code) */
+/* The photo row in Measure: one height for every photo, each at its own width, a tick for the edge. */
+.fstrip { --fh: 52px; margin-top: 28px; display: grid; gap: 12px; min-width: 0; }
+.fstrip-head { display: grid; gap: 4px; }
+.fstrip-head h3 { font-size: var(--fs-h3); letter-spacing: -0.01em; }
+.fstrip-head code { font-family: var(--mono); font-size: 0.95em; }
+
+.fstrip-row {
+  position: relative; overflow-x: auto; overflow-y: hidden; min-width: 0; max-width: 100%;
+  padding: 10px 2px 12px; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair);
+  overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--rule) transparent; cursor: pointer;
+}
+.fstrip-row:focus-visible { outline: var(--focus); outline-offset: 3px; }
+.fstrip-frames { display: flex; align-items: flex-end; gap: 3px; margin: 0; padding: 0; list-style: none; width: max-content; }
+.fstrip-frames li { position: relative; flex: none; width: calc(var(--fh) * var(--aspect)); height: var(--fh); padding-bottom: 5px; box-sizing: content-box; }
+.fstrip-pic {
+  display: block; width: 100%; height: var(--fh); background-color: var(--night); background-image: var(--sheet);
+  background-repeat: no-repeat;
+  background-size: calc(var(--fh) * var(--aspect) * var(--cols)) auto;
+  background-position: calc(var(--c) * var(--fh) * var(--aspect) * -1) calc(var(--r) * var(--fh) * -1);
+}
+/* inside a fitted fan step: a hairline underneath */
+.fstrip-frames li[data-fit]::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--rule); }
+/* the leading edge: a tick that stands just above the photo and runs down through it */
+.fstrip-mark { position: absolute; top: -6px; bottom: 5px; width: 2px; margin-left: -1px; background: var(--flame-glow); pointer-events: none; }
+.fstrip-mark::before { content: ""; position: absolute; top: 0; left: -3px; border: 4px solid transparent; border-top: 5px solid var(--flame); border-bottom: 0; }
+/* the picked photo */
+.fstrip-frames li[data-on] .fstrip-pic { outline: 2px solid var(--flame); outline-offset: 2px; }
+.fstrip-frames li[data-on]::after { background: var(--flame); }
+@media (hover: hover) { .fstrip-frames li:hover .fstrip-pic { outline: 1px solid var(--mute); outline-offset: 2px; } }
+
+.fstrip-read { display: flex; flex-wrap: wrap; gap: 4px 18px; align-items: baseline; font-size: var(--fs-ui); font-variant-numeric: tabular-nums; }
+.fstrip-read > span:first-child { font-family: var(--mono); font-size: var(--fs-label); color: var(--mute); }
+.fstrip-hint { color: var(--mute); font-size: var(--fs-label); margin-left: auto; }
+
+@media (max-width: 640px) {
+  .fstrip { --fh: 40px; }
+  .fstrip-hint { margin-left: 0; flex-basis: 100%; }
+}

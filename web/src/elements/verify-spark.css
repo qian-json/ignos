@@ -1,0 +1,52 @@
+/* Written with AI assistance (Claude Code) */
+/* A checked result sits in a hairline panel. When the checker verifies a number, a blue flame front
+   runs once round the panel's edge and leaves the edge green behind it, the way a flame spreads along
+   a rod and leaves it changed. The green edge is the end state, and what reduced motion and Pause show
+   straight away. --vs-run is how far the front has gone (an angle from its start), --vs-head the
+   length of the bright front. */
+@property --vs-run { syntax: '<angle>'; inherits: true; initial-value: 0deg; }
+@property --vs-head { syntax: '<angle>'; inherits: true; initial-value: 0deg; }
+
+.vs {
+  --vs-ring: 1.5px;
+  position: relative;
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: border-color 0.3s ease-out;
+  isolation: isolate;
+  min-width: 0;
+}
+.vs.is-lit { border-color: var(--verified); }
+
+.vs::before, .vs::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: var(--vs-ring);
+  pointer-events: none;
+  background: conic-gradient(from var(--vs-from, 0deg),
+    var(--verified) 0deg,
+    var(--verified) calc(var(--vs-run) - var(--vs-head)),
+    var(--flame-glow) calc(var(--vs-run) - var(--vs-head) * 0.35),
+    var(--flame) calc(var(--vs-run) - 0.6deg),
+    transparent var(--vs-run),
+    transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  z-index: 1;
+}
+/* the soft glow round the front only: same ring, wider and blurred, kept faint */
+.vs::after { inset: -3px; padding: calc(var(--vs-ring) + 2px); filter: blur(2.5px); }
+.vs.is-running::before { opacity: 1; }
+.vs.is-running::after { opacity: 0.35; }
+
+@media (prefers-reduced-motion: reduce) { .vs::before, .vs::after { display: none; } .vs { transition: none; } }
+:root[data-motion="paused"] .vs::before, :root[data-motion="paused"] .vs::after { display: none; }
+@media (forced-colors: active) { .vs::before, .vs::after { display: none; } }

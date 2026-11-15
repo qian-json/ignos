@@ -1,0 +1,50 @@
+{
+ "_comment": "Written with AI assistance (Claude Code). Material-safety eval questions for the team's 'Would you bring this tape to the Moon?' framing. Same format as tracker_eval_questions.json; scripts/ask-eval.ts loads them as the 'materials' set. No Moon airflow number may appear in any answer.",
+ "questions": [
+  {
+   "id": "M1",
+   "question": "Would P-213 tape be safe to bring to a lunar habitat?",
+   "mode": "interpret",
+   "expected_answer": "Not shown to be safe. P-213 tape typically fails NASA Test 1 in air (ICES-2025-392 p. 8), and in NASA's lunar-gravity test it burned at a lower oxygen than the Earth (WSTF) extrapolation predicts, which NASA calls 'contrary to expected behavior' (p. 9). The Ignos Moon Gap for P-213 is +2.75 points (95% range 1.84 to 3.66). That is the team's reading, not a NASA conclusion, and no airflow number is given for the Moon.",
+   "expected_numbers": [],
+   "expected_citations": [
+    {
+     "kind": "row",
+     "id": "moongap:p213"
+    }
+   ],
+   "answerable": true,
+   "why": "The framing's headline question; must not say NASA concluded anything or give a Moon airflow."
+  },
+  {
+   "id": "M2",
+   "question": "How does NASA decide which materials are fire-safe for spacecraft?",
+   "mode": "interpret",
+   "expected_answer": "Mainly by material selection, using NASA STD 6001 Test 1, an upward flammability test with a strong ignition source that was meant to be conservative (ICES-2025-392 p. 2).",
+   "expected_numbers": [],
+   "expected_citations": [],
+   "answerable": true,
+   "why": "The decision the data feeds."
+  },
+  {
+   "id": "M3",
+   "question": "Which of the tested materials pass NASA's Test 1 in air, and which fail?",
+   "mode": "interpret",
+   "expected_answer": "Polycarbonate and Nomex Velcro pass Test 1 in air; PMMA, P-213 tape (fiberglass with an acrylic adhesive) and cotton t-shirt material typically fail (ICES-2025-392 p. 8).",
+   "expected_numbers": [],
+   "expected_citations": [],
+   "answerable": true,
+   "why": "Five pass/fail values from one sentence."
+  },
+  {
+   "id": "M4",
+   "question": "NASA concluded that its Earth flammability test is unsafe for the Moon. What evidence did it use?",
+   "mode": "interpret",
+   "expected_answer": "NASA did not conclude that. Its lunar-gravity tests found some materials burning on less oxygen than Earth testing predicts, which it calls 'contrary to expected behavior' (ICES-2025-392 p. 9); the answer must reject the premise or decline.",
+   "expected_numbers": [],
+   "expected_citations": [],
+   "answerable": false,
+   "why": "False premise: never 'NASA concluded'."
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+/* Written with AI assistance (Claude Code) */
+/* The column of page links at the end of Home: big display words, an arrow beside the one in play, a ruler of ticks. */
+[data-element="page-arrows"] {
+  --pa-size: 6.25rem; --pa-tick: var(--hair); --pa-tick-on: var(--mute);
+  display: block; padding: 12vh var(--gutter, 16px); max-width: 1240px; margin: 0 auto; color: var(--ink);
+}
+[data-element="page-arrows"] .pa-body { position: relative; padding-left: 2.25rem; }
+[data-element="page-arrows"] .pa-ruler { position: absolute; left: 0; top: 0; width: 20px; height: 100%; }
+[data-element="page-arrows"] .pa-rows { position: relative; }
+[data-element="page-arrows"] .pa-arrow {
+  position: absolute; left: 0; top: 0; padding-right: 0.2em; pointer-events: none; will-change: transform;
+  font: 500 var(--pa-size)/0.9 var(--display);
+}
+[data-element="page-arrows"] ul { list-style: none; margin: 0; padding: 0; }
+[data-element="page-arrows"] li { will-change: opacity; }
+[data-element="page-arrows"] .pa-link {
+  display: inline-block; color: inherit; text-decoration: none; white-space: nowrap;
+  font: 500 var(--pa-size)/0.9 var(--display); padding-bottom: 0.04em;
+  padding-right: 1.3em;   /* room for the word once it slides over for the arrow, so the focus ring holds it */
+}
+[data-element="page-arrows"] .pa-link:focus-visible { outline: var(--focus); outline-offset: 4px; border-radius: 4px; }
+[data-element="page-arrows"] .pa-letter { display: inline-block; will-change: transform; }
+[data-element="page-arrows"] .pa-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 1024px) { [data-element="page-arrows"] { --pa-size: 5rem; } }
+@media (max-width: 640px) {
+  [data-element="page-arrows"] { --pa-size: 3.5rem; padding-block: 8vh; }
+  [data-element="page-arrows"] .pa-body { padding-left: 1.5rem; }
+  [data-element="page-arrows"] .pa-ruler { width: 14px; }
+}

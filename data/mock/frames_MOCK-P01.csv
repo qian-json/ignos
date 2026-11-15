@@ -1,0 +1,10 @@
+# mock: true
+# Written with AI assistance (Claude Code). MOCK-DATA: fake values, never real.
+file,datetime_original,subsec,t_s,t_burn_s,f_number,exposure_s,iso,width_px,height_px,link_id,phase,gap_prev_s,long_gap,exposure_scale
+mock_0001.NEF,2011:11:11 11:11:11,11,0,-111.11,2,0.25,1000,1111,1111,MOCK-B01,pretest,,,0.016
+mock_0002.NEF,2011:11:11 11:13:02,22,111.11,0,2,0.25,1000,1111,1111,MOCK-B01,burn,111.11,true,0.016
+mock_0003.NEF,2011:11:11 11:13:06,66,115.55,4.44,2,0.125,1000,1111,1111,MOCK-B01,burn,4.44,false,0.032
+mock_0004.NEF,2011:11:11 11:13:12,21,121.1,9.99,2,0.125,1000,1111,1111,MOCK-B01,burn,5.55,false,0.032
+mock_0005.NEF,2011:11:11 11:13:46,66,155.55,44.44,2,0.25,1000,1111,1111,MOCK-B01,burn,34.45,true,0.016
+mock_0006.NEF,2011:11:11 11:13:50,10,159.99,48.88,2,0.25,1000,1111,1111,MOCK-B01,burn,4.44,false,0.016
+mock_0007.NEF,,,,,,,,,,MOCK-B01,,,,

@@ -1,0 +1,148 @@
+{
+  "contract": "investigations/1",
+  "mock": true,
+  "_note": "Written with AI assistance (Claude Code). MOCK-DATA: fake values, never real.",
+  "relevance_note": "MOCK: relevance scores are the team's judgment, not NASA's.",
+  "derived_from": {
+    "file": "data/mock/MOCK-catalog.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "generated_by": "scripts/make-mocks.mjs"
+  },
+  "investigations": [
+    {
+      "accession": "MOCK-PSI-1",
+      "acronym": "MOCK-ONE",
+      "full_name": "MOCK Investigation 1",
+      "psi_doi": "10.99999/mock-1",
+      "psi_url": "https://doi.org/10.99999/mock-1",
+      "investigation_type": "MOCK type",
+      "research_subarea": "MOCK subarea",
+      "fire_safety_theme": "MOCK theme",
+      "years": {
+        "psi_investigation_dates": "MOCK dates",
+        "operations": "MOCK operations"
+      },
+      "platform": "MOCK platform",
+      "hardware": "MOCK hardware",
+      "fuel_sample": "MOCK fuel",
+      "atmosphere": {
+        "o2": "MOCK O2",
+        "pressure": "MOCK pressure"
+      },
+      "flow": "MOCK flow",
+      "gravity": "MOCK gravity",
+      "diagnostics": [
+        "MOCK camera",
+        "MOCK radiometer"
+      ],
+      "psi_data": {
+        "total_size_gb": 11.1,
+        "n_files": 111,
+        "file_types": "MOCK 111 ZIP",
+        "source": "MOCK source"
+      },
+      "pi": "MOCK PI",
+      "key_finding": "MOCK finding for investigation 1.",
+      "key_finding_source": "MOCK-Source, p. 99",
+      "key_papers": [
+        {
+          "citation": "MOCK-Paper 1.",
+          "doi": "10.99999/mock-paper-1",
+          "doi_verified": true
+        }
+      ],
+      "relevance": {
+        "spacecraft_cabin": {
+          "score": 5,
+          "why": "MOCK reason for spacecraft_cabin."
+        },
+        "iss": {
+          "score": 4,
+          "why": "MOCK reason for iss."
+        },
+        "lunar_base": {
+          "score": 3,
+          "why": "MOCK reason for lunar_base."
+        },
+        "mars_base": {
+          "score": 2,
+          "why": "MOCK reason for mars_base."
+        },
+        "pressurized_rover": {
+          "score": 1,
+          "why": "MOCK reason for pressurized_rover."
+        }
+      },
+      "notes_unverified": []
+    },
+    {
+      "accession": "MOCK-PSI-2",
+      "acronym": null,
+      "full_name": "MOCK Investigation 2",
+      "psi_doi": "10.99999/mock-2",
+      "psi_url": "https://doi.org/10.99999/mock-2",
+      "investigation_type": "MOCK type",
+      "research_subarea": "MOCK subarea",
+      "fire_safety_theme": "MOCK theme",
+      "years": {
+        "psi_investigation_dates": "MOCK dates",
+        "operations": "MOCK operations"
+      },
+      "platform": "MOCK platform",
+      "hardware": "MOCK hardware",
+      "fuel_sample": "MOCK fuel",
+      "atmosphere": {
+        "o2": "MOCK O2",
+        "pressure": "MOCK pressure"
+      },
+      "flow": "MOCK flow",
+      "gravity": "MOCK gravity",
+      "diagnostics": [
+        "MOCK camera",
+        "MOCK radiometer"
+      ],
+      "psi_data": {
+        "total_size_gb": 22.2,
+        "n_files": null,
+        "file_types": "",
+        "source": "MOCK source"
+      },
+      "pi": "MOCK PI",
+      "key_finding": "MOCK finding for investigation 2.",
+      "key_finding_source": "MOCK-Source, p. 99",
+      "key_papers": [
+        {
+          "citation": "MOCK-Report 2 (no DOI).",
+          "doi": null,
+          "doi_verified": false,
+          "note": "MOCK note"
+        }
+      ],
+      "relevance": {
+        "spacecraft_cabin": {
+          "score": 1,
+          "why": "MOCK reason for spacecraft_cabin."
+        },
+        "iss": {
+          "score": 2,
+          "why": "MOCK reason for iss."
+        },
+        "lunar_base": {
+          "score": 3,
+          "why": "MOCK reason for lunar_base."
+        },
+        "mars_base": {
+          "score": 4,
+          "why": "MOCK reason for mars_base."
+        },
+        "pressurized_rover": {
+          "score": 5,
+          "why": "MOCK reason for pressurized_rover."
+        }
+      },
+      "notes_unverified": [
+        "MOCK unverified note."
+      ]
+    }
+  ]
+}

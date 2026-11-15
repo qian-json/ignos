@@ -1,0 +1,18 @@
+/* Written with AI assistance (Claude Code) */
+/* The idle line: faint, low on the screen, above the phone's section bar. Surfaces in 1.6 s, sinks in 0.6 s. */
+.still-line {
+  position: fixed; z-index: 15; left: var(--gutter); right: var(--gutter); bottom: calc(var(--sbar-space, 0px) + 28px);
+  text-align: center; pointer-events: none; user-select: none; white-space: nowrap;
+  font: 300 clamp(1.1rem, 2.6vw, 1.75rem)/1.2 var(--font); letter-spacing: -0.01em;
+  color: color-mix(in srgb, var(--ink) 30%, transparent);
+  opacity: 0; translate: 0 6px; visibility: hidden;
+  transition: opacity .6s cubic-bezier(.33, 1, .68, 1), translate .6s cubic-bezier(.33, 1, .68, 1), visibility 0s linear .6s;
+}
+.still-line[data-tone="dark"] { color: color-mix(in srgb, var(--ground) 34%, transparent); }
+.still-line.is-on {
+  opacity: 1; translate: 0 0; visibility: visible;
+  transition: opacity 1.6s cubic-bezier(.65, 0, .35, 1), translate 1.6s cubic-bezier(.65, 0, .35, 1), visibility 0s;
+}
+@media (prefers-reduced-motion: reduce) { .still-line { display: none; } }
+html[data-motion="paused"] .still-line { display: none; }
+@media print { .still-line { display: none; } }

@@ -1,0 +1,110 @@
+{
+ "rows": [
+  {
+   "test": "B13b",
+   "in_sample": false,
+   "flow_cm_s": 1.64,
+   "nasa": 0.0709,
+   "v1": {
+    "rate": 0.075,
+    "ci95": 0.0017,
+    "err_pct": 5.8,
+    "n": 18
+   },
+   "v2": {
+    "rate": 0.0747,
+    "ci95": 0.0018,
+    "err_pct": 5.4,
+    "n": 18
+   }
+  },
+  {
+   "test": "B13b",
+   "in_sample": false,
+   "flow_cm_s": 1.54,
+   "nasa": 0.0491,
+   "v1": null,
+   "v2": null
+  },
+  {
+   "test": "B13a",
+   "in_sample": false,
+   "flow_cm_s": 1.64,
+   "nasa": 0.0523,
+   "v1": {
+    "rate": -0.0127,
+    "ci95": 0.0268,
+    "err_pct": -124.3,
+    "n": 15
+   },
+   "v2": {
+    "rate": -0.0113,
+    "ci95": 0.0782,
+    "err_pct": -121.6,
+    "n": 15
+   }
+  },
+  {
+   "test": "B13a",
+   "in_sample": false,
+   "flow_cm_s": 1.54,
+   "nasa": 0.0527,
+   "v1": {
+    "rate": 0.0573,
+    "ci95": 0.0059,
+    "err_pct": 8.7,
+    "n": 6
+   },
+   "v2": {
+    "rate": 0.0585,
+    "ci95": 0.0032,
+    "err_pct": 11.0,
+    "n": 7
+   }
+  },
+  {
+   "test": "B13a",
+   "in_sample": false,
+   "flow_cm_s": 1.43,
+   "nasa": 0.0463,
+   "v1": null,
+   "v2": null
+  },
+  {
+   "test": "B13a",
+   "in_sample": false,
+   "flow_cm_s": 1.38,
+   "nasa": 0.0469,
+   "v1": null,
+   "v2": null
+  }
+ ],
+ "in_sample": {
+  "v1": {
+   "n_all": 0,
+   "median_all": null,
+   "n_low": 0,
+   "median_low": null
+  },
+  "v2": {
+   "n_all": 0,
+   "median_all": null,
+   "n_low": 0,
+   "median_low": null
+  }
+ },
+ "held_out": {
+  "v1": {
+   "n_all": 3,
+   "median_all": 8.7,
+   "n_low": 0,
+   "median_low": null
+  },
+  "v2": {
+   "n_all": 3,
+   "median_all": 11.0,
+   "n_low": 0,
+   "median_low": null
+  }
+ }
+}

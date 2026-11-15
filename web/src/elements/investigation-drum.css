@@ -1,0 +1,77 @@
+/* Written with AI assistance (Claude Code) */
+/* The opening of /habitats: heading, one line, and the investigations on the inside of a drum.
+   Cards sit on a ring seen from outside its open front, so only the far, inner wall shows (the near
+   cards face away and are hidden). The ring turns with --drum-turn, set from script. */
+[data-element="investigation-drum"] {
+  --drum-card-w: 148px;
+  --drum-card-h: 112px;
+  --drum-r: 640px;          /* about card width / (2 tan(180deg / 24)), plus a gap */
+  --drum-h: 200px;
+  padding: clamp(40px, 8vh, 96px) 0 clamp(8px, 2vh, 20px);
+}
+.drum-words { position: relative; z-index: 1; }
+.drum-words .t-display-xl { color: var(--ink); }
+.drum-line {
+  margin: 14px 0 0; max-width: 40rem; font: 600 var(--fs-prose)/1.35 var(--font); color: var(--ink); text-wrap: pretty;
+}
+
+.drum-stage {
+  position: relative; height: var(--drum-h); margin-top: 8px; overflow: hidden;
+  perspective: 560px; perspective-origin: 50% 50%;
+  /* the drum's sides fade into the page instead of ending at a hard edge */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+.drum-ring {
+  list-style: none; margin: 0; padding: 0;
+  position: absolute; left: 50%; top: 50%; width: 0; height: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(calc(var(--drum-r) * 0.86)) rotateY(var(--drum-turn, 0deg));
+}
+.drum-slot {
+  position: absolute; left: calc(var(--drum-card-w) / -2); top: calc(var(--drum-card-h) / -2);
+  width: var(--drum-card-w); height: var(--drum-card-h);
+  transform: rotateY(var(--drum-at)) translateZ(calc(var(--drum-r) * -1));
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.drum-card {
+  all: unset; box-sizing: border-box; cursor: pointer;
+  display: grid; grid-template-rows: 1fr auto; grid-template-columns: 1fr auto; gap: 6px 8px;
+  width: 100%; height: 100%; padding: 12px 12px 10px;
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius-ctl);
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  transition: border-color .2s var(--ease), background-color .2s var(--ease);
+}
+.drum-card:hover { border-color: var(--flame); background: var(--flame-soft); }
+.drum-card:focus-visible { outline: 2px solid var(--flame); outline-offset: 2px; border-color: var(--flame); }
+.drum-name {
+  grid-column: 1 / -1; align-self: start;
+  font: 500 1.0625rem/1.05 var(--display); letter-spacing: -0.01em;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere;
+}
+.drum-id { font: 400 var(--fs-label)/1 var(--mono); color: var(--mute); align-self: end; white-space: nowrap; }
+.drum-tag {
+  align-self: end; font: 400 0.6875rem/1 var(--mono); letter-spacing: 0.02em;
+  padding: 3px 6px; border-radius: 999px; border: 1px solid var(--line); color: var(--mute);
+}
+.drum-card[data-kind="flight"] .drum-tag { color: var(--flame-ink); border-color: var(--flame); }
+
+/* the dashboard row a card sent you to, marked for a moment */
+.hab-list li[data-drum-landed] { outline: 2px solid var(--flame); outline-offset: 2px; border-radius: var(--radius-ctl); }
+
+@media (max-width: 640px) {
+  [data-element="investigation-drum"] {
+    --drum-card-w: 100px; --drum-card-h: 100px; --drum-r: 440px; --drum-h: 170px;
+    padding-top: 28px;
+  }
+  .drum-stage { perspective: 420px; }
+  .drum-card { padding: 8px 8px 7px; gap: 4px; grid-template-columns: 1fr; grid-template-rows: 1fr auto auto; }
+  .drum-tag { justify-self: start; }
+  .drum-name { font-size: 0.875rem; }
+  .drum-id { font-size: 0.6875rem; }
+  .drum-tag { font-size: 0.625rem; padding: 2px 4px; }
+}
+
+/* inside the drum: cards facing you are bright, the wall curving away dims */
+.drum-slot { transition: opacity .3s; }

@@ -1,0 +1,18 @@
+/* Written with AI assistance (Claude Code) */
+/* A heading whose words roll like slot reels once, then lock. Each word is a one-line window over a short
+   strip: the word itself, then copies of it drawn below by CSS (empty alt text, so they are never read out).
+   The window clips everything but the line. */
+[data-element="slot-title"] { --slt-lh: 1.04em; }
+[data-element="slot-title"] .slt-win {
+  display: inline-block; vertical-align: top; overflow: hidden; white-space: nowrap;
+  /* the window is a little taller than the heading's line, for descenders; give it back */
+  margin-bottom: calc(var(--d-lead, 0.9) * 1em - var(--slt-lh));
+}
+[data-element="slot-title"] .slt-strip { display: block; position: relative; line-height: var(--slt-lh); }
+[data-element="slot-title"].is-rolling .slt-strip { will-change: transform, filter; }
+[data-element="slot-title"] .slt-strip::after {
+  content: attr(data-rep);
+  content: attr(data-rep) / "";
+  position: absolute; left: 0; top: 100%; white-space: pre; line-height: var(--slt-lh);
+}
+[data-element="slot-title"]:not(.is-rolling) .slt-strip::after { visibility: hidden; }

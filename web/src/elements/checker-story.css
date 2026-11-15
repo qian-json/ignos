@@ -1,0 +1,66 @@
+/* Written with AI assistance (Claude Code) */
+/* One number, checked: a pinned stage with one shape that changes through the checker's steps. */
+.cs { min-width: 0; margin: 18px 0 8px; }
+@media (min-width: 1001px) { .article > .cs { grid-column: 2 / 4; } }
+.cs h3 { margin: 0; }
+
+/* pinned */
+.cs-pin { position: sticky; top: var(--bar); height: calc(100svh - var(--bar)); display: grid; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); gap: clamp(20px, 4vw, 56px); align-items: center; }
+.cs-copy { display: grid; gap: 14px; align-content: center; min-width: 0; }
+.cs-count { font: 400 var(--fs-label)/1.4 var(--mono); color: var(--mute); }
+.cs-lines { list-style: none; margin: 0; padding: 0; display: grid; }
+.cs-lines li { grid-area: 1 / 1; font-size: clamp(1.15rem, 0.9rem + 0.9vw, 1.5rem); line-height: 1.35; letter-spacing: -0.012em; text-wrap: pretty; opacity: 0; transform: translateY(6px); transition: opacity 220ms var(--ease), transform 220ms var(--ease); }
+.cs-lines li.is-on { opacity: 1; transform: none; transition-delay: 120ms; }
+html[data-motion="paused"] .cs-lines li { transition: none; }
+
+.cs-stage { position: relative; display: grid; place-items: center; height: min(62svh, 520px); background: var(--well); border-radius: var(--radius); overflow: hidden; min-width: 0; }
+.cs-shape { grid-area: 1 / 1; border: 1px solid rgba(16, 22, 36, 0.08); }
+.cs-layer { grid-area: 1 / 1; max-width: calc(100% - 32px); visibility: hidden; opacity: 0; }
+
+/* faces: the content of each step, the same in the pinned stage and the still strip */
+.cs-face { padding: 20px 24px; min-width: 0; overflow-wrap: anywhere; }
+.cs-face .k { font: 400 var(--fs-label)/1.4 var(--mono); opacity: 0.72; }
+.cs-face code { font-family: var(--mono); }
+.tone-card { color: var(--ink); }
+.tone-ink { color: var(--on-night); }
+.tone-ok { color: #fff; }
+.tone-warn { color: #fff; }
+.tone-ink .src, .tone-ok .src { border-bottom-color: currentColor; }
+.tone-ink .src:hover { color: var(--pay); }
+.tone-ink :focus-visible, .tone-ok :focus-visible { outline-color: var(--pay); }
+
+.cs-sentence { max-width: 30em; font-size: var(--fs-prose); line-height: 1.55; }
+.cs-sentence mark { background: var(--flame-soft); color: var(--flame-ink); padding: 1px 3px; border-radius: 3px; }
+.cs-number { display: grid; justify-items: center; gap: 4px; padding: 4px 10px; }
+.cs-big { font: 400 clamp(2rem, 1.4rem + 2vw, 2.8rem)/1 var(--mono); letter-spacing: -0.03em; }
+.cs-meta { display: block; font: 400 var(--fs-label)/1.45 var(--mono); opacity: 0.8; max-width: 30em; }
+.cs-meta b { font-weight: 500; }
+.cs-kv { display: grid; gap: 6px; font-size: var(--fs-ui); }
+.cs-kv code { font-size: var(--fs-ui); }
+.cs-hash { display: block; max-width: 17em; word-break: break-all; line-height: 1.5; letter-spacing: 0.04em; }
+.cs-rows { display: grid; gap: 10px; }
+.cs-rows ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, auto)); gap: 6px; }
+.cs-rows li { display: flex; gap: 10px; align-items: baseline; justify-content: flex-start; font: 400 var(--fs-label)/1.3 var(--mono); padding: 6px 9px; border-radius: 6px; background: rgba(127, 140, 170, 0.14); white-space: nowrap; }
+.cs-id { opacity: 0.75; }
+.cs-verdict { display: flex; align-items: center; gap: 12px; padding: 2px 6px; }
+.cs-verdict b { display: block; font-size: 1.2rem; font-weight: 600; }
+
+/* still: every step at rest, stacked */
+.cs-still { display: grid; gap: 16px; }
+.cs-strip { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; counter-reset: cs; }
+.cs-strip > li { display: grid; gap: 8px; counter-increment: cs; }
+.cs-strip .cs-line::before { content: counter(cs) " · "; font-family: var(--mono); color: var(--mute); }
+.cs-strip .cs-face { justify-self: start; max-width: 100%; border: 1px solid var(--hair); }
+.cs-strip .tone-card { background: var(--surface); }
+.cs-strip .tone-ink { background: var(--night); }
+.cs-strip .tone-ok { background: var(--verified); }
+.cs-strip .tone-warn { background: var(--unverified); }
+
+@media (max-width: 760px) {
+  .cs-pin { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; align-content: center; gap: 16px; }
+  .cs-copy { gap: 8px; }
+  .cs-lines li { font-size: 1.1rem; min-height: 4.1em; }
+  .cs-stage { height: min(56svh, 460px); }
+  .cs-face { padding: 16px 16px; }
+  .cs-rows ul { grid-template-columns: repeat(2, minmax(0, auto)); }
+}

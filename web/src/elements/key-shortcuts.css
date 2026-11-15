@@ -1,0 +1,47 @@
+/* Written with AI assistance (Claude Code) */
+/* The footer's way into the key sheet, and the sheet itself (a native modal dialog). */
+.keys-open {
+  font: inherit; color: inherit; background: none; border: 0; padding: 0; min-height: 24px; cursor: pointer; text-align: left;
+  text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--ground) 35%, transparent); text-underline-offset: .18em;
+}
+.foot .keys-open { color: var(--ground); }
+
+.keys-sheet {
+  width: min(560px, calc(100vw - 32px)); max-height: calc(100svh - 32px); padding: 0; border: 1px solid var(--rule); border-radius: var(--radius, 10px);
+  background: var(--surface); color: var(--ink); overscroll-behavior: contain;
+  box-shadow: 0 24px 60px -20px color-mix(in srgb, var(--ink) 45%, transparent);
+}
+.keys-sheet::backdrop { background: color-mix(in srgb, var(--night) 45%, transparent); }
+.keys-inner { padding: 20px clamp(16px, 4vw, 28px) 24px; display: grid; gap: 16px; }
+.keys-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.keys-sheet .keys-head h2 { margin: 0; font: 600 1.35rem/1.2 var(--font); letter-spacing: -0.02em; text-transform: none; color: var(--ink); }
+.keys-close {
+  min-height: 44px; padding: 0 16px; border: 1px solid var(--rule); border-radius: 999px; background: none; color: var(--ink);
+  font: 500 var(--fs-ui)/1 var(--font); cursor: pointer;
+}
+.keys-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 4px 28px; }
+.keys-list h3 { margin: 0 0 8px; font: 400 var(--fs-label)/1.4 var(--mono); color: var(--mute); text-transform: lowercase; letter-spacing: 0; }
+.keys-list dl { margin: 0; display: grid; gap: 6px; }
+.keys-row { display: grid; grid-template-columns: 6.2rem minmax(0, 1fr); gap: 12px; align-items: baseline; }
+.keys-row dt { white-space: nowrap; }
+.keys-row dd { margin: 0; font-size: var(--fs-ui); }
+.keys-then { font: 400 var(--fs-label)/1 var(--mono); color: var(--mute); }
+.keys-sheet kbd {
+  display: inline-block; min-width: 1.9em; padding: 2px 6px; font: 400 var(--fs-label)/1.35 var(--mono); text-align: center;
+  border: 1px solid var(--rule); border-bottom-width: 2px; border-radius: 5px; background: var(--ground);
+}
+/* single keys off: their rows are struck through, Esc stays */
+html[data-shortcuts="off"] .keys-row[data-char] kbd, html[data-shortcuts="off"] .keys-row[data-char] dd { text-decoration: line-through; color: var(--mute); }
+
+.keys-switch {
+  justify-self: start; display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 4px 16px 4px 6px;
+  font: 500 var(--fs-ui)/1.25 var(--font); color: var(--ink); background: var(--ground); border: 1px solid var(--rule); border-radius: 999px; cursor: pointer;
+}
+.keys-track { position: relative; flex: none; width: 40px; height: 24px; border-radius: 99px; border: 1px solid var(--rule); background: var(--surface); }
+.keys-track::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--mute); transition: transform .18s cubic-bezier(.22, 1, .36, 1); }
+.keys-switch[aria-pressed="true"] .keys-track { background: var(--flame); border-color: var(--flame); }
+.keys-switch[aria-pressed="true"] .keys-track::after { transform: translateX(16px); background: var(--surface); }
+.keys-open:focus-visible, .keys-sheet .keys-close:focus-visible, .keys-sheet .keys-switch:focus-visible { outline: 2px solid var(--flame); outline-offset: 3px; }
+.foot .keys-open:focus-visible { outline-color: var(--flame-glow); }
+@media (prefers-reduced-motion: reduce) { .keys-track::after { transition: none; } }
+@media print { .keys-open, .keys-sheet { display: none !important; } }

@@ -1,0 +1,25 @@
+/* Written with AI assistance (Claude Code) */
+/* The light sits on a 1.5 px ring cut out of the row's box, so it never covers the row's words. */
+[data-element="row-spotlight"] > li { position: relative; }
+[data-element="row-spotlight"] > li::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  border-radius: var(--radius-ctl); padding: 1.5px; opacity: 0; transition: opacity 210ms ease-out;
+  background: radial-gradient(170px circle at var(--rs-x, 50%) var(--rs-y, 50%), var(--flame), color-mix(in srgb, var(--flame) 30%, transparent) 45%, transparent 75%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+[data-element="row-spotlight"] > li[data-lit]::before { opacity: 1; transition-duration: 350ms; }
+/* keyboard: the whole border, still */
+[data-element="row-spotlight"] > li:has(:focus-visible)::before { opacity: 1; padding: 2px; background: var(--flame); transition: none; }
+/* the row's own button then needs no second ring inside it: the lit border is its focus mark */
+[data-element="row-spotlight"] > li > button:focus-visible { outline: none; }
+/* reduced motion or Pause: no following light; the row under the pointer gets the still border */
+@media (hover: hover) and (pointer: fine) {
+  html[data-motion="paused"] [data-element="row-spotlight"] > li:hover::before { opacity: 1; background: var(--flame); transition: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-element="row-spotlight"] > li::before { transition: none; }
+}
+@media (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
+  [data-element="row-spotlight"] > li:hover::before { opacity: 1; background: var(--flame); }
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Ignos · flame spread in orbit, and what changes on the Moon</title>
+    <meta name="description" content="Flame-spread rates measured from NASA's space-station photos, checked against NASA's published numbers, and what changes in lunar gravity." />
+    <meta name="theme-color" content="#0e1428" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ignos" />
+    <meta property="og:description" content="Fans off stops fire in orbit. On the Moon, it may not. Every number checked against NASA's data." />
+    <meta property="og:image" content="https://still-air.vercel.app/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preload" href="/fonts/display.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Host+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+    <style>html, body { margin: 0; background: #0e1428; }</style>
+    <script>
+      // Written with AI assistance (Claude Code). Set before first paint so the headline is never
+      // painted and then hidden: the flame-front entrance, or none when the system asks for less motion.
+      (function () {
+        var d = document.documentElement, m = "front";
+        try { if (matchMedia("(prefers-reduced-motion: reduce)").matches) m = "still"; } catch (e) {}
+        d.dataset.intro = m;
+        // any input jumps to the end state
+        var done = function () { d.classList.add("intro-done"); };
+        ["wheel", "keydown", "pointerdown", "touchstart"].forEach(function (e) { addEventListener(e, done, { passive: true, once: true }); });
+        // and once it has played, so the line masks (and the glow they would clip) are gone
+        setTimeout(done, 1700);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

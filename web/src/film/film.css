@@ -1,0 +1,54 @@
+/* Written with AI assistance (Claude Code) */
+/* The scroll film: a sticky stage over a tall track, the site's navy as the void. Chapter overlays
+   sit bottom left over a soft navy fade; labels are a dot, a hairline and a mono name. */
+.film { position: relative; background: var(--night); color: var(--on-night); }
+.film-track { position: relative; height: calc(var(--film-length, 5) * 100vh); height: calc(var(--film-length, 5) * 100svh); }
+.film-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--night); isolation: isolate; }
+.film-media, .film-canvas, .film-poster { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.film-poster { object-fit: cover; }
+/* the canvas is opaque: keep it hidden over the poster until its first frame is drawn */
+.film-canvas { opacity: 0; transition: opacity 240ms var(--ease); }
+.film-stage[data-drawn] .film-canvas { opacity: 1; }
+.film-shade { position: absolute; inset: auto 0 0 0; height: 55%; pointer-events: none;
+  background: linear-gradient(to top, color-mix(in srgb, var(--night) 88%, transparent) 0%, color-mix(in srgb, var(--night) 40%, transparent) 45%, transparent 100%); }
+
+.film-tag, .film-still-figure .film-tag {
+  position: absolute; top: calc(var(--bar, 60px) + 14px); right: var(--gutter);
+  font: 400 11px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--on-night-mute); padding: 6px 10px; border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--on-night-mute) 45%, transparent);
+  background: color-mix(in srgb, var(--night) 70%, transparent);
+}
+
+.film-chapters { position: absolute; left: var(--gutter); right: var(--gutter); bottom: max(10svh, 72px); max-width: 40rem; }
+@media (min-width: 1240px) { .film-chapters { left: calc((100vw - 1240px) / 2 + var(--gutter)); } }
+.film-chapter { position: absolute; left: 0; right: 0; bottom: 0; will-change: opacity, transform; }
+.film-chapter[data-active="false"] { pointer-events: none; }
+.film-chapter :is(h1, h2) { font-family: var(--display, var(--font)); font-weight: 500; font-size: clamp(2rem, 5vw, 4rem); line-height: 1.02; letter-spacing: -0.035em; color: var(--on-night); }
+.film-chapter p { margin-top: 14px; color: var(--on-night-mute); font-size: var(--fs-prose, 1.0625rem); max-width: 34em; }
+.film-chapter :focus-visible { outline: 2px solid var(--pay); outline-offset: 3px; }
+
+.film-labels { position: absolute; inset: 0; pointer-events: none; }
+.film-label { position: absolute; left: 0; top: 0; width: 0; height: 0; opacity: 0; visibility: hidden; will-change: transform, opacity; }
+.film-label::before { content: ""; position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--on-night); box-shadow: 0 0 0 3px color-mix(in srgb, var(--on-night) 16%, transparent); }
+.film-label-body { position: absolute; left: 7px; top: -0.6em; display: flex; align-items: center; gap: 6px; white-space: nowrap;
+  font: 400 11px/1.2 var(--mono); letter-spacing: 0.04em; color: var(--on-night); }
+.film-label[data-side="left"] .film-label-body { left: auto; right: 7px; flex-direction: row-reverse; }
+.film-label-line { width: 26px; height: 1px; background: color-mix(in srgb, var(--on-night) 55%, transparent); }
+
+.film-skip { position: absolute; left: var(--gutter); top: -80px; z-index: 2;
+  background: var(--on-night); color: var(--night); padding: 8px 12px; border-radius: var(--radius-ctl, 6px); font: 500 var(--fs-ui, 14px)/1 var(--font); text-decoration: none; }
+.film-skip:focus { top: calc(var(--bar, 60px) + 12px); }
+.film-skip:focus-visible { outline: 2px solid var(--pay); outline-offset: 3px; }
+.film-end { height: 0; outline: none; }
+
+/* held still: the poster and the chapters as a list */
+.film-still { padding: calc(var(--bar, 60px) + 24px) var(--gutter) 56px; }
+.film-still-lead { max-width: 1240px; margin: 0 auto 36px; }
+.film-still-figure { position: relative; margin: 0 auto; max-width: 1240px; }
+.film-still-figure img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius, 10px); }
+.film-still-figure .film-tag { top: 12px; right: 12px; }
+.film-still-list { list-style: none; margin: 36px auto 0; padding: 0; max-width: 1240px; display: grid; gap: 36px; }
+.film-still-list :is(h1, h2) { font-family: var(--display, var(--font)); font-weight: 500; font-size: clamp(1.8rem, 4.4vw, 3rem); line-height: 1.04; letter-spacing: -0.03em; color: var(--on-night); }
+.film-still-list p { margin-top: 12px; color: var(--on-night-mute); }

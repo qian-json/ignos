@@ -1,0 +1,14 @@
+/* Written with AI assistance (Claude Code) */
+/* The Moon band filling with night from below. Layers exist only while the band is part full
+   (.rf-on); outside that the band is drawn by its own styles, unchanged. */
+[data-element="rising-fill"] { position: relative; isolation: isolate; }
+[data-element="rising-fill"] > .rf-layer { display: none; }
+[data-element="rising-fill"].rf-on { background: transparent; box-shadow: none; }
+[data-element="rising-fill"].rf-on > .rf-layer { display: block; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+/* full bleed the same way the band does it: a spread shadow, cut by the band's own side clip */
+.rf-back { background: color-mix(in srgb, var(--night) 16%, var(--ground)); box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--night) 16%, var(--ground)); }
+.rf-rim { background: color-mix(in srgb, var(--flame-glow) 55%, var(--night)); box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--flame-glow) 55%, var(--night)); }
+.rf-body { background: var(--night); box-shadow: 0 0 0 100vmax var(--night); }
+@media (prefers-reduced-motion: reduce) {
+  [data-element="rising-fill"] > .rf-layer { display: none !important; }
+}

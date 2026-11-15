@@ -1,0 +1,7 @@
+# Written with AI assistance (Claude Code)
+exifread
+rawpy
+tifffile
+pillow
+numpy
+pytest
