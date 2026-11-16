@@ -5,7 +5,7 @@ NASA Space Apps 2026, challenge "Flame in Freefall". Team Mare Serenetatis.
 
 NASA's space-station fire archive (PSI-25, BASS-II) has raw photos of flames burning on plastic rods. It has no column for how fast each flame spread. We measured that speed from the raw photos with our own tracker. We checked it against the rates published by Link et al. (2018). We then put the result in a dashboard with a Measure panel, a Moon Gap panel, an Ask panel and an investigations table. Every number on the site shows the file, row and column it came from, or its paper and page. The Ask panel's answers are checked number by number against those files.
 
-**Live site:** https://still-air.vercel.app (health check at `/api/health`)
+**Live site:** https://ignos.earth (health check at `/api/health`)
 
 ## What is in the repo
 
