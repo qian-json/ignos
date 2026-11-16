@@ -15,6 +15,7 @@ import "./page-arrows.css";
 
 export type PageLink = { label: string; href: string };
 export const SITE_PAGES: PageLink[] = [
+  { label: "Story", href: "/story" },
   { label: "Habitats", href: "/habitats" },
   { label: "Ask", href: "/ask" },
   { label: "Research", href: "/research" },

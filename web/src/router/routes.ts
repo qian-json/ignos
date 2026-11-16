@@ -2,7 +2,7 @@
 // The site's pages and where every section lives. Old one-page links (/#measure, /#habitats) are
 // read through SECTION_PAGE, so a link shared before the split still lands on the right page.
 
-export type PageId = "home" | "habitats" | "ask" | "research" | "model" | "method" | "missing";
+export type PageId = "home" | "story" | "habitats" | "ask" | "research" | "model" | "method" | "missing";
 
 export interface PageDef {
   id: PageId;
@@ -18,6 +18,7 @@ const HOME_TITLE = "Ignos · flame spread in orbit, and what changes on the Moon
 
 export const PAGES: readonly PageDef[] = [
   { id: "home", path: "/", label: "Home", title: HOME_TITLE },
+  { id: "story", path: "/story", label: "Story", title: `${SITE} · Story` },
   { id: "habitats", path: "/habitats", label: "Habitats", title: `${SITE} · Habitats` },
   { id: "ask", path: "/ask", label: "Ask", title: `${SITE} · Ask` },
   { id: "research", path: "/research", label: "Research", title: `${SITE} · Research` },
@@ -32,6 +33,7 @@ export const page = (id: PageId): PageDef => PAGES.find((p) => p.id === id) ?? M
 
 /** Every section id that has a home, by page. Ids that name a page itself link to the page's top. */
 export const SECTION_PAGE: Readonly<Record<string, PageId>> = {
+  story: "story",
   habitats: "habitats", compare: "habitats",
   ask: "ask",
   research: "research", overview: "research", measure: "research", orbit: "research", moon: "research",
@@ -39,7 +41,16 @@ export const SECTION_PAGE: Readonly<Record<string, PageId>> = {
   method: "method",
   "ch-open": "home", "ch-fans": "home", "ch-still": "home", "ch-moon": "home", "ch-end": "home",
 };
-const PAGE_ROOTS = new Set(["habitats", "ask", "research", "overview", "model", "method"]);
+const PAGE_ROOTS = new Set(["story", "habitats", "ask", "research", "overview", "model", "method"]);
+
+/** decodeURIComponent that never throws: a malformed escape (a "/#100%" link) is kept as typed. */
+export const safeDecode = (s: string): string => {
+  try {
+    return decodeURIComponent(s);
+  } catch {
+    return s;
+  }
+};
 
 /** The page a pathname shows ("/research/" and "/Research" too). */
 export function pageForPath(pathname: string): PageDef {
@@ -62,7 +73,7 @@ export function hrefFor(id: string): string {
  */
 export function upgradeLegacy(url: URL): URL | null {
   if (pageForPath(url.pathname).id !== "home") return null;
-  const id = decodeURIComponent(url.hash.slice(1));
+  const id = safeDecode(url.hash.slice(1));
   const home = id ? SECTION_PAGE[id] : undefined;
   if (home && home !== "home") {
     const next = new URL(hrefFor(id), url.origin);

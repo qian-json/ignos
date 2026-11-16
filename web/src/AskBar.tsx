@@ -16,7 +16,8 @@ export const RESEARCH_QUESTIONS: (AskRequest & { label: string })[] = [
   { label: "Largest Moon Gap", question: "Which material has the largest Moon Gap?", mode: "rank" },
   { label: "Fans off in orbit", question: "Does turning off the fans put out a fire in orbit?", mode: "interpret" },
   { label: "Our rates vs NASA's", question: "How closely do your low-flow spread rates match NASA's published ones?", mode: "interpret" },
-  { label: "Airflow on the Moon", question: "How fast does air move around a flame on the Moon?", mode: "interpret" },
+  // Asks whether a measurement exists, never for a Moon airflow number (the site states none).
+  { label: "Moon airflow, measured?", question: "Has anyone measured the airflow around a flame on the Moon?", mode: "interpret" },
 ];
 
 /** Send a question to the Ask panel and bring it into view. */

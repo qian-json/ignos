@@ -9,9 +9,11 @@ const MethodPage = lazy(() => import("./MethodPage").then((m) => ({ default: m.M
 import { MissingPage } from "./MissingPage";
 const ModelPage = lazy(() => import("./ModelPage").then((m) => ({ default: m.ModelPage })));
 const ResearchPage = lazy(() => import("./ResearchPage").then((m) => ({ default: m.ResearchPage })));
+const StoryPage = lazy(() => import("./StoryPage").then((m) => ({ default: m.StoryPage })));
 
 export const PAGE_VIEWS: Record<PageId, ComponentType> = {
   home: HomePage,
+  story: StoryPage,
   habitats: HabitatsPage,
   ask: AskPage,
   research: ResearchPage,

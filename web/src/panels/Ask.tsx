@@ -1,5 +1,5 @@
 // Written with AI assistance (Claude Code)
-import { useCallback, useEffect, useMemo, useState, type FormEvent, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { gateAnswer, type AskMode, type AskResponse, type GateNumber } from "@still-air/proof";
 import { ASK_EVENT, RESEARCH_QUESTIONS, type AskRequest } from "../AskBar";
 import { sourceLinks } from "../sources";
@@ -7,15 +7,16 @@ import { Num } from "../Num";
 import { FACTS, MATERIAL_NAMES, moongap, spread, tableS1, validated } from "../data";
 import { AskMorph, type AskPhase } from "../elements/AskMorph";
 import { VerifySpark } from "../elements/VerifySpark";
+import { takePendingAsk } from "../router/router";
 
-/** The answer text with every checked number marked: green with its source, or amber. */
+/** The answer text with every checked number marked: verified with its source, or underlined and labelled as not found. */
 function Gated({ text, numbers }: { text: string; numbers: GateNumber[] }) {
   const parts: ReactNode[] = [];
   let at = 0;
   [...numbers].filter((n) => n.start !== null).sort((a, b) => a.start! - b.start!).forEach((n, i) => {
     parts.push(text.slice(at, n.start!));
     const t = text.slice(n.start!, n.end!);
-    parts.push(n.status === "verified" && n.source ? <span key={i} className="g-ok"><Num source={n.source} label={`${t}, verified`}>{t}</Num></span> : <span key={i} className="g-no" title="Not found in our data or sources">{t}</span>);
+    parts.push(n.status === "verified" && n.source ? <span key={i} className="g-ok"><Num source={n.source} label={`${t}, verified`}>{t}</Num></span> : <span key={i} className="g-no">{t}<span className="sr"> (not found in our data)</span></span>);
     at = n.end!;
   });
   parts.push(text.slice(at));
@@ -43,7 +44,7 @@ const verifiedKey = (numbers: GateNumber[]) =>
 
 function Summary({ gate }: { gate: AskResponse["gate"] }) {
   if (gate.checked === 0) return <p className="gate-sum">No numbers to check.</p>;
-  return <p className="gate-sum num">{gate.verified} of {gate.checked} numbers verified against our data and sources{gate.unverified ? `; ${gate.unverified} not found (amber)` : ""}.</p>;
+  return <p className="gate-sum num">{gate.verified} of {gate.checked} numbers verified against our data and sources{gate.unverified ? `; ${gate.unverified} not found in our data (underlined)` : ""}.</p>;
 }
 
 // Example sentences are built from the data files, so the page itself types no science.
@@ -86,8 +87,11 @@ export function Ask() {
   const [res, setRes] = useState<AskResponse | null>(null);
   const [err, setErr] = useState<{ code: string; message: string } | null>(null);
   const [asked, setAsked] = useState("");
+  // the last request as sent, so "Try again" repeats it with its mode and subject
+  const last = useRef<AskRequest | null>(null);
 
   const ask = useCallback(async (question: string, m: AskMode, subject?: AskRequest["subject"]) => {
+    last.current = { question, mode: m, subject };
     setBusy(true); setErr(null); setRes(null); setAsked(question);
     try {
       const r = await fetch("/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(subject ? { question, mode: m, subject } : { question, mode: m }) });
@@ -119,11 +123,14 @@ export function Ask() {
   const submit = (e: FormEvent) => { e.preventDefault(); if (q.trim() && !busy) void ask(q, mode); };
 
   // Questions typed in the top bar or sent by "Ask about this" arrive here; so does a shared link (?ask=...).
+  // One asked on another page waits in the router until this panel mounts (the page loads lazily).
   useEffect(() => {
     const on = (e: Event) => run((e as CustomEvent<AskRequest>).detail);
     window.addEventListener(ASK_EVENT, on);
+    const pending = takePendingAsk();
     const shared = new URLSearchParams(window.location.search).get("ask")?.trim().slice(0, 500);
-    if (shared) run({ question: shared, mode: "interpret" });
+    if (pending) run(pending);
+    else if (shared) run({ question: shared, mode: "interpret" });
     return () => window.removeEventListener(ASK_EVENT, on);
   }, [run]);
 
@@ -131,7 +138,7 @@ export function Ask() {
     <section className="panel askblock" id="ask" aria-labelledby="ask-h">
       <div className="panel-head">
         <h2 id="ask-h" className="t-display-l">Ask NASA's fire data</h2>
-        <p>An AI answers from NASA's data and papers only; every number is checked against a source before it is shown.</p>
+        <p>Google Gemini drafts each answer from NASA's data and papers only; code checks every number against a source and flags any it cannot match.</p>
       </div>
       <form className="askband-form" role="search" onSubmit={submit}>
         <input type="search" value={q} onChange={(e) => setQ(e.target.value)} maxLength={500}
@@ -147,7 +154,10 @@ export function Ask() {
       <div className="ask-out">
         <AskMorph phase={phase} onOpen={openData} />
         {err && (
-          <p className="notice">{err.code === "not_configured" ? <>Ask isn't switched on for this site yet: the team is still adding its language-model key. Meanwhile, <a href="/method">Methods and sources</a> runs the same number checker in your browser.</> : err.message}</p>
+          <p className="notice">{err.code === "not_configured" ? <>Ask is paused on this site. Meanwhile, <a href="/method">Methods and sources</a> runs the same number checker in your browser.</> : err.message}
+            {/* the model is often briefly busy (503): one click asks the same question again */}
+            {err.code !== "not_configured" && last.current && <> <button type="button" className="btn ghost" disabled={busy} onClick={() => { const r = last.current; if (r) void ask(r.question, r.mode, r.subject); }}>Try again</button></>}
+          </p>
         )}
         {res && (
           <div className="downlink" key={res.answer.length + ":" + res.gate.checked} style={{ display: "grid", gap: 8 }}>

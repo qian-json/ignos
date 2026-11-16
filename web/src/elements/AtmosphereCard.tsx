@@ -1,8 +1,8 @@
 // Written with AI assistance (Claude Code)
 // Habitat atmospheres (oxygen % against total pressure) next to NASA's lunar-gravity flammability limits.
 // Every number is read from data/reference/habitat_atmospheres.json (quoted sources, tested) and the Moon
-// Gap file; none is typed here. Context, not a design value: the limits come from ~5 s drop tests.
-import { atmospheres, moongap } from "../data";
+// Gap file; none is typed here. Context, not a design value: the limits come from short drop tests.
+import { MATERIAL_NAMES, atmospheres, moongap } from "../data";
 
 type Key = "o2_pct" | "pressure_psi" | "o2_pct_at_least" | "pressure_psi_at_most";
 /** A number from the atmospheres file; a missing one is a data error, not something to guess. */
@@ -31,6 +31,9 @@ export function AtmosphereCard() {
   const topRaw = Math.max(...limits.map(([, v]) => v));
   const top = Number(topRaw.toFixed(1)); // shown as the Moon Gap shows lunar limits
   const earth = pts[0], suit = pts[1];
+  const excluded = Object.values(moongap.materials).filter((m) => m.status !== "ok").length;
+  // the challenge page's sentence on the Moon-base oxygen, quoted from the atmospheres file
+  const context = atmospheres.atmospheres.find((a) => a.id === "moon_base")?.quotes.find((q) => q.for === "context")?.text;
   return (
     <figure className="atm card" aria-labelledby="atm-h">
       <h3 id="atm-h">Habitat air against NASA's lunar-gravity limits</h3>
@@ -41,8 +44,8 @@ export function AtmosphereCard() {
         <rect x={x(0)} y={y(Y_MAX)} width={x(moonP) - x(0)} height={y(moonO2) - y(Y_MAX)} className="atm-moon" />
         <text x={x(0) + 8} y={y((moonO2 + Y_MAX) / 2)} className="atm-label atm-moon-label">{label("moon_base")}:</text>
         <text x={x(0) + 8} y={y((moonO2 + Y_MAX) / 2) + 15} className="atm-label atm-moon-label">{moonO2}% O2 or more, {moonP} psi or less</text>
-        {limits.map(([k, v]) => <line key={k} x1={x(icesP) - 9} x2={x(icesP) + 9} y1={y(v)} y2={y(v)} className="atm-limit"><title>{`${k}: lunar-gravity limit ${v.toFixed(1)}% O2 (ICES-2025-392)`}</title></line>)}
-        <text x={x(icesP) - 14} y={y(topRaw) + 4} className="atm-label atm-limit-label" textAnchor="end">NASA lunar-gravity limits, {limits.length} materials</text>
+        {limits.map(([k, v]) => <line key={k} x1={x(icesP) - 9} x2={x(icesP) + 9} y1={y(v)} y2={y(v)} className="atm-limit"><title>{`${MATERIAL_NAMES[k] ?? k}: lunar-gravity limit ${v.toFixed(1)}% O2 (ICES-2025-392)`}</title></line>)}
+        <text x={x(icesP) - 14} y={y(topRaw) + 4} className="atm-label atm-limit-label" textAnchor="end">Lunar-gravity limits, {limits.length} materials</text>
         {pts.map((a) => (
           <g key={a.id}>
             <circle cx={x(a.p)} cy={y(a.o2)} r={5} fill={a.c} />
@@ -56,7 +59,7 @@ export function AtmosphereCard() {
         <li><span className="atm-dot atm-dot-limit" />NASA lunar-gravity limits, {limits.length} materials: up to {top}% O2 at {icesP} psi</li>
       </ul>
       <figcaption className="caption">
-        Every lunar-gravity limit NASA measured for these {limits.length} materials (highest {top}% O2) sits below the planned Moon-base air ({moonO2}% or more), so all of them burned in air that rich at lunar gravity. The challenge page calls it "more than a 40% increase in the oxygen concentration making materials much more flammable". Limits are from ~5 s drop tests at {icesP} psi (ICES-2025-392); context, not a design value. Sources: the challenge page, the FM2 slides (p. {atmospheres.sources.fm2_2026?.page}) and ICES-2025-392.
+        The lunar-gravity limits we read from NASA's ICES-2025-392 figures for {limits.length} materials{excluded > 0 && <> ({excluded} more excluded; see the Moon Gap)</>}, highest {top}% O2, all sit below the planned Moon-base air ({moonO2}% or more), so all of them burned in air that rich at lunar gravity.{context && <> The challenge page: “{context}”</>} {moongap.caveats[0]} Context, not a design value. Sources: the challenge page, the FM2 slides (p. {atmospheres.sources.fm2_2026?.page}) and ICES-2025-392.
       </figcaption>
     </figure>
   );

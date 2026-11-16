@@ -29,16 +29,35 @@ export function SourceCard({ source }: { source: NumberSource }) {
   );
 }
 
+/**
+ * When the source card opens and closes. Hover counts only for a real mouse: a tap fires emulated
+ * hover and focus before its click, so a click that toggled would close the card the same tap opened.
+ * A click (or focus) only opens it; it closes on blur, mouse leave, Escape, scroll or a tap elsewhere.
+ */
+export function popHandlers(show: () => void, hide: () => void) {
+  return {
+    onPointerEnter: (e: { pointerType: string }) => { if (e.pointerType === "mouse") show(); },
+    onPointerLeave: (e: { pointerType: string }) => { if (e.pointerType === "mouse") hide(); },
+    onFocus: show,
+    onBlur: hide,
+    onClick: show,
+  };
+}
+
 export function Num({ children, source, label }: { children: ReactNode; source: NumberSource; label?: string }) {
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const ref = useRef<HTMLButtonElement>(null);
+  const popRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!open) return;
     const close = (e: Event) => { if (e.type === "keydown" && (e as KeyboardEvent).key !== "Escape") return; setOpen(false); };
+    // a tap elsewhere closes it too (a tapped button does not always take focus, so blur may never fire)
+    const away = (e: PointerEvent) => { const t = e.target as Node | null; if (!ref.current?.contains(t) && !popRef.current?.contains(t)) setOpen(false); };
     window.addEventListener("scroll", close, { passive: true, once: true });
     window.addEventListener("keydown", close);
-    return () => { window.removeEventListener("scroll", close); window.removeEventListener("keydown", close); };
+    window.addEventListener("pointerdown", away);
+    return () => { window.removeEventListener("scroll", close); window.removeEventListener("keydown", close); window.removeEventListener("pointerdown", away); };
   }, [open]);
   const show = () => {
     const r = ref.current!.getBoundingClientRect();
@@ -47,11 +66,11 @@ export function Num({ children, source, label }: { children: ReactNode; source: 
   };
   return (
     <>
-      <button ref={ref} type="button" className="src" aria-label={label} onMouseEnter={show} onMouseLeave={() => setOpen(false)} onFocus={show} onBlur={() => setOpen(false)} onClick={() => (open ? setOpen(false) : show())}>
+      <button ref={ref} type="button" className="src" aria-label={label} {...popHandlers(show, () => setOpen(false))}>
         {children}
       </button>
       {open && (
-        <div className="pop" role="tooltip" style={{ left: Math.max(8, pos.x), top: pos.y }}>
+        <div ref={popRef} className="pop" role="tooltip" style={{ left: Math.max(8, pos.x), top: pos.y }}>
           <SourceCard source={source} />
         </div>
       )}

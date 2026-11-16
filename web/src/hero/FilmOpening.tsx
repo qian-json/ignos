@@ -8,7 +8,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 import { getScroll, subscribe } from "../router/scroll";
 import { motionPaused, prefersReduced, watchMotion } from "../elements/motionState";
 import { Num } from "../Num";
-import { SPREAD_FILE, cell, spread, type Row } from "../data";
+import { SPREAD_FILE, cell, spread, validated, type Row } from "../data";
 import { ScrollFilm, type FilmChapter, type FilmFrameState } from "../film/ScrollFilm";
 import "./film-opening.css";
 
@@ -47,7 +47,8 @@ function Readout({ shown }: { shown: Shown }) {
       ["fans", <Num source={cell(SPREAD_FILE, r._row, "flow_cm_s")}>{r.flow_cm_s} cm/s</Num>],
       shown.out
         ? ["flame", <>out at <Num source={cell(SPREAD_FILE, r._row, "extinction_s")}>{r.extinction_s} s</Num></>]
-        : ["spread", <Num source={cell(SPREAD_FILE, r._row, "rate_mm_s")}>{r.rate_mm_s} mm/s</Num>],
+        // a high-flow or low-confidence step is shown, but flagged, as on the Research page
+        : ["spread", <><Num source={cell(SPREAD_FILE, r._row, "rate_mm_s")}>{r.rate_mm_s} mm/s</Num>{!validated(r) && <>{" "}<span className="tag low">not validated</span></>}</>],
     );
   }
   return (
@@ -61,7 +62,9 @@ function Readout({ shown }: { shown: Shown }) {
 /** A real flame on the first screen: NASA's own BASS-II photos of test B12 as a short loop (display only).
  * Muted, looping and inline so it plays on phones; under reduced motion only its poster frame shows. */
 function RealFlame() {
-  const still = prefersReduced() || (typeof document !== "undefined" && motionPaused());
+  // live, so the Pause button and the reduced-motion setting stop the loop while it is on screen
+  const [still, setStill] = useState(() => prefersReduced() || (typeof document !== "undefined" && motionPaused()));
+  useEffect(() => watchMotion(() => setStill(prefersReduced() || motionPaused())), []);
   return (
     <figure className="real-flame">
       {still ? (
@@ -106,7 +109,7 @@ const CHAPTERS: FilmChapter[] = [
     node: (
       <div className="fo-ch">
         <h2>Then the air goes still.</h2>
-        <p>At the slowest setting it crept at <Num source={cell(SPREAD_FILE, LAST._row, "rate_mm_s")}>{LAST.rate_mm_s} mm/s</Num>, then went out. Without gravity, warm gas doesn't rise, so crews cut ventilation to slow a fire's spread.</p>
+        <p>At the slowest setting it crept at <Num source={cell(SPREAD_FILE, LAST._row, "rate_mm_s")}>{LAST.rate_mm_s} mm/s</Num>, then went out. Without gravity, warm gas doesn't rise, so the fans set the airflow around a flame.</p>
       </div>
     ),
   },
@@ -115,7 +118,7 @@ const CHAPTERS: FilmChapter[] = [
     node: (
       <div className="fo-ch">
         <h2>On the Moon, warm air rises again.</h2>
-        <p>A flame's own heat sets up a slow draft, even with the fans off. How fast, nobody has measured.</p>
+        <p>A flame's own heat sets up a slow draft, even with the fans off. How fast, we found no published measurement.</p>
       </div>
     ),
   },

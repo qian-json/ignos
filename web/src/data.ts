@@ -96,7 +96,7 @@ export const atmospheres = atmospheresJson as unknown as {
   context_quotes?: { id: string; source: string; text: string }[];
 };
 
-/** A row's confidence, from the notes column. */
+/** A row's confidence, from the tracker's notes column. */
 export const lowConfidence = (r: Row) => /LOW CONFIDENCE/i.test(r.notes ?? "");
 
 /**

@@ -17,11 +17,11 @@
   },
   "rewrites": [
     {
-      "source": "/:page(habitats|ask|research|model|method)",
+      "source": "/:page(story|habitats|ask|research|model|method)",
       "destination": "/index.html"
     },
     {
-      "source": "/:page(habitats|ask|research|model|method)/",
+      "source": "/:page(story|habitats|ask|research|model|method)/",
       "destination": "/index.html"
     }
   ],

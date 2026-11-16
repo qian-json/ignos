@@ -20,6 +20,7 @@ import "./router/router.css";
 
 /** The header's links: one per page. */
 const NAV: readonly (readonly [PageId, string])[] = [
+  ["story", "Story"],
   ["habitats", "Habitats"],
   ["ask", "Ask"],
   ["research", "Research"],
@@ -28,6 +29,7 @@ const NAV: readonly (readonly [PageId, string])[] = [
 
 /** Every place worth a link: the pages, and the research page's sections (menu, footer, keys). */
 const ALL: readonly (readonly [string, string])[] = [
+  ["story", "Story"],
   ["habitats", "Habitats"],
   ["ask", "Ask"],
   ["research", "Research"],
@@ -61,16 +63,25 @@ const DARK = ".journey, [data-bar-tone=\"dark\"]";
 function useOverHero(key: number) {
   const [over, setOver] = useState(() => !!document.querySelector(DARK));
   useEffect(() => {
-    const els = [...document.querySelectorAll(DARK)];
-    setOver(els.some((el) => { const r = el.getBoundingClientRect(); return r.top <= 56 && r.bottom > 56; }));
-    if (!els.length) return;
-    const under = new Set<Element>();
-    const io = new IntersectionObserver((es) => {
-      es.forEach((e) => (e.isIntersecting ? under.add(e.target) : under.delete(e.target)));
-      setOver(under.size > 0);
-    }, { rootMargin: "-56px 0px -100% 0px" });
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    let io: IntersectionObserver | null = null;
+    const scan = () => {
+      io?.disconnect();
+      const els = [...document.querySelectorAll(DARK)];
+      setOver(els.some((el) => { const r = el.getBoundingClientRect(); return r.top <= 56 && r.bottom > 56; }));
+      if (!els.length) return;
+      const under = new Set<Element>();
+      io = new IntersectionObserver((es) => {
+        es.forEach((e) => (e.isIntersecting ? under.add(e.target) : under.delete(e.target)));
+        setOver(under.size > 0);
+      }, { rootMargin: "-56px 0px -100% 0px" });
+      els.forEach((el) => io!.observe(el));
+    };
+    scan();
+    // a lazy page arrives after this runs, in place of the loading placeholder: look again then
+    const mo = new MutationObserver(scan);
+    const main = document.querySelector("main");
+    if (main) mo.observe(main, { childList: true });
+    return () => { mo.disconnect(); io?.disconnect(); };
   }, [key]);
   return over;
 }
@@ -139,7 +150,7 @@ export function App() {
               <ul>
                 <li>Every number links to its file, row and column</li>
                 <li>Proof layer v{PROOF_LAYER_VERSION}</li>
-                <li>Written with AI assistance (Claude Code)</li>
+                <li>Built with AI assistance from Claude (Anthropic), Codex (OpenAI) and Gemini (Google); Google Gemini drafts the Ask answers</li>
                 <li>No NASA endorsement implied</li>
                 <li><KeyShortcuts sections={ALL} /></li>
               </ul>

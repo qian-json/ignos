@@ -108,13 +108,13 @@ export function Method() {
 
           <More summary="Limits, and where AI was used">
             <ul className="claims">
-              <li>We don't know the airflow around a flame on the Moon, and nobody has measured it. We never put a number on it.</li>
+              <li>We don't know the airflow around a flame on the Moon, and we found no published measurement of it. We never put a number on it.</li>
               <li>NASA has not concluded that turning off the fans fails on the Moon. The Moon Gap is our reading of NASA's data.</li>
               <li>NASA's scientists measured these spread rates first. What's new is an open, repeatable way to re-measure them from the raw photos, check them, and question them.</li>
             </ul>
             <h3>Where AI was used</h3>
-            <p>The project framing and the flame-model idea came from conversations with Claude (Anthropic), and Claude wrote much of the code with us and helped read and check the source papers. OpenAI's Codex also reviewed and edited parts of the repository. Google Gemini answers questions in the Ask panel, from passages of our data and the papers that code retrieves first. Code computes every measurement and ranking; the model only writes sentences, and its numbers pass the checker. Figures were read from the ICES paper by image analysis we wrote and checked by overlay. No image on this site was AI-generated: the opening film is a Blender render we built, labelled Illustration, and the photos are NASA's.</p>
-            <p className="caption">The opening scene is drawn in code. Only the rod's width, the flame's length and the airflow in it are data.</p>
+            <p>The project framing and the flame-model idea came from conversations with Claude (Anthropic), and Claude wrote much of the code with us and helped read and check the source papers. OpenAI's Codex also reviewed and edited parts of the repository. Google Gemini answers questions in the Ask panel, from passages of our data and the papers that code retrieves first. Code computes every measurement and ranking; the model only writes sentences, and code checks every number it writes against a source and flags any it cannot match. Figures were read from the ICES paper by image analysis we wrote and checked by overlay. No image on this site was AI-generated: the opening film is a Blender render we built, labelled Illustration, and the photos are NASA's.</p>
+            <p className="caption">The opening film is an illustration. Its readout shows values from spread_rates.csv, each linked to its row, and never a Moon airflow.</p>
           </More>
         </div>
       </div>

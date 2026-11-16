@@ -2,6 +2,7 @@
 // Measure, as a comparison: every fan step of every test, ours against NASA's published rate, on one
 // parity chart. The open test's facts, the photos, the tracker wipe and its rows sit behind the toggle.
 import { useMemo } from "react";
+import { VALIDATED_BELOW_CM_S } from "@still-air/proof";
 import { useReplay } from "../replay";
 import { C, Plot, ring } from "../Plot";
 import { Num } from "../Num";
@@ -149,7 +150,7 @@ export function Measure() {
         <a className="btn ghost" href={SPREAD_CSV_HREF} download="ignos_spread_rates.csv">Download every step as CSV</a>
         <span className="caption">All {spread.length} fan steps from {TESTS.length} tests, our rate beside NASA's, with intervals and the tracker's notes. File: <code>{SPREAD_FILE}</code></span>
       </p>
-      <p className="caption">Validated means a step under 1 cm/s that the tracker didn't flag. Above 1 cm/s most steps fall in the flame's bright early phase, where the tracker can lock onto the bright core, so we don't count them. NASA's rate is Table S1's printed V<sub>f</sub>×10³ read as cm/s; the right half of that table prints “mm/s”, a typo our own measurement settled. Hover any number for its file, row and column.</p>
+      <p className="caption">Validated means a step under {VALIDATED_BELOW_CM_S} cm/s that the tracker didn't flag. Above {VALIDATED_BELOW_CM_S} cm/s most steps fall in the flame's bright early phase, where the tracker can lock onto the bright core, so we don't count them. NASA's rate is Table S1's printed V<sub>f</sub>×10³ read as cm/s; the right half of that table prints “mm/s”; we read both halves as cm/s, as the paper's edge plots and our own measurement both indicate (Method explains the check). Hover any number for its file, row and column.</p>
       </More>
     </section>
   );

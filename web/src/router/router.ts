@@ -9,7 +9,8 @@ import { useSyncExternalStore } from "react";
 import { flushSync } from "react-dom";
 import { ASK_EVENT, type AskRequest } from "../AskBar";
 import { cover, curtainOn, uncover } from "./curtain";
-import { SECTION_PAGE, hrefFor, page, pageForPath, upgradeLegacy, type PageDef, type PageId } from "./routes";
+import { SECTION_PAGE, hrefFor, page, pageForPath, safeDecode, upgradeLegacy, type PageDef, type PageId } from "./routes";
+import { hasPendingAsk, holdAsk, takePendingAsk } from "./pendingAsk";
 import { elementY, holdScroll, scrollToElement, scrollToY } from "./scroll";
 
 export interface Route {
@@ -22,11 +23,10 @@ export interface Route {
 
 type Entry = { y?: number; idx?: number };
 
-let route: Route = { page: pageForPath(location.pathname), hash: decodeURIComponent(location.hash.slice(1)), key: 0 };
+let route: Route = { page: pageForPath(location.pathname), hash: safeDecode(location.hash.slice(1)), key: 0 };
 const subs = new Set<() => void>();
 let ticket = 0;            // the newest navigation; an older one stops at its next step
 let index = 0;             // this entry's place in history, to tell Back from Forward
-let pendingAsk: AskRequest | null = null;
 
 const emit = () => subs.forEach((fn) => fn());
 const set = (next: Route) => { route = next; flushSync(emit); };
@@ -154,13 +154,13 @@ export async function navigate(href: string, { replace = false } = {}): Promise<
   if (url.origin !== location.origin) { location.assign(url.href); return; }
   url = upgradeLegacy(url) ?? url;
   // a bare #section from a page it isn't on: go to the page it lives on
-  const hash = decodeURIComponent(url.hash.slice(1));
+  const hash = safeDecode(url.hash.slice(1));
   let next = pageForPath(url.pathname);
   if (hash && next.id === route.page.id && !document.getElementById(hash) && SECTION_PAGE[hash] && SECTION_PAGE[hash] !== next.id) {
     url = new URL(hrefFor(hash), location.origin);
     next = pageForPath(url.pathname);
   }
-  const newHash = decodeURIComponent(url.hash.slice(1));
+  const newHash = safeDecode(url.hash.slice(1));
 
   if (next.id === route.page.id) {
     // same page: glide to the anchor (or the top)
@@ -189,9 +189,9 @@ function onPop(e: PopStateEvent) {
   index = st.idx ?? index;
   const url = new URL(location.href);
   const legacy = upgradeLegacy(url);
-  if (legacy) { history.replaceState({ idx: index }, "", legacy); void change({ page: pageForPath(legacy.pathname), hash: decodeURIComponent(legacy.hash.slice(1)), key: route.key + 1 }, undefined, false); return; }
+  if (legacy) { history.replaceState({ idx: index }, "", legacy); void change({ page: pageForPath(legacy.pathname), hash: safeDecode(legacy.hash.slice(1)), key: route.key + 1 }, undefined, false); return; }
   const next = pageForPath(url.pathname);
-  const hash = decodeURIComponent(url.hash.slice(1));
+  const hash = safeDecode(url.hash.slice(1));
   if (next.id === route.page.id) {
     route = { ...route, hash };
     const el = target(hash);
@@ -225,7 +225,7 @@ function onClick(e: MouseEvent) {
 /** A typed or edited #anchor (the address bar), or a link we let through. */
 function onHash() {
   const url = new URL(location.href);
-  const hash = decodeURIComponent(url.hash.slice(1));
+  const hash = safeDecode(url.hash.slice(1));
   const home = SECTION_PAGE[hash];
   if (hash && !document.getElementById(hash) && home && home !== route.page.id) void navigate(url.href, { replace: true });
 }
@@ -235,14 +235,16 @@ function onHash() {
 /** A question asked away from the Ask page: go there, then hand it over once the page listens. */
 function onAsk(e: Event) {
   if (route.page.id === "ask") return;
-  pendingAsk = (e as CustomEvent<AskRequest>).detail;
+  holdAsk((e as CustomEvent<AskRequest>).detail);
   void navigate(page("ask").path);
 }
+/** The Ask panel takes a waiting question when it mounts (Ask.tsx). */
+export { takePendingAsk };
 function flushAsk() {
-  if (!pendingAsk || route.page.id !== "ask") return;
-  const req = pendingAsk;
-  pendingAsk = null;
-  setTimeout(() => dispatchEvent(new CustomEvent<AskRequest>(ASK_EVENT, { detail: req })), 0);
+  // The Ask page is lazy: until its panel is on the page, the question waits for the panel to take it
+  // on mount, so a cold load or a slow network does not lose it.
+  if (!hasPendingAsk() || route.page.id !== "ask" || !document.getElementById("ask")) return;
+  setTimeout(() => { const req = takePendingAsk(); if (req) dispatchEvent(new CustomEvent<AskRequest>(ASK_EVENT, { detail: req })); }, 0);
 }
 
 // ---------- start ----------
@@ -253,7 +255,7 @@ function flushAsk() {
   const legacy = upgradeLegacy(new URL(location.href));
   if (legacy) {
     history.replaceState(history.state, "", legacy);
-    route = { page: pageForPath(legacy.pathname), hash: decodeURIComponent(legacy.hash.slice(1)), key: 0 };
+    route = { page: pageForPath(legacy.pathname), hash: safeDecode(legacy.hash.slice(1)), key: 0 };
   }
 }
 

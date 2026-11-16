@@ -17,6 +17,8 @@ import { atmospheres } from "../data";
 
 /** The challenge page's own sentences on partial gravity (data/reference/habitat_atmospheres.json). */
 const PARTIAL_QUOTES = (atmospheres.context_quotes ?? []).filter((q) => q.id === "bound" || q.id === "efield" || q.id === "future");
+/** The challenge page's sentence that PSI holds no partial-gravity combustion data. */
+const NO_PARTIAL_G = atmospheres.context_quotes?.find((q) => q.id === "no_partial_g")?.text;
 import { CONDITIONS_FILE, FACTS, INVESTIGATIONS_FILE, MOONGAP_FILE, cell, conditions, investigations, moongap, type Conditions as Cond, type Investigation } from "../data";
 
 type Inv = Investigation;
@@ -377,7 +379,9 @@ export function Habitats() {
           );
         })}
       </ol>
-      {only && pool.length === 0 && <p className="hab-none">None of the {N} cover these conditions. That is the gap: {g === "partial" ? "no investigation in NASA's archive burned anything at Moon or Mars gravity." : "try a different oxygen level."}</p>}
+      {only && pool.length === 0 && <p className="hab-none">None of the {N} cover these conditions. {g === "partial"
+        ? <>That is the gap: none of these {N} PSI records ran at Moon or Mars gravity.{NO_PARTIAL_G && <> The challenge page: “{NO_PARTIAL_G}”</>}</>
+        : hw !== "all" ? "Try Hardware: All, or a different oxygen level." : "Try a different oxygen level."}</p>}
       {!all && !only && N > SHOW && <button type="button" className="btn ghost inv-all" onClick={() => setAll(true)}>Show all {N}</button>}
 
       {cmp.length > 0 && (
