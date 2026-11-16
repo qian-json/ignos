@@ -10,11 +10,20 @@
     },
     "api/ask.ts": {
       "maxDuration": 30
+    },
+    "api/psi.ts": {
+      "maxDuration": 10
     }
   },
   "rewrites": [
-    { "source": "/:page(habitats|ask|research|model|method)", "destination": "/index.html" },
-    { "source": "/:page(habitats|ask|research|model|method)/", "destination": "/index.html" }
+    {
+      "source": "/:page(habitats|ask|research|model|method)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:page(habitats|ask|research|model|method)/",
+      "destination": "/index.html"
+    }
   ],
   "git": {
     "deploymentEnabled": false

@@ -178,6 +178,23 @@ describe("fact index from the real files", () => {
     expect(gap.gate.numbers.map((n) => n.status)).toEqual(["verified"]);
   });
 
+  it("reads 'points' as percentage points in a gap or oxygen sentence, and not elsewhere", () => {
+    const { gate } = gateAnswer("First is the figure captioned P-213 tape with a gap of 2.75 points. Nomex Velcro has a gap of -2.95 points.", { facts, citations: [{ kind: "row", id: "moongap:ranking" }] });
+    expect(gate.numbers.map((n) => [n.text, n.status])).toEqual([["2.75 points", "verified"], ["-2.95 points", "verified"]]);
+    const count = gateAnswer("The tracker read 52 points along the rod.", { facts, citations: [] });
+    expect(count.gate.numbers.map((n) => n.text)).toEqual(["52"]);
+  });
+
+  it("treats a confidence level as a label, not a number: '95% range', '95% CI', '95% interval'", () => {
+    for (const phrase of ["95% range", "95% CI", "95% confidence interval", "95% bootstrap interval", "95%-CI"]) {
+      const { gate } = gateAnswer(`The gap is 2.75 points (${phrase} 1.84 to 3.66).`, { facts, citations: [{ kind: "row", id: "moongap:p213" }] });
+      expect(gate.numbers.map((n) => n.text), phrase).not.toContain("95%");
+    }
+    // a percentage that is a measurement still counts
+    const { gate } = gateAnswer("Oxygen was 95% in that range.", { facts, citations: [] });
+    expect(gate.numbers.map((n) => n.text)).toContain("95%");
+  });
+
   it("verifies an investigation's condition numbers from its own record, and only when that record is cited", () => {
     const ans = "BASS-II ran 129 tests with oxygen between 13.6% and 22.2%, fan flow from 0 cm/s to 53 cm/s, and opposed flow from 0.4 to 8 cm/s; spread was sustained down to 17% O2 versus 18%.";
     const own = gateAnswer(ans, { facts, citations: [{ kind: "row", id: "investigations:PSI-25" }] });

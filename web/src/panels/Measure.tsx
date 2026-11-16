@@ -93,13 +93,13 @@ export function Measure() {
         <Plot className="plot tall" label="Parity chart: our spread rate against NASA's published rate for every fan step of every test" data={parity.data} layout={parity.layout} />
       </figure>
 
-      <More summary="Details">
+      <More summary="Details" open>
       <div className="measure-more">
         <div className="measure-about">
           <p className="caption">Our tracker follows the flame's leading edge through every raw photo of a space-station rod test and fits one speed per fan setting. NASA's rate is from Link et al. 2018, Table S1. On the diagonal line we match exactly; bars are 95% intervals.</p>
-          <details className="overlay">
+          <details className="overlay" open>
             <summary>Watch what the tracker saw</summary>
-            <video src={`/overlays/${test}.mp4`} controls muted playsInline preload="none" aria-label={`Tracker overlay video for test ${test}`} />
+            <video src={`/overlays/${test}.mp4`} controls muted playsInline preload="metadata" aria-label={`Tracker overlay video for test ${test}`} />
             <p className="caption">Solid line: the edge used for our rates. Dashed line: the blue-light front, shown as a check only. One frame per photo.</p>
           </details>
         </div>
@@ -146,7 +146,7 @@ export function Measure() {
         </table>
       </div>
       <p className="measure-dl">
-        <a className="btn ghost" href={SPREAD_CSV_HREF} download="still-air_spread_rates.csv">Download every step as CSV</a>
+        <a className="btn ghost" href={SPREAD_CSV_HREF} download="ignos_spread_rates.csv">Download every step as CSV</a>
         <span className="caption">All {spread.length} fan steps from {TESTS.length} tests, our rate beside NASA's, with intervals and the tracker's notes. File: <code>{SPREAD_FILE}</code></span>
       </p>
       <p className="caption">Validated means a step under 1 cm/s that the tracker didn't flag. Above 1 cm/s most steps fall in the flame's bright early phase, where the tracker can lock onto the bright core, so we don't count them. NASA's rate is Table S1's printed V<sub>f</sub>×10³ read as cm/s; the right half of that table prints “mm/s”, a typo our own measurement settled. Hover any number for its file, row and column.</p>

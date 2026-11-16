@@ -22,6 +22,12 @@
    "acronym": "ACME Flame Design",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "cir_acme",
+   "hardware_label": "CIR · ACME burners",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "ACME chamber insert"
+   },
    "gravity_g": [
     0
    ],
@@ -88,6 +94,12 @@
    "acronym": "ACME BRE",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "cir_acme",
+   "hardware_label": "CIR · ACME burners",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "ACME chamber insert"
+   },
    "gravity_g": [
     0
    ],
@@ -156,6 +168,12 @@
    "acronym": "ACME CLD Flame",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "cir_acme",
+   "hardware_label": "CIR · ACME burners",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "ACME insert"
+   },
    "gravity_g": [
     0
    ],
@@ -196,6 +214,12 @@
    "acronym": "ACME E-FIELD Flames",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "cir_acme",
+   "hardware_label": "CIR · ACME burners",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "ACME insert"
+   },
    "gravity_g": [
     0
    ],
@@ -247,6 +271,12 @@
    "acronym": "ACME s-Flame",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "cir_acme",
+   "hardware_label": "CIR · ACME burners",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "ACME insert"
+   },
    "gravity_g": [
     0
    ],
@@ -311,6 +341,12 @@
    "acronym": "BASS-II",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "msg_duct",
+   "hardware_label": "MSG · SPICE flow duct",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "BASS fan-driven flow duct"
+   },
    "gravity_g": [
     0
    ],
@@ -377,6 +413,12 @@
    "acronym": "BASS",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "msg_duct",
+   "hardware_label": "MSG · SPICE flow duct",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "SPICE-derived fan-driven flow duct"
+   },
    "gravity_g": [
     0
    ],
@@ -433,6 +475,12 @@
    "acronym": "CFI",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "cir_mdca",
+   "hardware_label": "CIR · droplet apparatus (MDCA)",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "Multi-user Droplet Combustion Apparatus (MDCA)"
+   },
    "gravity_g": [
     0
    ],
@@ -493,6 +541,12 @@
    "acronym": "DAFT / DAFT-2",
    "kind": "flight",
    "combustion": "no combustion (dust measurement)",
+   "hardware_group": "express",
+   "hardware_label": "ISS EXPRESS rack",
+   "hardware_source": {
+    "field": "platform",
+    "text": "EXPRESS rack"
+   },
    "gravity_g": [
     0
    ],
@@ -520,6 +574,12 @@
    "acronym": null,
    "kind": "ground",
    "combustion": "flame (analysis of SPICE data)",
+   "hardware_group": "ground",
+   "hardware_label": "Ground lab or computation",
+   "hardware_source": {
+    "field": "platform",
+    "text": "Ground"
+   },
    "gravity_g": [
     0,
     1
@@ -561,6 +621,12 @@
    "acronym": null,
    "kind": "ground",
    "combustion": "flame (model)",
+   "hardware_group": "ground",
+   "hardware_label": "Ground lab or computation",
+   "hardware_source": {
+    "field": "platform",
+    "text": "Ground"
+   },
    "gravity_g": [
     0
    ],
@@ -590,6 +656,12 @@
    "acronym": "FLEX-2",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "cir_mdca",
+   "hardware_label": "CIR · droplet apparatus (MDCA)",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "Multi-user Droplet Combustion Apparatus (MDCA)"
+   },
    "gravity_g": [
     0
    ],
@@ -659,6 +731,12 @@
    "acronym": "FLEX",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "cir_mdca",
+   "hardware_label": "CIR · droplet apparatus (MDCA)",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "Multi-user Droplet Combustion Apparatus (MDCA)"
+   },
    "gravity_g": [
     0
    ],
@@ -719,6 +797,12 @@
    "acronym": "SAFFIRE-I",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "saffire",
+   "hardware_label": "Saffire module on a Cygnus cargo ship",
+   "hardware_source": {
+    "field": "platform",
+    "text": "Cygnus"
+   },
    "gravity_g": [
     0
    ],
@@ -770,6 +854,12 @@
    "acronym": "SAFFIRE-II",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "saffire",
+   "hardware_label": "Saffire module on a Cygnus cargo ship",
+   "hardware_source": {
+    "field": "platform",
+    "text": "Cygnus"
+   },
    "gravity_g": [
     0
    ],
@@ -825,6 +915,12 @@
    "acronym": "SAFFIRE-III",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "saffire",
+   "hardware_label": "Saffire module on a Cygnus cargo ship",
+   "hardware_source": {
+    "field": "platform",
+    "text": "Cygnus"
+   },
    "gravity_g": [
     0
    ],
@@ -884,6 +980,12 @@
    "acronym": "SAME-R",
    "kind": "flight",
    "combustion": "overheated materials (smoke), not flaming",
+   "hardware_group": "msg_other",
+   "hardware_label": "MSG · other",
+   "hardware_source": {
+    "field": "platform",
+    "text": "Microgravity Science Glovebox (MSG)"
+   },
    "gravity_g": [
     0
    ],
@@ -942,6 +1044,12 @@
    "acronym": "SAME",
    "kind": "flight",
    "combustion": "overheated materials (smoke), not flaming",
+   "hardware_group": "msg_other",
+   "hardware_label": "MSG · other",
+   "hardware_source": {
+    "field": "platform",
+    "text": "Microgravity Science Glovebox (MSG)"
+   },
    "gravity_g": [
     0
    ],
@@ -998,6 +1106,12 @@
    "acronym": "SLICE",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "msg_duct",
+   "hardware_label": "MSG · SPICE flow duct",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "SPICE flow duct"
+   },
    "gravity_g": [
     0
    ],
@@ -1038,6 +1152,12 @@
    "acronym": "SPICE",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "msg_duct",
+   "hardware_label": "MSG · SPICE flow duct",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "SPICE fan-driven flow duct"
+   },
    "gravity_g": [
     0
    ],
@@ -1103,6 +1223,12 @@
    "acronym": null,
    "kind": "ground",
    "combustion": "smoke simulation, not flaming",
+   "hardware_group": "ground",
+   "hardware_label": "Ground lab or computation",
+   "hardware_source": {
+    "field": "platform",
+    "text": "Ground"
+   },
    "gravity_g": [
     0,
     1
@@ -1148,6 +1274,12 @@
    "acronym": null,
    "kind": "ground",
    "combustion": "flame (CFD model)",
+   "hardware_group": "ground",
+   "hardware_label": "Ground lab or computation",
+   "hardware_source": {
+    "field": "platform",
+    "text": "Ground"
+   },
    "gravity_g": [
     0
    ],
@@ -1177,6 +1309,12 @@
    "acronym": null,
    "kind": "ground",
    "combustion": "flame (lab)",
+   "hardware_group": "ground",
+   "hardware_label": "Ground lab or computation",
+   "hardware_source": {
+    "field": "platform",
+    "text": "Ground"
+   },
    "gravity_g": [
     1
    ],
@@ -1207,6 +1345,12 @@
    "acronym": "ACME CFI-G",
    "kind": "flight",
    "combustion": "flame",
+   "hardware_group": "cir_acme",
+   "hardware_label": "CIR · ACME burners",
+   "hardware_source": {
+    "field": "hardware",
+    "text": "ACME insert"
+   },
    "gravity_g": [
     0
    ],

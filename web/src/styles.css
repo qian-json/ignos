@@ -707,3 +707,58 @@ section.method { display: block; }
   .foot-inner { padding: 24px 0; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; }
 }
+
+/* Live from NASA PSI (web/src/elements/LivePsi.tsx) */
+.live-psi { font-size: var(--fs-label); color: var(--ink); background: var(--verified-bg); border: 1px solid var(--hair); border-radius: 6px; padding: 6px 10px; display: inline-block; max-width: 100%; }
+.live-psi .live-when { color: var(--mute); }
+.live-psi.is-loading { background: var(--well); color: var(--mute); }
+.live-psi.is-down { background: var(--unverified-bg); color: var(--unverified); }
+.live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--verified); margin-right: 2px; vertical-align: 1px; animation: live-pulse 1.6s ease-in-out infinite; }
+.live-psi.is-loading .live-dot { background: var(--mute); }
+@keyframes live-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+
+
+/* Real flame on the first screen (hero/FilmOpening.tsx RealFlame) */
+.real-flame { margin: 14px 0 0; max-width: 420px; }
+.real-flame video, .real-flame img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 8px; background: #000; object-fit: cover; }
+.real-flame figcaption { font-size: var(--fs-label); line-height: 1.4; color: var(--on-night-mute, var(--mute)); margin-top: 6px; max-width: 42ch; }
+@media (max-width: 640px) { .real-flame { max-width: 100%; } }
+/* Results band on Home, between the film and the page cards */
+.home-results { padding: 28px 16px 8px; max-width: 1180px; margin: 0 auto; }
+.ov-replay { margin: 16px 0; }
+.hero-copy .hero3d-actions .btn.ghost { color: var(--on-night); border-color: #5a6588; }
+@media (hover: hover) { .hero-copy .hero3d-actions .btn.ghost:hover { background: rgba(255, 255, 255, 0.08); } }
+/* Space-time image of B12 on /research (pages/ResearchPage.tsx) */
+.space-time { margin: 24px 0; padding: 12px; }
+.space-time img { display: block; width: 100%; height: auto; border-radius: 6px; background: #000; }
+.space-time figcaption { margin-top: 8px; max-width: 60ch; }
+/* Hardware filter on /habitats (challenge: CIR/ACME, CIR/MDCA, MSG/SPICE duct grouping) */
+.hab-hw { font-size: var(--fs-label); color: var(--mute); display: inline-flex; gap: 6px; align-items: center; }
+.hab-hw select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 3px 6px; }
+/* Habitat atmospheres card (elements/AtmosphereCard.tsx) */
+.atm { margin: 16px 0; padding: 14px 16px; }
+.atm h3 { margin: 0 0 8px; font-size: var(--fs-ui); }
+.atm svg { display: block; width: 100%; height: auto; max-width: 720px; }
+.atm-grid { stroke: var(--hair); stroke-width: 1; }
+.atm-tick { font-size: 11px; fill: var(--mute); font-family: var(--mono); }
+.atm-axis { font-size: 12px; fill: var(--mute); }
+.atm-moon { fill: var(--moon); fill-opacity: 0.12; stroke: var(--moon); stroke-opacity: 0.5; stroke-dasharray: 4 3; }
+.atm-label { font-size: 12px; fill: var(--ink); }
+.atm-moon-label { fill: var(--moon); }
+.atm-limit { stroke: var(--accent); stroke-width: 3; }
+.atm-limit-label { fill: var(--accent); }
+.atm figcaption { margin-top: 8px; max-width: 70ch; }
+.hab-gaps .hab-quote { color: var(--mute); font-style: italic; }
+.atm-legend { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 2px; font-size: var(--fs-label); color: var(--ink); }
+.atm-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+.atm-dot-moon { background: var(--moon); opacity: 0.45; border-radius: 2px; }
+.atm-dot-limit { background: var(--accent); border-radius: 1px; height: 3px; vertical-align: 3px; }
+@media (max-width: 640px) {
+  /* phones: the chart's in-plot labels would be unreadably small; the legend under it carries them */
+  .atm-label { display: none; }
+  .atm-tick, .atm-axis { font-size: 22px; }
+  /* phones: keep the real-flame inset compact so the opening headline stays clear of the film readout */
+  .real-flame { max-width: 70%; margin-top: 10px; }
+  .real-flame figcaption { font-size: 11px; line-height: 1.3; }
+}

@@ -147,3 +147,23 @@ describe("hasKeywordMatch()", () => {
     expect(hasKeywordMatch({ question: "xyzzy", subject: { kind: "test", id: "PSI-25" } })).toBe(true);
   });
 });
+
+describe("rank questions about the lowest lunar limit", () => {
+  const first = (question: string) => retrieve({ mode: "rank", question } as AskRequest)[0]?.citation;
+  it("get the lunar-limit order, not the gap order", () => {
+    expect(first("Which material kept burning on the least oxygen in lunar gravity?")).toEqual({ kind: "row", id: "moongap:ranking-lunar-limit" });
+    expect(first("Rank the materials by their lowest oxygen limit on the Moon")).toEqual({ kind: "row", id: "moongap:ranking-lunar-limit" });
+  });
+  it("while gap questions still get the gap ranking", () => {
+    expect(first("Which material has the largest Moon Gap?")).toEqual({ kind: "row", id: "moongap:ranking" });
+    expect(first("Rank all five materials by zero-flow Moon Gap")).toEqual({ kind: "row", id: "moongap:ranking" });
+  });
+});
+
+describe("which-investigations questions", () => {
+  it("find the grouped list (all solid-fuel flame-spread investigations, not only BASS)", () => {
+    const ids = retrieve({ mode: "interpret", question: "Which NASA investigations studied flame spread over solid materials in microgravity?" } as AskRequest).map((p) => p.citation.kind === "row" ? p.citation.id : "");
+    expect(ids.slice(0, 3)).toContain("investigations:by-fuel");
+  });
+});
+

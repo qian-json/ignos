@@ -23,7 +23,6 @@ const NAV: readonly (readonly [PageId, string])[] = [
   ["habitats", "Habitats"],
   ["ask", "Ask"],
   ["research", "Research"],
-  ["model", "Model"],
   ["method", "Method"],
 ];
 
@@ -117,7 +116,7 @@ export function App() {
           <div className="foot-inner">
             <div className="foot-lead">
               <p className="foot-name">Ignos</p>
-              <p>An entry to the NASA Space Apps Challenge 2026, “Flame in Freefall”, Houston local event.</p>
+              <p>An entry to the NASA Space Apps Challenge 2026, “Flame in Freefall”.</p>
               <a className="btn ghost" href="#top">Back to the top</a>
             </div>
             <nav className="foot-col" aria-labelledby="foot-pages">
@@ -133,7 +132,6 @@ export function App() {
                 <li><a href="https://doi.org/10.60555/4qc4-de67">NASA PSI, BASS-II photos (CC0)</a></li>
                 <li><a href="https://doi.org/10.1038/s41598-017-18398-4">Link et al. 2018, Table S1</a></li>
                 <li><a href="https://ntrs.nasa.gov/citations/20250002114">ICES-2025-392, lunar limits</a></li>
-                <li><a href="/api/health">Service status</a></li>
               </ul>
             </div>
             <div className="foot-col">

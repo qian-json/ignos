@@ -331,9 +331,22 @@ const shownLabel = (key) => (AS_CAPTIONED.has(key) ? `the figure captioned ${MAT
     add("moongap", { kind: "row", id: `moongap:${key}` }, text, [key, label]);
   }
   const ranked = mg.ranking
-    .map((r) => `${r.rank}. ${shownLabel(r.material)}: gap ${num(r.gap_pct, 2)} points (95% CI ${num(r.ci95_pct[0], 2)}% to ${num(r.ci95_pct[1], 2)}%; ${r.ci95_pct[0] > 0 ? "above zero" : r.ci95_pct[1] < 0 ? "below zero" : "includes zero"})`)
+    .map((r) => `${r.rank}. ${shownLabel(r.material)}: gap ${num(r.gap_pct, 2)} percentage points of O2 (95% CI ${num(r.ci95_pct[0], 2)}% to ${num(r.ci95_pct[1], 2)}%; ${r.ci95_pct[0] > 0 ? "above zero" : r.ci95_pct[1] < 0 ? "below zero" : "includes zero"})`)
     .join("; ");
   add("ranking", { kind: "row", id: "moongap:ranking" }, `Moon Gap ranking of the tested materials, largest gap first (computed by Ignos from ${paper}): ${ranked}. Rows named "the figure captioned ..." come from Figs. 7-9, whose images may be shifted by one material. ${meaning}`, ["moon gap", "ranking"]);
+  // A second order: lowest lunar-gravity oxygen limit first. "Which material burned on the least oxygen
+  // on the Moon?" is about this order, not the gap order; with only the gap ranking the model conflated them.
+  const byLimit = Object.entries(mg.materials)
+    .filter(([, m]) => m.status === "ok" && typeof m.lunar?.limit_pct === "number")
+    .sort((a, b) => a[1].lunar.limit_pct - b[1].lunar.limit_pct)
+    .map(([k, m], i) => `${i + 1}. ${shownLabel(k)}: lunar-gravity oxygen limit ${num(m.lunar.limit_pct, 2)}% O2`)
+    .join("; ");
+  add(
+    "ranking",
+    { kind: "row", id: "moongap:ranking-lunar-limit" },
+    `Lunar-gravity oxygen limits of the tested materials, lowest first, so the first kept burning on the least oxygen in lunar gravity (read by Ignos from the figures of ${paper}; ~5 s drop tests at 8.2 psia): ${byLimit}. This is a different order from the Moon Gap ranking, which compares each lunar limit with the Earth trend. Rows named "the figure captioned ..." come from Figs. 7-9, whose images may be shifted by one material.`,
+    ["moon gap", "ranking", "limit", "lowest", "least"],
+  );
   for (const ex of mg.excluded ?? []) {
     add("moongap", { kind: "row", id: "moongap:excluded" }, `Excluded from the Moon Gap ranking: ${shownLabel(ex.material)}. Reason: ${ex.reason}`, [ex.material]);
   }
@@ -384,6 +397,35 @@ const SETTINGS = {
     (r) => Object.keys(SETTINGS).reduce((sum, k) => sum + r.relevance[k].score, 0),
     "Team ranking of NASA's PSI combustion investigations by total relevance across all five crew settings, score out of 25",
     "investigations:ranking-total",
+  );
+
+  // Which investigations burned what, and in which hardware: from data/derived/psi_conditions.json, read from
+  // each record's own text. Questions like "Which investigations studied flame spread over solid materials?"
+  // need the whole list in one passage; one passage per record only surfaced BASS and BASS-II.
+  const condRel = "data/derived/psi_conditions.json";
+  files.push({ file: condRel, sha256: sha256(condRel) });
+  const cond = JSON.parse(read(condRel)).conditions;
+  const nameOf = (acc) => {
+    const r = inv.investigations.find((x) => x.accession === acc);
+    return r?.acronym ? `${acc} ${r.acronym}` : `${acc} (${(r?.full_name ?? "").split(":")[0].slice(0, 60)})`;
+  };
+  const listWhere = (pred) => cond.filter(pred).map((c) => nameOf(c.accession)).join(", ") || "none";
+  const flame = (c) => /^flame/.test(c.combustion);
+  const flown = (c) => c.kind === "flight";
+  add(
+    "investigation",
+    { kind: "row", id: "investigations:by-fuel" },
+    "NASA PSI combustion investigations grouped by what burned and where (read from each record's own text; the grouping is the Ignos team's judgment, not NASA's). " +
+      `Flame spread over solid materials, flown in microgravity: ${listWhere((c) => flown(c) && flame(c) && c.fuel_phase.includes("solid"))}. ` +
+      `Solid materials overheated to make smoke, not flaming, in orbit: ${listWhere((c) => flown(c) && !flame(c) && c.fuel_phase.includes("solid"))}. ` +
+      `Liquid fuel droplets burned in microgravity: ${listWhere((c) => flown(c) && flame(c) && c.fuel_phase.includes("liquid"))}. ` +
+      `Gaseous fuel flames in microgravity: ${listWhere((c) => flown(c) && flame(c) && c.fuel_phase.includes("gas"))}. ` +
+      `No combustion: ${listWhere((c) => c.fuel_phase.length === 0)}. ` +
+      `Ground studies or models (not flown): ${listWhere((c) => !flown(c))}. ` +
+      "Hardware: " +
+      [...new Set(cond.map((c) => c.hardware_label))].map((h) => `${h}: ${cond.filter((c) => c.hardware_label === h).map((c) => nameOf(c.accession)).join(", ")}`).join("; ") +
+      ".",
+    ["investigations", "solid", "liquid", "gas", "fuel", "hardware", "flame spread"],
   );
 }
 

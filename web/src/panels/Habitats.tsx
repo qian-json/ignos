@@ -11,6 +11,12 @@ import { More } from "../ui/More";
 import { Num } from "../Num";
 import { useRowSpotlight } from "../elements/RowSpotlight";
 import { ProvenanceLine } from "../elements/ProvenanceLine";
+import { LivePsi } from "../elements/LivePsi";
+import { AtmosphereCard } from "../elements/AtmosphereCard";
+import { atmospheres } from "../data";
+
+/** The challenge page's own sentences on partial gravity (data/reference/habitat_atmospheres.json). */
+const PARTIAL_QUOTES = (atmospheres.context_quotes ?? []).filter((q) => q.id === "bound" || q.id === "efield" || q.id === "future");
 import { CONDITIONS_FILE, FACTS, INVESTIGATIONS_FILE, MOONGAP_FILE, cell, conditions, investigations, moongap, type Conditions as Cond, type Investigation } from "../data";
 
 type Inv = Investigation;
@@ -64,6 +70,11 @@ const GRAV_AT: Record<Grav, string> = { orbit: "in orbit", partial: "at Moon or 
 const GRAV_CHIP: Record<Grav, string> = { orbit: "in orbit", partial: "in Moon/Mars gravity", earth: "on Earth" };
 const PRESET_GRAV:Record<string, Grav> = { iss: "orbit", spacecraft_cabin: "orbit", lunar_base: "partial", mars_base: "partial", pressurized_rover: "partial" };
 const COND = new Map(conditions.conditions.map((c, i) => [c.accession, { c, i }]));
+/** Hardware groups present in the data, in first-seen order, with how many investigations each has. */
+const HW_GROUPS: [string, string, number][] = [...conditions.conditions.reduce((m, c) => {
+  if (c.hardware_group) m.set(c.hardware_group, [c.hardware_label ?? c.hardware_group, (m.get(c.hardware_group)?.[1] ?? 0) + 1]);
+  return m;
+}, new Map<string, [string, number]>())].map(([id, [label, n]]) => [id, label, n]);
 const fmt = (v: number) => String(Math.round(v * 100) / 100);
 /** "near": the record gives the level only as approximate ("~21%"), so a match is never claimed as an exact tested level. "at": the record lists the visitor's value as a tested level. "span": inside a reported span with no list, so the exact level is unconfirmed. "between": inside the span but between listed levels, so not tested. */
 type Fit = "at" | "near" | "span" | "between" | "above" | "below" | "none";
@@ -179,7 +190,9 @@ function Gaps({ on }: { on: string }) {
         {PARTIAL_HABITATS.has(on) ? (
           <>
             <li><strong className="num">{partialG.length === 0 ? "None" : partialG.length}</strong> of the {N} burned anything at Moon or Mars gravity.</li>
-            <li>Closest: NASA's lunar-gravity drop tests, in <a href="#moon">the Moon Gap</a>.</li>
+            <li>Closest: NASA's lunar-gravity drop tests, in <a href="/research#moon">the Moon Gap</a>.</li>
+            {PARTIAL_QUOTES.map((q) => <li key={q.id} className="hab-quote">The challenge page: “{q.text}”</li>)}
+            <li>Our test of that idea: a flame model fitted to both ends still can't say how the flame's own airflow changes in between (<a href="/model">the flame model</a>).</li>
           </>
         ) : (
           <>
@@ -236,6 +249,7 @@ export function Habitats() {
   const [o2s, setO2s] = useState(() => presetO2(SETTINGS.includes("lunar_base") ? "lunar_base" : SETTINGS[0]));
   const [g, setG] = useState<Grav>(PRESET_GRAV[SETTINGS.includes("lunar_base") ? "lunar_base" : SETTINGS[0]] ?? "orbit");
   const [only, setOnly] = useState(false);
+  const [hw, setHw] = useState<string>("all");
   const spot = useRowSpotlight<HTMLOListElement>();
   const o2 = num(o2s);
   const pick = (s: string) => { setOn(s); setG(PRESET_GRAV[s] ?? "orbit"); setO2s(presetO2(s)); };
@@ -251,7 +265,7 @@ export function Habitats() {
     [on],
   );
   const SHOW = 8;
-  const pool = only ? ranked.filter(covers) : ranked;
+  const pool = (only ? ranked.filter(covers) : ranked).filter((iv) => hw === "all" || COND.get(iv.accession)?.c.hardware_group === hw);
   const rows = all || only ? pool : pool.slice(0, SHOW);
   const toggle = (id: string) => setCmp((c) => (c.includes(id) ? c.filter((x) => x !== id) : c.length < MAX_CMP ? [...c, id] : c));
   const goCompare = () => document.getElementById("compare")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
@@ -292,6 +306,7 @@ export function Habitats() {
       </form>
 
       <Gaps on={on} />
+      <AtmosphereCard />
 
       <div className="inv-tools">
         <p className="inv-legend" aria-hidden="true">
@@ -299,6 +314,12 @@ export function Habitats() {
           score for each habitat, left to right: {SETTINGS.map((s) => SETTING_NAMES[s] ?? s).join(", ")}
         </p>
         <p className="inv-legend">Tick up to {MAX_CMP} to compare.</p>
+        <label className="hab-hw">Hardware{" "}
+          <select value={hw} onChange={(e) => { setHw(e.target.value); setAll(true); }}>
+            <option value="all">All {N}</option>
+            {HW_GROUPS.map(([id, label, n]) => <option key={id} value={id}>{label} ({n})</option>)}
+          </select>
+        </label>
       </div>
 
       <ol className="inv-list hab-list" ref={spot} data-element="row-spotlight">
@@ -328,12 +349,15 @@ export function Habitats() {
                     <p className="inv-sub">{iv.acronym ? iv.full_name : iv.investigation_type} · {iv.accession}</p>
                     <p><span className="hab-why">{`${iv.relevance[on]?.why ?? ""} `}</span>{iv.key_finding}</p>
                     <FitDetail iv={iv} g={g} />
+                    <LivePsi accession={iv.accession} />
                   </div>
                   <dl className="inv-facts">
                     <div><dt>Where</dt><dd>{iv.platform}; {iv.gravity}</dd></div>
                     <div><dt>What burned</dt><dd>{iv.fuel_sample}</dd></div>
                     <div><dt>Oxygen</dt><dd>{iv.atmosphere?.o2}</dd></div>
                     <div><dt>Airflow</dt><dd>{iv.flow}</dd></div>
+                    {COND.get(iv.accession)?.c.hardware_label && <div><dt>Hardware</dt><dd>{COND.get(iv.accession)!.c.hardware_label}{iv.hardware && iv.hardware !== "n/a" ? ` (${iv.hardware})` : ""}</dd></div>}
+                    {(iv.diagnostics?.length ?? 0) > 0 && <div><dt>Sensors</dt><dd>{iv.diagnostics!.join("; ")}</dd></div>}
                   </dl>
                   <ul className="inv-why">
                     {SETTINGS.map((s) => (
@@ -344,7 +368,7 @@ export function Habitats() {
                     <button type="button" className="btn" onClick={() => askIgnos({ question: `Summarize NASA's ${name(iv)} investigation (${iv.accession}): what it burned, under what conditions, and what it found.`, mode: "summarize", subject: { kind: "test", id: iv.accession } })}>Ask about this</button>
                     <a className="btn ghost" href={iv.psi_url}>Open the NASA record</a>
                     {paper && <a className="textlink" href={`https://doi.org/${paper.doi}`}>Key paper</a>}
-                    {iv.accession === MEASURED && <a className="textlink" href="#measure">Our measurements from its photos</a>}
+                    {iv.accession === MEASURED && <a className="textlink" href="/research#measure">Our measurements from its photos</a>}
                   </div>
                   <p className="caption">Finding from {iv.key_finding_source}.</p>
                 </div>

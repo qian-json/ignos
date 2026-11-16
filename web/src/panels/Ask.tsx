@@ -147,7 +147,7 @@ export function Ask() {
       <div className="ask-out">
         <AskMorph phase={phase} onOpen={openData} />
         {err && (
-          <p className="notice">{err.code === "not_configured" ? <>Ask isn't switched on for this site yet: the team is still adding its language-model key. Meanwhile, <a href="#method">Methods and sources</a> runs the same number checker in your browser.</> : err.message}</p>
+          <p className="notice">{err.code === "not_configured" ? <>Ask isn't switched on for this site yet: the team is still adding its language-model key. Meanwhile, <a href="/method">Methods and sources</a> runs the same number checker in your browser.</> : err.message}</p>
         )}
         {res && (
           <div className="downlink" key={res.answer.length + ":" + res.gate.checked} style={{ display: "grid", gap: 8 }}>

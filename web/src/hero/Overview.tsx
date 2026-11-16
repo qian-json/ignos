@@ -13,13 +13,13 @@ import { Rolling, RollingRow } from "../elements/StatOdometer";
 const OK = spread.filter(validated);
 const OK_TESTS = [...new Set(OK.map((r) => r.test_id))];
 
-function Facts({ rail = false }: { rail?: boolean }) {
+export function Facts({ rail = false }: { rail?: boolean }) {
   const worst = OK.reduce((a, b) => (Math.abs(Number(b.pct_error)) > Math.abs(Number(a.pct_error)) ? b : a));
   const med = median(OK.map((r) => Math.abs(Number(r.pct_error))));
   return (
     <RollingRow className={rail ? "facts rail" : "facts"}>
       <div className="fact"><dt className="k">Low-flow steps validated in {OK_TESTS.length} NASA tests</dt><dd className="v num"><Rolling text={String(OK.length)} /></dd></div>
-      <div className="fact"><dt className="k">Median error against NASA; worst <Num source={cell(SPREAD_FILE, worst._row, "pct_error")}>{Math.abs(Number(worst.pct_error))}%</Num></dt><dd className="v num"><Rolling text={`${fmt(med, 1)}%`} /></dd></div>
+      <div className="fact"><dt className="k">Median difference from published rates, low airflow; worst <Num source={cell(SPREAD_FILE, worst._row, "pct_error")}>{Math.abs(Number(worst.pct_error))}%</Num></dt><dd className="v num"><Rolling text={`${fmt(med, 1)}%`} /></dd></div>
       <div className="fact"><dt className="k">Materials ranked by Moon Gap</dt><dd className="v num"><Rolling text={String(moongap.ranking.length)} /></dd></div>
       <div className="fact"><dt className="k">Checkable numbers behind AI answers</dt><dd className="v num"><Rolling text={String(FACTS.length)} /></dd></div>
     </RollingRow>
@@ -45,12 +45,12 @@ export function Overview() {
         <p>Each number links to its source file, row and column.</p>
       </div>
       <Facts />
+      <div className="card strong ov-replay">
+        <div className="subject-bar"><h3>Replay the burn</h3><TestPicker /></div>
+        <BurnReplay test={test} onTime={setCursor} compact />
+      </div>
       <More summary="Details">
         <div className="ov-grid">
-          <div className="card strong">
-            <div className="subject-bar"><h3>Replay the burn</h3><TestPicker /></div>
-            <BurnReplay test={test} onTime={setCursor} compact />
-          </div>
           <div className="card">
             <h3>Leading edge in every photo</h3>
             <EdgeChart test={test} cursor={cursor} />

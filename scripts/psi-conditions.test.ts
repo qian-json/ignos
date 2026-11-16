@@ -60,3 +60,15 @@ describe("psi_conditions.json", () => {
     expect(c("PSI-22").not_reported.forced_flow_cm_s).toMatch(/not a maximum/);
   });
 });
+
+describe("psi_conditions.json hardware groups", () => {
+  it("match the challenge statement's grouping, each from the record's own text", () => {
+    const by = (g: string) => out.conditions.filter((c: { hardware_group: string }) => c.hardware_group === g).map((c: { accession: string }) => c.accession);
+    expect(by("cir_acme")).toEqual(["PSI-10", "PSI-20", "PSI-21", "PSI-22", "PSI-23", "PSI-159"]); // ACME's six
+    expect(by("cir_mdca")).toEqual(["PSI-39", "PSI-68", "PSI-69"]); // CFI, FLEX-2, FLEX
+    expect(by("msg_duct")).toEqual(["PSI-25", "PSI-26", "PSI-106", "PSI-107"]); // BASS-II, BASS, SLICE, SPICE
+    expect(by("saffire")).toEqual(["PSI-98", "PSI-99", "PSI-100"]);
+    for (const c of out.conditions) expect(get(byAcc.get(c.accession), c.hardware_source.field)).toContain(c.hardware_source.text);
+  });
+});
+

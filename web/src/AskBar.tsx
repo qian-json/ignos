@@ -10,8 +10,10 @@ export interface AskRequest { question: string; mode: AskMode; subject?: { kind:
 
 /** Questions a researcher would type, each with a short chip label. Plain words only: the page types no science values. */
 export const RESEARCH_QUESTIONS: (AskRequest & { label: string })[] = [
-  { label: "Flame-spread investigations", question: "Which NASA investigations studied flame spread over solid materials in microgravity?", mode: "summarize" },
-  { label: "Least oxygen on the Moon", question: "Which material kept burning on the least oxygen in lunar gravity?", mode: "rank" },
+  // Checked live on ignos.earth (2026-11-16): each answers from its sources, numbers verified. The old
+  // "summarize" chip had no subject (the API answers 400), and "least oxygen" got a gap ranking back.
+  { label: "Best for a Moon base", question: "Which investigations matter most for a Moon base?", mode: "rank" },
+  { label: "Largest Moon Gap", question: "Which material has the largest Moon Gap?", mode: "rank" },
   { label: "Fans off in orbit", question: "Does turning off the fans put out a fire in orbit?", mode: "interpret" },
   { label: "Our rates vs NASA's", question: "How closely do your low-flow spread rates match NASA's published ones?", mode: "interpret" },
   { label: "Airflow on the Moon", question: "How fast does air move around a flame on the Moon?", mode: "interpret" },

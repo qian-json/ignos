@@ -8,6 +8,7 @@ import tableS1Raw from "../../data/reference/link2018_table_s1.csv?raw";
 import moongapJson from "./data/moongap.json";
 import investigationsJson from "../../data/reference/psi_investigations.json";
 import conditionsJson from "../../data/derived/psi_conditions.json";
+import atmospheresJson from "../../data/reference/habitat_atmospheres.json";
 import factsIndex from "./generated/facts.json";
 
 export type Row = Record<string, string> & { _row: number };
@@ -56,6 +57,7 @@ export interface Investigation {
   psi_url: string;
   investigation_type: string;
   platform: string;
+  hardware?: string;
   gravity: string;
   fuel_sample: string;
   atmosphere?: { o2?: string; pressure?: string };
@@ -80,8 +82,19 @@ export interface Conditions {
   pressure_atm: Range | null;
   forced_flow_cm_s: Range | null;
   not_reported?: Record<string, string>;
+  /** The challenge statement's hardware grouping, read from the record's hardware / platform text. */
+  hardware_group?: string;
+  hardware_label?: string;
+  hardware_source?: { field: string; text: string };
 }
 export const conditions = conditionsJson as unknown as { caveats: string[]; conditions: Conditions[] };
+/** Habitat atmospheres from the challenge page, the FM2 slides and ICES-2025-392 (each number quoted; tested). */
+export const atmospheres = atmospheresJson as unknown as {
+  sources: Record<string, { title: string; url: string; page?: number }>;
+  atmospheres: { id: string; label: string; o2_pct?: number; pressure_psi?: number; o2_pct_at_least?: number; pressure_psi_at_most?: number; quotes: { for: string; source: string; text: string }[] }[];
+  /** Verbatim sentences from the challenge page about partial gravity. */
+  context_quotes?: { id: string; source: string; text: string }[];
+};
 
 /** A row's confidence, from the notes column. */
 export const lowConfidence = (r: Row) => /LOW CONFIDENCE/i.test(r.notes ?? "");

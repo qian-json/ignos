@@ -94,10 +94,19 @@ export function findNumbers(answer: string): FoundNumber[] {
       end += u.length;
     } else if (GRAVITY_UNIT.test(answer.slice(end).trimStart())) {
       continue; // "1 g", "0 g": gravity labels
+    } else {
+      // "a gap of 2.75 points": percentage points of oxygen. Only in a sentence about a gap, oxygen or
+      // O2, so a count ("52 data points") is never read as a percentage.
+      const pts = /^[ \t\u00a0]*(?:points?|pts?|pp)\b/i.exec(answer.slice(end));
+      if (pts && /\b(?:gap|oxygen|O2|O₂)\b/i.test(sentenceAround(answer, start, end))) {
+        unit = "%";
+        end += pts[0].length;
+      }
     }
     if (isIdentifier(answer, sign ? start + 1 : start, m.index + m[0].length, Math.abs(value), unit !== null)) continue;
-    // a confidence level names an interval, it isn't a measurement: "95% interval", "95 % CI"
-    if (unit === "%" && /^\s*(?:confidence|CI\b|credible|prediction|interval)/i.test(answer.slice(end))) continue;
+    // a confidence level names an interval, it isn't a measurement: "95% interval", "95 % CI",
+    // "95% range" (the Moon Gap passages' wording), "95% bootstrap interval", "95%-CI"
+    if (unit === "%" && /^\s*-?\s*(?:confidence|CI\b|credible|prediction|interval|range|bootstrap|uncertainty|bounds?\b)/i.test(answer.slice(end))) continue;
 
     out.push({ text: answer.slice(start, end), start, end, value, unit, tolerance, sentence: sentenceAround(answer, start, end) });
   }

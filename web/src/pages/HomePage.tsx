@@ -5,6 +5,7 @@ import type { MouseEvent } from "react";
 import { PageRing } from "../elements/PageRing";
 import { StartHere } from "../elements/StartHere";
 import { FilmOpening } from "../hero/FilmOpening";
+import { Facts } from "../hero/Overview";
 import { Close } from "../panels/Close";
 import { navigate } from "../router/router";
 
@@ -14,6 +15,9 @@ export function HomePage() {
   return (
     <div className="page page-home">
       <FilmOpening />
+      <section className="home-results" aria-label="What we measured">
+        <Facts />
+      </section>
       <StartHere onPick={pick} />
       <PageRing meta="Keep going" onPick={pick} />
       <Close />

@@ -88,13 +88,32 @@ function holdAnchor(el: Element) {
   setTimeout(stop, 1600);
 }
 
+/** The element with this id once it exists, or null after `ms`. */
+function appears(id: string, ms: number): Promise<HTMLElement | null> {
+  return new Promise((resolve) => {
+    const now = document.getElementById(id);
+    if (now) return resolve(now);
+    const mo = new MutationObserver(() => {
+      const el = document.getElementById(id);
+      if (el) { mo.disconnect(); clearTimeout(t); resolve(el); }
+    });
+    const t = setTimeout(() => { mo.disconnect(); resolve(null); }, ms);
+    mo.observe(document.body, { childList: true, subtree: true });
+  });
+}
+
 /** After a page has rendered: where to stand, where focus goes, what the tab and screen reader say. */
 function land(r: Route, y: number | undefined, moveFocus: boolean) {
   document.title = r.page.title;
   const el = target(r.hash);
   if (y !== undefined) void scrollToY(y, { instant: true });
   else if (el) { void scrollToElement(el, { instant: true }); holdAnchor(el); }
-  else void scrollToY(0, { instant: true });
+  else {
+    void scrollToY(0, { instant: true });
+    // A section that mounts a moment after the page (a lazy panel, e.g. /research#moon): wait for it briefly,
+    // then go there, unless the visitor has already moved on to another page.
+    if (r.hash && r.hash !== "top") void appears(r.hash, 2000).then((late) => { if (late && route.key === r.key) { void scrollToElement(late, { instant: true }); holdAnchor(late); } });
+  }
   // scroll-driven pieces measure themselves on the new page at once
   dispatchEvent(new Event("scroll"));
   if (moveFocus) {

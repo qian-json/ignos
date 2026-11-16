@@ -179,6 +179,21 @@ const C = {
   },
 };
 
+// Hardware group, in the challenge statement's own grouping ("ACME's six experiments share modular ACME
+// hardware in the Combustion Integrated Rack (CIR); FLEX, FLEX-2, CFI burn droplets in the Multi-user
+// Droplet Combustion Apparatus (MDCA) in the CIR; BASS, BASS-II, SPICE, SLICE in the Microgravity Science
+// Glovebox (MSG) with the fan-driven SPICE flow duct"). Read from each record's hardware / platform text;
+// the matched phrase is kept, and the build fails if a record matches no rule.
+const HARDWARE = [
+  [/Cygnus/, "platform", "saffire", "Saffire module on a Cygnus cargo ship"],
+  [/Multi-user Droplet Combustion Apparatus \(MDCA\)/, "hardware", "cir_mdca", "CIR · droplet apparatus (MDCA)"],
+  [/ACME (?:chamber )?insert/, "hardware", "cir_acme", "CIR · ACME burners"],
+  [/(?:BASS|SPICE)[\w -]*flow duct/, "hardware", "msg_duct", "MSG · SPICE flow duct"],
+  [/Microgravity Science Glovebox \(MSG\)/, "platform", "msg_other", "MSG · other"],
+  [/EXPRESS rack/, "platform", "express", "ISS EXPRESS rack"],
+  [/^Ground/, "platform", "ground", "Ground lab or computation"],
+];
+
 // gravity text -> values in g (0 = microgravity, 1 = Earth). Checked against the record's text.
 const GRAVITY = [
   [/^microgravity \((ISS|free-flying Cygnus)\)/, [0], "flight"],
@@ -245,6 +260,9 @@ const conditions = src.investigations.map((rec) => {
   const c = C[acc];
   const g = GRAVITY.find(([re]) => re.test(rec.gravity));
   if (!g) fail(`${acc}: no gravity rule for "${rec.gravity}"`);
+  const hw = HARDWARE.find(([re, field]) => re.test(String(rec[field] ?? "")));
+  if (!hw) fail(`${acc}: no hardware rule for "${rec.hardware}" / "${rec.platform}"`);
+  const hwText = String(rec[hw[1]]).match(hw[0])[0];
   const [fuelPhase, fuelText, fuelNote] = c.fuel;
   if (!rec.fuel_sample.includes(fuelText)) fail(`${acc}: "${fuelText}" is not in fuel_sample`);
   const not_reported = {};
@@ -256,6 +274,9 @@ const conditions = src.investigations.map((rec) => {
     acronym: rec.acronym,
     kind: rec.investigation_type.startsWith("Ground") ? "ground" : "flight",
     combustion: c.combustion,
+    hardware_group: hw[2],
+    hardware_label: hw[3],
+    hardware_source: { field: hw[1], text: hwText },
     gravity_g: g[1],
     gravity_source: { field: "gravity", text: rec.gravity, reading: g[2] },
     o2_pct: c.o2 ? range(rec, acc, c.o2, "%") : null,

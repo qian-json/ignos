@@ -1,0 +1,118 @@
+{
+  "_note": "Written with AI assistance (Claude Code). Habitat atmospheres, each number typed from the quoted source; scripts/habitat-atmospheres.test.ts checks every number appears in its quote, and the FM2 and ICES quotes against the papers' page text (ICES only where its pages are present). Context for the habitat page, not a measurement.",
+  "sources": {
+    "challenge": {
+      "title": "Flame in Freefall, NASA Space Apps Challenge 2026",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/",
+      "retrieved": "2026-11-16"
+    },
+    "fm2_2026": {
+      "title": "Ferkul et al., LPSC 2026 slides, Material Flammability at Lunar and Martian Gravity (FM2)",
+      "url": "https://ntrs.nasa.gov/citations/20260001966",
+      "page": 26
+    },
+    "ices2025": {
+      "title": "Urban, Olson, Dietrich et al., ICES-2025-392",
+      "url": "https://ntrs.nasa.gov/citations/20250002114",
+      "page": 6
+    }
+  },
+  "atmospheres": [
+    {
+      "id": "earth",
+      "label": "Earth air, sea level",
+      "o2_pct": 21,
+      "pressure_psi": 14.7,
+      "quotes": [
+        {
+          "for": "o2_pct",
+          "source": "fm2_2026",
+          "text": "SIBAL fabric in 21% O2 balance N2 at 14.7 psi"
+        },
+        {
+          "for": "pressure_psi",
+          "source": "challenge",
+          "text": "where the Earth’s pressure at sea level is 14.7 psi"
+        }
+      ]
+    },
+    {
+      "id": "spacesuit",
+      "label": "Spacesuit",
+      "o2_pct": 100,
+      "pressure_psi": 4.3,
+      "quotes": [
+        {
+          "for": "o2_pct pressure_psi",
+          "source": "challenge",
+          "text": "spacesuits are filled with 100% oxygen to only 4.3 psi"
+        }
+      ]
+    },
+    {
+      "id": "moon_base",
+      "label": "Planned Moon base and rovers",
+      "o2_pct_at_least": 30,
+      "pressure_psi_at_most": 10.2,
+      "quotes": [
+        {
+          "for": "o2_pct_at_least pressure_psi_at_most",
+          "source": "challenge",
+          "text": "The intermediate oxygen concentration used on the Moon will likely be 30% or greater, with a corresponding pressure of 10.2 psi or less."
+        },
+        {
+          "for": "context",
+          "source": "challenge",
+          "text": "Compared to Earth’s atmosphere, that’s more than a 40% increase in the oxygen concentration making materials much more flammable."
+        }
+      ]
+    },
+    {
+      "id": "fm2_test",
+      "label": "FM2's planned lunar test atmosphere",
+      "o2_pct": 34,
+      "pressure_psi": 8.2,
+      "quotes": [
+        {
+          "for": "o2_pct pressure_psi",
+          "source": "fm2_2026",
+          "text": "PMMA rod in 34% O2 balance N2 at 8.2 psi"
+        }
+      ]
+    },
+    {
+      "id": "ices_tests",
+      "label": "NASA's lunar-gravity flammability tests (ICES-2025-392)",
+      "pressure_psi": 8.2,
+      "quotes": [
+        {
+          "for": "pressure_psi",
+          "source": "ices2025",
+          "text": "the planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia)"
+        }
+      ]
+    }
+  ],
+  "context_quotes": [
+    {
+      "id": "no_partial_g",
+      "source": "challenge",
+      "text": "there is currently no partial-gravity combustion data available in PSI."
+    },
+    {
+      "id": "bound",
+      "source": "challenge",
+      "text": "Microgravity and normal-gravity results could bound what occurs at intermediate gravity levels."
+    },
+    {
+      "id": "efield",
+      "source": "challenge",
+      "text": "Partial gravity was mimicked in ACME’s Electric-Field Effects on Laminar Diffusion Flames (E-FIELD Flames) experiment through the effect of the electric field on the ions that naturally occur in flames."
+    },
+    {
+      "id": "future",
+      "source": "challenge",
+      "text": "We expect such data will be added in the future, for example from the Lunar-g Combustion Investigation (LUCI) and the Flammability of Materials on the Moon (FM2) experiment."
+    }
+  ]
+}

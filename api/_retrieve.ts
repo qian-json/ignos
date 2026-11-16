@@ -129,6 +129,8 @@ function rankingFor(question: string[]): IndexPassage | null {
   let id: string | null = null;
   if (has("segment", "step", "test", "match", "matched", "closely", "agreement", "error", "accurate", "accuracy")) id = "spread_rates:ranking";
   if (has("material", "materials", "gap", "p213", "pmma", "polycarbonate", "nomex", "cotton", "flammable", "flammability")) id = "moongap:ranking";
+  // "least / lowest oxygen", "lowest limit": the lunar-limit order, not the gap order
+  if (id === "moongap:ranking" || has("lunar")) if (has("least", "lowest", "limit", "minimum") && !has("gap")) id = "moongap:ranking-lunar-limit";
   if (has("investigation", "experiment", "psi", "studies", "study")) {
     id = has("mars")
       ? "investigations:ranking-mars_base"
@@ -143,6 +145,7 @@ function rankingFor(question: string[]): IndexPassage | null {
               : "investigations:ranking-total";
   }
   if (!id && has("lunar")) id = "moongap:ranking";
+  if (id === "moongap:ranking" && has("least", "lowest", "limit", "minimum") && !has("gap")) id = "moongap:ranking-lunar-limit";
   return id ? (ASK_INDEX.find((p) => p.citation.kind === "row" && p.citation.id === id) ?? null) : null;
 }
 
@@ -172,7 +175,7 @@ export function retrieve(ask: AskRequest, queryVector: Float32Array | null = nul
     take(ranking);
     // The rows behind a ranking come along, so the gate can check its numbers against them.
     const rankId = ranking?.citation.kind === "row" ? ranking.citation.id : "";
-    if (rankId === "moongap:ranking") {
+    if (rankId === "moongap:ranking" || rankId === "moongap:ranking-lunar-limit") {
       for (const d of index) if (d.passage.kind === "moongap" && d.passage.citation.kind === "row" && d.passage.citation.id !== "moongap:caveats") take(d.passage);
     }
     if (rankId === "spread_rates:ranking") {

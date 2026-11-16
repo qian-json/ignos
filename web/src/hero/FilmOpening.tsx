@@ -58,6 +58,22 @@ function Readout({ shown }: { shown: Shown }) {
   );
 }
 
+/** A real flame on the first screen: NASA's own BASS-II photos of test B12 as a short loop (display only).
+ * Muted, looping and inline so it plays on phones; under reduced motion only its poster frame shows. */
+function RealFlame() {
+  const still = prefersReduced() || (typeof document !== "undefined" && motionPaused());
+  return (
+    <figure className="real-flame">
+      {still ? (
+        <img src="/visuals/B12_flame_clip_poster.jpg" alt="A real flame on an acrylic rod aboard the space station, from NASA BASS-II photos" width={1280} height={720} />
+      ) : (
+        <video src="/visuals/B12_flame_clip_web.mp4" poster="/visuals/B12_flame_clip_poster.jpg" autoPlay muted loop playsInline preload="metadata" width={1280} height={720} aria-label="A real flame on an acrylic rod aboard the space station, from NASA BASS-II photos" />
+      )}
+      <figcaption>A real flame aboard the space station. NASA BASS-II photos (PSI-25); time-lapse, in-between frames blended.</figcaption>
+    </figure>
+  );
+}
+
 const CHAPTERS: FilmChapter[] = [
   {
     atBeat: "approach",
@@ -67,10 +83,12 @@ const CHAPTERS: FilmChapter[] = [
           <span><span className="ln" style={{ ["--i" as string]: 0 }}><span>Fans off stops</span></span> <span className="ln" style={{ ["--i" as string]: 1 }}><span>fire in orbit.</span></span></span>{" "}
           <span className="pay"><span className="ln" style={{ ["--i" as string]: 2 }}><span>On the Moon,</span></span> <span className="ln" style={{ ["--i" as string]: 3 }}><span>it may not.</span></span></span>
         </h1>
-        <p className="hero3d-lede">We measured space-station flames from NASA's photos and asked what changes on the Moon.</p>
+        <p className="hero3d-lede">Ignos re-measures flames from NASA's space-station photos and shows which of NASA's fire tests apply to your habitat.</p>
         <div className="hero3d-actions">
           <a className="btn primary" href="/habitats">Pick a habitat</a>
+          <a className="btn ghost" href="/research">See a real flame</a>
         </div>
+        <RealFlame />
       </div>
     ),
   },
