@@ -7,6 +7,8 @@ NASA's space-station fire archive (PSI-25, BASS-II) has raw photos of flames bur
 
 **Live site:** https://ignos.earth (health check at `/api/health`)
 
+**Judged version:** the code submitted for NASA Space Apps 2026 judging (2026-11-15, 11:21 PM CST) is tag [`submitted-2026-11-15`](https://github.com/qian-json/ignos/tree/submitted-2026-11-15). Later commits fix display bugs on phones and small screens and make small fixes to Ask. They add no new findings.
+
 ## What is in the repo
 
 | Path | What |
