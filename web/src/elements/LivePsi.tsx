@@ -51,7 +51,7 @@ export function LivePsi({ accession }: { accession: string }) {
   return (
     <p className="live-psi" aria-live="polite">
       <span className="live-dot" aria-hidden="true" /> <strong>Live from NASA PSI</strong>
-      {" · "}{d.files} files{d.total_bytes ? ` · ${gb(d.total_bytes)}` : ""}
+      {" · "}{d.files} {d.files === 1 ? "file" : "files"}{d.total_bytes ? ` · ${gb(d.total_bytes)}` : ""}
       {d.newest_file ? ` · newest file ${day(d.newest_file)}` : ""}
       {d.license ? ` · ${d.license}` : ""}
       {d.publications ? ` · ${d.publications} publications` : ""}

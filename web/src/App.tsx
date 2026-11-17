@@ -120,7 +120,7 @@ export function App() {
         </header>
         <SectionDock items={DOCK} all={ALL} active={active} />
         <main id="top" data-page={page}>
-          <Suspense fallback={<div className="page-loading" aria-busy="true" />}><View key={route.key} /></Suspense>
+          <Suspense fallback={<div className="page-loading" aria-busy="true" data-bar-tone={page === "story" || page === "model" ? "dark" : undefined} />}><View key={route.key} /></Suspense>
         </main>
         <IdleGhost />
         <footer className="foot">

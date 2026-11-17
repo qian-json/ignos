@@ -108,7 +108,6 @@ function CrossCheckChart() {
 
 export function ModelPage() {
   const ref = useArrive<HTMLDivElement>();
-  useEffect(() => { document.title = "The flame model · Ignos"; }, []);
   const logo = V.leave_one_group_out;
   const cross = V.cross_domain;
   const rc = V.remeasurement_cross_check;

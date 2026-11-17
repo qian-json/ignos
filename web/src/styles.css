@@ -724,6 +724,7 @@ section.method { display: block; }
 .live-psi.is-loading .live-dot { background: var(--mute); }
 @keyframes live-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+html[data-motion="paused"] .live-dot { animation: none; }
 
 
 /* Real flame + results band on Home, right after the film (hero/FilmOpening.tsx RealFlame, hero/Overview.tsx Facts) */

@@ -28,3 +28,5 @@
   .ff-controls .seg button { flex: 1; padding: 4px 6px; white-space: nowrap; }
 }
 @media (prefers-reduced-motion: reduce) { .ff-stage canvas, .ff-still, .ff-label { transition: none; } }
+/* Pause all motion: the candle snaps, so its label and fades snap with it */
+html[data-motion="paused"] :is(.ff-stage canvas, .ff-still, .ff-label) { transition: none; }

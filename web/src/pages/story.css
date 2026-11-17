@@ -29,6 +29,10 @@
 .page-story .src:hover { color: #fff; border-bottom-color: var(--pay); }
 .page-story .btn.ghost { color: var(--on-night); border-color: #3a4359; }
 @media (hover: hover) and (pointer: fine) { .page-story .btn.ghost:hover { background: #1c2438; } }
+/* the button skin (stretch-pill.css) paints from --sk-bg/--sk-line and ignores background: restate Story's
+   dark ghost colours there, or a hovered ghost button turns near-white text on a pale pill */
+html[data-skins] .page-story .btn.ghost { --sk-line: #3a4359; }
+@media (hover: hover) and (pointer: fine) { html[data-skins] .page-story .btn.ghost:not(:disabled):hover { --sk-bg: #1c2438; } }
 .page-story .caption { color: var(--on-night-mute); }
 /* ---------- head and the scene rail ---------- */
 .story-head { position: relative; max-width: var(--st-max); margin: 0 auto; padding: clamp(40px, 8vh, 88px) var(--gutter) clamp(32px, 5vh, 56px); display: grid; gap: 20px; justify-items: start; }
@@ -78,7 +82,7 @@
 .iss-read dt { font: 400 11px/1.2 var(--mono); color: var(--on-night-mute); }
 .iss-read dd { margin: 2px 0 0; font-size: 15px; color: #fff; }
 .iss-t { font: 400 11px/1.4 var(--mono); color: var(--on-night-mute); }
-.live-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.page-story .live-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 /* wide screens: a thin, see-through strip along the stage's top edge, clear of the globe, its station marker
    and its label (as a box it covered about 45% of the globe); no backdrop blur, so the live globe still
    costs one draw per frame */
