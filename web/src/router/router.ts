@@ -64,6 +64,18 @@ function headingOf(el: Element | null | undefined): HTMLElement | null {
   const all = [...el.querySelectorAll<HTMLElement>("h1, h2, h3")];
   return all.find(seen) ?? all[0] ?? null;
 }
+/** The first heading in `root` a sighted reader can see, as soon as one appears (or null after `ms`). */
+function visibleHeading(root: Element, ms: number): Promise<HTMLElement | null> {
+  const find = () => [...root.querySelectorAll<HTMLElement>("h1, h2, h3")].find(seen) ?? null;
+  const first = find();
+  if (first) return Promise.resolve(first);
+  return new Promise((resolve) => {
+    const done = (h: HTMLElement | null) => { mo.disconnect(); clearTimeout(t); resolve(h); };
+    const mo = new MutationObserver(() => { const h = find(); if (h) done(h); });
+    const t = setTimeout(() => done(find()), ms);
+    mo.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["style", "hidden", "class"] });
+  });
+}
 function focusQuietly(el: HTMLElement | null) {
   if (!el) return;
   if (!el.hasAttribute("tabindex") && !el.matches("a[href], button, input, select, textarea")) el.setAttribute("tabindex", "-1");
@@ -120,7 +132,12 @@ function land(r: Route, y: number | undefined, moveFocus: boolean) {
   dispatchEvent(new Event("scroll"));
   if (moveFocus) {
     const main = document.querySelector("main");
-    focusQuietly(headingOf(el) || headingOf(main) || main);
+    const now = headingOf(el) || headingOf(main) || main;
+    // On a first (cold) visit the page chunk is still loading: React keeps the OLD page in the DOM with
+    // display:none, so the only heading found can be the old, hidden one, and focus() on it does nothing
+    // (focus then stays on the clicked link). Wait, bounded, for a heading a sighted reader can see.
+    if (now && main && !seen(now)) void visibleHeading(main, 3000).then((h) => { if (h && route.key === r.key) focusQuietly(h); });
+    else focusQuietly(now);
     announce(r.page.id === "home" ? "Ignos, home page" : `${r.page.label} page`);
   }
 }
