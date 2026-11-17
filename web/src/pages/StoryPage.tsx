@@ -12,6 +12,7 @@ import { Num } from "../Num";
 import { FACTS, SPREAD_FILE, S1_FILE, cell, edges, fmt, median, spread, validated } from "../data";
 import { useMotion } from "../motion";
 import type { LiveFix, SpaceMode, SpaceScene } from "../three/spaceScene";
+import { useNearViewport } from "../three/useNearViewport";
 import "./story.css";
 
 // ---------- the data every scene reads ----------
@@ -118,32 +119,42 @@ function SpaceView({ mode, iss, children }: { mode: SpaceMode; iss?: Iss; childr
     scene.current?.setLive(s?.kind === "live" ? s.fix : null, s?.kind === "live" ? s.trail : []);
   };
 
+  // the 3D scene: alive only while the view is near the viewport (and WebGL 2 exists), put away (its GPU
+  // context released) once the reader is far from it; it draws only while some of it is on screen (built
+  // near, it is ready the moment it scrolls in)
+  const near = useNearViewport(host, { enter: "240px" });
+  const noGL = useRef(false);
   useEffect(() => {
-    const el = host.current!;
-    let dead = false, inView = false, loading = false;
-    const io = new IntersectionObserver(async ([e]) => {
-      inView = e.isIntersecting;
-      if (scene.current) { scene.current.setVisible(inView); return; }
-      if (!inView || loading) return;
-      loading = true;
-      const mod = await import("../three/spaceScene");
-      if (dead) return;
-      if (!mod.webglAvailable()) { setGl("off"); return; }
+    const el = host.current;
+    if (!el || !near || noGL.current) return;
+    let dead = false, inView = false;
+    const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; scene.current?.setVisible(inView); });
+    io.observe(el);
+    void (async () => {
+      // the flat view shows when the chunk fails to load, there is no WebGL 2, or the scene cannot start
       try {
+        const mod = await import("../three/spaceScene");
+        if (dead) return;
+        if (!mod.webglAvailable()) { noGL.current = true; setGl("off"); return; }
         const css = (n: string) => getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#93a8ff";
         scene.current = new mod.SpaceScene(el, {
           mode, still: state.current.paused,
           colors: { marker: css("--accent"), glow: css("--flame-glow"), grid: css("--pay") },
           labels: { earth: labels.earth.current, moon: labels.moon.current, iss: labels.iss.current },
+          onContext: (ok) => { if (!dead) setGl(ok ? "on" : "off"); },
         });
         push();
         scene.current.setVisible(inView);
         setGl("on");
-      } catch { setGl("off"); }
-    }, { rootMargin: "240px" });
-    io.observe(el);
+      } catch {
+        scene.current = null;
+        el.querySelectorAll("canvas").forEach((c) => c.remove());
+        noGL.current = true;
+        if (!dead) setGl("off");
+      }
+    })();
     return () => { dead = true; io.disconnect(); scene.current?.dispose(); scene.current = null; };
-  }, [mode]);
+  }, [mode, near]);
 
   useEffect(push, [iss]);
   useEffect(() => { scene.current?.setStill(paused); }, [paused]);
@@ -273,19 +284,21 @@ function AskWalk() {
   const verified = numbers.filter((n) => n.status === "verified").length;
   const stage = done ? 3 : t >= checkAt ? 2 : t >= T.answer ? 1 : t >= T.retrieve ? 0 : -1;
 
-  const answer: ReactNode[] = [];
-  if (typed < text.length) answer.push(text.slice(0, typed), <span key="c" className="caret" aria-hidden="true" />);
-  else {
+  /** The whole answer with its numbers marked up to `upTo`; with `plain`, no links (the sizing copy). */
+  const full = (upTo: number, plain = false): ReactNode[] => {
+    const out: ReactNode[] = [];
     let at = 0;
     numbers.forEach((n, i) => {
-      answer.push(text.slice(at, n.start!));
+      out.push(text.slice(at, n.start!));
       const s = text.slice(n.start!, n.end!);
-      const cls = i >= marked ? "w-num" : n.status === "verified" ? "w-num ok" : "w-num no";
-      answer.push(i < marked && n.status === "verified" && n.source ? <span key={i} className={cls}><Num source={n.source} label={`${s}, verified`}>{s}</Num></span> : <span key={i} className={cls}>{s}</span>);
+      const cls = i >= upTo ? "w-num" : n.status === "verified" ? "w-num ok" : "w-num no";
+      out.push(!plain && i < upTo && n.status === "verified" && n.source ? <span key={i} className={cls}><Num source={n.source} label={`${s}, verified`}>{s}</Num></span> : <span key={i} className={cls}>{s}</span>);
       at = n.end!;
     });
-    answer.push(text.slice(at));
-  }
+    out.push(text.slice(at));
+    return out;
+  };
+  const answer: ReactNode[] = typed < text.length ? [text.slice(0, typed), <span key="c" className="caret" aria-hidden="true" />] : full(marked);
 
   return (
     <div className="walk" ref={box}>
@@ -294,24 +307,26 @@ function AskWalk() {
       <ol className="walk-steps">
         <li data-on={stage >= 0} data-done={stage > 0}>
           <span className="walk-k">1 · Retrieve sourced passages</span>
-          <ul className="walk-docs">{PASSAGES.slice(0, passages).map((p) => <li key={p.file}><code>{p.file}</code> {p.what}</li>)}</ul>
+          {/* every line is laid out from the start and shown in turn (data-on), so the page never grows while it plays */}
+          <ul className="walk-docs">{PASSAGES.map((p, i) => <li key={p.file} data-on={i < passages}><code>{p.file}</code> {p.what}</li>)}</ul>
         </li>
         <li data-on={stage >= 1} data-done={stage > 1}>
           <span className="walk-k">2 · Answer from those passages only</span>
-          {stage >= 1 && <p className="walk-a">{answer}</p>}
+          <p className="walk-a">
+            <span className="walk-a-fit" aria-hidden="true">{full(numbers.length, true)}</span>
+            <span className="walk-a-text">{stage >= 1 ? answer : null}</span>
+          </p>
         </li>
         <li data-on={stage >= 2} data-done={done}>
           <span className="walk-k">3 · Check every number against the data</span>
-          {stage >= 2 && (
-            <ul className="walk-checks">
-              {numbers.slice(0, marked).map((n, i) => (
-                <li key={i} className={n.status === "verified" ? "ok" : "no"}>
-                  <b className="num">{n.text}</b> {n.status === "verified" && n.source ? <>verified · <code>{"file" in n.source ? n.source.file : n.source.paper}</code></> : "not found in our data or sources: flagged"}
-                </li>
-              ))}
-            </ul>
-          )}
-          {done && <p className="walk-sum num">{verified} of {numbers.length} numbers verified{verified < numbers.length ? `; ${numbers.length - verified} flagged` : ""}</p>}
+          <ul className="walk-checks">
+            {numbers.map((n, i) => (
+              <li key={i} className={n.status === "verified" ? "ok" : "no"} data-on={stage >= 2 && i < marked}>
+                <b className="num">{n.text}</b> {n.status === "verified" && n.source ? <>verified · <code>{"file" in n.source ? n.source.file : n.source.paper}</code></> : "not found in our data or sources: flagged"}
+              </li>
+            ))}
+          </ul>
+          <p className="walk-sum num" data-on={done}>{verified} of {numbers.length} numbers verified{verified < numbers.length ? `; ${numbers.length - verified} flagged` : ""}</p>
         </li>
       </ol>
       <div className="walk-actions">

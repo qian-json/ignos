@@ -49,5 +49,7 @@ export function AskMorph({ phase, onOpen }: { phase: AskPhase; onOpen: () => voi
     return () => { m.destroy(); api.current = null; };
   }, []);
   useEffect(() => { api.current?.set(steps); }, [steps]);
-  return <div ref={root} className="amx" data-element="ask-morph" role="group" aria-label="Where your question is" hidden />;
+  // aria-live="off": the panel's answer area is a polite live region; the shape speaks only through its own
+  // role="status" line, so its step cards are not read out a second time as they animate in
+  return <div ref={root} className="amx" data-element="ask-morph" role="group" aria-label="Where your question is" aria-live="off" hidden />;
 }

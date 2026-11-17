@@ -1,7 +1,8 @@
 // Written with AI assistance (Claude Code)
 // The two motion switches every moving element obeys: the visitor's reduced-motion setting and the
-// site's Pause button (<html data-motion="paused">). watchMotion() calls back whenever either
-// changes, and when the tab is hidden or shown again.
+// site's Pause button. <html data-motion> is "paused" while either asks for stillness and "on" as soon
+// as neither does (motion.tsx keeps it in step with both, live). watchMotion() calls back whenever
+// either changes, and when the tab is hidden or shown again.
 import { useEffect, useState } from "react";
 
 const RMQ = "(prefers-reduced-motion: reduce)";

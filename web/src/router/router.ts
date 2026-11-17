@@ -111,8 +111,10 @@ function land(r: Route, y: number | undefined, moveFocus: boolean) {
   else {
     void scrollToY(0, { instant: true });
     // A section that mounts a moment after the page (a lazy panel, e.g. /research#moon): wait for it briefly,
-    // then go there, unless the visitor has already moved on to another page.
-    if (r.hash && r.hash !== "top") void appears(r.hash, 2000).then((late) => { if (late && route.key === r.key) { void scrollToElement(late, { instant: true }); holdAnchor(late); } });
+    // then go there, unless the visitor has already moved on to another page or scrolled this one.
+    // Not if the reader has already started scrolling this page: a late jump would yank them back.
+    const y0 = scrollY;
+    if (r.hash && r.hash !== "top") void appears(r.hash, 2000).then((late) => { if (late && route.key === r.key && Math.abs(scrollY - y0) <= 4) { void scrollToElement(late, { instant: true }); holdAnchor(late); } });
   }
   // scroll-driven pieces measure themselves on the new page at once
   dispatchEvent(new Event("scroll"));

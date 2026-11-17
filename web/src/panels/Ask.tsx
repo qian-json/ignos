@@ -8,6 +8,7 @@ import { FACTS, MATERIAL_NAMES, moongap, spread, tableS1, validated } from "../d
 import { AskMorph, type AskPhase } from "../elements/AskMorph";
 import { VerifySpark } from "../elements/VerifySpark";
 import { takePendingAsk } from "../router/router";
+import { revealElement } from "../router/scroll";
 
 /** The answer text with every checked number marked: verified with its source, or underlined and labelled as not found. */
 function Gated({ text, numbers }: { text: string; numbers: GateNumber[] }) {
@@ -48,6 +49,9 @@ function Summary({ gate }: { gate: AskResponse["gate"] }) {
 }
 
 // Example sentences are built from the data files, so the page itself types no science.
+/** A copy of the site served from this machine (vite dev or preview), where /api only works with `npm run dev:api`. */
+const LOCAL_HOST = /^(localhost|127\.0\.0\.1|\[::1\])$/;
+
 function examples(): { label: string; text: string }[] {
   const ok = spread.find(validated)!;
   const s1 = tableS1.find((r) => r.sample_id === ok.test_id && r.flow_cm_s === ok.flow_cm_s);
@@ -97,6 +101,9 @@ export function Ask() {
       const r = await fetch("/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(subject ? { question, mode: m, subject } : { question, mode: m }) });
       const body = await r.json().catch(() => null);
       if (r.ok && body) setRes(body as AskResponse);
+      // no JSON at all: this copy of the site has no Ask server (a static preview answers 404; a local
+      // `vite` with nothing behind its /api proxy answers 5xx), so say where Ask runs instead of "failed"
+      else if (!body && (r.status === 404 || (LOCAL_HOST.test(location.hostname) && r.status >= 500))) setErr({ code: "no_server", message: "" });
       else setErr(body?.error ?? { code: String(r.status), message: "The Ask service didn't answer." });
     } catch {
       setErr({ code: "network", message: "Couldn't reach the Ask service. Check your connection and try again." });
@@ -114,13 +121,14 @@ export function Ask() {
   }, [busy, res, err, asked]);
   const openData = useCallback(() => {
     const box = document.querySelector<HTMLElement>("#ask .open-data");
-    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    box?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "nearest" });
+    // the site's own glide, with the least travel (eased; at once under reduced motion or Pause)
+    if (box) void revealElement(box);
     box?.querySelector<HTMLElement>("a")?.focus({ preventScroll: true });
   }, []);
 
   const run = useCallback((r: AskRequest) => { setQ(r.question); setMode(r.mode); void ask(r.question, r.mode, r.subject); }, [ask]);
-  const submit = (e: FormEvent) => { e.preventDefault(); if (q.trim() && !busy) void ask(q, mode); };
+  // summarize needs a subject card, which only "Ask about this" sends: a typed question goes as interpret
+  const submit = (e: FormEvent) => { e.preventDefault(); if (q.trim() && !busy) void ask(q, mode === "summarize" ? "interpret" : mode); };
 
   // Questions typed in the top bar or sent by "Ask about this" arrive here; so does a shared link (?ask=...).
   // One asked on another page waits in the router until this panel mounts (the page loads lazily).
@@ -138,29 +146,32 @@ export function Ask() {
     <section className="panel askblock" id="ask" aria-labelledby="ask-h">
       <div className="panel-head">
         <h2 id="ask-h" className="t-display-l">Ask NASA's fire data</h2>
-        <p>Google Gemini drafts each answer from NASA's data and papers only; code checks every number against a source and flags any it cannot match.</p>
       </div>
       <form className="askband-form" role="search" onSubmit={submit}>
         <input type="search" value={q} onChange={(e) => setQ(e.target.value)} maxLength={500}
-          placeholder="e.g. Which materials burn on less oxygen in lunar gravity?" aria-label="Your question" />
+          placeholder="e.g. Does turning off the fans put out a fire in orbit?" aria-label="Your question" />
         <div className="seg" role="group" aria-label="Mode">
-          {(["summarize", "interpret", "rank"] as const).map((m) => <button key={m} type="button" aria-pressed={mode === m} onClick={() => setMode(m)}>{{ summarize: "Summarize", interpret: "Interpret", rank: "Rank" }[m]}</button>)}
+          {/* after "Ask about this" (summarize), a typed question goes as interpret, so Answer shows pressed */}
+          {(["interpret", "rank"] as const).map((m) => <button key={m} type="button" aria-pressed={(mode === "summarize" ? "interpret" : mode) === m} onClick={() => setMode(m)}>{{ interpret: "Answer", rank: "Rank" }[m]}</button>)}
         </div>
         <button className="btn" type="submit" disabled={busy || !q.trim()}>{busy ? "Checking the sources…" : "Ask"}</button>
       </form>
       <div className="askchips" role="group" aria-label="Example questions">
-        {RESEARCH_QUESTIONS.map((r) => <button key={r.question} type="button" className="chip" title={r.question} disabled={busy} onClick={() => run(r)}>{r.label}</button>)}
+        {RESEARCH_QUESTIONS.map((r) => <button key={r.question} type="button" className="chip" title={r.question} aria-disabled={busy} onClick={() => { if (!busy) run(r); }}>{r.label}</button>)}
       </div>
-      <div className="ask-out">
+      {/* the AI disclosure, under the examples so the form and its modes stay on a phone's first screen */}
+      <p className="caption ask-ai">Google Gemini drafts each answer from NASA's data and papers only; code checks every number against a source and flags any it cannot match.</p>
+      <div className="ask-out" aria-live="polite" aria-busy={busy}>
         <AskMorph phase={phase} onOpen={openData} />
         {err && (
-          <p className="notice">{err.code === "not_configured" ? <>Ask is paused on this site. Meanwhile, <a href="/method">Methods and sources</a> runs the same number checker in your browser.</> : err.message}
+          <p className="notice">{err.code === "no_server" ? <>Ask answers on the live site, <a href="https://ignos.earth/ask">ignos.earth/ask</a>. This copy has the pages without the Ask server{LOCAL_HOST.test(location.hostname) ? <> (to run it here, start <code>npm run dev:api</code> next to the site)</> : null}.</> : err.code === "not_configured" ? <>Ask is paused on this site. Meanwhile, <a href="/method">Methods and sources</a> runs the same number checker in your browser.</> : err.code === "invalid_request" || err.code === "invalid_json" ? "That question couldn't be sent. Try rephrasing it, or pick an example above." : err.message}
             {/* the model is often briefly busy (503): one click asks the same question again */}
-            {err.code !== "not_configured" && last.current && <> <button type="button" className="btn ghost" disabled={busy} onClick={() => { const r = last.current; if (r) void ask(r.question, r.mode, r.subject); }}>Try again</button></>}
+            {err.code !== "not_configured" && err.code !== "no_server" && last.current && <> <button type="button" className="btn ghost" disabled={busy} onClick={() => { const r = last.current; if (r) void ask(r.question, r.mode, r.subject); }}>Try again</button></>}
           </p>
         )}
         {res && (
           <div className="downlink" key={res.answer.length + ":" + res.gate.checked} style={{ display: "grid", gap: 8 }}>
+            {res.status === "not_in_data" && <p className="caption">Try one of the example questions above. Each one is answered from our sources.</p>}
             {res.mock && <p className="notice">Placeholder answer: this deployment has no language-model key.</p>}
             <VerifySpark verified={res.gate.verified > 0} result={`${res.answer.length}:${verifiedKey(res.gate.numbers)}`} delay={1150}>
               <Gated text={res.answer} numbers={res.gate.numbers} />

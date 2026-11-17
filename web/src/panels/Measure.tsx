@@ -94,13 +94,13 @@ export function Measure() {
         <Plot className="plot tall" label="Parity chart: our spread rate against NASA's published rate for every fan step of every test" data={parity.data} layout={parity.layout} />
       </figure>
 
-      <More summary="Details" open>
+      <More summary="Details">
       <div className="measure-more">
         <div className="measure-about">
           <p className="caption">Our tracker follows the flame's leading edge through every raw photo of a space-station rod test and fits one speed per fan setting. NASA's rate is from Link et al. 2018, Table S1. On the diagonal line we match exactly; bars are 95% intervals.</p>
-          <details className="overlay" open>
+          <details className="overlay">
             <summary>Watch what the tracker saw</summary>
-            <video src={`/overlays/${test}.mp4`} controls muted playsInline preload="metadata" aria-label={`Tracker overlay video for test ${test}`} />
+            <video src={`/overlays/${test}.mp4`} controls muted playsInline preload="none" aria-label={`Tracker overlay video for test ${test}`} />
             <p className="caption">Solid line: the edge used for our rates. Dashed line: the blue-light front, shown as a check only. One frame per photo.</p>
           </details>
         </div>

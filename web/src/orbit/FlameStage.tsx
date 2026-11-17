@@ -3,6 +3,7 @@
 // Mounts the point engine on screen; without WebGL 2 it shows a drawn still of the same flame.
 import { useEffect, useRef, useState } from "react";
 import { flameField, hasWebGL2, type FlameField } from "./flamePoints";
+import { useNearViewport } from "../three/useNearViewport";
 
 /** What the picture shows at a fan setting (0 lowest, 1 highest), for the stage's label. */
 function describe(f: number) {
@@ -13,23 +14,32 @@ function describe(f: number) {
 
 export function FlameStage({ flow }: { flow: number }) {
   const host = useRef<HTMLDivElement>(null);
-  const canvas = useRef<HTMLCanvasElement>(null);
   const engine = useRef<FlameField | null>(null);
-  const [gl] = useState(hasWebGL2);
+  const [gl, setGl] = useState(hasWebGL2);
+  const flowNow = useRef(flow);
+  flowNow.current = flow;
+  // the engine (and its GPU context) lives only while the stage is near the viewport
+  const near = useNearViewport(host);
 
   useEffect(() => {
-    if (!gl || !host.current || !canvas.current) return;
-    engine.current = flameField({ host: host.current, canvas: canvas.current, flow });
-    return () => { engine.current?.destroy(); engine.current = null; };
-    // the engine is made once; flow changes go through setFlow below
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gl]);
+    const h = host.current;
+    if (!gl || !h || !near) return;
+    // a fresh canvas each time: a destroyed engine gives its GPU context back, so its canvas is never reused
+    const cv = document.createElement("canvas");
+    cv.setAttribute("aria-hidden", "true");
+    h.appendChild(cv);
+    try { engine.current = flameField({ host: h, canvas: cv, flow: flowNow.current }); } catch { engine.current = null; }
+    // the engine could not start: show the drawn still instead of an empty frame
+    if (!engine.current) { cv.remove(); setGl(false); return; }
+    return () => { engine.current?.destroy(); engine.current = null; cv.remove(); };
+    // flow changes go through setFlow below, not a new engine
+  }, [gl, near]);
   useEffect(() => { engine.current?.setFlow(flow); }, [flow]);
 
   return (
     <figure className="flame-stage" data-element="flame-points">
       <div className="flame-canvas" ref={host} role="img" aria-label={`Illustration of a flame on a rod in orbit, ${describe(flow)}`}>
-        {gl ? <><span className="flame-rod" aria-hidden="true" /><canvas ref={canvas} aria-hidden="true" /></> : <FlameStill flow={flow} />}
+        {gl ? <span className="flame-rod" aria-hidden="true" /> : <FlameStill flow={flow} />}
       </div>
       <figcaption className="caption">
         Drawn, not measured. The slider is the fan.

@@ -22,11 +22,11 @@ export function ResearchPage() {
       <PaperStrip />
       <div className="sheet">
         <Overview />
+        <Measure />
         <figure className="space-time card">
           <img src="/visuals/headline_tests_space_time_2x2.jpg" alt="Four panels, one per headline test (B16, B19, B12, P17): every NASA photo stacked in time, a bright diagonal band that turns from yellow to blue, with the tracked flame edge" width={1920} height={1200} loading="lazy" />
           <figcaption className="caption">The four tests behind the low-airflow headline (B16, B19, B12, P17), every NASA photo stacked in time. The bright diagonal is the flame; its slope is the spread rate. It turns from sooty yellow to blue as the airflow drops; the cyan line is our tracked flame edge. NASA BASS-II photos (PSI-25).</figcaption>
         </figure>
-        <Measure />
         <Orbit />
         <MoonGap />
         <HeadingRise />

@@ -13,7 +13,8 @@ function need(id: string, k: Key): number {
 }
 const label = (id: string) => atmospheres.atmospheres.find((a) => a.id === id)?.label ?? id;
 
-const W = 600, H = 300, L = 46, R = 14, T = 14, B = 40;
+// L leaves room for "100%" at the phone tick size (22 units, styles.css), which clipped to "00%" at 46
+const W = 600, H = 300, L = 64, R = 14, T = 14, B = 40;
 const X_MAX = 16, Y_MAX = 100;
 const x = (psi: number) => L + (psi / X_MAX) * (W - L - R);
 const y = (pct: number) => T + (1 - pct / Y_MAX) * (H - T - B);
@@ -38,7 +39,8 @@ export function AtmosphereCard() {
     <figure className="atm card" aria-labelledby="atm-h">
       <h3 id="atm-h">Habitat air against NASA's lunar-gravity limits</h3>
       <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Oxygen percent against pressure. Planned Moon base: ${moonO2}% oxygen or more at ${moonP} psi or less. Earth air ${earth.o2}% at ${earth.p} psi; spacesuit ${suit.o2}% at ${suit.p} psi. NASA's lunar-gravity limits for ${limits.length} materials, all at or below ${top}% at ${icesP} psi.`}>
-        {[0, 4, 8, 12, 16].map((p) => <g key={p}><line x1={x(p)} x2={x(p)} y1={T} y2={H - B} className="atm-grid" /><text x={x(p)} y={H - B + 16} className="atm-tick" textAnchor="middle">{p}</text></g>)}
+        {/* no "0" under the origin: it ran into the y axis's "0%" */}
+        {[0, 4, 8, 12, 16].map((p) => <g key={p}><line x1={x(p)} x2={x(p)} y1={T} y2={H - B} className="atm-grid" />{p > 0 && <text x={x(p)} y={H - B + 16} className="atm-tick" textAnchor="middle">{p}</text>}</g>)}
         {[0, 25, 50, 75, 100].map((p) => <g key={p}><line x1={L} x2={W - R} y1={y(p)} y2={y(p)} className="atm-grid" /><text x={L - 6} y={y(p) + 4} className="atm-tick" textAnchor="end">{p}%</text></g>)}
         <text x={(L + W - R) / 2} y={H - 6} className="atm-axis" textAnchor="middle">total pressure (psi)</text>
         <rect x={x(0)} y={y(Y_MAX)} width={x(moonP) - x(0)} height={y(moonO2) - y(Y_MAX)} className="atm-moon" />

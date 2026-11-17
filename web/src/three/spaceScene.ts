@@ -4,6 +4,9 @@
 // view a stylized Moon beside it. Not to scale. The only real values here arrive through setLive():
 // the station's live position and the subsolar point, both from the live feed the page fetched.
 import * as THREE from "three";
+import { watchContext } from "./webgl";
+
+export { webgl2Available as webglAvailable } from "./webgl";
 
 export type SpaceMode = "earth" | "moon";
 export interface LiveFix { lat: number; lon: number; sunLat: number | null; sunLon: number | null }
@@ -13,6 +16,8 @@ export interface SpaceOptions {
   colors: { marker: string; glow: string; grid: string };
   /** HTML labels the scene keeps pinned to its bodies: earth, moon, iss. */
   labels: Partial<Record<"earth" | "moon" | "iss", HTMLElement | null>>;
+  /** Called with false when the GPU context is lost (show the flat view) and true once it is back. */
+  onContext?: (ok: boolean) => void;
 }
 
 /** The most fixes the trail keeps. */
@@ -137,12 +142,23 @@ export class SpaceScene {
   private raf = 0; private last = 0; private time = 0;
   private visible = false; private ro: ResizeObserver;
   private disposables: { dispose(): void }[] = [];
+  private unwatch: () => void;
 
   constructor(private host: HTMLElement, private opts: SpaceOptions) {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "low-power" });
-    this.renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+    // capped at 1.5: the globe stays sharp and the page keeps its frame rate on laptop GPUs
+    this.renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
     this.renderer.domElement.setAttribute("aria-hidden", "true");
     host.prepend(this.renderer.domElement);
+    // a lost context shows the flat view; three.js rebuilds its GPU state on restore and drawing resumes
+    this.unwatch = watchContext(this.renderer.domElement, () => {
+      cancelAnimationFrame(this.raf);
+      this.raf = 0;
+      this.opts.onContext?.(false);
+    }, () => {
+      this.resize();
+      this.opts.onContext?.(true);
+    });
     const col = (c: string) => new THREE.Color(c);
     const sphere = new THREE.SphereGeometry(1, 96, 64);
     this.earthMat = new THREE.ShaderMaterial({
@@ -253,7 +269,9 @@ export class SpaceScene {
     const still = this.opts.still;
     let ty = this.yaw, tp = this.pitch;
     if (this.fix && this.opts.mode === "earth") {
-      ty = -Math.PI / 2 - THREE.MathUtils.degToRad(this.fix.lon) + 0.35;
+      // face the station, swaying slowly either side of it (a drawing choice), so the globe keeps
+      // drifting after the live fix arrives instead of locking into a still picture
+      ty = -Math.PI / 2 - THREE.MathUtils.degToRad(this.fix.lon) + 0.35 + Math.sin(this.time * 0.15) * 0.25;
       tp = THREE.MathUtils.degToRad(this.fix.lat) * 0.6;
     } else if (!still) ty += dt * 0.05;
     let dy = Math.atan2(Math.sin(ty - this.yaw), Math.cos(ty - this.yaw));
@@ -312,13 +330,10 @@ export class SpaceScene {
     cancelAnimationFrame(this.raf);
     this.raf = 0;
     this.ro.disconnect();
+    this.unwatch();
     this.disposables.forEach((d) => d.dispose());
     this.renderer.dispose();
     this.renderer.forceContextLoss();
     this.renderer.domElement.remove();
   }
-}
-
-export function webglAvailable(): boolean {
-  try { const c = document.createElement("canvas"); return !!(c.getContext("webgl2") || c.getContext("webgl")); } catch { return false; }
 }

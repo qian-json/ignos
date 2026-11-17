@@ -31,7 +31,8 @@ function askBox(): HTMLInputElement | null {
 }
 
 export function KeyShortcuts({ sections }: { sections: readonly (readonly [string, string])[] }) {
-  const { paused, setPaused } = useMotion();
+  // P toggles the reader's own Pause (the system's reduced-motion setting is not theirs to flip here)
+  const { userPaused: paused, setPaused } = useMotion();
   const [on, setOn] = useState(readOn);
   const sheet = useRef<HTMLDialogElement>(null);
   const live = useRef({ on, paused, setPaused });

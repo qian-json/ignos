@@ -59,18 +59,32 @@ function Readout({ shown }: { shown: Shown }) {
   );
 }
 
-/** A real flame on the first screen: NASA's own BASS-II photos of test B12 as a short loop (display only).
- * Muted, looping and inline so it plays on phones; under reduced motion only its poster frame shows. */
-function RealFlame() {
+/** A real flame, right after the film on Home: NASA's own BASS-II photos of test B12 as a short loop
+ * (display only). It lives outside the film so the 3D film stays the one moving thing on the first
+ * screen. Muted and inline so it plays on phones; it loads nothing until it is near the screen, plays
+ * only while it is on screen, and under reduced motion or the Pause switch only its poster frame shows. */
+export function RealFlame() {
   // live, so the Pause button and the reduced-motion setting stop the loop while it is on screen
-  const [still, setStill] = useState(() => prefersReduced() || (typeof document !== "undefined" && motionPaused()));
+  const [still, setStill] = useState(() => typeof document === "undefined" || prefersReduced() || motionPaused());
   useEffect(() => watchMotion(() => setStill(prefersReduced() || motionPaused())), []);
+  const fig = useRef<HTMLElement>(null);
+  const vid = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const box = fig.current, v = vid.current;
+    if (still || !box || !v) return;
+    v.muted = true;
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !document.hidden) { v.preload = "auto"; void v.play().catch(() => {}); } else v.pause();
+    }, { threshold: 0.25 });
+    io.observe(box);
+    return () => { io.disconnect(); v.pause(); };
+  }, [still]);
   return (
-    <figure className="real-flame">
+    <figure ref={fig} className="real-flame" id="real-flame">
       {still ? (
-        <img src="/visuals/B12_flame_clip_poster.jpg" alt="A real flame on an acrylic rod aboard the space station, from NASA BASS-II photos" width={1280} height={720} />
+        <img src="/visuals/B12_flame_clip_poster.jpg" alt="A real flame on an acrylic rod aboard the space station, from NASA BASS-II photos" width={1280} height={720} loading="lazy" />
       ) : (
-        <video src="/visuals/B12_flame_clip_web.mp4" poster="/visuals/B12_flame_clip_poster.jpg" autoPlay muted loop playsInline preload="metadata" width={1280} height={720} aria-label="A real flame on an acrylic rod aboard the space station, from NASA BASS-II photos" />
+        <video ref={vid} src="/visuals/B12_flame_clip_web.mp4" poster="/visuals/B12_flame_clip_poster.jpg" muted loop playsInline preload="none" width={1280} height={720} aria-label="A real flame on an acrylic rod aboard the space station, from NASA BASS-II photos" />
       )}
       <figcaption>A real flame aboard the space station. NASA BASS-II photos (PSI-25); time-lapse, in-between frames blended.</figcaption>
     </figure>
@@ -89,9 +103,7 @@ const CHAPTERS: FilmChapter[] = [
         <p className="hero3d-lede">Ignos re-measures flames from NASA's space-station photos and shows which of NASA's fire tests apply to your habitat.</p>
         <div className="hero3d-actions">
           <a className="btn primary" href="/habitats">Pick a habitat</a>
-          <a className="btn ghost" href="/research">See a real flame</a>
         </div>
-        <RealFlame />
       </div>
     ),
   },

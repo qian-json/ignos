@@ -3,6 +3,9 @@
 // photo by photo. Geometry is in millimetres. Nothing here is a scientific value: positions,
 // flame lengths and airflows all arrive from the data files through `update()`.
 import * as THREE from "three";
+import { watchContext } from "./webgl";
+
+export { webgl2Available as webglAvailable } from "./webgl";
 
 export interface BurnState {
   /** Leading-edge position along the rod (mm from the first axis click), or null with no flame. */
@@ -21,6 +24,8 @@ export interface SceneOptions {
   edgeMaxMm: number;
   colors: { flame: string; front: string; rod: string; char: string; ink: string; rule: string };
   reducedMotion: boolean;
+  /** Called with false when the GPU context is lost (show the flat drawing) and true once it is back. */
+  onContext?: (ok: boolean) => void;
 }
 
 const FLAME_VERT = /* glsl */ `
@@ -66,6 +71,7 @@ export class BurnScene {
   private io: IntersectionObserver;
   private ro: ResizeObserver;
   private opts: SceneOptions;
+  private unwatch: () => void;
   // the rod's tip (where it was lit) sits at x = 0; the edge moves toward +x, into the airflow
   constructor(private host: HTMLElement, opts: SceneOptions) {
     this.opts = opts;
@@ -74,10 +80,18 @@ export class BurnScene {
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.NeutralToneMapping;
     host.appendChild(this.renderer.domElement);
-
-    const pmrem = new THREE.PMREMGenerator(this.renderer);
-    this.scene.environment = pmrem.fromScene(studio(), 0.02).texture;
-    pmrem.dispose();
+    this.environment();
+    // a lost context (GPU reset, sleep, too many live contexts) shows the flat drawing; three.js rebuilds
+    // its GPU state on restore, the reflections are baked again and drawing resumes
+    this.unwatch = watchContext(this.renderer.domElement, () => {
+      cancelAnimationFrame(this.raf);
+      this.opts.onContext?.(false);
+    }, () => {
+      this.environment();
+      this.resize();
+      this.loop();
+      this.opts.onContext?.(true);
+    });
 
     const r = opts.rodDiameterMm / 2;
     const L = opts.rodLengthMm;
@@ -179,6 +193,14 @@ export class BurnScene {
     this.resize();
   }
 
+  /** The studio reflections, baked into a texture (again after a lost context, which empties it). */
+  private environment() {
+    this.scene.environment?.dispose();
+    const pmrem = new THREE.PMREMGenerator(this.renderer);
+    this.scene.environment = pmrem.fromScene(studio(), 0.02).texture;
+    pmrem.dispose();
+  }
+
   /** Keep the whole rod and holder in frame at any aspect, from a fixed three-quarter direction. */
   private frame() {
     const L = this.opts.rodLengthMm;
@@ -266,7 +288,22 @@ export class BurnScene {
     cancelAnimationFrame(this.raf);
     this.io.disconnect();
     this.ro.disconnect();
+    this.unwatch();
+    const seen = new Set<{ dispose(): void }>();
+    this.scene.traverse((o) => {
+      const m = o as THREE.Mesh;
+      if (m.geometry) seen.add(m.geometry);
+      for (const mat of ([] as THREE.Material[]).concat(m.material ?? [])) {
+        seen.add(mat);
+        const map = (mat as THREE.SpriteMaterial).map;
+        if (map) seen.add(map);
+      }
+    });
+    if (this.scene.environment) seen.add(this.scene.environment);
+    seen.forEach((d) => d.dispose());
+    // dispose() frees three's GPU memory but keeps the context; give the context back too
     this.renderer.dispose();
+    this.renderer.forceContextLoss();
     this.renderer.domElement.remove();
   }
 }
@@ -288,13 +325,4 @@ function studio(): THREE.Scene {
   light(8, 0.35, 0xdfe6ff, [0, 1, -4], [0, 0, 0]); // strip behind
   light(3, 2, 0x5a6478, [3.5, 0, 2], [0, -Math.PI / 3, 0]); // fill card
   return s;
-}
-
-export function webglAvailable(): boolean {
-  try {
-    const c = document.createElement("canvas");
-    return !!(c.getContext("webgl2") || c.getContext("webgl"));
-  } catch {
-    return false;
-  }
 }

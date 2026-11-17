@@ -7,6 +7,7 @@ import { Num } from "../Num";
 import { SPREAD_FILE, cell, edges, spread, type Row } from "../data";
 import { useMotion } from "../motion";
 import type { BurnScene, BurnState } from "./burnScene";
+import { useNearViewport } from "./useNearViewport";
 
 export const EDGE_FILE = (test: string) => `data/derived/edges/${test}.csv`;
 /** Seconds of screen time for a whole test at 1×. A presentation choice, not a measurement. */
@@ -100,43 +101,64 @@ export function BurnReplay({ test, onTime, compact = false }: { test: string; on
   const stage = useRef<HTMLDivElement>(null);
   const scene = useRef<BurnScene | null>(null);
   const played = useRef(false);
-  const { paused } = useMotion();
+  // `reduced` is the system setting, live: the scene is rebuilt when it changes, so it never stays still
+  // after the setting is turned off again
+  const { paused, reduced: sysReduced } = useMotion();
   useEffect(() => { scene.current?.setPaused(paused); }, [paused, live]);
 
-  // the 3D scene: loaded only when the panel is near the viewport and WebGL exists
+  // the 3D scene: alive only while the panel is near the viewport (and WebGL 2 exists), put away (its GPU
+  // context released) once the reader is far from it, so a long page never holds every scene at once
+  const near = useNearViewport(stage, { key: !!tr });
   useEffect(() => {
-    if (!tr || !stage.current) return;
-    let dead = false;
     const host = stage.current;
-    const io = new IntersectionObserver(async ([e]) => {
-      if (!e.isIntersecting) return;
-      io.disconnect();
-      const mod = await import("./burnScene");
-      if (dead || !mod.webglAvailable()) return;
-      scene.current = new mod.BurnScene(host, {
-        rodLengthMm: tr.rodLengthMm,
-        rodDiameterMm: tr.rodMm,
-        edgeMinMm: tr.edgeMin,
-        edgeMaxMm: tr.edgeMax,
-        colors: { flame: css("--flame"), front: css("--accent"), rod: css("--rod"), char: css("--char"), ink: css("--ink"), rule: css("--rule") },
-        reducedMotion: reduced(),
-      });
-      setLive(true);
-      // play once on first view, unless the reader asked for less motion
-      if (!played.current && !reduced()) {
-        played.current = true;
-        setT(tr.t0);
-        setPlaying(true);
+    if (!tr || !host || !near) return;
+    let dead = false;
+    void (async () => {
+      // the flat drawing stays when the chunk fails to load, there is no WebGL 2, or the scene cannot start
+      try {
+        const mod = await import("./burnScene");
+        if (dead || !mod.webglAvailable()) return;
+        scene.current = new mod.BurnScene(host, {
+          rodLengthMm: tr.rodLengthMm,
+          rodDiameterMm: tr.rodMm,
+          edgeMinMm: tr.edgeMin,
+          edgeMaxMm: tr.edgeMax,
+          colors: { flame: css("--flame"), front: css("--accent"), rod: css("--rod"), char: css("--char"), ink: css("--ink"), rule: css("--rule") },
+          reducedMotion: sysReduced,
+          onContext: (ok) => { if (!dead) setLive(ok); },
+        });
+      } catch {
+        scene.current = null;
+        host.querySelectorAll("canvas").forEach((c) => c.remove());
+        return;
       }
-    }, { rootMargin: "200px" });
-    io.observe(host);
+      setLive(true);
+    })();
     return () => {
       dead = true;
-      io.disconnect();
       scene.current?.dispose();
       scene.current = null;
       setLive(false);
     };
+  }, [tr, near, sysReduced]);
+
+  // play once, the first time most of the panel is on screen (in 3D or on the flat drawing), so the reader
+  // sees the burn rather than its end; not when they asked for less motion or paused it
+  const pausedNow = useRef(paused);
+  pausedNow.current = paused;
+  useEffect(() => {
+    const host = stage.current;
+    if (!tr || !host || played.current) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting || played.current) return;
+      io.disconnect();
+      played.current = true;
+      if (reduced() || pausedNow.current) return;
+      setT(tr.t0);
+      setPlaying(true);
+    }, { threshold: 0.5 });
+    io.observe(host);
+    return () => io.disconnect();
   }, [tr]);
 
   useEffect(() => { if (tr) { setT(tr.t1); setPlaying(false); } }, [tr]);

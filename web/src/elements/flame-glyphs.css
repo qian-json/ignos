@@ -24,8 +24,10 @@
 }
 .fg-credit { margin: 10px 0 0; font: 400 var(--fs-label)/1.4 var(--mono); color: var(--mute); max-width: 30rem; }
 
-/* The Ask block below repeats the same heading; the opener carries it now. The block keeps its label. */
+/* The Ask block below repeats the same heading; the opener carries it now. The block keeps its label.
+   Its one-line AI disclosure (Gemini drafts, code checks) stays visible, set small as a note under the examples. */
 .fg-open ~ .askblock > .panel-head { display: none; }
+.askblock .ask-ai { font: 400 var(--fs-label)/1.45 var(--mono); color: var(--mute); max-width: 60ch; }
 
 @media (max-width: 640px) {
   .fg-open { min-height: 0; padding: 28px 0 0; align-content: start; }

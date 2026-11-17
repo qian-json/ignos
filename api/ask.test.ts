@@ -162,7 +162,6 @@ describe("POST /api/ask request checks", () => {
   it("rejects requests that break the contract, and says why", async () => {
     const cases: [unknown, RegExp][] = [
       [question({ mode: "guess" }), /mode: "guess" is not one of/],
-      [question({ mode: "summarize" }), /subject: required for summarize/],
       [question({ question: "   " }), /question: must not be empty/],
       [question({ question: "x".repeat(501) }), /question: must be at most 500 characters/],
       [question({ model: "something-else" }), /model: unknown field/],

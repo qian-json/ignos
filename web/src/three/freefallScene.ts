@@ -4,9 +4,17 @@
 // and colours are qualitative, after the challenge text ("a flickering teardrop" becomes "a ghostly
 // blue sphere"). Every constant below is a drawing choice in scene units, never a measurement.
 import * as THREE from "three";
+import { watchContext } from "./webgl";
+
+export { webgl2Available as webglAvailable } from "./webgl";
 
 export type View = "compare" | "single";
-export interface FreefallOptions { reducedMotion: boolean; night: string }
+export interface FreefallOptions {
+  reducedMotion: boolean;
+  night: string;
+  /** Called with false when the GPU context is lost (show the still drawing) and true once it is back. */
+  onContext?: (ok: boolean) => void;
+}
 
 const NOISE = /* glsl */ `
   float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
@@ -187,16 +195,28 @@ export class FreefallScene {
   private paused = false;
   private io: IntersectionObserver;
   private ro: ResizeObserver;
+  private unwatch: () => void;
 
   constructor(private host: HTMLElement, private opts: FreefallOptions) {
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    // a decorative scene: low-power GPU (no waking a laptop's discrete GPU) and a pixel ratio capped at 1.5
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "low-power" });
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.NeutralToneMapping;
     const night = new THREE.Color(opts.night || "#0e1428");
     this.renderer.setClearColor(night);
     this.renderer.domElement.setAttribute("aria-hidden", "true");
     host.appendChild(this.renderer.domElement);
+    // a lost context shows the still drawing; three.js rebuilds its GPU state on restore and drawing resumes
+    this.unwatch = watchContext(this.renderer.domElement, () => {
+      cancelAnimationFrame(this.raf);
+      this.raf = 0;
+      this.opts.onContext?.(false);
+    }, () => {
+      this.resize();
+      this.kick();
+      this.opts.onContext?.(true);
+    });
     this.scene.fog = new THREE.Fog(night, 14, 30);
 
     // shared parts: cream wax, a glossy melt pool, a dark wick and a small metal dish
@@ -301,6 +321,7 @@ export class FreefallScene {
     cancelAnimationFrame(this.raf);
     this.io.disconnect();
     this.ro.disconnect();
+    this.unwatch();
     const seen = new Set<{ dispose(): void }>();
     this.scene.traverse((o) => {
       const m = o as THREE.Mesh;
@@ -311,14 +332,5 @@ export class FreefallScene {
     this.renderer.dispose();
     this.renderer.forceContextLoss();
     this.renderer.domElement.remove();
-  }
-}
-
-export function webglAvailable(): boolean {
-  try {
-    const c = document.createElement("canvas");
-    return !!(c.getContext("webgl2") || c.getContext("webgl"));
-  } catch {
-    return false;
   }
 }

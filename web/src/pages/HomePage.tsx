@@ -1,10 +1,10 @@
 // Written with AI assistance (Claude Code)
 // The landing page: the film opening (headline, one sentence, the way in, then the story riding the
-// film), the other pages as a row of picture cards, and the close.
+// film), a real flame beside what we measured, the other pages as a row of picture cards, and the close.
 import type { MouseEvent } from "react";
 import { PageRing } from "../elements/PageRing";
 import { StartHere } from "../elements/StartHere";
-import { FilmOpening } from "../hero/FilmOpening";
+import { FilmOpening, RealFlame } from "../hero/FilmOpening";
 import { Facts } from "../hero/Overview";
 import { Close } from "../panels/Close";
 import { navigate } from "../router/router";
@@ -16,6 +16,7 @@ export function HomePage() {
     <div className="page page-home">
       <FilmOpening />
       <section className="home-results" aria-label="What we measured">
+        <RealFlame />
         <Facts />
       </section>
       <StartHere onPick={pick} />

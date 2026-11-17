@@ -6,11 +6,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useMotion } from "../motion";
 import type { FreefallScene, View } from "./freefallScene";
+import { useNearViewport } from "./useNearViewport";
 import "./freefall-flames.css";
 
 const QUOTE = "Instead of a flickering teardrop, a candle flame becomes a ghostly blue sphere reliant on diffusion for its oxygen.";
 const CHALLENGE = "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/";
-const reduced = () => typeof matchMedia !== "undefined" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 const css = (name: string) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
 const EARTH = { name: "On Earth", note: "Hot gas rises and pulls the flame up" };
@@ -58,35 +58,36 @@ export function FreefallFlames() {
   const [noGL, setNoGL] = useState(false);
   const [view, setView] = useState<View>("compare");
   const [gravity, setGravity] = useState(true);
-  const { paused } = useMotion();
+  // `reduced` is the system setting, live: the scene is rebuilt when it changes
+  const { paused, reduced: sysReduced } = useMotion();
 
-  // the 3D scene: loaded only when the panel nears the viewport and WebGL exists
+  // the 3D scene: alive only while the panel is near the viewport (and WebGL 2 exists), put away (its GPU
+  // context released) once the reader is far from it
+  const near = useNearViewport(stage, { enter: "200px" });
   useEffect(() => {
     const host = stage.current;
-    if (!host) return;
+    if (!host || !near || noGL) return;
     let dead = false;
-    const io = new IntersectionObserver(async ([e]) => {
-      if (!e.isIntersecting) return;
-      io.disconnect();
+    void (async () => {
       try {
         const mod = await import("./freefallScene");
         if (dead) return;
         if (!mod.webglAvailable()) throw new Error("no WebGL");
-        scene.current = new mod.FreefallScene(host, { reducedMotion: reduced(), night: css("--night") });
+        scene.current = new mod.FreefallScene(host, { reducedMotion: sysReduced, night: css("--night"), onContext: (ok) => { if (!dead) setLive(ok); } });
         setLive(true);
       } catch {
+        scene.current = null;
+        host.querySelectorAll("canvas").forEach((c) => c.remove());
         if (!dead) { setNoGL(true); setView("compare"); }
       }
-    }, { rootMargin: "200px" });
-    io.observe(host);
+    })();
     return () => {
       dead = true;
-      io.disconnect();
       scene.current?.dispose();
       scene.current = null;
       setLive(false);
     };
-  }, []);
+  }, [near, noGL, sysReduced]);
 
   useEffect(() => { scene.current?.setPaused(paused); }, [paused, live]);
   useEffect(() => { scene.current?.set(view, gravity); }, [view, gravity, live]);

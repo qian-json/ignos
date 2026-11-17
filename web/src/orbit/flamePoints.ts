@@ -6,14 +6,14 @@
 // which spring back. Every motion is computed in the vertex shader from the point's index, so a
 // frame costs one draw call and no uploads.
 import * as THREE from "three";
+import { webgl2Available } from "../three/webgl";
 
 /** Points by rough device class: a power of two, so a prefix is an even subset. */
 const COUNTS = { low: 1 << 15, high: 1 << 16 } as const;
 const WAKE = 16;
 
-export function hasWebGL2(): boolean {
-  try { return !!document.createElement("canvas").getContext("webgl2"); } catch { return false; }
-}
+/** WebGL 2 is here (the probe's context is released at once). */
+export const hasWebGL2 = webgl2Available;
 
 function deviceCount(): number {
   const coarse = matchMedia("(pointer: coarse)").matches;
@@ -231,6 +231,6 @@ export function flameField(o: FlameOptions): FlameField | null {
   resize(); update();
   return {
     setFlow(f: number) { flowTarget = Math.max(0, Math.min(1, f)); dirty = true; if (!loopOn) update(); },
-    destroy() { ac.abort(); io.disconnect(); mo.disconnect(); cancelAnimationFrame(raf); geo.dispose(); mat.dispose(); renderer.dispose(); },
+    destroy() { ac.abort(); io.disconnect(); mo.disconnect(); cancelAnimationFrame(raf); geo.dispose(); mat.dispose(); renderer.dispose(); renderer.forceContextLoss(); },
   };
 }

@@ -4,7 +4,7 @@ import type { MouseEvent } from "react";
 import "./start-here.css";
 
 const STEPS: { n: string; title: string; line: string; href: string; cta: string }[] = [
-  { n: "1", title: "Pick a habitat", line: "Choose where a crew will live and enter its oxygen and gravity. NASA's PSI investigations are ranked by what they tell you about a fire there, with the gaps nobody has tested.", href: "/habitats", cta: "Open Habitats" },
+  { n: "1", title: "Pick a habitat", line: "Choose where a crew will live and enter its oxygen and gravity. NASA's fire investigations (from its Physical Sciences Informatics archive, PSI) are ranked by what they tell you about a fire there, with the gaps nobody has tested.", href: "/habitats", cta: "Open Habitats" },
   { n: "2", title: "Ask the data", line: "Ask a question in plain words. The answer cites NASA's data and papers, and every number in it is checked against its source.", href: "/ask", cta: "Open Ask" },
   { n: "3", title: "Check any number", line: "Every dotted number opens to its file, row and column. Method shows how each one was measured and checked.", href: "/method", cta: "Open Method" },
 ];

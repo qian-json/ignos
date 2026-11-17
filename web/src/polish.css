@@ -1,0 +1,25 @@
+/* Written with AI assistance (Claude Code) */
+/* Small polish rules kept out of styles.css, so they merge cleanly with work on that file.
+   Imported once, after styles.css, from main.tsx: a rule here wins a tie with the same selector there. */
+
+/* Focus ring on the dark film and dark page heads: --pay instead of the default blue (wave 5 #8, WCAG 1.4.11). */
+.journey :focus-visible, [data-bar-tone="dark"] :focus-visible { outline-color: var(--pay); }
+
+/* Touch: every small control is at least 44 px tall (wave 5 #10). */
+@media (pointer: coarse) {
+  .seg button, .seg.small button, .row .seg button, .chip, .hab-bar .btn, details.overlay summary, details.caveats summary { min-height: 44px; }
+}
+
+/* Touch: the hardware filter's select is 16 px so iOS does not zoom on focus; desktop is unchanged (wave 5 #11). */
+@media (pointer: coarse) {
+  .hab-hw select { font-size: 16px; min-height: 44px; padding: 0 10px; }
+}
+
+/* Light Ask fields: a border dark enough to see (wave 5 #12, WCAG 1.4.11). */
+.askbar:not(.on-dark) input[type="search"], .askband-form input[type="search"] { border-color: color-mix(in srgb, var(--mute) 75%, var(--rule)); }
+
+/* Ask example chips stay focusable while an answer loads (aria-disabled, not disabled), so they look busy instead (wave 5 #9). */
+.chip[aria-disabled="true"] { opacity: 0.55; cursor: progress; }
+@media (hover: hover) and (pointer: fine) {
+  .chip[aria-disabled="true"]:hover { background: transparent; border-color: var(--rule); }
+}

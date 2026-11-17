@@ -18,12 +18,12 @@ import { startRouter, useRoute } from "./router/router";
 import { startScroll } from "./router/scroll";
 import "./router/router.css";
 
-/** The header's links: one per page. */
+/** The header's links, in the designer's order. New pages such as Story go in ALL (footer, phone "More"). */
 const NAV: readonly (readonly [PageId, string])[] = [
-  ["story", "Story"],
   ["habitats", "Habitats"],
   ["ask", "Ask"],
   ["research", "Research"],
+  ["model", "Model"],
   ["method", "Method"],
 ];
 

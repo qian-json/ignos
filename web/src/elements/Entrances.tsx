@@ -160,9 +160,18 @@ export function Entrances() {
       io.observe(el);
     }
 
-    const io = new IntersectionObserver((es) => {
+    const onIn = (es: IntersectionObserverEntry[]) => {
       for (const e of es) if (e.isIntersecting && units.has(e.target)) enter(e.target, units.get(e.target)!);
-    }, { rootMargin: "0px 0px -10% 0px" });
+    };
+    // a chart starts its one-second wipe a little before it scrolls in, so none sits blank on screen (the Moon
+    // Gap and Measure charts did for about half a second); everything else enters once it is 10% into the screen
+    const ioRest = new IntersectionObserver(onIn, { rootMargin: "0px 0px -10% 0px" });
+    const ioChart = new IntersectionObserver(onIn, { rootMargin: "0px 0px 25% 0px" });
+    const io = {
+      observe: (el: Element) => (units.get(el) === "chart" ? ioChart : ioRest).observe(el),
+      unobserve: (el: Element) => { ioRest.unobserve(el); ioChart.unobserve(el); },
+      disconnect: () => { ioRest.disconnect(); ioChart.disconnect(); },
+    };
 
     // first scan: the first screen is finished, the rest waits
     const vh = innerHeight;

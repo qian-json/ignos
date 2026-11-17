@@ -368,6 +368,8 @@ table.data caption { caption-side: top; text-align: left; font-weight: 600; font
 .compare-chart .plot.tall { height: 500px; }
 .spec { display: grid; gap: 14px; position: sticky; top: calc(var(--bar) + 16px); }
 .spec .seg { flex-wrap: wrap; }
+/* the Replay test picker (hero/Overview.tsx): on phones the word "Test" goes, so the tests fit one row */
+@media (max-width: 480px) { .subject-bar .seg-pre { display: none; } }
 .spec-title { font-size: var(--fs-kpi); font-weight: 300; letter-spacing: -0.03em; }
 .spec-list { margin: 0; display: grid; border-top: 1px solid var(--ink); }
 .spec-list > div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--hair); }
@@ -596,6 +598,11 @@ section.method { display: block; }
 .method-more .cs { margin: 0; }
 .check-sentence { display: grid; gap: 12px; }
 @media (min-width: 1001px) { .article > .method-more { grid-column: 2 / 4; } }
+/* Method page: "Flame in freefall" (pages/MethodPage.tsx) starts on the Methods reading column's left edge, as wide as the fact mosaic */
+@media (min-width: 1001px) {
+  section#flame-in-freefall { grid-template-columns: minmax(0, 1fr) minmax(0, 38em) minmax(14rem, 1fr); column-gap: 40px; }
+  section#flame-in-freefall > * { grid-column: 2 / 4; }
+}
 @media (max-width: 1000px) {
   .article { grid-template-columns: minmax(0, 1fr); }
   .article > *, .article .note { grid-column: 1; }
@@ -719,19 +726,19 @@ section.method { display: block; }
 @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
 
 
-/* Real flame on the first screen (hero/FilmOpening.tsx RealFlame) */
-.real-flame { margin: 14px 0 0; max-width: 420px; }
+/* Real flame + results band on Home, right after the film (hero/FilmOpening.tsx RealFlame, hero/Overview.tsx Facts) */
+.home-results { padding: 40px 16px 8px; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 32px; align-items: end; }
+.home-results .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.home-results .fact:nth-child(3) { padding-left: 0; border-left: 0; }
+@media (max-width: 860px) { .home-results { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+.real-flame { margin: 0; }
 .real-flame video, .real-flame img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 8px; background: #000; object-fit: cover; }
-.real-flame figcaption { font-size: var(--fs-label); line-height: 1.4; color: var(--on-night-mute, var(--mute)); margin-top: 6px; max-width: 42ch; }
-@media (max-width: 640px) { .real-flame { max-width: 100%; } }
-/* Results band on Home, between the film and the page cards */
-.home-results { padding: 28px 16px 8px; max-width: 1180px; margin: 0 auto; }
+.real-flame figcaption { font-size: var(--fs-label); line-height: 1.4; color: var(--mute); margin-top: 6px; max-width: 48ch; }
 .ov-replay { margin: 16px 0; }
-.hero-copy .hero3d-actions .btn.ghost { color: var(--on-night); border-color: #5a6588; }
-@media (hover: hover) { .hero-copy .hero3d-actions .btn.ghost:hover { background: rgba(255, 255, 255, 0.08); } }
 /* Space-time image of B12 on /research (pages/ResearchPage.tsx) */
-.space-time { margin: 24px 0; padding: 12px; }
-.space-time img { display: block; width: 100%; height: auto; border-radius: 6px; background: #000; }
+.space-time { margin: 24px auto; padding: 12px; max-width: 960px; }
+/* the whole 2x2 figure fits one screen under the bar (with room for its caption) */
+.space-time img { display: block; width: auto; max-width: 100%; height: auto; max-height: calc(100svh - var(--bar, 60px) - 140px); margin-inline: auto; border-radius: 6px; background: #000; }
 .space-time figcaption { margin-top: 8px; max-width: 60ch; }
 /* Hardware filter on /habitats (challenge: CIR/ACME, CIR/MDCA, MSG/SPICE duct grouping) */
 .hab-hw { font-size: var(--fs-label); color: var(--mute); display: inline-flex; gap: 6px; align-items: center; }
@@ -749,6 +756,15 @@ section.method { display: block; }
 .atm-limit { stroke: var(--accent); stroke-width: 3; }
 .atm-limit-label { fill: var(--accent); }
 .atm figcaption { margin-top: 8px; max-width: 70ch; }
+/* wide screens: the legend and caption beside the chart, not a band of empty card to its right */
+@media (min-width: 900px) {
+  .atm { display: grid; grid-template-columns: minmax(0, 720px) minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 28px; align-items: start; }
+  .atm h3 { grid-column: 1 / -1; }
+  .atm svg { grid-column: 1; grid-row: 2 / span 2; }
+  .atm .atm-legend { grid-column: 2; grid-row: 2; margin-top: 0; }
+  .atm figcaption { grid-column: 2; grid-row: 3; }
+}
+.hab-gaps .hab-quotes { list-style: none; margin-left: -1.1em; }
 .hab-gaps .hab-quote { color: var(--mute); font-style: italic; }
 .atm-legend { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 2px; font-size: var(--fs-label); color: var(--ink); }
 .atm-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
@@ -758,7 +774,4 @@ section.method { display: block; }
   /* phones: the chart's in-plot labels would be unreadably small; the legend under it carries them */
   .atm-label { display: none; }
   .atm-tick, .atm-axis { font-size: 22px; }
-  /* phones: keep the real-flame inset compact so the opening headline stays clear of the film readout */
-  .real-flame { max-width: 70%; margin-top: 10px; }
-  .real-flame figcaption { font-size: 11px; line-height: 1.3; }
 }

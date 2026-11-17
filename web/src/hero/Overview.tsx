@@ -30,7 +30,8 @@ function TestPicker() {
   const { test, setTest } = useReplay();
   return (
     <div className="seg small" role="group" aria-label="Choose a test">
-      {TESTS.map((t) => <button key={t} type="button" aria-pressed={t === test} onClick={() => setTest(t)}>Test {t}</button>)}
+      {/* phones drop the word "Test" so all the tests fit on one row (the label keeps it) */}
+      {TESTS.map((t) => <button key={t} type="button" aria-label={`Test ${t}`} aria-pressed={t === test} onClick={() => setTest(t)}><span className="seg-pre">Test </span>{t}</button>)}
     </div>
   );
 }
@@ -45,12 +46,12 @@ export function Overview() {
         <p>Each number links to its source file, row and column.</p>
       </div>
       <Facts />
-      <div className="card strong ov-replay">
-        <div className="subject-bar"><h3>Replay the burn</h3><TestPicker /></div>
-        <BurnReplay test={test} onTime={setCursor} compact />
-      </div>
       <More summary="Details">
         <div className="ov-grid">
+          <div className="card strong">
+            <div className="subject-bar"><h3>Replay the burn</h3><TestPicker /></div>
+            <BurnReplay test={test} onTime={setCursor} compact />
+          </div>
           <div className="card">
             <h3>Leading edge in every photo</h3>
             <EdgeChart test={test} cursor={cursor} />

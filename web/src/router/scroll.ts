@@ -178,10 +178,24 @@ export function scrollToY(y: number, { instant = false } = {}): Promise<void> {
   });
 }
 
-/** Where an element's top sits once the fixed top bar's room (scroll-padding-top) is left above it. */
+/**
+ * Where an element's top sits once the room above it is left: the page's scroll-padding-top (the fixed
+ * top bar) or the element's own scroll-margin-top (e.g. a scene under Story's sticky rail), whichever is larger.
+ */
 export function elementY(el: Element): number {
   const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
-  return el.getBoundingClientRect().top + scrollY - pad;
+  const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+  return el.getBoundingClientRect().top + scrollY - Math.max(pad, margin);
 }
 
 export const scrollToElement = (el: Element, opts?: { instant?: boolean }) => scrollToY(elementY(el), opts);
+
+/** Bring an element into view with the least travel (like block: "nearest"); no move when it already fits. */
+export function revealElement(el: Element, opts?: { instant?: boolean }): Promise<void> {
+  const r = el.getBoundingClientRect();
+  const top = elementY(el);
+  const room = r.top + scrollY - top;
+  if (r.top < room) return scrollToY(top, opts);
+  if (r.bottom > innerHeight) return scrollToY(Math.min(top, scrollY + r.bottom - innerHeight), opts);
+  return Promise.resolve();
+}

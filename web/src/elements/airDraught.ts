@@ -7,6 +7,7 @@
 // put. Only horizontal motion moves the ink.
 // Drawn from the page's own text element, so the live mark and the still one (CSS) coincide.
 import * as THREE from "three";
+import { watchContext } from "../three/webgl";
 
 export interface Draught {
   /** Start or stop the frame loop (off screen, hidden tab, Pause). Stopping clears the push. */
@@ -29,7 +30,8 @@ const SWEEP_V = 0.8;
 
 const VS = "varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }";
 
-export function startDraught(canvas: HTMLCanvasElement, box: HTMLElement, textEl: HTMLElement): Draught | null {
+/** onContext: false when the GPU context is lost (show the text mark), true once it is back. */
+export function startDraught(canvas: HTMLCanvasElement, box: HTMLElement, textEl: HTMLElement, onContext?: (ok: boolean) => void): Draught | null {
   let gl: WebGL2RenderingContext | null = null;
   try {
     gl = canvas.getContext("webgl2", { alpha: true, premultipliedAlpha: true, antialias: false });
@@ -260,6 +262,20 @@ export function startDraught(canvas: HTMLCanvasElement, box: HTMLElement, textEl
   clearFlow();
   render();
 
+  // three.js rebuilds its GPU state when the context comes back; the field starts flat again
+  const unwatch = watchContext(canvas, () => {
+    cancelAnimationFrame(raf);
+    raf = 0;
+    last = 0;
+    onContext?.(false);
+  }, () => {
+    drawWord();
+    clearFlow();
+    render();
+    onContext?.(true);
+    wake();
+  });
+
   return {
     setRunning(on) {
       if (on === running) return;
@@ -283,6 +299,7 @@ export function startDraught(canvas: HTMLCanvasElement, box: HTMLElement, textEl
       render();
     },
     dispose() {
+      unwatch();
       cancelAnimationFrame(raf);
       window.removeEventListener("pointermove", onPointer);
       window.removeEventListener("touchmove", onTouch);
@@ -293,6 +310,7 @@ export function startDraught(canvas: HTMLCanvasElement, box: HTMLElement, textEl
       markMat.dispose();
       tri.dispose();
       renderer.dispose();
+      renderer.forceContextLoss();
     },
   };
 }

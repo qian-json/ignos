@@ -1126,14 +1126,16 @@ export function validateAskRequest(value: unknown): Result<AskRequest> {
   if (!o) return result(issues, value as AskRequest);
   const q = c.str(o.question, "question", { maxLen: ASK_QUESTION_MAX });
   if (q !== null && q.trim() === "") c.fail("question", "must not be empty");
-  const mode = c.str(o.mode, "mode", { oneOf: ASK_MODES });
+  c.str(o.mode, "mode", { oneOf: ASK_MODES });
   if ("subject" in o) {
     const s = c.obj(o.subject, "subject", ["kind", "id"]);
     if (s) {
       c.str(s.kind, "subject.kind", { oneOf: ["test", "material"] });
       c.str(s.id, "subject.id", { minLen: 1 });
     }
-  } else if (mode === "summarize") c.fail("subject", "required for summarize");
+  }
+  // summarize without a subject summarizes what the sources say about the question (the site's
+  // Summarize button sends a typed question with no subject, which used to get a 400)
   return result(issues, value as AskRequest);
 }
 

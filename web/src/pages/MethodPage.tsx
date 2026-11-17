@@ -13,6 +13,8 @@ export function MethodPage() {
     <div className="page page-method">
       <div className="sheet">
         <ProofLayers />
+        {/* The design's order: the proof stack, then Methods and sources; the freefall illustration comes after */}
+        <Method />
         <section className="panel" id="flame-in-freefall" aria-labelledby="ff-h">
           <div className="panel-head">
             <h2 id="ff-h">Flame in freefall</h2>
@@ -22,7 +24,6 @@ export function MethodPage() {
             <FreefallFlames />
           </Suspense>
         </section>
-        <Method />
         <HeadingRise />
       </div>
     </div>

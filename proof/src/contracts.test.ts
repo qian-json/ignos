@@ -381,9 +381,11 @@ describe("moongap.json", () => {
 describe("/api/ask", () => {
   const examples = () => json("data/mock/ask/examples.json").examples as { request: any; response: any }[];
 
-  it("rejects an unknown mode and a summarize without a subject", () => {
+  it("rejects an unknown mode, and accepts a summarize with or without a subject", () => {
     expect(messages(validateAskRequest({ question: "x", mode: "guess" }))).toMatch(/mode: "guess" is not one of/);
-    expect(messages(validateAskRequest({ question: "x", mode: "summarize" }))).toMatch(/subject: required for summarize/);
+    // the site's Summarize button sends a typed question with no subject; it must not get a 400
+    expect(validateAskRequest({ question: "What did BASS-II find?", mode: "summarize" }).ok).toBe(true);
+    expect(validateAskRequest({ question: "x", mode: "summarize", subject: { kind: "test", id: "B16" } }).ok).toBe(true);
     expect(messages(validateAskRequest({ question: " ", mode: "rank" }))).toMatch(/question: must not be empty/);
   });
 

@@ -25,7 +25,7 @@ export function Close() {
         </svg>
         <div className="close-body">
           <h2 id="close-h">Every number on this page opens to its file, row and column.</h2>
-          <p>Click any dotted number for its source. Then test the checker with a number that is not in the data.</p>
+          <p>Click any dotted number for its source. Then ask a question and watch each number in the answer get checked.</p>
           <a className="btn primary" href="/ask">Try the checker</a>
           <dl className="close-facts">
             <div><dt>Checkable numbers</dt><dd className="num">{FACTS.length}</dd></div>

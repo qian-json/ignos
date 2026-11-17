@@ -20,7 +20,7 @@
   background-size: 100% 90svh, 283px 331px, 397px 263px, 211px 449px, 467px 389px;
   background-repeat: no-repeat, repeat, repeat, repeat, repeat;
   color: var(--on-night);
-  padding-bottom: 96px;
+  padding-bottom: 40px;
   overflow-x: clip;
 }
 .page-story :focus-visible { outline-color: var(--pay); }
@@ -34,7 +34,8 @@
 .story-head { position: relative; max-width: var(--st-max); margin: 0 auto; padding: clamp(40px, 8vh, 88px) var(--gutter) clamp(32px, 5vh, 56px); display: grid; gap: 20px; justify-items: start; }
 .story-head h1 { color: #fff; }
 .story-lede { color: var(--on-night-mute); font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem); line-height: 1.45; max-width: 44ch; }
-.story-rail { position: sticky; top: var(--bar); z-index: 5; background: color-mix(in srgb, var(--night) 86%, transparent); backdrop-filter: blur(10px); border-block: 1px solid #1c2338; }
+/* opaque, no backdrop blur: the live globe scrolls under the rail, and re-blurring it every frame drops the glide below 60 fps on integrated GPUs */
+.story-rail { position: sticky; top: var(--bar); z-index: 5; background: var(--night); border-block: 1px solid #1c2338; }
 .story-rail ol { list-style: none; margin: 0 auto; padding: 0 var(--gutter); max-width: var(--st-max); display: flex; gap: 2px; }
 .story-rail a { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; padding: 0 12px; color: var(--on-night-mute) !important; text-decoration: none; font: 400 var(--fs-label)/1 var(--mono); white-space: nowrap; transition: color 200ms var(--ease); }
 .story-rail a[aria-current] { color: #fff !important; }
@@ -44,6 +45,8 @@
 /* ---------- a scene ---------- */
 .scene { position: relative; max-width: var(--st-max); margin: 0 auto; padding: clamp(40px, 8vh, 96px) var(--gutter); min-height: calc(100svh - var(--bar) - 46px); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 4vw, 64px); align-items: center; scroll-margin-top: calc(var(--bar) + 46px); }
 .scene:nth-of-type(even) .scene-visual { order: 2; }
+/* the last scene ends with its content, not with an empty night band above the footer */
+.scene:last-of-type { min-height: auto; }
 .scene + .scene { border-top: 1px solid #141b30; }
 .scene-visual, .scene-copy { position: relative; min-width: 0; }
 .scene-k { font: 400 var(--fs-label)/1 var(--mono); color: var(--on-night-mute); letter-spacing: 0.02em; margin-bottom: 16px; }
@@ -68,7 +71,7 @@
 .flat-iss { position: absolute; left: 50%; top: 50%; display: flex; gap: 10px; align-items: center; translate: -5px -50%; font: 400 11px/1 var(--mono); color: #fff; }
 .flat-iss::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px var(--accent), 0 0 18px var(--accent); }
 
-.iss-read { position: absolute; left: 14px; top: 14px; z-index: 2; max-width: min(330px, calc(100% - 28px)); padding: 12px 14px; border-radius: 10px; background: color-mix(in srgb, #050914 74%, transparent); backdrop-filter: blur(8px); border: 1px solid #263055; display: grid; gap: 10px; }
+.iss-read { position: absolute; left: 14px; top: 14px; z-index: 2; max-width: min(330px, calc(100% - 28px)); padding: 12px 14px; border-radius: 10px; background: #050914; border: 1px solid #263055; display: grid; gap: 10px; }   /* opaque over the live globe (no per-frame blur) */
 .iss-k { display: flex; gap: 8px; align-items: center; font: 400 var(--fs-label)/1.3 var(--mono); color: #fff; max-width: none; }
 .iss-read.off .iss-k { color: var(--st-no); }
 .iss-read dl { margin: 0; display: grid; grid-template-columns: repeat(2, auto); gap: 8px 22px; justify-content: start; }
@@ -76,6 +79,15 @@
 .iss-read dd { margin: 2px 0 0; font-size: 15px; color: #fff; }
 .iss-t { font: 400 11px/1.4 var(--mono); color: var(--on-night-mute); }
 .live-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+/* wide screens: a thin, see-through strip along the stage's top edge, clear of the globe, its station marker
+   and its label (as a box it covered about 45% of the globe); no backdrop blur, so the live globe still
+   costs one draw per frame */
+@media (min-width: 900px) {
+  .iss-read { right: 14px; max-width: none; padding: 8px 12px; gap: 4px; background: color-mix(in srgb, #050914 74%, transparent); }
+  .iss-read dl { display: flex; flex-wrap: wrap; gap: 2px 18px; }
+  .iss-read dl > div { display: flex; gap: 6px; align-items: baseline; }
+  .iss-read dd { margin: 0; font-size: 13px; }
+}
 /* ---------- NASA's photos ---------- */
 .porthole { margin: 0; display: grid; gap: 14px; }
 .porthole-glass { position: relative; aspect-ratio: 16 / 10; max-height: min(62svh, 600px); border-radius: 24px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px #2a3560, 0 0 0 9px #0b1022, 0 0 0 10px #2a3560, 0 30px 90px -24px #4a6cf280; margin: 10px; }
@@ -110,7 +122,12 @@
 .walk-docs, .walk-checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .walk-docs li { font-size: var(--fs-label); line-height: 1.4; color: var(--st-text); }
 .walk-docs code { color: var(--pay); background: #141b30; padding: 2px 6px; border-radius: 4px; margin-right: 4px; overflow-wrap: anywhere; }
-.walk-a { max-width: none; min-height: 3.2em; font-size: 1rem; line-height: 1.6; color: #e6eaf3; }
+.walk-a { display: grid; max-width: none; min-height: 3.2em; font-size: 1rem; line-height: 1.6; color: #e6eaf3; }
+/* the finished answer, invisible, holds the paragraph's final height while the visible copy types over it */
+.walk-a > span { grid-area: 1 / 1; min-width: 0; }
+.walk-a-fit { visibility: hidden; }
+/* lines laid out from the start, shown in turn */
+.walk-docs > li:not([data-on="true"]), .walk-checks > li:not([data-on="true"]), .walk-sum:not([data-on="true"]) { visibility: hidden; }
 .caret { display: inline-block; width: 0.5em; height: 1.05em; margin-left: 2px; vertical-align: -0.16em; background: var(--pay); }
 .w-num { padding: 0 3px; border-radius: 4px; box-shadow: inset 0 -1px 0 #4b5675; transition: background-color 250ms var(--ease), color 250ms var(--ease); }
 .w-num.ok { background: #1d744550; color: var(--st-ok); box-shadow: none; }
@@ -134,8 +151,8 @@
 .page-story[data-anim="on"] .scene:not([data-in]) .track circle { opacity: 0; }
 .page-story[data-anim="on"] .scene[data-in] .track circle { animation: st-dot 420ms var(--ease) both; animation-delay: calc(var(--d) * 1800ms + 250ms); }
 .page-story[data-anim="on"] .scene[data-in] .track .scan { animation: st-scan 1800ms 250ms linear both; }
-.page-story[data-anim="on"] .walk-docs li,
-.page-story[data-anim="on"] .walk-checks li { animation: st-rise 320ms var(--ease) both; }
+.page-story[data-anim="on"] .walk-docs li[data-on="true"],
+.page-story[data-anim="on"] .walk-checks li[data-on="true"] { animation: st-rise 320ms var(--ease) both; }
 .page-story[data-anim="on"] .caret { animation: st-blink 900ms steps(1) infinite; }
 @keyframes st-live { from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 70%, transparent); } to { box-shadow: 0 0 0 9px transparent; } }
 @keyframes st-dot { from { opacity: 0; transform: scale(0); } }

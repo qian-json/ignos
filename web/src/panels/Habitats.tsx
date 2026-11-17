@@ -6,6 +6,7 @@
 // a data file carries them with a source. The first read is each row's name, score and a short reason;
 // the rest of a row (its full reasoning, finding, record and fit details) shows when the row is opened.
 import { useMemo, useState, type ReactNode } from "react";
+import { scrollToElement } from "../router/scroll";
 import { askIgnos } from "../AskBar";
 import { More } from "../ui/More";
 import { Num } from "../Num";
@@ -193,8 +194,14 @@ function Gaps({ on }: { on: string }) {
           <>
             <li><strong className="num">{partialG.length === 0 ? "None" : partialG.length}</strong> of the {N} burned anything at Moon or Mars gravity.</li>
             <li>Closest: NASA's lunar-gravity drop tests, in <a href="/research#moon">the Moon Gap</a>.</li>
-            {PARTIAL_QUOTES.map((q) => <li key={q.id} className="hab-quote">The challenge page: “{q.text}”</li>)}
-            <li>Our test of that idea: a flame model fitted to both ends still can't say how the flame's own airflow changes in between (<a href="/model">the flame model</a>).</li>
+            <li>Our test of the challenge page's idea that orbit and Earth results bound partial gravity: a flame model fitted to both ends still can't say how the flame's own airflow changes in between (<a href="/model">the flame model</a>).</li>
+            {PARTIAL_QUOTES.length > 0 && (
+              <li className="hab-quotes">
+                <More className="hab-more" summary="What the challenge page says">
+                  <ul>{PARTIAL_QUOTES.map((q) => <li key={q.id} className="hab-quote">“{q.text}”</li>)}</ul>
+                </More>
+              </li>
+            )}
           </>
         ) : (
           <>
@@ -270,13 +277,14 @@ export function Habitats() {
   const pool = (only ? ranked.filter(covers) : ranked).filter((iv) => hw === "all" || COND.get(iv.accession)?.c.hardware_group === hw);
   const rows = all || only ? pool : pool.slice(0, SHOW);
   const toggle = (id: string) => setCmp((c) => (c.includes(id) ? c.filter((x) => x !== id) : c.length < MAX_CMP ? [...c, id] : c));
-  const goCompare = () => document.getElementById("compare")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  // the site's own glide (eased like every anchor; at once under reduced motion or Pause), not the browser's smooth scroll
+  const goCompare = () => { const el = document.getElementById("compare"); if (el) void scrollToElement(el); };
 
   return (
     <section className="panel invest habitats" id="habitats" aria-labelledby="hab-h">
       <div className="panel-head">
         <h2 id="hab-h" className="t-display-l">NASA fire investigations, ranked by habitat</h2>
-        <p>Choose a habitat to rank {N} NASA PSI investigations by relevance to it.</p>
+        <p>Choose a habitat to rank {N} NASA fire investigations from its PSI archive by how much they tell you about a fire there.</p>
       </div>
 
       <div className="seg hab-pick" role="group" aria-label="Habitat">
@@ -308,7 +316,6 @@ export function Habitats() {
       </form>
 
       <Gaps on={on} />
-      <AtmosphereCard />
 
       <div className="inv-tools">
         <p className="inv-legend" aria-hidden="true">
@@ -391,6 +398,9 @@ export function Habitats() {
         </div>
       )}
       {cmp.length > 1 && <Compare ids={cmp} on={on} clear={() => setCmp([])} />}
+
+      {/* context for the ranking, after it: the ranked list is the page's result */}
+      <AtmosphereCard />
 
       <More className="hab-more" summary="How these investigations connect">
         <ProvenanceLine />

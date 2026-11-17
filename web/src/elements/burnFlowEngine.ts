@@ -213,11 +213,27 @@ export function createBurnFlow(stage: HTMLElement, canvas: HTMLCanvasElement, op
   }
 
   // ---- WebGL 2 ----
+  const GL_OPTS: WebGLContextAttributes = { alpha: false, antialias: false, premultipliedAlpha: false };
   let gl: WebGL2RenderingContext | null = null, G: Gpu | null = null;
-  if (!o.noWebGL) { try { gl = canvas.getContext("webgl2", { alpha: false, antialias: false, premultipliedAlpha: false }); } catch { gl = null; } }
+  if (!o.noWebGL) { try { gl = canvas.getContext("webgl2", GL_OPTS); } catch { gl = null; } }
   if (gl) { try { G = buildGpu(gl); } catch { gl = null; G = null; } }
-  const onLost = (e: Event) => { e.preventDefault(); gl = null; G = null; stage.dataset.gl = "off"; drawStill(); };
+  // a lost context (GPU reset, sleep, the browser's cap on live contexts) stops the flow; preventDefault asks
+  // the browser to give it back, and on restore the programs, buffers and photo textures are built again
+  const onLost = (e: Event) => { e.preventDefault(); gl = null; G = null; cancelAnimationFrame(raf); raf = 0; stage.dataset.gl = "off"; drawStill(); };
+  const onRestored = () => {
+    if (dead) return;
+    let g: WebGL2RenderingContext | null = null;
+    try { g = canvas.getContext("webgl2", GL_OPTS); } catch { g = null; }
+    if (!g || g.isContextLost()) return;
+    try { G = buildGpu(g); gl = g; } catch { gl = null; G = null; return; }
+    void upload();
+    stage.dataset.gl = "on";
+    if (!ready) return;
+    if (still) drawStill();
+    else { draw(1); kick(); }
+  };
   canvas.addEventListener("webglcontextlost", onLost);
+  canvas.addEventListener("webglcontextrestored", onRestored);
   stage.dataset.gl = gl ? "on" : "off";
 
   async function upload() {
@@ -365,6 +381,7 @@ export function createBurnFlow(stage: HTMLElement, canvas: HTMLCanvasElement, op
       dead = true; cancelAnimationFrame(raf); clearTimeout(rt); ro.disconnect(); io.disconnect();
       document.removeEventListener("visibilitychange", onVis); removeEventListener("pointermove", onMove); stage.removeEventListener("pointerleave", onLeave);
       canvas.removeEventListener("webglcontextlost", onLost);
+      canvas.removeEventListener("webglcontextrestored", onRestored);
       gl?.getExtension("WEBGL_lose_context")?.loseContext();
     },
   };
