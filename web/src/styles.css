@@ -738,7 +738,9 @@ section.method { display: block; }
 /* Space-time image of B12 on /research (pages/ResearchPage.tsx) */
 .space-time { margin: 24px auto; padding: 12px; max-width: 960px; }
 /* the whole 2x2 figure fits one screen under the bar (with room for its caption) */
-.space-time img { display: block; width: auto; max-width: 100%; height: auto; max-height: calc(100svh - var(--bar, 60px) - 140px); margin-inline: auto; border-radius: 6px; background: #000; }
+/* the image is lazy: aspect-ratio + a definite width reserve its 16:10 box before it loads, so the page
+   never grows 530 px mid-scroll (that moved Home/End targets via scroll anchoring) */
+.space-time img { display: block; aspect-ratio: 1920 / 1200; width: min(100%, calc((100svh - var(--bar, 60px) - 140px) * 1.6)); max-width: 100%; height: auto; max-height: calc(100svh - var(--bar, 60px) - 140px); margin-inline: auto; border-radius: 6px; background: #000; }
 .space-time figcaption { margin-top: 8px; max-width: 60ch; }
 /* Hardware filter on /habitats (challenge: CIR/ACME, CIR/MDCA, MSG/SPICE duct grouping) */
 .hab-hw { font-size: var(--fs-label); color: var(--mute); display: inline-flex; gap: 6px; align-items: center; }
